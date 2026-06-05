@@ -615,12 +615,10 @@ img, svg { display: block; max-width: 100%; }
 }
 
 .hero-photo.day {
-  background-image: url("/img/hero-day.png");
   opacity: 1;
   transform: scale(1);
 }
 .hero-photo.night {
-  background-image: url("/img/hero-night.png");
   opacity: 0;
 }
 [data-theme="night"] .hero-photo.day { opacity: 0; transform: scale(1.04); }

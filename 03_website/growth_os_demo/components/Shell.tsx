@@ -40,6 +40,8 @@ const EMPTY_LEAD: LeadDraft = {
 };
 
 const FEATURED_FOR_GATE = ["PKG-01", "AD-3", "PKG-03", "DIGITAL-FULL"];
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const heroImage = (name: string) => `${BASE_PATH}/img/${name}.png`;
 
 export default function Shell() {
   const [themeId, setThemeId] = useState<ThemeId>("day");
@@ -254,8 +256,14 @@ function FlightToggle({
 function Hero() {
   return (
     <section id="top" className="hero">
-      <div className="hero-photo day" />
-      <div className="hero-photo night" />
+      <div
+        className="hero-photo day"
+        style={{ backgroundImage: `url(${heroImage("hero-day")})` }}
+      />
+      <div
+        className="hero-photo night"
+        style={{ backgroundImage: `url(${heroImage("hero-night")})` }}
+      />
 
       <div className="container hero-content">
         <span className="eyebrow hero-eyebrow">Rajkot International · Airport Media</span>

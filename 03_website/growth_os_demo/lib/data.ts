@@ -119,8 +119,10 @@ export type InventoryItem = {
   source: string;
 };
 
-// All paths resolve to /public/img/*.png at runtime
-const IMG = (name: string) => `/img/${name}.png`;
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+// All paths resolve to /public/img/*.png at runtime.
+const IMG = (name: string) => `${BASE_PATH}/img/${name}.png`;
 
 export const INVENTORY: InventoryItem[] = [
   {
