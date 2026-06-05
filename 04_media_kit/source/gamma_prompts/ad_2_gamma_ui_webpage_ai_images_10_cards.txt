@@ -1,0 +1,295 @@
+GAMMA UI SETTINGS TO SELECT BEFORE GENERATING
+
+Format:
+Webpage
+
+Content mode:
+Summarize long text or document
+
+Cards:
+10 cards
+
+Theme:
+Use custom theme if available. If not, choose the most premium editorial/business theme and then adjust colors manually.
+
+Image source:
+AI images
+
+Art style:
+Photo
+
+AI image model:
+Use the auto-selected/default Gamma image model shown in the UI. If Gamma asks, keep the current recommended model.
+
+Important image direction:
+Use realistic premium airport/media images only. No cartoon, illustration, abstract art, generic office people, handshakes, fake brand logos, fake client ads, or unrealistic airport scenes.
+
+Overall instruction:
+Create a premium webpage-style Gamma output for Rajkot Airport Media. It should feel like a high-end product landing page, not a normal slide deck. Summarize and polish the text, but preserve all factual details exactly. Create one Gamma card/page for each section separated by ---.
+
+Brand hierarchy:
+Primary: Rajkot Airport Media
+Operator: Operated by Mukesh Arts
+Context: Rajkot International Airport
+
+Visual direction:
+Premium airport media sales page with a light, rich, luxury editorial feel. Use full-bleed hero sections, large stat blocks, transparent inventory/commercial sections, sharp ivory cards, strong CTAs, airy editorial spacing, champagne/gold accents, and off-white information sections. Keep the overall look bright and premium. Use dark sections sparingly only for contrast CTAs or image overlays. Use saffron/gold only for the most important CTA or number on each card.
+
+Palette:
+Midnight Blue #0B1E3F
+Saffron #F59E0B
+Off White #FAFAF7
+Ink #0A0A0A
+Cloud #E5E7EB
+Champagne / soft gold accents where the selected Gamma theme supports them
+
+Tone:
+Premium, direct, credible, B2B, sales-ready. Strong but not overhyped.
+
+Hard rules:
+Do not say "best airport" as a factual claim.
+Do not claim guaranteed impressions.
+Do not invent phone numbers, email addresses, legal entity, GST number, client names, or testimonials.
+Do not overclaim AAI partnership wording.
+Do not invent additional inventory.
+
+---
+
+CARD 1 - HERO / PRODUCT INTRO
+
+Headline:
+Rajkot Airport Media
+
+Product label:
+AD-2 Airport Front Lit Board
+
+Subhead:
+Premium static airport media placement at Rajkot International Airport, operated by Mukesh Arts.
+
+Hero facts:
+30 x 10 front-lit board
+Terminal city-side approach
+1.25-1.30 lakh monthly passenger visits
+INR 6,00,000/month + GST
+
+CTA:
+Request AD-2 availability
+
+AI image direction:
+Create a realistic premium airport exterior or terminal city-side approach image with a large front-lit billboard placement. It should feel Indian airport / modern terminal, clean, premium, and commercial. Do not show fake brand logos or readable ad copy.
+
+Layout:
+Full-bleed hero image with a refined ivory/champagne content area and light premium overlay. Put AD-2 in a saffron/gold product tag. Keep Mukesh Arts as operator line, not main brand.
+
+---
+
+CARD 2 - TRANSPARENT INVENTORY SNAPSHOT
+
+Headline:
+Inventory and commercials, upfront.
+
+Summary:
+AD-2 is a 30 x 10 front-lit static airport media placement positioned on the terminal city-side approach. The key inventory and commercial details are shown upfront so buyers can evaluate the opportunity without a hidden-rate conversation.
+
+Inventory facts:
+Asset code: AD-2
+Format: Front-lit static board / frontlit unipole
+Size: 30 x 10
+Location: Terminal city-side area / city-side approach
+Rental: INR 6,00,000 for one month
+Taxes: GST extra
+Availability: Subject to confirmation before booking
+
+AI image direction:
+Create a realistic close-up of a clean premium airport billboard/front-lit board structure near a terminal approach. No readable fake ads or fake brands.
+
+Layout:
+Make this a rich product spec / rate card section. Use a big rental number, clean table, ivory cards, fine dividers, and a soft gold highlight.
+
+---
+
+CARD 3 - COMMERCIAL CLARITY
+
+Headline:
+What the monthly rental covers.
+
+Summary:
+The quoted media rental gives the advertiser the AD-2 static airport media placement for the booked campaign period. Production, printing, mounting, artwork adaptation, and approval requirements should be confirmed before release.
+
+Commercial notes:
+Campaign period quoted: One month
+Rental charge: INR 6,00,000
+Taxes: GST extra
+Production/artwork: Confirm final print, mounting, and artwork specifications before release
+Approval: Airport/operator approval required before display
+Status: Availability to be confirmed before booking
+
+AI image direction:
+Create a realistic premium media-planning / airport advertising operations visual: a clean desk or tablet with airport signage plans, no fake logos, no generic handshake.
+
+Layout:
+Use a clean commercial breakdown with two columns: media rental and execution notes.
+
+---
+
+CARD 4 - WHY RAJKOT AIRPORT
+
+Headline:
+Why Rajkot Airport is a strong media buy for premium regional reach.
+
+Summary:
+Rajkot International Airport gives brands access to a focused Saurashtra travel audience inside a premium airport context. With approximately 1.25-1.30 lakh passenger visits per month and 28 daily flight movements, it is a practical media environment for campaigns that need trust, recall, and visible regional presence.
+
+AI image direction:
+Create a realistic premium airport terminal scene with passengers moving naturally through a clean modern terminal. No crowd chaos, no fake signage, no fake logos.
+
+Layout:
+Use a premium editorial split: airport image on one side, short argument on the other. Keep the section light and airy with off-white background and gold stat accents.
+
+---
+
+CARD 5 - AUDIENCE AND MOVEMENT STATS
+
+Headline:
+Audience scale with daily airport movement.
+
+Stats:
+1.25-1.30 lakh passenger visits/month
+4,200-4,400 passenger visits/day
+14 arrivals + 14 departures/day
+28 total flight movements/day
+
+Buyer logic:
+Airport context carries stronger brand perception than cluttered roadside formats.
+Useful for regional, NRI, business, family-travel, real estate, jewellery, finance, auto, and hospitality categories.
+Figures are operator-confirmed approximate numbers and should be verified before final campaign release.
+
+AI image direction:
+Create a realistic airport concourse / departure flow image with premium lighting and subtle motion. No readable fake brands.
+
+Layout:
+Make this a bold but light stat card section. Large numbers must dominate the page. Use ivory cards, champagne/gold number accents, and generous spacing.
+
+---
+
+CARD 6 - AD-2 LOCATION VALUE
+
+Headline:
+City-side airport visibility before the terminal experience.
+
+Summary:
+AD-2 gives brands a static presence in the airport's city-side movement zone. It is built for continuous display across the booked period, making it suitable for airport-led brand recall around approach, visitor movement, and terminal-side visibility.
+
+Spec strip:
+30 x 10
+Front-lit board
+Terminal city-side approach
+INR 6,00,000/month + GST
+
+Note:
+AD-2 is a static brand-presence asset, not a short-loop digital screen.
+
+AI image direction:
+Create a realistic terminal approach road / airport entrance media placement with a large clean billboard frame. No fake ad text or fake brand.
+
+Layout:
+Use a strong location proof card with a light editorial layout. Add a visual callout/pin for AD-2. Keep the spec strip refined and premium.
+
+---
+
+CARD 7 - BEST-FIT CAMPAIGNS
+
+Headline:
+Built for high-recall static airport presence.
+
+Summary:
+AD-2 works best when a brand wants a continuous airport-context signal rather than a short-format digital rotation.
+
+Use-case categories:
+Real estate and premium property launches
+Jewellery and wedding-season campaigns
+Automotive, EV, and dealership visibility
+Banking, insurance, and wealth products
+Regional brand authority campaigns
+Hospitality, travel, and destination promotions
+
+AI image direction:
+Create a premium collage-style airport media mood image with subtle category cues like luxury retail, real estate, auto, finance, and travel. No logos, no fake campaigns, no text-heavy ad creative.
+
+Layout:
+Use six clean category cards. Keep copy short.
+
+---
+
+CARD 8 - TEAM AND OPERATING SUPPORT
+
+Headline:
+Owner-led execution with airport protocol support.
+
+Trust points:
+Operated by Mukesh Arts.
+Owner-led response and booking coordination.
+Ridham Bhuva's ASCO-certified operations support smoother site visits, airport protocol coordination, and creative approval handling.
+Site visits can be coordinated before final booking discussion.
+Creative, production, and approval steps are coordinated through the operator team.
+For AD-2, creative replacement requires printing, mounting, production timing, and approval confirmation.
+
+AI image direction:
+Create a realistic airport operations / media coordination image: professional operator reviewing airport media placement on a tablet near a terminal area. No fake badges, fake uniforms, fake logos, or handshake cliché.
+
+Layout:
+Three premium trust cards:
+Operator
+ASCO-certified operations
+Site visit + approval coordination
+
+Do not use the word guarantee.
+
+---
+
+CARD 9 - CONTACT / NEXT STEP
+
+Headline:
+Check AD-2 availability for your campaign window.
+
+Summary:
+Share your campaign month, booking duration, brand category, and creative readiness. The operator team can coordinate a site visit and confirm current availability, final commercial terms, production requirements, and approval steps.
+
+CTA:
+Request AD-2 availability
+
+Contact routing:
+Inquiries to be routed to the approved owner POC: Mukesh sir / Ridham Bhuva.
+
+Contact details:
+Add approved phone, WhatsApp, and email only after owners confirm final public contact details. Do not invent contact details.
+
+AI image direction:
+Create a premium airport media closing visual: terminal or board placement with clean negative space for CTA. No fake logo or fake contact details.
+
+Layout:
+Light-rich CTA section with a strong saffron/gold CTA block and premium image area. Use dark navy only as a small contrast band or button background, not as the dominant page color.
+
+---
+
+CARD 10 - FINAL DISCLAIMER / TERMS
+
+Headline:
+Terms and media conditions
+
+Terms:
+AD-2 availability is subject to confirmation at the time of booking.
+Rental charge is INR 6,00,000 for one month, exclusive of GST.
+Creative, printing, mounting, fabrication, and production costs, if applicable, are separate unless included in writing.
+All creatives are subject to airport/operator approval before display.
+Passenger visit and flight movement figures are operator-confirmed approximate figures and should be verified before final campaign release.
+AD-2 is a static board. Creative updates or replacements require printing, mounting, production timing, and approval confirmation.
+Political, religious, racial, misleading, or prohibited creative content may be rejected.
+Final booking is confirmed only after written approval, payment confirmation, and completion of required campaign formalities.
+Final artwork and production specifications must be confirmed before release.
+
+AI image direction:
+No large AI image needed. Use a subtle airport-media texture/background if Gamma insists on an image. Keep this page clean and legible.
+
+Layout:
+Compact two-column terms layout with an "Important" label. Make it professional and protective, not scary.

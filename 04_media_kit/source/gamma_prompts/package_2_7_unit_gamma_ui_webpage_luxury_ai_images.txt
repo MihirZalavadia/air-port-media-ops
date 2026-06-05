@@ -1,0 +1,362 @@
+GAMMA UI / API INPUT - PACKAGE 2 LUXURY AIRPORT WEBPAGE
+
+Format:
+Webpage
+
+Content mode:
+Summarize long text or document
+
+Cards:
+11 cards
+
+Theme:
+Gold Leaf
+
+Brand lockup to show on the page:
+Rajkot Airport Media x Mukesh Arts
+
+Important wording note:
+Use "Rajkot Airport Media x Mukesh Arts" as the visible sales-page lockup. Do not write "official airport partner" or imply an unapproved airport-authority partnership.
+
+Image source:
+AI images
+
+Art style:
+Photo / realistic luxury airport editorial
+
+AI image model:
+Use Gamma's auto-selected/default model. Do not force a specific model.
+
+Overall instruction:
+Create a full webpage-style Gamma output for Package 2 at Rajkot International Airport. The page must feel like a premium airport media microsite, not a normal PPT. Use full-width airport background images, luxury terminal photography, cinematic departure/arrival movement, glass-style content panels, ivory/champagne sections, large stat moments, premium spec cards, and a clean commercial rate section. Summarize and polish the text, but preserve all factual details exactly. Create one Gamma card/page for each section separated by ---.
+
+Brand hierarchy:
+Visible lockup: Rajkot Airport Media x Mukesh Arts
+Primary offer: Package 2 - 7-Unit Digital Airport Media Loop
+Operator: Operated by Mukesh Arts
+Context: Rajkot International Airport
+
+Visual direction:
+Proper airport luxury vibe. Use realistic modern airport terminals, premium LED advertising screens, glossy floors, soft daylight, evening terminal glow where useful, clean passenger movement, and upscale travel/retail energy. Use background images as the main design system: hero backgrounds, soft blurred terminal textures, premium airport concourse scenes, and LED media wall visuals behind translucent panels. Keep the page rich, bright, and sales-ready. Use dark navy only for contrast overlays, not as a heavy theme.
+
+Palette:
+Midnight Blue #0B1E3F
+Saffron #F59E0B
+Off White #FAFAF7
+Editorial White #FFFFFF
+Champagne #E8D9B5
+Ink #0A0A0A
+Cloud #E5E7EB
+
+Layout language:
+Full-bleed hero sections
+Luxury airport background images
+Ivory/champagne glass panels over imagery
+Large numeric stat blocks
+Clean spec cards with thin dividers
+Premium CTA bands
+Image-led journey sections
+Short captions, not paragraph-heavy slides
+
+Tone:
+Premium, airport-luxury, direct, credible, B2B, media-buyer ready. Strong but not overhyped.
+
+Hard rules:
+Do not say "best airport" as a factual claim.
+Do not claim guaranteed impressions.
+Do not invent phone numbers, email addresses, legal entity, GST number, client names, campaign case studies, or testimonials.
+Do not overclaim AAI partnership wording.
+Do not invent additional inventory.
+Do not change Package 2 source facts.
+Do not use fake brand logos or readable fake advertisements on AI-generated screens.
+
+Source facts to preserve exactly:
+Package: Package 2
+Inventory count: 7 digital units
+Format: Large-format horizontal LED screens
+Screen dimensions: 6 units are 8 ft x 4 ft horizontal LED; 1 unit is 8 ft x 3 ft horizontal LED
+Monthly rate: INR 2,00,000 + GST
+Creative slot: 10 seconds
+Repeat cycle: 2 minutes
+Unit codes: AD_8, AD_9, AD_29, AD_30, AD_31, AD_32, AD_41
+Locations: departure/security check-in, mezzanine arrival, arrival ground floor, near exit gate
+Detailed placements:
+AD_8 - Departure / Security Check-in - near X-ray - 8 ft x 4 ft
+AD_9 - Departure / Security Check-in - near Indigo check-in - 8 ft x 4 ft
+AD_29 - Mezzanine Arrival - 8 ft x 4 ft
+AD_30 - Mezzanine Arrival - 8 ft x 4 ft
+AD_31 - Arrival Ground Floor - after escalator right - 8 ft x 4 ft
+AD_32 - Arrival Ground Floor - after escalator left - 8 ft x 4 ft
+AD_41 - Arrival Ground Floor - near exit gate - 8 ft x 3 ft
+Audience facts: approx. 1.25-1.30 lakh passenger visits/month; approx. 4,200-4,400 passenger visits/day; 14 arrivals + 14 departures/day; 28 total flight movements/day
+Availability: Subject to confirmation before booking
+
+---
+
+CARD 1 - FULL-BLEED LUXURY HERO
+
+Headline:
+Rajkot Airport Media x Mukesh Arts
+
+Product label:
+Package 2 - 7-Unit Digital Airport Media Loop
+
+Subhead:
+A premium airport digital media package across departure, mezzanine arrival, arrival ground floor, and exit-path moments at Rajkot International Airport.
+
+Hero facts:
+7 digital units
+10-second creative slot
+2-minute repeat cycle
+INR 2,00,000/month + GST
+
+CTA:
+Request Package 2 availability
+
+AI background image direction:
+Create a photorealistic luxury Indian airport terminal/concourse scene with premium horizontal LED advertising screens integrated into the architecture. The atmosphere should feel upscale, polished, calm, and media-buyer friendly: glossy floors, refined lighting, clean passenger movement, no crowds, no fake logos, no readable fake ads.
+
+Layout:
+Use a full-bleed cinematic airport background. Place an ivory/champagne translucent content panel over the image. Keep "Rajkot Airport Media x Mukesh Arts" clearly visible as the lockup. Make the 7-unit package and monthly rate immediately visible.
+
+---
+
+CARD 2 - PACKAGE SNAPSHOT
+
+Headline:
+Seven airport screens. One coordinated digital package.
+
+Summary:
+Package 2 combines seven horizontal LED units across key airport movement zones, giving brands repeated visibility across departure/security, mezzanine arrival, arrival ground floor, and the exit path.
+
+Snapshot facts:
+Package: Package 2
+Units: 7 digital surfaces
+Format: Horizontal LED screens
+Screen mix: 6 x 8 ft x 4 ft + 1 x 8 ft x 3 ft
+Creative slot: 10 seconds
+Cycle: 2-minute repeat cycle
+Monthly rate: INR 2,00,000 + GST
+
+AI background image direction:
+Create a clean airport LED media package visual with multiple premium horizontal screens in a modern terminal setting. Screens should look like realistic airport ad screens, but contain abstract premium visuals without readable brand text.
+
+Layout:
+Make this a luxury spec/rate card section. Use a large "7 digital units" stat, a bold rate block, and small ivory cards for screen size, slot duration, and cycle.
+
+---
+
+CARD 3 - WHY RAJKOT AIRPORT
+
+Headline:
+Airport context for premium regional reach.
+
+Summary:
+Rajkot International Airport gives brands access to a focused Saurashtra travel audience in a controlled, premium environment. Package 2 is built for advertisers who want repeated digital visibility across high-attention airport moments rather than a single static touchpoint.
+
+Audience facts:
+1.25-1.30 lakh passenger visits/month
+4,200-4,400 passenger visits/day
+14 arrivals + 14 departures/day
+28 total flight movements/day
+
+Note:
+Figures are operator-confirmed approximate numbers and should be verified before final campaign release.
+
+AI background image direction:
+Create a luxury airport terminal background with passengers moving through a clean, premium concourse. Keep the image realistic, calm, bright, and polished. No fake airline logos or readable signage.
+
+Layout:
+Use a premium airport background with a soft dark-to-light overlay. Put the audience stats in large champagne/gold numerals on ivory cards. Keep copy short.
+
+---
+
+CARD 4 - JOURNEY COVERAGE
+
+Headline:
+Digital visibility across departure and arrival movement.
+
+Summary:
+Package 2 covers screens that bookend the airport journey: early departure/security movement, mezzanine arrival movement, arrival ground floor circulation, and the exit-gate path.
+
+Journey moments:
+Departure / Security Check-in
+Mezzanine Arrival
+Arrival Ground Floor
+Near Exit Gate
+
+AI background image direction:
+Create a premium airport journey visual using a realistic terminal pathway with subtle directional movement from departure check-in to arrival exit. No map labels with fake text; use visual flow only.
+
+Layout:
+Use a horizontal journey timeline over a full-width background image. Make each journey moment a glass-style card with a small saffron/gold dot.
+
+---
+
+CARD 5 - UNIT MAP / PLACEMENT LIST
+
+Headline:
+Package 2 unit map and placement list.
+
+Placement list:
+AD_8 - Departure / Security Check-in - near X-ray - 8 ft x 4 ft
+AD_9 - Departure / Security Check-in - near Indigo check-in - 8 ft x 4 ft
+AD_29 - Mezzanine Arrival - 8 ft x 4 ft
+AD_30 - Mezzanine Arrival - 8 ft x 4 ft
+AD_31 - Arrival Ground Floor - after escalator right - 8 ft x 4 ft
+AD_32 - Arrival Ground Floor - after escalator left - 8 ft x 4 ft
+AD_41 - Arrival Ground Floor - near exit gate - 8 ft x 3 ft
+
+AI background image direction:
+Create a refined airport floor-plan inspired visual in a luxury editorial style, with abstract terminal zoning and premium media markers. Do not invent exact airport maps. Avoid fake text except the AD codes listed above if Gamma can render them clearly.
+
+Layout:
+Use a two-column webpage section. Left: visual map/floor-plan style image area. Right: clean placement list in grouped cards. Highlight AD codes in saffron/gold.
+
+---
+
+CARD 6 - DEPARTURE / SECURITY CHECK-IN UNITS
+
+Headline:
+First-touch digital visibility before the secure journey.
+
+Featured units:
+AD_8 - near X-ray - 8 ft x 4 ft
+AD_9 - near Indigo check-in - 8 ft x 4 ft
+
+Buyer value:
+These departure/security check-in units support early journey visibility for brand introductions, product launches, finance offers, premium retail, auto, travel, and regional authority campaigns.
+
+AI background image direction:
+Create a photorealistic airport security/check-in area with two premium horizontal LED screens placed naturally in the environment. Keep the space clean, upscale, and realistic. Do not show real airline logos, fake brand ads, or readable fake signage.
+
+Layout:
+Use a full-width departure-zone background with two large glass cards for AD_8 and AD_9. Each card should show unit code, location, size, and buyer value.
+
+---
+
+CARD 7 - MEZZANINE ARRIVAL UNITS
+
+Headline:
+Arrival visibility during elevated movement.
+
+Featured units:
+AD_29 - Mezzanine Arrival - 8 ft x 4 ft
+AD_30 - Mezzanine Arrival - 8 ft x 4 ft
+
+Buyer value:
+The mezzanine arrival screens support brand recall as passengers move through the arrival-side journey, giving campaigns a premium digital touchpoint before the ground-floor exit flow.
+
+AI background image direction:
+Create a realistic modern airport mezzanine arrival area with premium horizontal LED media screens, glossy floor, soft daylight, and clean architectural lines. No fake logos, no readable fake ads.
+
+Layout:
+Use an image-led split section. Large airport background image on top or left, with two refined unit cards for AD_29 and AD_30.
+
+---
+
+CARD 8 - ARRIVAL GROUND FLOOR + EXIT PATH
+
+Headline:
+Last-touch visibility as passengers move toward exit.
+
+Featured units:
+AD_31 - Arrival Ground Floor, after escalator right - 8 ft x 4 ft
+AD_32 - Arrival Ground Floor, after escalator left - 8 ft x 4 ft
+AD_41 - Arrival Ground Floor, near exit gate - 8 ft x 3 ft
+
+Buyer value:
+These units support recall during arrival-side circulation and exit-path movement, where brands can stay visible as passengers transition from airport environment to city movement.
+
+AI background image direction:
+Create a photorealistic arrival ground-floor airport scene with escalator-adjacent horizontal LED screens and a premium exit-path screen. Keep the scene clean, upscale, and believable. No fake brands or unreadable clutter.
+
+Layout:
+Use a three-card image grid over a subtle airport background. AD_41 should be marked as the 8 ft x 3 ft unit.
+
+---
+
+CARD 9 - BEST-FIT CAMPAIGNS
+
+Headline:
+Built for brands that need repeated airport presence.
+
+Summary:
+Package 2 works well when a campaign needs digital repetition across multiple airport moments without taking a full-airport bundle.
+
+Use-case categories:
+Real estate launches and premium projects
+Jewellery, wedding-season, and luxury retail
+Automotive, EV, and dealership campaigns
+Banking, credit card, insurance, and wealth products
+Hospitality, travel, tourism, and destination campaigns
+Regional festive and brand authority campaigns
+
+AI background image direction:
+Create a luxury airport retail/media mood image with subtle category cues: premium storefront, modern car silhouette, jewellery/luxury retail feel, travel and hospitality mood. Do not include logos, fake brand names, or fake campaign copy.
+
+Layout:
+Use six premium category cards on an ivory/champagne background with a soft airport image texture behind them. Keep body copy very short.
+
+---
+
+CARD 10 - COMMERCIALS AND EXECUTION NOTES
+
+Headline:
+Package 2 commercials.
+
+Commercial facts:
+Package: Package 2
+Units: 7 digital surfaces
+Format: 6 x 8 ft x 4 ft + 1 x 8 ft x 3 ft horizontal LED
+Creative slot: 10 seconds
+Repeat cycle: 2 minutes
+Monthly rate: INR 2,00,000 + GST
+Availability: Subject to confirmation before booking
+
+Execution notes:
+Final booking and airport/operator approval requirements to be confirmed by the operator.
+Creative files, format requirements, scheduling, and campaign dates should be confirmed before release.
+Multiple designs or scheduled updates may be possible where operationally approved for applicable digital inventory.
+
+AI background image direction:
+Create a premium media operations visual with a digital campaign schedule shown abstractly on a tablet/laptop in an airport media context. No fake dashboards with readable fake data, no fake logos, no handshake cliche.
+
+Layout:
+Make the monthly rate the visual hero. Use a luxury dark navy contrast band with champagne/gold price treatment, then ivory execution-note cards below.
+
+---
+
+CARD 11 - CONTACT / TERMS / DISCLAIMER
+
+Headline:
+Check Package 2 availability for your campaign window.
+
+Next step:
+Share campaign dates, creative duration, brand category, and preferred campaign month. The operator team can coordinate a site visit and confirm current availability, final commercial terms, creative specifications, scheduling requirements, and approval steps.
+
+CTA:
+Request Package 2 availability
+
+Contact routing:
+Inquiries to be routed to the approved owner POC: Mukesh sir / Ridham Bhuva.
+
+Contact details:
+Add approved phone, WhatsApp, and email only after owners confirm final public contact details. Do not invent contact details.
+
+Terms:
+Package 2 availability is subject to confirmation at the time of booking.
+Monthly rate is INR 2,00,000, exclusive of GST.
+Package includes 7 digital units: 6 units of 8 ft x 4 ft and 1 unit of 8 ft x 3 ft.
+Creative slot is 10 seconds in a 2-minute repeat cycle.
+All creatives are subject to airport/operator approval before display.
+Campaign scheduling, file specifications, and live/scheduled update process must be confirmed before release.
+Passenger visit and flight movement figures are operator-confirmed approximate figures and should be verified before final campaign release.
+Political, religious, racial, misleading, or prohibited creative content may be rejected.
+Final booking is confirmed only after written approval, payment confirmation, and completion of required campaign formalities.
+
+AI background image direction:
+Create a premium airport terminal closing background with soft evening glow, luxury concourse feel, and clean negative space for CTA. No fake contact details, fake logos, or readable fake ads.
+
+Layout:
+Use a premium closing webpage section. Top: strong CTA over airport background. Bottom: compact two-column terms/disclaimer block on ivory. Keep it protective but not scary.

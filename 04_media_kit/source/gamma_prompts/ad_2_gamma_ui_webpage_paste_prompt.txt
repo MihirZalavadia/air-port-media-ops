@@ -1,0 +1,209 @@
+Create a premium webpage-style Gamma deck for Rajkot Airport Media.
+
+Use my custom theme.
+Use a webpage / product landing page feel, not a normal PowerPoint style.
+Summarize and polish the content, but preserve all factual details exactly.
+Create one Gamma page/card for each section separated by ---.
+Keep the page order exactly as given.
+Use large placeholder image areas wherever marked IMAGE PLACEHOLDER. I will replace images manually from the source PPT/PDF later.
+Do not use stock photos, AI images, fake client logos, fake testimonials, or invented facts.
+
+Brand hierarchy:
+Primary: Rajkot Airport Media
+Operator: Operated by Mukesh Arts
+Context: Rajkot International Airport
+
+Visual direction:
+Premium airport media sales page. Think high-end product landing page translated into Gamma: full-bleed hero, large stat blocks, clean commercial table, sharp cards, dark premium sections, off-white editorial sections, strong CTAs, and restrained saffron highlights.
+
+Tone:
+Premium, direct, credible, B2B, sales-ready. Strong but not overhyped.
+
+Hard rules:
+Do not say "best airport" as a factual claim.
+Do not claim guaranteed impressions.
+Do not invent phone numbers, email addresses, legal entity, GST number, client names, or testimonials.
+Do not overclaim AAI partnership wording.
+
+---
+
+PAGE 1 - HERO / INTRO
+
+Headline:
+Rajkot Airport Media
+
+Product label:
+AD-2 Airport Front Lit Board
+
+Subhead:
+Premium static airport media placement at Rajkot International Airport, operated by Mukesh Arts.
+
+Hero facts:
+30 x 10 front-lit board
+Terminal city-side approach
+1.25-1.30 lakh monthly passenger visits
+INR 6,00,000/month + GST
+
+CTA:
+Request AD-2 availability
+
+Layout:
+Make this feel like a premium web hero. Use a full-width hero image placeholder with dark overlay. Put AD-2 in a saffron product tag. Keep Mukesh Arts as the operator line, not the main headline.
+
+IMAGE PLACEHOLDER:
+Hero image from AD-2 source PPT/PDF - use clearest full-board or airport-context image.
+
+---
+
+PAGE 2 - TRANSPARENT INVENTORY AND COMMERCIALS
+
+Headline:
+AD-2 inventory and commercials, upfront.
+
+Summary:
+AD-2 is a 30 x 10 front-lit static airport media placement positioned on the terminal city-side approach. The key inventory and commercial details are shown upfront so buyers can evaluate the opportunity without a hidden-rate conversation.
+
+Inventory table:
+Asset code: AD-2
+Format: Front-lit static board / frontlit unipole
+Size: 30 x 10
+Location: Terminal city-side area / city-side approach
+Rental: INR 6,00,000 for one month
+Taxes: GST extra
+Availability: Subject to confirmation before booking
+Production: Print, mounting, and artwork specifications to be confirmed before release
+Approval: Airport/operator approval required before display
+
+Layout:
+Create a clean rate-card/product-spec section. Make the rental number large. Use a table or structured cards. Keep it transparent and premium.
+
+IMAGE PLACEHOLDER:
+Primary AD-2 board image from source PPT/PDF.
+
+---
+
+PAGE 3 - WHY RAJKOT AIRPORT
+
+Headline:
+Why Rajkot Airport is a strong media buy for premium regional reach.
+
+Summary:
+Rajkot International Airport gives brands access to a focused Saurashtra travel audience inside a premium airport context. With approximately 1.25-1.30 lakh passenger visits per month and 28 daily flight movements, it is a practical media environment for campaigns that need trust, recall, and visible regional presence.
+
+Stats:
+1.25-1.30 lakh passenger visits/month
+4,200-4,400 passenger visits/day
+14 arrivals + 14 departures/day
+28 total flight movements/day
+
+Buyer logic:
+Airport context carries stronger brand perception than cluttered roadside formats.
+Useful for regional, NRI, business, family-travel, real estate, jewellery, finance, auto, and hospitality categories.
+Figures are operator-confirmed approximate numbers and should be verified before final campaign release.
+
+Layout:
+Use large stat blocks and a short buyer-logic panel. Make this feel like a product proof section, not generic hype.
+
+IMAGE PLACEHOLDER:
+Airport terminal, passenger area, or AD-2 context image from source PPT/PDF.
+
+---
+
+PAGE 4 - AD-2 LOCATION AND VISUAL PROOF
+
+Headline:
+City-side airport visibility before the terminal experience.
+
+Summary:
+AD-2 gives brands a static presence in the airport's city-side movement zone. It is built for continuous display across the booked period, making it suitable for airport-led brand recall around approach, visitor movement, and terminal-side visibility.
+
+Spec strip:
+30 x 10
+Front-lit board
+Terminal city-side approach
+INR 6,00,000/month + GST
+
+Note:
+AD-2 is a static brand-presence asset, not a short-loop digital screen.
+
+Layout:
+Use a large location image or floor-plan placeholder. Add a visual callout/pin for AD-2. Keep text short and image-led.
+
+IMAGE PLACEHOLDER:
+AD-2 location image or floor plan from source PPT/PDF.
+
+---
+
+PAGE 5 - TEAM AND OPERATING SUPPORT
+
+Headline:
+Owner-led execution with airport protocol support.
+
+Trust points:
+Operated by Mukesh Arts.
+Owner-led response and booking coordination.
+Ridham Bhuva's ASCO-certified operations support smoother site visits, airport protocol coordination, and creative approval handling.
+Site visits can be coordinated before final booking discussion.
+Creative, production, and approval steps are coordinated through the operator team.
+For AD-2, creative replacement requires printing, mounting, production timing, and approval confirmation.
+
+Layout:
+Create three premium trust cards:
+1. Operator
+2. ASCO-certified operations
+3. Site visit + approval coordination
+
+Do not use the word guarantee.
+
+IMAGE PLACEHOLDER:
+Team, terminal, operational, or AD-2 context image from source PPT/PDF.
+
+---
+
+PAGE 6 - CONTACT / NEXT STEP
+
+Headline:
+Check AD-2 availability for your campaign window.
+
+Summary:
+Share your campaign month, booking duration, brand category, and creative readiness. The operator team can coordinate a site visit and confirm current availability, final commercial terms, production requirements, and approval steps.
+
+CTA:
+Request AD-2 availability
+
+Contact routing:
+Inquiries to be routed to the approved owner POC: Mukesh sir / Ridham Bhuva.
+
+Contact details:
+Add approved phone, WhatsApp, and email only after owners confirm final public contact details. Do not invent contact details.
+
+Layout:
+Make this a strong CTA section with a dark background, saffron CTA block, and one large image placeholder.
+
+IMAGE PLACEHOLDER:
+Strongest AD-2 image from source PPT/PDF.
+
+---
+
+PAGE 7 - FINAL DISCLAIMER / TERMS
+
+Headline:
+Terms and media conditions
+
+Terms:
+AD-2 availability is subject to confirmation at the time of booking.
+Rental charge is INR 6,00,000 for one month, exclusive of GST.
+Creative, printing, mounting, fabrication, and production costs, if applicable, are separate unless included in writing.
+All creatives are subject to airport/operator approval before display.
+Passenger visit and flight movement figures are operator-confirmed approximate figures and should be verified before final campaign release.
+AD-2 is a static board. Creative updates or replacements require printing, mounting, production timing, and approval confirmation.
+Political, religious, racial, misleading, or prohibited creative content may be rejected.
+Final booking is confirmed only after written approval, payment confirmation, and completion of required campaign formalities.
+Final artwork and production specifications must be confirmed before release.
+
+Layout:
+Keep this clean and protective, not scary. Use a compact two-column layout with an "Important" label.
+
+IMAGE PLACEHOLDER:
+Optional small AD-2 image strip or airport ambience image.
+

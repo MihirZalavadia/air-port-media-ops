@@ -1,0 +1,5 @@
+{
+  "extends": "_base_light_rich_webpage_ai.json",
+  "promptPath": "04_media_kit/source/gamma_prompts/ad_2_gamma_ui_webpage_ai_images_10_cards.txt",
+  "outputStem": "gamma_ad2_webpage_ai_light_rich"
+}

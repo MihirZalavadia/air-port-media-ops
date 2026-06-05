@@ -1,0 +1,249 @@
+GAMMA MASTER TEMPLATE - RAJKOT AIRPORT MEDIA RICH GOLD 5-PAGE FRAME
+
+Purpose:
+Create a reusable 5-page master frame for Rajkot Airport Media x Mukesh Arts proposals. This frame must stay visually consistent across all future plans, packages, and inventory decks. Only the plan values and inventory-detail middle pages should change from deck to deck.
+
+Recommended Gamma settings:
+Format: Webpage or Presentation
+Theme: Gold Leaf
+Content mode: Summarize long text or document
+Card split: One card/page per section separated by ---
+Image source: AI images or placeholders
+Art style: Photo / realistic premium airport editorial
+AI image model: Gamma default / auto-selected model
+
+Core visual direction:
+Use the rich Gold Leaf theme direction they liked: ivory, champagne, white, soft gold, clean navy type, refined airport-luxury presentation, premium editorial spacing, thin dividers, sharp information panels, and full-bleed airport imagery. The output should feel like a high-end airport media proposal, not a normal PowerPoint.
+
+Brand lockup:
+Rajkot Airport Media x Mukesh Arts
+
+Important wording note:
+Use "Rajkot Airport Media x Mukesh Arts" as the proposal lockup. Do not write "official airport partner", "AAI partner", "airport authority partner", or any wording that implies an unapproved airport-authority partnership.
+
+Source-truth rule:
+Preserve all plan-specific values exactly as entered in the PLAN DATA section. Do not invent units, dimensions, rates, locations, passenger figures, contact details, legal details, GST numbers, testimonials, or client names.
+
+Reusable plan data placeholders:
+Replace these values before generating or manually adapting each proposal.
+
+PLAN_NAME:
+[Example: Package 2 - 7 Unit Digital Media Plan]
+
+PLAN_FORMAT:
+[Example: Digital LED airport media package]
+
+PLAN_UNITS:
+[Example: 7 Unit total]
+
+PLAN_SIZE_DETAILS:
+[Example: 6 unit (Size: 8 x 4) & 1 unit (Size: 8 x 3)]
+
+PLAN_SLOT_DETAILS:
+[Example: 1 Slot x 10 Second Advertise]
+
+PLAN_REPEAT_TIME:
+[Example: Repeat Time 2 Minutes]
+
+PLAN_TOTAL_UNIT_NOTE:
+[Example: 7-unit total]
+
+PLAN_RATE:
+[Example: INR 2,00,000/month + GST]
+
+PLAN_LOCATION_SUMMARY:
+[Example: Departure/security check-in, mezzanine arrival, arrival ground floor, near exit gate]
+
+APPROVED_CONTACT_DETAILS:
+[Add only after owner approval. If not approved, write: Contact details to be added after owner confirmation.]
+
+---
+
+PAGE 1 - BANNER / PROPOSAL COVER
+
+Headline:
+Rajkot Airport Media x Mukesh Arts
+
+Main title:
+Advertisement Media Proposal
+
+Plan label:
+[PLAN_NAME]
+
+Subhead:
+Premium airport advertising visibility at Rajkot International Airport.
+
+Hero facts:
+[PLAN_UNITS]
+[PLAN_SIZE_DETAILS]
+[PLAN_SLOT_DETAILS] | [PLAN_REPEAT_TIME]
+[PLAN_RATE]
+
+Visual direction:
+Use a full-bleed realistic background image of Rajkot Airport / modern Indian airport exterior. The image should feel premium, clean, and business-ready: terminal facade, airport approach, clean daylight or soft evening glow, polished road/terminal environment, no fake airline logos, no fake brand billboards, no clutter.
+
+Layout direction:
+Create a luxury banner page with the airport image as the full background. Use a soft navy-to-transparent overlay only where needed for readability. Place the brand lockup at the top. Put "Advertisement Media Proposal" as the main title in a refined serif/editorial or strong premium sans type style. Add [PLAN_NAME] as a gold/champagne label. Keep the page clean and high-status.
+
+Design details:
+Use ivory/champagne text panels only if needed.
+Use restrained gold accents around the plan label and CTA line.
+Avoid a crowded cover.
+Do not place contact details on the cover.
+
+---
+
+PAGE 2 - PLAN SNAPSHOT / SAMPLE FORMAT
+
+Headline:
+Plan snapshot
+
+Subhead:
+A clear view of the selected airport media plan before inventory details.
+
+Plan format block:
+▪ [PLAN_UNITS] [[PLAN_SIZE_DETAILS]]
+▪ [PLAN_SLOT_DETAILS] [PLAN_REPEAT_TIME] ([PLAN_TOTAL_UNIT_NOTE])
+
+Commercial block:
+Plan: [PLAN_NAME]
+Format: [PLAN_FORMAT]
+Location summary: [PLAN_LOCATION_SUMMARY]
+Monthly commercial: [PLAN_RATE]
+Availability: Subject to confirmation before booking
+
+Visual direction:
+Use a premium airport LED/media background image or a clean airport concourse background with subtle digital media screens. The visual should support the plan details, not distract from them. No fake readable ad text, fake logos, or exaggerated lighting.
+
+Layout direction:
+Make this a reusable plan-spec page. Use a large ivory card or glass panel over a soft airport background. The two bullet lines must be the main visual focus and should be easy to edit manually later.
+
+Design details:
+Use a gold vertical line or gold number marker beside the two bullet lines.
+Use large typography for unit count and slot duration.
+Use a compact commercial card below the sample format.
+Keep all values editable and visually separated.
+
+Notes for future editing:
+This page is the master page where values change for each plan. Replace only the placeholders and keep the same layout.
+
+---
+
+PAGE 3 - WHY RAJKOT AIRPORT FOR OOH MARKETING
+
+Headline:
+Why Rajkot Airport works for OOH marketing
+
+Subhead:
+Airport media gives brands a focused, premium, and high-recall environment for regional visibility.
+
+Core argument:
+Rajkot International Airport connects brands with a concentrated Saurashtra travel audience in a controlled airport setting. Unlike cluttered roadside formats, airport media gives campaigns a cleaner environment, stronger brand perception, and repeated visibility around passenger, visitor, and vehicle movement.
+
+Audience facts:
+Approx. 1.25-1.30 lakh passenger visits/month
+Approx. 4,200-4,400 passenger visits/day
+14 arrivals + 14 departures/day
+28 total flight movements/day
+
+Why it matters:
+Premium airport environment
+Focused passenger and visitor movement
+Stronger brand recall than cluttered outdoor zones
+Useful for regional authority, launches, retail, real estate, finance, auto, travel, and hospitality campaigns
+Site visits and campaign coordination can be supported by the operator team
+
+Important wording:
+Do not say "best airport" as a guaranteed factual claim. Use "works for OOH marketing", "strong media environment", "premium regional reach", and "high-recall airport context" instead.
+
+Visual direction:
+Use a full-width premium airport terminal or passenger movement background image. It should show clean airport scale, calm movement, polished architecture, and a premium travel feel. No crowd chaos, no fake signage, no fake logos.
+
+Layout direction:
+Use a rich editorial layout. Large background image, then ivory/champagne stat cards over the image. Make the passenger/month, passenger/day, and 28 movements figures prominent. Keep the written argument short and confident.
+
+Design details:
+Use gold only to highlight stats.
+Use navy for headings and important labels.
+Keep this page reusable across every proposal.
+Skip any separate "ideal industry brands" page. If industries are mentioned, keep them as one short line inside the why-it-matters section only.
+
+---
+
+PAGE 4 - CONTACT / NEXT STEP
+
+Headline:
+Check availability for your campaign window
+
+Subhead:
+Share your campaign month, booking duration, brand category, and creative readiness. The operator team can confirm current availability, commercial terms, site visit options, production requirements, scheduling process, and approval steps.
+
+CTA:
+Request proposal confirmation
+
+Contact routing:
+Inquiries to be routed to the approved owner POC: Mukesh sir / Ridham Bhuva.
+
+Contact details:
+[APPROVED_CONTACT_DETAILS]
+
+Operational support:
+Operated by Mukesh Arts.
+Owner-led response and booking coordination.
+Ridham Bhuva's ASCO-certified operations support smoother site visits, airport protocol coordination, and creative approval handling.
+
+Important wording:
+Do not use the word "guarantee" for operations.
+Do not invent phone numbers, email IDs, company registration details, GST numbers, or office addresses.
+
+Visual direction:
+Use a premium airport closing background image with clean negative space: terminal exterior, airport media screen, or approach road with polished lighting. No fake contact details on the image.
+
+Layout direction:
+Create a high-end CTA page. Put contact/next step in a refined ivory or champagne panel. Use a saffron/gold CTA button or label. Keep the brand lockup visible but secondary.
+
+Design details:
+Make it easy to manually paste final phone, WhatsApp, and email later.
+Keep contact fields visibly separated.
+
+---
+
+PAGE 5 - TERMS AND CONDITIONS / DISCLAIMER
+
+Headline:
+Terms and media conditions
+
+Intro:
+The following terms protect the operator and clarify campaign execution requirements before booking.
+
+Terms:
+Availability is subject to confirmation at the time of booking.
+All rates are exclusive of GST unless specifically stated in writing.
+Creative, printing, mounting, fabrication, and production costs, if applicable, are separate unless included in writing.
+For digital inventory, slot duration, repeat cycle, scheduling, file format, and live/scheduled update process must be confirmed before release.
+For static inventory, creative replacement requires printing, mounting, production timing, and approval confirmation.
+All creatives are subject to airport/operator approval before display.
+Passenger visit and flight movement figures are operator-confirmed approximate figures and should be verified before final campaign release.
+Political, religious, racial, misleading, unsafe, restricted, or prohibited creative content may be rejected.
+Final booking is confirmed only after written approval, payment confirmation, and completion of required campaign formalities.
+Final artwork, dimensions, file specifications, production process, and display dates must be confirmed before release.
+
+Visual direction:
+Use a clean ivory/off-white background with a very subtle airport texture or soft gold divider. Avoid a heavy legal look.
+
+Layout direction:
+Create a compact two-column terms layout. Use short sections, thin dividers, and a small "Important" label. It should look professional and protective, not scary.
+
+Design details:
+Keep terms readable.
+Do not hide important conditions in tiny text.
+Use the same Gold Leaf style as the proposal.
+
+---
+
+FINAL OUTPUT REQUIREMENT
+
+Create these 5 master pages in a consistent visual system so they can be reused directly across multiple airport media proposals. The first 3 pages and last 2 pages must look like a locked template. Only plan-specific values should change.
+
+Important:
+In actual proposals, insert custom inventory-detail pages after Page 3 and before the Contact / Next Step page. Those inventory pages should be created separately for each plan, while this 5-page master frame remains visually locked.

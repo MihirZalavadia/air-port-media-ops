@@ -1,0 +1,18 @@
+{
+  "format": "webpage",
+  "exportAs": "none",
+  "textMode": "generate",
+  "cardSplit": "inputTextBreaks",
+  "numCards": 10,
+  "themeId": "gold-leaf",
+  "imageSource": "aiGenerated",
+  "textOptions": {
+    "amount": "medium",
+    "tone": "premium, rich, light, elegant, editorial, confident, B2B sales-ready",
+    "audience": "brand managers, marketing heads, OOH media planners, ad agencies, premium regional advertisers"
+  },
+  "imageOptions": {
+    "style": "photorealistic, premium modern Indian airport, airport advertising, clean daylight, rich ivory and gold editorial feel, polished commercial lighting, realistic terminal environment, no fake logos, no readable fake text, no stock-photo handshake"
+  },
+  "additionalInstructions": "Create a polished webpage-style Gamma output with a light-rich premium editorial look. Use the Gold Leaf theme direction: ivory, champagne, white, restrained gold, airy spacing, luxury brochure polish, clean typography, and high-end product landing page composition. Keep it bright, rich, premium, and modern; avoid dark-heavy slides except small contrast bands. Preserve sections separated by --- as the page/card structure. Use large stat moments, transparent commercial sections, elegant off-white panels, sharp cards, thin dividers, soft shadows, full-bleed AI image areas, and refined saffron/gold CTA highlights. Preserve all factual details exactly. Do not invent client names, contact details, GST/legal details, testimonials, extra inventory, AAI wording, or guaranteed impressions."
+}

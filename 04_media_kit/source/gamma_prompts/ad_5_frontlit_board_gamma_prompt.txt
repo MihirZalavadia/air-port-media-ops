@@ -1,0 +1,126 @@
+GAMMA PROMPT - AD-5 AIRPORT FRONTLIT BOARD
+
+Source file:
+04_media_kit/assets/AD - 5 AIRPORT FRONTLIT BOARD.pdf
+
+Source details to preserve:
+- Unit: AD-5
+- Media type: Airport frontlit board
+- Billboard size: 30 x 10
+- Location: Terminal city-side area, arrival exit
+- Rental charges: INR 6,00,000 for one month + GST
+
+GLOBAL DIRECTION
+
+Create a refined 16:9 sales deck for AD-5 Airport Frontlit Board. The deck should look like a premium airport media proposal and should be easy to update with real images from the existing source PDF/PPT.
+
+SLIDE 1 - COVER
+
+Headline:
+AD-5 Airport Frontlit Board
+
+Subhead:
+Premium static brand placement at Rajkot International Airport.
+
+Layout:
+Full-bleed real board image. Dark overlay. AD-5 in a Saffron tag. Keep the deck title clean and direct.
+
+IMAGE BLOCK:
+[INSERT HERO IMAGE FROM AD-5 SOURCE PDF]
+
+Footer:
+Rajkot Airport Media | Operated by Mukesh Arts | Source: AD - 5 AIRPORT FRONTLIT BOARD.pdf
+
+SLIDE 2 - ASSET OVERVIEW
+
+Headline:
+AD-5 media overview
+
+Spec card:
+- Asset code: AD-5
+- Format: Airport frontlit board
+- Size: 30 x 10
+- Location: Terminal city-side area, arrival exit
+- Campaign period: One-month rental quote
+- Commercials: INR 6,00,000 + GST
+
+Layout:
+Use a large board image on the right and a structured spec card on the left. Make the board code visually prominent.
+
+IMAGE BLOCK:
+[INSERT PRIMARY AD-5 BOARD PHOTO FROM SOURCE PDF]
+
+SLIDE 3 - PLACEMENT VALUE
+
+Headline:
+Designed for sustained brand recall in an airport setting.
+
+Body:
+Use the actual location from the source PDF. Explain that frontlit static media works for brands that need continuous visibility across a campaign window rather than short creative loops.
+
+Do not add footfall, dwell time, or guaranteed impressions unless present in the source.
+
+Layout:
+Photo-led slide. Short copy block. Small map/floor plan inset if available.
+
+IMAGE BLOCK:
+[INSERT LOCATION IMAGE OR FLOOR PLAN FROM AD-5 SOURCE PDF]
+
+SLIDE 4 - SPECIFICATIONS
+
+Headline:
+AD-5 specifications
+
+Table:
+- Media code: AD-5
+- Media type: Frontlit airport board
+- Exact dimensions: 30 x 10
+- Placement: Terminal city-side area, arrival exit
+- Illumination: Frontlit static board
+- Creative production: Confirm production specifications before artwork release
+- Monthly rate: INR 6,00,000
+- Taxes and payment: GST extra
+
+Layout:
+Dark table, Off White body, Saffron highlights. Keep the table readable on mobile export.
+
+IMAGE BLOCK:
+[OPTIONAL IMAGE: cropped board detail]
+
+SLIDE 5 - CAMPAIGN USE CASES
+
+Headline:
+Best-fit campaign categories
+
+Cards:
+- Premium retail visibility
+- Real estate and plotted development launches
+- Jewellery and wedding-season campaigns
+- Auto, EV, and dealership campaigns
+- Finance, insurance, and wealth products
+
+Layout:
+Five use-case cards, no long paragraphs. Use icons only if they stay subtle.
+
+IMAGE BLOCK:
+[INSERT SUPPORTING REAL IMAGE FROM SOURCE PDF]
+
+SLIDE 6 - CTA
+
+Headline:
+Request current availability for AD-5.
+
+Body:
+Availability, final quote, creative production details, and airport approval steps will be confirmed after campaign dates are shared.
+
+CTA:
+Request AD-5 Details
+
+Contact block:
+Route inquiries to the approved owner POC: Mukesh sir / Ridham Bhuva.
+
+Layout:
+Midnight Blue closing slide with Saffron CTA button and one real board photo.
+
+IMAGE BLOCK:
+[INSERT STRONGEST AD-5 IMAGE FROM SOURCE PDF]

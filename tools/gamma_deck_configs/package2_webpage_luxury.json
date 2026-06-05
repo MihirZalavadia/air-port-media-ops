@@ -1,0 +1,16 @@
+{
+  "extends": "_base_light_rich_webpage_ai.json",
+  "promptPath": "04_media_kit/source/gamma_prompts/package_2_7_unit_gamma_ui_webpage_luxury_ai_images.txt",
+  "outputStem": "gamma_package2_webpage_luxury",
+  "themeId": "gold-leaf",
+  "numCards": 11,
+  "textOptions": {
+    "amount": "medium",
+    "tone": "premium, luxury airport, rich, polished, direct, credible, B2B sales-ready",
+    "audience": "brand managers, marketing heads, OOH media planners, ad agencies, premium regional advertisers"
+  },
+  "imageOptions": {
+    "style": "photorealistic, luxury modern Indian airport terminal, premium LED advertising screens, full-bleed airport background images, glossy floors, champagne and ivory editorial lighting, upscale airport media, no fake logos, no readable fake text, no stock-photo handshake"
+  },
+  "additionalInstructions": "Create a polished full webpage-style Gamma output with a proper airport luxury vibe. Use Gold Leaf theme direction: ivory, champagne, white, restrained gold, rich editorial spacing, premium airport background photography, glass-style panels, large LED media visuals, full-bleed hero sections, refined spec cards, sharp dividers, and elegant saffron/gold CTA highlights. Use background images as a major design element on most cards. Preserve sections separated by --- as the page/card structure. Show the visible page lockup as Rajkot Airport Media x Mukesh Arts. Preserve all Package 2 factual details exactly. Do not invent client names, contact details, GST/legal details, testimonials, extra inventory, AAI wording, guaranteed impressions, or fake brand logos."
+}

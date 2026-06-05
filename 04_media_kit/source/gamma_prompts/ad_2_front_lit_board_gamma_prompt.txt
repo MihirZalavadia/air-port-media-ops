@@ -1,0 +1,134 @@
+GAMMA PROMPT - AD-2 AIRPORT FRONT LIT BOARD
+
+Status:
+Legacy non-centralised version. Prefer `ad_2_centralised_gamma_prompt.txt` for new Gamma work.
+
+Source file:
+04_media_kit/assets/AD-2 AIRPORT FRONT LIT BOARD.pdf
+
+Source details to preserve:
+- Unit: AD-2
+- Media type: Airport front-lit board / frontlit unipole
+- Billboard size: 30 x 10
+- Location: Terminal city-side area / city-side approach
+- Rental charges: INR 6,00,000 for one month + GST
+- Note: AD-2 source PDF is image-only in local text extraction; these details come from the existing project media-kit source truth.
+
+GLOBAL DIRECTION
+
+Create a polished 16:9 sales deck for one airport static media asset: AD-2 Airport Front Lit Board. Keep it premium, minimal, and buyer-friendly. Do not invent any facts. Use real image placeholders so the original board photos/floor plans can be inserted manually.
+
+SLIDE 1 - COVER
+
+Headline:
+AD-2 Airport Front Lit Board
+
+Subhead:
+Premium static airport media placement at Rajkot International Airport.
+
+Layout:
+Full-bleed real board/airport image with 60 percent Midnight Blue overlay. Place headline left aligned, large and clean. Put AD-2 in a Saffron label.
+
+IMAGE BLOCK:
+[INSERT HERO IMAGE FROM AD-2 SOURCE PDF - use the clearest image where the board placement is visible]
+
+Footer:
+Rajkot Airport Media | Operated by Mukesh Arts | Source: AD-2 AIRPORT FRONT LIT BOARD.pdf
+
+SLIDE 2 - ASSET SNAPSHOT
+
+Headline:
+One high-visibility static placement for airport-led brand recall.
+
+Content card:
+- Asset code: AD-2
+- Format: Front-lit board
+- Size: 30 x 10
+- Location: Terminal city-side area / city-side approach
+- Availability/status: Confirm current availability before sharing externally
+- Rate: INR 6,00,000 for one month + GST
+
+Layout:
+60/40 split. Left side Off White spec card. Right side real photo. Use the AD code as the largest element after headline.
+
+IMAGE BLOCK:
+[INSERT CLOSEST REAL BOARD PHOTO FROM AD-2 SOURCE PDF]
+
+SLIDE 3 - LOCATION AND VISIBILITY
+
+Headline:
+Placed for repeated airport movement, not passing-roadside attention.
+
+Body:
+Use the source PDF location wording exactly. Explain the buyer value in plain language: the board supports brand visibility in an airport environment where passengers, visitors, and drivers move through a controlled premium setting.
+
+Do not claim footfall numbers unless shown in the source PDF.
+
+Layout:
+Left 45 percent text. Right 55 percent image or floor plan. Add a Saffron marker on the board position if a floor plan exists.
+
+IMAGE BLOCK:
+[INSERT LOCATION PHOTO OR FLOOR PLAN FROM AD-2 SOURCE PDF]
+
+SLIDE 4 - SPECIFICATION CARD
+
+Headline:
+Media specifications
+
+Spec table:
+- AD code: AD-2
+- Media type: Front-lit static board
+- Exact size: 30 x 10
+- Exact placement: Terminal city-side area / city-side approach
+- Illumination: Front-lit board
+- Material/printing requirement: Confirm production specifications before artwork release
+- Campaign term: One-month rental quote
+- Monthly rate: INR 6,00,000
+- Taxes: GST extra
+
+Layout:
+Clean table on Midnight Blue background. Use Saffron only for AD-2 and rate.
+
+IMAGE BLOCK:
+[OPTIONAL SMALL IMAGE: board crop or source PDF thumbnail]
+
+SLIDE 5 - BEST-FIT CAMPAIGNS
+
+Headline:
+Best suited for brands that need static airport presence.
+
+Use-case cards:
+- Real estate and premium property launches
+- Jewellery, fashion, and luxury retail
+- Automotive and mobility
+- Banking, insurance, and financial services
+- Local/regional brand authority campaigns
+
+Note:
+Keep use cases generic. Do not imply proven performance unless source data exists.
+
+Layout:
+Five clean cards with small line icons. No stock photography.
+
+IMAGE BLOCK:
+[INSERT SECONDARY BOARD OR AMBIENCE IMAGE FROM SOURCE PDF]
+
+SLIDE 6 - NEXT STEP
+
+Headline:
+Check current availability for AD-2.
+
+Body:
+Share campaign dates, creative format, and booking window. The team will confirm availability, final rate, production requirements, and airport approval process.
+
+CTA:
+Request AD-2 Availability
+
+Contact block:
+Route inquiries to the approved owner POC: Mukesh sir / Ridham Bhuva.
+
+Layout:
+Midnight Blue closing slide with one strong CTA and a real board image on the side.
+
+IMAGE BLOCK:
+[INSERT STRONGEST AD-2 IMAGE FROM SOURCE PDF]

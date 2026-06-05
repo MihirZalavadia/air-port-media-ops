@@ -1,0 +1,16 @@
+{
+  "extends": "_base_light_rich_webpage_ai.json",
+  "promptPath": "01_strategy_and_pitch/airport_crm_website_partnership_pitch_gamma_prompt.txt",
+  "outputStem": "gamma_airport_crm_website_partnership_pitch_classic",
+  "themeId": "editoria",
+  "numCards": 14,
+  "textOptions": {
+    "amount": "medium",
+    "tone": "traditional classy, sharp, intelligent, founder-friendly, practical, respectful, high-trust, business-solver, premium proposal-ready",
+    "audience": "Mukesh Arts owners, airport media operators, old-school OOH decision makers, Ridham and Mukesh sir"
+  },
+  "imageOptions": {
+    "style": "photorealistic premium Indian airport business proposal, traditional classy editorial look, ivory paper texture, charcoal ink, restrained brass accents, oxblood or deep green detail accents, mature business house aesthetic, classic airport media operations, clean CRM command center, no silly blue and white SaaS styling, no gold-heavy inventory styling, no fake logos, no readable fake data, no stock-photo handshake"
+  },
+  "additionalInstructions": "Create a polished full webpage-style Gamma proposal using the Editoria theme with a traditional classy editorial look. If the input text mentions Gold Leaf, rich gold, or blue-white consulting styling, reinterpret that only as context and do not use it as the main visual direction. This version should feel like a serious, intelligent business proposal from a sharp tech operator to an established OOH business family: mature, editorial, traditional, premium, practical, and high-trust. Use ivory, warm white, charcoal, black ink, muted brass, deep oxblood, deep green, and restrained navy only as a secondary text color. Avoid bright blue-white SaaS visuals, flashy startup gradients, playful illustrations, and heavy inventory gold. Use serif/editorial typography where available, ledger-style tables, classic proposal spacing, refined airport photography, subtle paper/print textures, and clean CRM/dashboard visuals that feel like an operations command book rather than a generic software product. Preserve all pricing, success-fee rules, CRM automation points, and plan durations exactly. Show the lockup as Rajkot Airport Media x Mukesh Arts. Do not invent phone numbers, emails, legal details, GST numbers, client names, testimonials, official airport partnership wording, or guaranteed impressions."
+}

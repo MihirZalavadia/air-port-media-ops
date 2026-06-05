@@ -1,0 +1,126 @@
+GAMMA PROMPT - AD-6 AIRPORT FRONT LIT BOARD
+
+Source file:
+04_media_kit/assets/AD-6 AIRPORT  FRONT LIT BOARD.pdf
+
+Source details to preserve:
+- Unit: AD-6
+- Media type: Airport front-lit board
+- Billboard size: 30 x 10
+- Location: Terminal city-side area, arrival exit
+- Rental charges: INR 6,00,000 for one month + GST
+
+GLOBAL DIRECTION
+
+Create a clean 16:9 airport media sales deck for AD-6 Airport Front Lit Board. Use the existing source PDF/PPT images manually. Improve structure and readability only; do not change factual details.
+
+SLIDE 1 - COVER
+
+Headline:
+AD-6 Airport Front Lit Board
+
+Subhead:
+Static airport media visibility at Rajkot International Airport.
+
+Layout:
+Full-bleed image with Midnight Blue overlay. AD-6 in Saffron. Keep copy minimal.
+
+IMAGE BLOCK:
+[INSERT HERO IMAGE FROM AD-6 SOURCE PDF]
+
+Footer:
+Rajkot Airport Media | Operated by Mukesh Arts | Source: AD-6 AIRPORT FRONT LIT BOARD.pdf
+
+SLIDE 2 - ASSET SNAPSHOT
+
+Headline:
+AD-6 at a glance
+
+Content:
+- Asset code: AD-6
+- Format: Front-lit static board
+- Size: 30 x 10
+- Location: Terminal city-side area, arrival exit
+- Visibility notes: City-side arrival exit movement
+- Rate/terms: INR 6,00,000 for one month + GST
+
+Layout:
+Spec card plus image. Use large asset code and clean labels.
+
+IMAGE BLOCK:
+[INSERT PRIMARY BOARD PHOTO FROM AD-6 SOURCE PDF]
+
+SLIDE 3 - LOCATION CONTEXT
+
+Headline:
+Premium static visibility for airport audiences.
+
+Body:
+Use exact source location wording. Explain the value carefully: this is an airport-context board for brands that want premium environment, recall, and continuous campaign presence.
+
+Do not add numbers or claims not in the source.
+
+Layout:
+Use a large image or floor plan with a Saffron callout marker.
+
+IMAGE BLOCK:
+[INSERT LOCATION IMAGE OR FLOOR PLAN FROM AD-6 SOURCE PDF]
+
+SLIDE 4 - TECHNICAL AND COMMERCIAL DETAILS
+
+Headline:
+Specifications and campaign terms
+
+Table:
+- AD code: AD-6
+- Media type: Airport front-lit board
+- Dimensions: 30 x 10
+- Placement: Terminal city-side area, arrival exit
+- Illumination: Front-lit static board
+- Artwork/printing specs: Confirm production specifications before artwork release
+- Commercials: INR 6,00,000 for one month
+- GST/payment/approval terms: GST extra; airport approval requirements to be confirmed by operator
+
+Layout:
+Structured table. Highlight only the AD code and commercials in Saffron.
+
+IMAGE BLOCK:
+[OPTIONAL BOARD DETAIL IMAGE FROM SOURCE PDF]
+
+SLIDE 5 - BUYER FIT
+
+Headline:
+Use AD-6 for clear, continuous brand presence.
+
+Use-case cards:
+- City and regional brand campaigns
+- Premium real estate visibility
+- Jewellery and retail launches
+- Financial services campaigns
+- Automotive and dealership campaigns
+
+Layout:
+Off White background. Five cards. Keep each card short.
+
+IMAGE BLOCK:
+[INSERT SECONDARY IMAGE FROM SOURCE PDF]
+
+SLIDE 6 - NEXT STEP
+
+Headline:
+Check AD-6 availability.
+
+Body:
+Share campaign window and creative timeline. The operator will confirm availability, final commercials, production specs, and airport approval requirements.
+
+CTA:
+Request AD-6 Availability
+
+Contact block:
+Route inquiries to the approved owner POC: Mukesh sir / Ridham Bhuva.
+
+Layout:
+Dark closing slide, one CTA, one image.
+
+IMAGE BLOCK:
+[INSERT STRONGEST AD-6 IMAGE FROM SOURCE PDF]

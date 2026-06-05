@@ -1,0 +1,436 @@
+GAMMA PROMPT - AIRPORT WEBSITE + CRM PARTNERSHIP PITCH
+
+Purpose:
+Rework the old airport media pitch into a business-growth proposal for Mukesh sir and Ridham. The pitch should not feel like only an inventory media kit. It should sell a complete digital sales layer: airport marketing website, CRM pipeline, owner dashboard, media kit pages, lead routing, and optional Mukesh Arts credibility website.
+
+Recommended Gamma settings:
+Format: Webpage
+Theme: Gold Leaf
+Content mode: Summarize long text or document
+Cards: 14
+Image source: AI images
+Art style: Photo / realistic premium business + airport editorial
+AI image model: Gamma default / auto-selected model
+
+Brand lockup:
+Rajkot Airport Media x Mukesh Arts
+
+Tone:
+Respectful, founder-friendly, operator-aware, business-solver, direct, premium, practical. Speak to an old-school OOH operator who understands relationships and inventory, but may not trust digital systems yet.
+
+Core positioning:
+Mukesh Arts already has the OOH operating strength, airport access, local relationships, and on-ground execution capability. The missing layer is not "more design"; it is a simple digital sales system that makes the airport inventory easier to sell, track, follow up, and prove.
+
+Hard rules:
+Do not overclaim official airport partnership wording.
+Do not say "guaranteed sales", "guaranteed bookings", or "guaranteed impressions".
+Do not invent client names, testimonials, GST numbers, legal entity names, phone numbers, emails, or exact contract terms.
+Do not make Mukesh Arts look secondary as a company; frame it respectfully as the operator while keeping the airport inventory as the commercial product.
+Do not suggest a heavy custom software build in month one.
+Use INR, not the rupee symbol, to keep the text clean and editable.
+
+Visual direction:
+Use the rich Gold Leaf look they liked: ivory, champagne, white, soft gold, clean navy typography, refined airport-luxury backgrounds, glass-style panels, thin dividers, large numbers, and executive proposal spacing. Use airport terminal, billboard, media dashboard, and pipeline visuals. Avoid generic SaaS illustrations, random office stock photos, fake dashboards with fake data, fake logos, and handshake cliches.
+
+---
+
+CARD 1 - COVER
+
+Headline:
+Rajkot Airport Media x Mukesh Arts
+
+Main title:
+Digital Sales & CRM Partnership
+
+Subhead:
+Turning airport media inventory into a trackable sales pipeline, premium website presence, and owner-visible business system.
+
+Meeting context:
+Prepared for Mukesh sir and Ridham Bhuva
+
+Visual direction:
+Use a full-bleed premium airport exterior or terminal background. Add a refined ivory/champagne content panel with gold accents. Keep it mature and high-status.
+
+Layout:
+Hero cover. Big title, clean lockup, no clutter. Add a small line: "Airport website | CRM | Lead tracking | Media proposal system".
+
+---
+
+CARD 2 - THE BUSINESS REALITY
+
+Headline:
+The inventory is strong. The sales system needs to catch up.
+
+Body:
+Mukesh Arts already has the difficult part: OOH operating experience, on-ground execution, airport media inventory, local trust, and owner-led relationships. But today, the sales layer is still relationship-heavy and manual. That makes it harder to show inventory clearly, capture new leads, track follow-ups, and prove which campaigns are moving toward booking.
+
+Key points:
+Strong OOH operator credibility
+Airport inventory with real commercial value
+Low or limited social and digital presence
+Manual follow-up and scattered lead visibility
+No single dashboard for owners to see pipeline status
+
+Visual direction:
+Premium split layout: left side operator strength, right side missing digital system. Use airport media background with soft overlay.
+
+Layout:
+Use a contrast section: "What is already strong" vs "What is missing". Keep wording respectful, not critical.
+
+---
+
+CARD 3 - THE OPPORTUNITY
+
+Headline:
+Build the digital layer before competitors copy the airport story.
+
+Body:
+Airport media buyers need speed and clarity. They want to know what can be bought, where it appears, what it costs, why the airport audience matters, and who will respond. A polished airport website and CRM system can turn the same inventory into a more professional, easier-to-sell product.
+
+Opportunity blocks:
+Make inventory easier to understand
+Create a premium first impression for agencies and brands
+Capture inquiries from website, WhatsApp, media kits, and referrals
+Track every lead without depending on memory
+Help owners see which campaigns are active, hot, booked, or lost
+
+Visual direction:
+Use a luxury airport terminal/media screen image with an overlaid lead-flow graphic. No fake brand ads.
+
+Layout:
+Large statement at top, then five premium opportunity cards.
+
+---
+
+CARD 4 - PROPOSED BUSINESS SYSTEM
+
+Headline:
+One connected system: website, CRM, dashboard, proposals.
+
+System components:
+Airport marketing website
+Inventory and package pages
+Lead capture form and WhatsApp routing
+Airtable / Google Sheets CRM
+Owner dashboard and follow-up tracker
+Gamma proposal/media-kit templates
+Optional Mukesh Arts credibility website
+
+Body:
+The first version should be simple, visible, and useful. We start with tools the owners can understand: website pages, forms, spreadsheet-style CRM, dropdown statuses, and dashboard views. Custom software comes later only if adoption and lead volume justify it.
+
+Visual direction:
+Premium dashboard and airport media workflow visual. Keep data abstract, no fake brand names or fake revenue numbers.
+
+Layout:
+Hub-and-spoke system diagram. Put "Airport Sales Layer" in the center.
+
+---
+
+CARD 5 - AIRPORT MARKETING WEBSITE
+
+Headline:
+Airport-first website built to sell media inventory.
+
+Website goal:
+Help a brand manager, agency buyer, or marketing head quickly understand the airport media opportunity and request availability.
+
+Core sections:
+Premium airport-first hero
+Why Rajkot Airport for OOH marketing
+Inventory and package overview
+Featured package pages and proposal links
+Rate-card request CTA
+Site visit / availability CTA
+Trust and operations section
+Contact and lead capture form
+
+Positioning:
+The website should lead with Rajkot Airport Media. Mukesh Arts appears as the operator and trust layer, not as a founder-story-heavy homepage.
+
+Visual direction:
+Full webpage mockup style with airport background, gold highlights, inventory cards, and lead form preview.
+
+Layout:
+Show website as a premium sales engine, not a brochure. Use large image mockups and clean section cards.
+
+---
+
+CARD 6 - CRM AND OWNER DASHBOARD
+
+Headline:
+Every lead should have a status, owner, value, and next step.
+
+Manual pain points:
+Leads come from calls, WhatsApp, referrals, site visits, website inquiries, and proposal links.
+Package interest and campaign dates are often remembered manually.
+Follow-ups depend on individual memory instead of a shared system.
+Owners may not know which leads are hot, which quote is pending, and which client needs a reminder.
+If a lead is lost, the reason is not always captured for future improvement.
+
+CRM fields:
+Lead name
+Brand / company
+Phone / WhatsApp
+Email
+Package interest
+Campaign window
+Estimated budget
+Lead source
+Status: New, Contacted, Hot, Warm, Cold, Quote Shared, Site Visit, Booked, Lost
+Assigned owner
+Next follow-up date
+Booked value
+Lost reason
+
+Owner dashboard views:
+New leads this week
+Hot opportunities
+Follow-ups due
+Quotes shared
+Booked revenue from CRM-originated leads
+Lost reasons and next actions
+
+End-to-end CRM automation services:
+Website and form leads automatically enter the CRM.
+WhatsApp/manual leads can be added through a simple form or sheet row.
+Dropdown statuses keep every lead easy to update.
+Follow-up dates create a daily owner action list.
+Hot leads, pending quotes, and site-visit requests appear in owner views.
+Campaign value and booking duration are tracked so success fees are transparent.
+Simple weekly pipeline reports show what moved, what is stuck, and what needs owner attention.
+
+Simple explanation:
+This is not complex software. It is a shared sales control room for airport media: every lead, every follow-up, every quote, and every booking status in one place.
+
+Visual direction:
+Create a clean spreadsheet-style CRM/dashboard visual in a premium airport-media context. Avoid fake exact client names and fake revenue data.
+
+Layout:
+Two panels: "CRM table" and "Owner dashboard". Keep it old-school friendly and Excel-like.
+
+---
+
+CARD 7 - LEAD TO BOOKING FLOW
+
+Headline:
+From inquiry to booking, without losing the thread.
+
+Workflow:
+1. Buyer sees website, media kit, or proposal.
+2. Buyer submits inquiry or WhatsApp request.
+3. Lead enters Airtable / Google Sheets CRM.
+4. Owner POC is assigned: Mukesh sir / Ridham.
+5. Package interest, campaign window, and budget are captured.
+6. Proposal or rate card is shared.
+7. Follow-up status is tracked.
+8. Booking value is marked only after payment confirmation.
+
+Business value:
+The system does not replace relationships. It protects them by making sure no serious inquiry gets forgotten.
+
+Visual direction:
+Premium flow diagram over airport terminal or media-screen background.
+
+Layout:
+Horizontal step flow with gold numbered markers. End state: "Booked / Lost / Follow-up".
+
+---
+
+CARD 8 - PROPOSAL AND MEDIA-KIT SYSTEM
+
+Headline:
+Reusable proposal pages for every inventory plan.
+
+Body:
+Instead of rebuilding every pitch from scratch, the airport media proposals should use locked master pages and plan-specific inventory pages. This keeps the format consistent while allowing each package, board, and campaign plan to be updated quickly.
+
+Proposal assets:
+Rich-gold master intro pages
+Why Rajkot Airport page
+Plan snapshot page
+Package-specific inventory details
+Contact page
+Terms and media conditions
+Gamma/webpage share links
+Optional downloadable PDFs/PPTs
+
+Visual direction:
+Show premium proposal cards floating over an airport background. Include a mockup of the rich-gold master page style.
+
+Layout:
+Before/after layout: old raw inventory deck vs new premium proposal system.
+
+---
+
+CARD 9 - MUKESH ARTS WEBSITE OPTION
+
+Headline:
+Mukesh Arts website as credibility, not a second sales engine.
+
+Body:
+Mukesh Arts should have a clean website because the company is a big OOH operator with limited digital presence. But it should stay simple: company credibility, services, local execution strength, airport media credibility, and contact. The main sales engine should remain the Rajkot Airport Media website.
+
+Mukesh Arts site sections:
+Home / company profile
+OOH and advertising services
+Airport media operations credibility section
+Gallery / work proof where available
+Contact details
+
+What to avoid:
+No rate-card system
+No heavy CRM workflow
+No competing airport inventory architecture
+No over-polished startup language
+
+Visual direction:
+Clean, established company website mockup with simple light design and real OOH/airport work proof.
+
+Layout:
+Use this as an optional add-on page. Make it feel useful but secondary.
+
+---
+
+CARD 10 - PARTNERSHIP OPTIONS
+
+Headline:
+Founder-friendly plans with clear upgrade paths.
+
+Pricing table:
+Starter Website Sprint | 1 month | INR 38,000 | Last negotiation: INR 28,000 minimum | Airport website first, trust-building option
+Website + CRM Foundation | 2 months | INR 42,000/month | Last negotiation: INR 32,000/month | Website + Airtable/Sheets CRM + lead tracking
+4-Month Growth Partnership | 4 months | INR 45,000/month | Last negotiation: INR 35,000/month | Full airport website, CRM, dashboard, media-kit flow, pitch support
+Mukesh Arts Basic Website Add-on | 2-3 weeks | INR 28,000 one-time | Bundle discount only inside 4-month plan | Simple credibility website
+
+Recommended:
+The 4-Month Growth Partnership is the strongest option because the real value comes after the website, CRM, proposal system, and follow-up habits start working together.
+
+Visual direction:
+Premium pricing table with the 4-month plan highlighted in gold/champagne. Keep it founder-friendly, not cheap-looking.
+
+Layout:
+Four plan cards. Add a small tag on the recommended plan: "Best for serious rollout".
+
+---
+
+CARD 11 - SUCCESS FEE MODEL
+
+Headline:
+Low fixed cost, upside only when the system helps book business.
+
+Success-fee principle:
+The monthly fee is kept founder-friendly. If the website/CRM system helps create a new booked client, a small success fee applies only to that CRM-originated deal.
+
+Recommended terms:
+3-4% of the total confirmed media booking value for that CRM-originated campaign
+Preferred success fee: 4%
+Friendly negotiation floor: 3%
+Applies only to new leads captured or clearly tracked through the website/CRM system before closure
+GST, printing, production, mounting, fabrication, and vendor charges excluded from fee calculation
+Payable only after client payment is received
+Existing Mukesh Arts / owner relationship deals are excluded unless explicitly entered and managed as new CRM-originated opportunities
+For example: if a CRM-originated client books INR 3,00,000/month for 6 months, total media booking value is INR 18,00,000. A 4% success fee equals INR 72,000; a 3.5% success fee equals INR 63,000; a 3% success fee equals INR 54,000.
+Optional repeat fee: 2% on repeat booking from the same CRM-originated client within 90 days
+
+Why this is fair:
+Mukesh Arts keeps control of pricing and closure. The digital system earns upside only when it creates trackable business.
+
+Visual direction:
+Use a clean commercial model graphic: low retainer + CRM-originated upside. Avoid aggressive commission language.
+
+Layout:
+Two columns: "Fixed partnership fee" and "Performance upside".
+
+---
+
+CARD 12 - 90-DAY ROADMAP
+
+Headline:
+First 90 days: build, launch, track, improve.
+
+Month 1 - Foundation:
+Airport website structure
+Core copy and package pages
+Lead form and WhatsApp routing
+Basic Airtable / Sheets CRM
+First pitch-ready proposal links
+
+Month 2 - Sales Operations:
+CRM status workflow
+Owner dashboard
+Follow-up tracker
+Media-kit template library
+Package proposal refinement
+
+Month 3 - Pipeline Discipline:
+Lead source tracking
+Weekly pipeline review
+Booked/lost reason tracking
+Proposal response improvements
+Optional Mukesh Arts basic website
+
+Month 4 - Growth System:
+Refine best-performing packages
+Improve conversion pages
+Prepare outreach lists
+Document repeatable sales process
+Review success-fee opportunities
+
+Visual direction:
+Use a gold-accent roadmap timeline over a premium airport background.
+
+Layout:
+Four month cards. Keep each month practical and concrete.
+
+---
+
+CARD 13 - WHAT WE NEED FROM OWNERS
+
+Headline:
+Simple inputs needed to launch fast.
+
+Owner inputs:
+Final public brand name approval
+Approved contact number and email
+Approved wording for airport/AAI/authorisation claims
+Real airport photos that can be used publicly
+Which pricing can be shown publicly vs shared on request
+Lead routing rule: Mukesh sir, Ridham, or both
+Weekly review time for CRM pipeline
+
+Working principle:
+The system should not demand complex data from day one. We can start with simple dropdown updates and improve the dashboard as trust grows.
+
+Visual direction:
+Premium checklist page with airport media background and ivory task cards.
+
+Layout:
+Checklist with "Need now" and "Can add later" sections.
+
+---
+
+CARD 14 - NEXT STEP
+
+Headline:
+Start small if needed. Build the full system if ready.
+
+Recommendation:
+Start with the 4-Month Growth Partnership if the goal is to make the airport media business easier to sell and track. If trust needs to be built first, start with the 1-month Airport Website Sprint, then upgrade to Website + CRM Foundation after the first review.
+
+Decision options:
+Option 1: Approve 4-month partnership
+Option 2: Start 1-month website sprint
+Option 3: Add Mukesh Arts basic website after airport system is pitch-ready
+
+CTA:
+Approve next working phase
+
+Closing line:
+The goal is not to replace old-school relationships. The goal is to remove manual leakage, make every serious lead visible, and support the next stage of airport media growth without adding daily confusion.
+
+Visual direction:
+Premium closing airport image with gold CTA, clean negative space, and the Rajkot Airport Media x Mukesh Arts lockup.
+
+Layout:
+Strong closing slide. Keep it confident and simple.

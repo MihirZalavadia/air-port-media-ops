@@ -1,0 +1,16 @@
+{
+  "extends": "_base_light_rich_webpage_ai.json",
+  "promptPath": "01_strategy_and_pitch/airport_crm_website_partnership_pitch_gamma_prompt.txt",
+  "outputStem": "gamma_airport_crm_website_partnership_pitch",
+  "themeId": "gold-leaf",
+  "numCards": 14,
+  "textOptions": {
+    "amount": "medium",
+    "tone": "premium, founder-friendly, practical, respectful, business-solver, B2B proposal-ready",
+    "audience": "Mukesh Arts owners, airport media operators, OOH business decision makers, revenue operations stakeholders"
+  },
+  "imageOptions": {
+    "style": "photorealistic premium Indian airport, luxury airport media business proposal, CRM dashboard, airport advertising website mockups, ivory and champagne editorial lighting, rich gold accents, no fake logos, no readable fake data, no stock-photo handshake"
+  },
+  "additionalInstructions": "Create a polished full webpage-style Gamma proposal using the Gold Leaf theme. Make it feel like a premium business-growth pitch for an established OOH operator, not a generic startup SaaS deck. Use rich gold, ivory, champagne, white, clean navy typography, luxury airport background images, glass-style panels, executive proposal spacing, CRM/dashboard visuals, and website/media-kit mockups. Show the lockup as Rajkot Airport Media x Mukesh Arts. Preserve all pricing, success-fee rules, and plan durations exactly. Do not invent phone numbers, emails, legal details, GST numbers, client names, testimonials, official airport partnership wording, or guaranteed impressions."
+}

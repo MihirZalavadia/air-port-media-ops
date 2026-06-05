@@ -1,0 +1,15 @@
+{
+  "extends": "_base_light_rich_webpage_ai.json",
+  "promptPath": "04_media_kit/source/gamma_prompts/ad_3_gamma_ui_webpage_ai_images_10_cards_editoria.txt",
+  "outputStem": "gamma_ad3_webpage_editoria",
+  "themeId": "editoria",
+  "textOptions": {
+    "amount": "medium",
+    "tone": "premium, editorial, clean, confident, B2B sales-ready, high-trust media buying",
+    "audience": "brand managers, marketing heads, OOH media planners, ad agencies, premium regional advertisers"
+  },
+  "imageOptions": {
+    "style": "photorealistic, premium modern Indian airport, airport advertising, editorial daylight, clean terminal departure entry, refined commercial photography, no fake logos, no readable fake text, no stock-photo handshake"
+  },
+  "additionalInstructions": "Create a polished webpage-style Gamma output with the Editoria theme direction: premium magazine layout, clean white/off-white sections, strong typography, large image-led cards, refined editorial spacing, sharp information panels, thin dividers, navy text, and restrained saffron/gold accents. Make AD-3 feel different from the Gold Leaf AD-2 deck: more editorial, crisp, and high-trust rather than luxury-gold heavy. Show the visible page lockup as Rajkot Airport Media x Mukesh Arts. Preserve sections separated by --- as the page/card structure. Preserve all factual details exactly. Do not invent client names, contact details, GST/legal details, testimonials, extra inventory, AAI wording, or guaranteed impressions."
+}

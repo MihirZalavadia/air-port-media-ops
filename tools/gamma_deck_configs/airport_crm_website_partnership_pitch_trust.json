@@ -1,0 +1,16 @@
+{
+  "extends": "_base_light_rich_webpage_ai.json",
+  "promptPath": "01_strategy_and_pitch/airport_crm_website_partnership_pitch_gamma_prompt.txt",
+  "outputStem": "gamma_airport_crm_website_partnership_pitch_trust",
+  "themeId": "consultant",
+  "numCards": 14,
+  "textOptions": {
+    "amount": "medium",
+    "tone": "calm, trustworthy, founder-friendly, practical, respectful, consultative, business-solver, B2B proposal-ready",
+    "audience": "Mukesh Arts owners, airport media operators, old-school OOH business decision makers, Ridham and Mukesh sir"
+  },
+  "imageOptions": {
+    "style": "photorealistic premium Indian airport business proposal, warm trust-building consultation mood, clean CRM dashboard, simple website mockups, owner-friendly business planning, soft daylight, white and light blue-gray interiors, subtle navy accents, no gold-heavy inventory styling, no fake logos, no readable fake data, no stock-photo handshake"
+  },
+  "additionalInstructions": "Create a polished full webpage-style Gamma proposal using the Consultant theme, not the Gold Leaf inventory look. If the input text mentions Gold Leaf, rich gold, or inventory-style luxury, reinterpret that only as a past reference and do not use it as the main visual direction. This version should feel like a trust-building one-on-one business conversation: calm, clean, credible, warm, clear, owner-friendly, and easy to say yes to. Use soft white, light gray, muted navy, subtle blue accents, restrained champagne only if needed, clean advisory layouts, approachable airport/business visuals, simple CRM/dashboard mockups, and practical proposal spacing. Avoid flashy luxury, heavy gold, aggressive startup/SaaS styling, or hard-sell visuals. Preserve all pricing, success-fee rules, CRM automation points, and plan durations exactly. Show the lockup as Rajkot Airport Media x Mukesh Arts. Do not invent phone numbers, emails, legal details, GST numbers, client names, testimonials, official airport partnership wording, or guaranteed impressions."
+}

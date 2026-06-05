@@ -1,0 +1,230 @@
+GAMMA PROMPT - PACKAGE 3, 14-UNIT VERTICAL DIGITAL DISPLAY
+
+Source file:
+04_media_kit/assets/Package-3 14 UNIT.pdf
+
+Source truth already captured in project deck:
+- Package 3
+- 14 digital units
+- 8 x 75 inch vertical LED
+- 6 x 65 inch vertical LED
+- Monthly rate: INR 3,00,000 + GST
+- 10-second slot
+- 2-minute cycle
+- Unit codes/placements include AD_10, AD_16, AD_23, AD_24, AD_43, AD_44, AD_45, AD_46, AD_47, AD_48
+- Locations include departure check-in, SHA ground, SHA first floor, Jet Set Cafe, Synergy Health Lounge, gate sitting areas, and arrival luggage belt
+
+Important:
+Do not change the unit count, display mix, AD codes, rate, cycle, or placement truth. Use real image placeholders from the source PDF.
+
+GLOBAL DIRECTION
+
+Create a premium 16:9 Gamma deck for Package 3 at Rajkot International Airport. The visual theme should emphasize portrait-format screens, high-dwell zones, and product-friendly vertical creative. Keep the deck clean and buyer-facing.
+
+SLIDE 1 - COVER
+
+Headline:
+Package 3 - 14-Unit Vertical Digital Display Network
+
+Subhead:
+Portrait-format screens across check-in, SHA, lounge, gate, and arrival zones.
+
+Key commercial:
+INR 3,00,000/month + GST
+
+Layout:
+Full-bleed vertical screen image with dark overlay. Use a Saffron Package 3 label. Let the screen photo carry the cover.
+
+IMAGE BLOCK:
+[INSERT HERO IMAGE FROM PACKAGE-3 SOURCE PDF - recommended AD_23, AD_24, or strongest vertical screen image]
+
+Footer:
+Rajkot Airport Media | Operated by Mukesh Arts | Source: Package-3 14 UNIT.pdf
+
+SLIDE 2 - PACKAGE AT A GLANCE
+
+Headline:
+Fourteen vertical screens for product-led airport visibility.
+
+Stats:
+- 14 total vertical digital units
+- 8 x 75 inch screens
+- 6 x 65 inch screens
+- 10-second creative slot
+- 2-minute repeat cycle
+- INR 3,00,000/month + GST
+
+Layout:
+Large-number stat strip on Midnight Blue. Add one tall image block on the right.
+
+IMAGE BLOCK:
+[INSERT PACKAGE-3 MAIN VERTICAL SCREEN PHOTO]
+
+SLIDE 3 - WHY VERTICAL FORMAT
+
+Headline:
+Built for creative that looks premium at human eye level.
+
+Body:
+Vertical screens are useful for product photography, fashion, jewellery, real estate, app campaigns, and premium retail creative. Package 3 places portrait-format media across moments where passengers pause, wait, eat, sit, or move slowly.
+
+Do not claim performance numbers unless source data exists.
+
+Layout:
+Use a side-by-side creative mockup area and real screen image. Keep the explanation short.
+
+IMAGE BLOCK:
+[INSERT REAL VERTICAL SCREEN IMAGE FROM SOURCE PDF]
+
+SLIDE 4 - UNIT MAP
+
+Headline:
+Vertical network placement map
+
+Placement summary:
+- Departure Check-in - AD_10, 75 inch both-side placement near SHA entry
+- SHA Ground - AD_16, 75 inch both-side placement near escalator
+- SHA Ground - AD_43, 65 inch between Gates 1 and 2
+- SHA First - AD_23, 75 inch near Jet Set Cafe
+- SHA First - AD_24, 75 inch near Synergy Health Lounge
+- SHA First - AD_44, AD_45, AD_46, 65 inch across gate sitting areas
+- Arrival Ground Floor - AD_47, AD_48, 65 inch near luggage belt
+
+Layout:
+Left side floor plan. Right side grouped zone list. Mark unit codes in Saffron.
+
+IMAGE BLOCK:
+[INSERT FLOOR PLAN FROM PACKAGE-3 SOURCE PDF AND MARK THE PACKAGE-3 UNITS]
+
+SLIDE 5 - DEPARTURE AND SHA ENTRY
+
+Headline:
+Visibility as passengers enter the secure airport journey.
+
+Featured units:
+- AD_10 - Departure Check-in, 75 inch both-side placement near SHA entry
+- AD_16 - SHA Ground, 75 inch both-side placement near escalator
+
+Buyer value:
+Useful for awareness campaigns that need early exposure before passengers settle into lounge and gate areas.
+
+Layout:
+Two large vertical image cards with captions.
+
+IMAGE BLOCKS:
+[INSERT AD_10 IMAGE FROM PACKAGE-3 SOURCE PDF]
+[INSERT AD_16 IMAGE FROM PACKAGE-3 SOURCE PDF]
+
+SLIDE 6 - SHA GROUND AND GATE PROXIMITY
+
+Headline:
+High-dwell vertical placements around waiting and gate movement.
+
+Featured unit:
+- AD_43 - 65 inch screen between Gates 1 and 2
+
+Body:
+Use this slide to show how vertical screens support recall in pause zones. Keep the copy short and rely on real images.
+
+Layout:
+Large image plus small spec panel.
+
+IMAGE BLOCK:
+[INSERT AD_43 IMAGE FROM PACKAGE-3 SOURCE PDF]
+
+SLIDE 7 - CAFE AND LOUNGE ZONES
+
+Headline:
+Premium portrait visibility near cafe and lounge moments.
+
+Featured units:
+- AD_23 - 75 inch near Jet Set Cafe
+- AD_24 - 75 inch near Synergy Health Lounge
+
+Buyer value:
+Best for product-led creative, premium retail, jewellery, real estate, travel, hospitality, and financial services.
+
+Layout:
+Two-photo editorial spread. Use AD code labels in Saffron.
+
+IMAGE BLOCKS:
+[INSERT AD_23 IMAGE FROM PACKAGE-3 SOURCE PDF]
+[INSERT AD_24 IMAGE FROM PACKAGE-3 SOURCE PDF]
+
+SLIDE 8 - GATE SEATING AND ARRIVAL
+
+Headline:
+Coverage continues through gate seating and arrival baggage zones.
+
+Featured units:
+- AD_44, AD_45, AD_46 - 65 inch screens across gate sitting areas
+- AD_47, AD_48 - 65 inch screens near luggage belt
+
+Layout:
+Image grid with exact AD labels. Keep each caption to one line.
+
+IMAGE BLOCKS:
+[INSERT AD_44 IMAGE]
+[INSERT AD_45 IMAGE]
+[INSERT AD_46 IMAGE]
+[INSERT AD_47 IMAGE]
+[INSERT AD_48 IMAGE]
+
+SLIDE 9 - BEST-FIT CAMPAIGNS
+
+Headline:
+Best for vertical-first brand storytelling.
+
+Cards:
+- Jewellery and wedding-season creative
+- Fashion and retail launches
+- Real estate and premium interiors
+- Automotive lifestyle campaigns
+- Apps, fintech, banking, and travel services
+- Hospitality, lounges, and destination marketing
+
+Layout:
+Six compact cards. Use subtle icons only. No fake testimonials.
+
+IMAGE BLOCK:
+[INSERT SUPPORTING VERTICAL SCREEN IMAGE]
+
+SLIDE 10 - COMMERCIALS AND TERMS
+
+Headline:
+Package 3 commercials
+
+Commercial block:
+- Package: Package 3
+- Units: 14 vertical digital screens
+- Format: 8 x 75 inch + 6 x 65 inch
+- Creative slot: 10 seconds
+- Repeat cycle: 2 minutes
+- Monthly rate: INR 3,00,000 + GST
+- Payment/approval terms: GST extra; final booking and airport approval requirements to be confirmed by operator
+
+Layout:
+Dark pricing slide. Price is the hero. Format mix appears as secondary stat.
+
+IMAGE BLOCK:
+[OPTIONAL STRIP OF PACKAGE-3 SCREEN IMAGES]
+
+SLIDE 11 - NEXT STEP
+
+Headline:
+Check Package 3 availability for your campaign.
+
+Body:
+Share campaign dates, brand category, and vertical creative readiness. The operator will confirm availability, creative specs, approval steps, and final booking terms.
+
+CTA:
+Request Package 3 Rate Card
+
+Contact block:
+Route inquiries to the approved owner POC: Mukesh sir / Ridham Bhuva.
+
+Layout:
+Midnight Blue closing slide with one strong vertical image and Saffron CTA.
+
+IMAGE BLOCK:
+[INSERT STRONGEST PACKAGE-3 IMAGE]

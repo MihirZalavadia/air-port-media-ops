@@ -1,0 +1,181 @@
+CENTRALISED MASTER PAGES - RAJKOT AIRPORT MEDIA GAMMA DECKS
+
+Use this master prompt structure for every individual AD board, package, or media-kit deck.
+
+The goal is to keep all decks consistent:
+- Slide 1 is always the same airport media intro structure.
+- Slide 2 puts inventory and commercial data upfront for transparency.
+- Slide 3 explains why Rajkot Airport is a strong airport media buy.
+- Middle slides show the asset/package proof using current source content and updated real images.
+- One slide introduces the operator/team credibility.
+- Contact / next-step comes before the final disclaimer.
+- The final slide is always terms and disclaimer.
+
+Only images should be manually replaced from the current PPT/PDF.
+
+GLOBAL DESIGN MASTER
+
+Deck format:
+16:9 premium B2B sales deck.
+
+Brand hierarchy:
+Primary: Rajkot Airport Media
+Supporting: Operated by Mukesh Arts
+Context: Rajkot International Airport
+
+Palette:
+- Midnight Blue: #0B1E3F
+- Saffron: #F59E0B
+- Off White: #FAFAF7
+- Ink: #0A0A0A
+- Cloud: #E5E7EB
+
+Typography:
+Use Inter or Manrope. Headlines bold, body regular, numbers tabular if available.
+
+Visual style:
+Premium, clean, structured, airport-media focused. Use real airport/site photos only. Do not use stock people, airport clipart, abstract gradients, or fake client logos.
+
+MASTER SLIDE 1 - INTRO / COVER
+
+Use this as the first slide for every deck.
+
+Headline:
+Rajkot Airport Media
+
+Deck label:
+[ASSET OR PACKAGE NAME FROM THE SPECIFIC DECK]
+
+Subhead:
+Premium advertising inventory at Rajkot International Airport, operated by Mukesh Arts.
+
+Credibility line:
+1.25-1.30 lakh monthly passenger visits | 28 daily flight movements | GST extra | Availability subject to confirmation
+
+Layout:
+Full-bleed real image from the specific deck source PDF/PPT with a Midnight Blue overlay. Place "Rajkot Airport Media" large and clean. Put the asset/package name in a Saffron label. Keep Mukesh Arts as the operator line, not the main headline.
+
+IMAGE BLOCK:
+[INSERT HERO IMAGE FROM THE CURRENT SOURCE PDF/PPT]
+
+Footer:
+Rajkot Airport Media | Operated by Mukesh Arts | Source: use the exact source filename from the specific deck.
+
+MASTER MIDDLE SLIDES - ASSET-SPECIFIC CONTENT
+
+Start from Slide 2.
+
+For every asset/package, follow this flow:
+
+Slide 2 - Transparent inventory and commercial snapshot:
+Show the main facts upfront so buyers feel the offer is direct and organized:
+- Asset code or package name
+- Format
+- Size or unit count
+- Exact location / zone
+- Rental charge
+- GST note
+- Availability subject to confirmation
+- Any creative or slot conditions that apply
+
+Slide 3 - Why Rajkot Airport:
+Position Rajkot Airport as a premium, practical media buy without saying "best" as an unsupported claim.
+Use this headline direction:
+"Why Rajkot Airport is a strong media buy for premium regional reach."
+
+Use the confirmed Ridham facts:
+- Approx. 1.25-1.30 lakh passenger visits per month
+- Approx. 4,200-4,400 passenger visits per day
+- 14 arrivals + 14 departures per day
+- 28 total flight movements per day
+
+Buyer logic to include:
+- Captive airport movement, not generic roadside clutter
+- Premium context for regional, NRI, business, and family-travel audiences
+- Useful for categories that need trust, recall, and visible presence
+- Operator-confirmed figures should be verified before final release
+
+Slide 4 - Asset/package location and visual proof:
+Paraphrase the current PPT/PDF content into buyer-friendly language. Keep the original location truth. Explain why the placement matters without adding unverified passenger numbers.
+
+Slide 5 - Team and operating support:
+Show why the buyer can trust execution:
+- Operated by Mukesh Arts
+- Owner-led response and coordination
+- Ridham Bhuva's ASCO-certified operations support smoother site visits, airport protocol coordination, and creative approval handling
+- Site visits can be coordinated before final booking discussion
+- Creative approval and airport protocol coordination handled by the operator team
+
+Slide 6 - Contact / next step:
+Make the ask simple:
+- Share campaign month
+- Share preferred asset/package
+- Share creative format
+- Share booking duration
+- Operator team confirms availability, commercial terms, site visit, production needs, and approval steps
+
+Slide 7 - Terms and disclaimer:
+Protect the operator and avoid wrong conduct. This is always the final slide.
+
+Optional slide - Specifications and commercial details:
+Use a structured table. Include only confirmed details from the deck prompt.
+
+Optional slide - Best-fit campaigns:
+Use only generic category-fit recommendations. No fake proof, no invented clients, no guaranteed performance.
+
+Optional creative flexibility note:
+For applicable digital inventory only, say: "Flexible creative scheduling, multiple creatives within one booked slot, and live/scheduled updates can be discussed subject to operator scheduling and approval." Do not apply this wording to static boards unless a creative replacement process is separately confirmed.
+
+Each middle slide must include an IMAGE BLOCK so the real image can be manually inserted.
+
+MASTER CONTACT / NEXT STEP SLIDE
+
+Use this before the final disclaimer slide.
+
+Headline:
+Check availability for your campaign window.
+
+Body:
+Share the campaign month, preferred asset/package, creative format, and booking duration. The operator team can coordinate a site visit, confirm current availability, final commercial terms, creative requirements, and approval steps.
+
+CTA:
+Request current availability
+
+Contact routing:
+Inquiries to be routed to the approved owner POC: Mukesh sir / Ridham Bhuva.
+
+Operations trust line:
+Ridham Bhuva's ASCO-certified operations support smoother site visits, airport protocol coordination, and creative approval handling.
+
+Contact details:
+Add the approved phone, WhatsApp, and email only after the owners confirm final public contact details. Do not invent contact details.
+
+Layout:
+Midnight Blue background. Use a Saffron CTA block. Add one strong real image from the source deck on the right side. Keep the contact copy short.
+
+IMAGE BLOCK:
+[INSERT STRONGEST IMAGE FROM THE CURRENT SOURCE PDF/PPT]
+
+MASTER FINAL SLIDE - TERMS AND DISCLAIMER
+
+Use this as the final slide for every deck.
+
+Headline:
+Terms and media conditions
+
+Body:
+- All inventory is subject to availability at the time of written confirmation.
+- Rental charges are quoted for the stated campaign period and are exclusive of GST unless specified otherwise.
+- Creative, artwork, printing, mounting, and production costs, if applicable, are separate from media rental unless specifically included in writing.
+- All creatives are subject to airport/operator approval before display.
+- Passenger visit and flight movement figures are operator-confirmed estimates and should be verified before final campaign release.
+- Flexible creative updates, multiple creatives in one slot, and live/scheduled updates apply only to eligible inventory and are subject to operator scheduling, technical feasibility, and approval.
+- Political, religious, racial, misleading, or prohibited creative content may be rejected.
+- Final booking is confirmed only after written approval, payment confirmation, and completion of required campaign formalities.
+- Locations, formats, and display schedules should be verified before campaign release.
+
+Layout:
+Off White background with a clean two-column terms layout. Use a small Saffron "Important" label. Keep this professional and protective, not scary.
+
+IMAGE BLOCK:
+[OPTIONAL SMALL SOURCE IMAGE STRIP OR AIRPORT AMBIENCE IMAGE]

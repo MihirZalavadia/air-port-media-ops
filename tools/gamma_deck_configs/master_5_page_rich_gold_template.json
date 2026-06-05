@@ -1,0 +1,16 @@
+{
+  "extends": "_base_light_rich_webpage_ai.json",
+  "promptPath": "04_media_kit/source/gamma_prompts/00_master_5_page_rich_gold_template.txt",
+  "outputStem": "gamma_master_5_page_rich_gold_template",
+  "themeId": "gold-leaf",
+  "numCards": 5,
+  "textOptions": {
+    "amount": "medium",
+    "tone": "premium, luxury airport, rich gold, polished, direct, credible, B2B proposal-ready",
+    "audience": "airport media owners, brand managers, OOH media planners, ad agencies, premium regional advertisers"
+  },
+  "imageOptions": {
+    "style": "photorealistic Rajkot Airport inspired modern Indian airport exterior and terminal, premium airport advertising proposal, luxury editorial background images, ivory and champagne lighting, rich gold accents, clean business-ready airport media mood, no fake logos, no readable fake text, no stock-photo handshake"
+  },
+  "additionalInstructions": "Create exactly 5 reusable master pages in a polished full webpage-style Gamma output using the Gold Leaf theme. Make the pages feel like a locked premium airport media proposal template: rich gold, ivory, champagne, white, clean navy typography, luxury airport background images, glass-style content panels, large stat moments, thin dividers, and refined proposal spacing. Keep the first 3 pages and last 2 pages visually consistent and reusable. Keep placeholders visibly editable where plan-specific values are shown. Show the lockup as Rajkot Airport Media x Mukesh Arts. Do not invent phone numbers, emails, legal details, GST numbers, client names, testimonials, official airport partnership wording, or guaranteed impressions."
+}

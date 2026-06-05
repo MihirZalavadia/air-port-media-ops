@@ -1,0 +1,197 @@
+GAMMA PROMPT - PACKAGE 2, 7-UNIT LARGE-FORMAT DIGITAL
+
+Source file:
+04_media_kit/assets/Package-2 (7 UNIT).pdf
+
+Source truth already captured in project deck:
+- Package 2
+- 7 digital units
+- 6 units are 8 ft x 4 ft horizontal LED
+- 1 unit is 8 ft x 3 ft horizontal LED
+- Monthly rate: INR 2,00,000 + GST
+- 10-second slot
+- 2-minute cycle
+- Units: AD_8, AD_9, AD_29, AD_30, AD_31, AD_32, AD_41
+- Locations: departure/security check-in, mezzanine arrival, arrival ground floor, near exit gate
+
+Important:
+Do not change the unit count, dimensions, AD codes, rate, cycle, or location truth. Use real image placeholders from the source PDF.
+
+GLOBAL DIRECTION
+
+Create a premium 16:9 Gamma deck for Package 2 at Rajkot International Airport. This deck should feel like a buyer-facing media proposal, not a raw inventory dump. Use strong visuals, clear package logic, and clean commercial details.
+
+SLIDE 1 - COVER
+
+Headline:
+Package 2 - 7-Unit Large-Format Digital Loop
+
+Subhead:
+Departure, mezzanine, and arrival visibility across seven horizontal LED surfaces.
+
+Key commercial:
+INR 2,00,000/month + GST
+
+Layout:
+Full-bleed real airport LED image with dark overlay. Package 2 label in Saffron. Price appears as a strong but secondary element.
+
+IMAGE BLOCK:
+[INSERT HERO IMAGE FROM PACKAGE-2 SOURCE PDF - recommended AD_8 or strongest large-format screen image]
+
+Footer:
+Rajkot Airport Media | Operated by Mukesh Arts | Source: Package-2 (7 UNIT).pdf
+
+SLIDE 2 - PACKAGE AT A GLANCE
+
+Headline:
+Seven large-format screens at first-touch and last-touch airport moments.
+
+Stats:
+- 7 total digital units
+- 6 x 8 ft x 4 ft horizontal LED
+- 1 x 8 ft x 3 ft horizontal LED
+- 10-second creative slot
+- 2-minute repeat cycle
+- INR 2,00,000/month + GST
+
+Layout:
+Use a 3-column stat grid with large numbers. Add a right-side image block.
+
+IMAGE BLOCK:
+[INSERT PACKAGE-2 COLLAGE OR MAIN SCREEN PHOTO]
+
+SLIDE 3 - WHY PACKAGE 2 MATTERS
+
+Headline:
+The screens that bookend the airport journey.
+
+Body:
+Package 2 covers moments where passengers either enter the secure journey or exit the airport. It supports campaign recall across check-in, mezzanine movement, arrival ground floor, and the exit path.
+
+Do not add passenger numbers or impression estimates.
+
+Layout:
+Editorial 50/50. Left text, right journey diagram or real airport image.
+
+IMAGE BLOCK:
+[INSERT JOURNEY/LOCATION IMAGE FROM SOURCE PDF]
+
+SLIDE 4 - UNIT MAP
+
+Headline:
+Unit map and placement list
+
+Placement list:
+- AD_8 - Departure / Security Check-in - near X-ray - 8 ft x 4 ft
+- AD_9 - Departure / Security Check-in - near Indigo check-in - 8 ft x 4 ft
+- AD_29 - Mezzanine Arrival - 8 ft x 4 ft
+- AD_30 - Mezzanine Arrival - 8 ft x 4 ft
+- AD_31 - Arrival Ground Floor - after escalator right - 8 ft x 4 ft
+- AD_32 - Arrival Ground Floor - after escalator left - 8 ft x 4 ft
+- AD_41 - Arrival Ground Floor - near exit gate - 8 ft x 3 ft
+
+Layout:
+Left side floor plan image, right side placement list. Mark AD codes in Saffron.
+
+IMAGE BLOCK:
+[INSERT FLOOR PLAN FROM PACKAGE-2 SOURCE PDF AND MARK AD_8, AD_9, AD_29, AD_30, AD_31, AD_32, AD_41]
+
+SLIDE 5 - DEPARTURE AND SECURITY CHECK-IN
+
+Headline:
+First-touch visibility before passengers enter the secure zone.
+
+Featured units:
+- AD_8 - near X-ray
+- AD_9 - near Indigo check-in
+
+Buyer value:
+Useful for brand introductions, product launch awareness, and campaigns that need early journey visibility.
+
+Layout:
+Two large image cards side by side, each with AD code, size, and location.
+
+IMAGE BLOCKS:
+[INSERT AD_8 IMAGE FROM PACKAGE-2 SOURCE PDF]
+[INSERT AD_9 IMAGE FROM PACKAGE-2 SOURCE PDF]
+
+SLIDE 6 - MEZZANINE AND ARRIVAL GROUND FLOOR
+
+Headline:
+Last-touch visibility as passengers move toward arrival and exit.
+
+Featured units:
+- AD_29 - Mezzanine Arrival
+- AD_30 - Mezzanine Arrival
+- AD_31 - Arrival Ground Floor, after escalator right
+- AD_32 - Arrival Ground Floor, after escalator left
+- AD_41 - Arrival Ground Floor, near exit gate
+
+Layout:
+Image grid, 3 columns. Use exact AD labels. Keep captions short.
+
+IMAGE BLOCKS:
+[INSERT AD_29 IMAGE]
+[INSERT AD_30 IMAGE]
+[INSERT AD_31 IMAGE]
+[INSERT AD_32 IMAGE]
+[INSERT AD_41 IMAGE]
+
+SLIDE 7 - BEST-FIT CAMPAIGNS
+
+Headline:
+Best for campaign moments that need scale without a full-airport bundle.
+
+Cards:
+- New store or showroom launch
+- Real estate project awareness
+- Auto dealership or EV launch
+- Jewellery and premium retail
+- Banking, credit card, insurance, and wealth products
+- Regional festive and wedding-season campaigns
+
+Layout:
+Six compact cards on Off White. No fake case studies.
+
+IMAGE BLOCK:
+[INSERT SUPPORTING PACKAGE-2 IMAGE OR SUBTLE BACKGROUND PHOTO]
+
+SLIDE 8 - COMMERCIALS AND TERMS
+
+Headline:
+Package 2 commercials
+
+Commercial block:
+- Package: Package 2
+- Units: 7 digital surfaces
+- Format: 6 x 8 ft x 4 ft + 1 x 8 ft x 3 ft horizontal LED
+- Creative slot: 10 seconds
+- Repeat cycle: 2 minutes
+- Monthly rate: INR 2,00,000 + GST
+- Payment/approval terms: GST extra; final booking and airport approval requirements to be confirmed by operator
+
+Layout:
+Dark pricing slide. Price should be the visual hero. Terms in a clean list below.
+
+IMAGE BLOCK:
+[OPTIONAL SMALL STRIP OF PACKAGE-2 SCREEN IMAGES]
+
+SLIDE 9 - NEXT STEP
+
+Headline:
+Check Package 2 availability for your campaign window.
+
+Body:
+Share campaign dates, creative format, and category. The operator will confirm availability, approval steps, and final booking terms.
+
+CTA:
+Request Package 2 Rate Card
+
+Contact block:
+Route inquiries to the approved owner POC: Mukesh sir / Ridham Bhuva.
+
+Layout:
+Midnight Blue closing slide with Saffron CTA and one strong real screen image.
+
+IMAGE BLOCK:
+[INSERT STRONGEST PACKAGE-2 IMAGE]

@@ -1,0 +1,50 @@
+SHARED GAMMA RULES FOR SELECTED AIRPORT MEDIA PPTS
+
+Use these rules for every selected deck:
+
+Preferred deck structure:
+- Slide 1: centralised intro / cover master.
+- Slide 2: transparent inventory and commercial data upfront.
+- Slide 3: why Rajkot Airport is a strong media buy, using only confirmed figures.
+- Middle slides: asset/package visual proof and details using the prompt facts.
+- Team / operations slide before contact.
+- Contact / next step before the final disclaimer.
+- Last slide: terms and media conditions / disclaimer.
+- Use `01_master_pages_gamma_prompt.txt` as the source for reusable intro, disclaimer, and contact slide structure.
+
+1. Source truth is locked.
+   - Do not change AD codes, package names, unit counts, dimensions, locations, rates, GST terms, cycle duration, or approval terms from the deck prompt.
+   - Confirmed airport audience facts from Ridham: approx. 1.25-1.30 lakh passenger visits/month, 4,200-4,400 passenger visits/day, 14 arrivals + 14 departures/day, 28 total flight movements/day.
+   - The deck prompts already include the usable source details. Only replace image blocks manually.
+   - If the original PDF visibly conflicts with a prompt detail, pause and confirm before changing the fact.
+
+2. Design direction.
+   - Premium airport media sales deck.
+   - Use Midnight Blue #0B1E3F, Saffron #F59E0B, Off White #FAFAF7, Ink #0A0A0A, Cloud #E5E7EB.
+   - Use Inter or Manrope.
+   - Keep corners sharp or lightly rounded, max 8px.
+   - Use thin dividers, large numbers, clean spec cards, and real site imagery.
+   - No generic airport clipart, no business handshake stock photos, no abstract SaaS illustrations.
+
+3. Image handling.
+   - Every slide must have a clear IMAGE BLOCK.
+   - Use real images from the current source PDF/PPT.
+   - Do not use generated or stock images.
+   - Keep the actual advertising unit visible. Avoid over-cropping.
+   - If the source has a floor plan, use it as a secondary image block with the AD code circled in Saffron.
+
+4. Copy style.
+   - Improve readability and buyer clarity, but do not add fake claims.
+   - Write for brand managers, OOH planners, and agency buyers.
+   - Use specific campaign language: location, visibility, format, use case, next step.
+   - Avoid "best", "leading", "guaranteed", or unverified audience claims.
+   - Use "ASCO-certified operations support smoother site visits, airport protocol coordination, and creative approval handling" instead of "guaranteed smooth operations."
+
+5. Footer.
+   - Footer every slide with: Rajkot Airport Media | Operated by Mukesh Arts | Source: use the exact source PDF filename listed in that deck prompt.
+   - Use AAI/authorised partner wording only if already present in the source and approved.
+
+6. Output.
+   - 16:9 presentation format.
+   - Keep each deck short, polished, and sales-ready.
+   - The user will replace image placeholders manually with real images from current PPT/PDF.

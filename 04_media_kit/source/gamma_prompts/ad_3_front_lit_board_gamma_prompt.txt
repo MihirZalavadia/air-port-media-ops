@@ -1,0 +1,126 @@
+GAMMA PROMPT - AD-3 AIRPORT FRONT LIT BOARD
+
+Source file:
+04_media_kit/assets/AD - 3 AIRPORT FRONT LIT BOARD.pdf
+
+Source details to preserve:
+- Unit: AD-3
+- Media type: Airport front-lit board
+- Billboard size: 30 x 10
+- Location: Terminal city-side area, departure entry
+- Rental charges: INR 6,00,000 for one month + GST
+
+GLOBAL DIRECTION
+
+Create a polished 16:9 sales deck for one airport static media asset: AD-3 Airport Front Lit Board. Keep it premium, visual, and easy for an agency buyer to understand. Use real image placeholders from the source PDF.
+
+SLIDE 1 - COVER
+
+Headline:
+AD-3 Airport Front Lit Board
+
+Subhead:
+Static airport media placement for high-recall brand visibility.
+
+Layout:
+Full-bleed real board image. Use a dark overlay. AD-3 appears in a Saffron label. Keep the cover clean, not crowded.
+
+IMAGE BLOCK:
+[INSERT HERO IMAGE FROM AD-3 SOURCE PDF]
+
+Footer:
+Rajkot Airport Media | Operated by Mukesh Arts | Source: AD - 3 AIRPORT FRONT LIT BOARD.pdf
+
+SLIDE 2 - ASSET SNAPSHOT
+
+Headline:
+A single-board airport placement built for clear brand presence.
+
+Content card:
+- Asset code: AD-3
+- Format: Front-lit board
+- Size: 30 x 10
+- Location: Terminal city-side area, departure entry
+- Visibility context: City-side departure entry movement
+- Rate: INR 6,00,000 for one month + GST
+
+Layout:
+60/40 split. Left side spec card. Right side large real image. Use thin Saffron divider.
+
+IMAGE BLOCK:
+[INSERT PRIMARY BOARD PHOTO FROM AD-3 SOURCE PDF]
+
+SLIDE 3 - PLACEMENT CONTEXT
+
+Headline:
+Airport visibility in a controlled, premium environment.
+
+Body:
+Describe the placement using only source PDF facts. Explain why the location matters for advertisers: airport traffic is more intentional, less cluttered, and better suited for premium brand recall than generic outdoor clutter.
+
+Do not add passenger estimates.
+
+Layout:
+Editorial layout. Big placement photo with short text block. Add a small label for AD-3.
+
+IMAGE BLOCK:
+[INSERT LOCATION PHOTO OR FLOOR PLAN FROM AD-3 SOURCE PDF]
+
+SLIDE 4 - BOARD SPECIFICATIONS
+
+Headline:
+AD-3 specifications
+
+Spec table:
+- Media asset: AD-3
+- Media type: Airport front-lit board
+- Dimensions: 30 x 10
+- Location: Terminal city-side area, departure entry
+- Illumination: Front-lit board
+- Creative/print specs: Confirm production specifications before artwork release
+- Booking term: One-month rental quote
+- Commercials: INR 6,00,000 + GST
+
+Layout:
+Off White background, dark spec table, Saffron highlights for AD-3 and rate.
+
+IMAGE BLOCK:
+[OPTIONAL IMAGE: board close-up crop from source]
+
+SLIDE 5 - CAMPAIGN FIT
+
+Headline:
+Where AD-3 works best
+
+Cards:
+- Local market authority
+- Airport arrival/departure brand recall
+- Premium product launches
+- High-ticket retail and real estate
+- Monthly or seasonal visibility campaigns
+
+Layout:
+Use five compact cards with icons. Keep body copy under two lines per card.
+
+IMAGE BLOCK:
+[INSERT SUPPORTING IMAGE FROM SOURCE PDF]
+
+SLIDE 6 - BOOKING CTA
+
+Headline:
+Reserve or check availability for AD-3.
+
+Body:
+Send campaign dates, creative requirements, and desired booking duration. Availability and final commercials will be confirmed by the operator.
+
+CTA:
+Request AD-3 Details
+
+Contact block:
+Route inquiries to the approved owner POC: Mukesh sir / Ridham Bhuva.
+
+Layout:
+Dark closing slide. Place CTA in Saffron. Use one strong real image.
+
+IMAGE BLOCK:
+[INSERT STRONGEST AD-3 IMAGE FROM SOURCE PDF]
