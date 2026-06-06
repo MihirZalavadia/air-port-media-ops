@@ -2,7 +2,7 @@
 // legal claims, or final contact details are included until owner approval.
 
 export type ThemeId = "day" | "night";
-export type BrandId = "classic" | "saurashtra";
+export type BrandId = "maroonBlue" | "redSky";
 export type PaletteId = `${BrandId}-${ThemeId}`;
 
 export type Palette = {
@@ -21,68 +21,68 @@ export type Palette = {
 
 export const PALETTES: Palette[] = [
   {
-    id: "classic-day",
-    brandId: "classic",
+    id: "maroonBlue-day",
+    brandId: "maroonBlue",
     themeId: "day",
-    name: "Day Takeoff",
-    note: "Bright airport daylight. Warm ivory, brass, forest green. Strong default for brand managers.",
-    swatches: { deep: "#1F3B2D", accent: "#B8863B", surface: "#FBF8EF", ink: "#14110D" },
+    name: "Maroon Blue Day",
+    note: "Mukesh Arts red and deep blue on a clean ivory base. Corporate, sharp, and pitch-ready.",
+    swatches: { deep: "#1E2A78", accent: "#A3162B", surface: "#F8F9FC", ink: "#111111" },
   },
   {
-    id: "classic-night",
-    brandId: "classic",
+    id: "maroonBlue-night",
+    brandId: "maroonBlue",
     themeId: "night",
-    name: "Night Runway",
-    note: "Dark runway, amber lights, charcoal. High-value campaign energy.",
-    swatches: { deep: "#2F5742", accent: "#E0AA52", surface: "#1A1814", ink: "#F4ECD8" },
+    name: "Maroon Blue Night",
+    note: "Dark maroon, deep logo blue, and black graphite for a premium night-airport mood.",
+    swatches: { deep: "#1E2A78", accent: "#7C0F23", surface: "#12141E", ink: "#F4F6FF" },
   },
   {
-    id: "saurashtra-day",
-    brandId: "saurashtra",
+    id: "redSky-day",
+    brandId: "redSky",
     themeId: "day",
-    name: "Saurashtra Sunrise",
-    note: "Warm ivory, oxblood, brass, dark brown. Local business-house trust at daylight.",
-    swatches: { deep: "#3A241F", accent: "#B8863B", surface: "#FFF9F0", ink: "#241A16" },
+    name: "Red Sky Day",
+    note: "Light red and sky blue derived from the Mukesh Arts mark. Fresh, modern, and web-friendly.",
+    swatches: { deep: "#0B74D1", accent: "#E21D2D", surface: "#F5FBFF", ink: "#111111" },
   },
   {
-    id: "saurashtra-night",
-    brandId: "saurashtra",
+    id: "redSky-night",
+    brandId: "redSky",
     themeId: "night",
-    name: "Saurashtra Midnight",
-    note: "Deep brown ink, brighter oxblood, warm amber. Night-airport identity.",
-    swatches: { deep: "#1A0E0A", accent: "#E0AA52", surface: "#251714", ink: "#F4E9D6" },
+    name: "Red Sky Night",
+    note: "A softer night mode with cool airport blue, bright red accents, and clean white contrast.",
+    swatches: { deep: "#0D4E86", accent: "#E21D2D", surface: "#0E1624", ink: "#F4FAFF" },
   },
 ];
 
 export const BRAND_NAMES = [
   {
-    name: "Rajkot Airport Marketing",
-    note: "Sharp, modern, and sales-friendly. Recommended for the public pitch site.",
+    name: "Rajkot Airport x Mukesh Arts",
+    note: "Recommended partnership-facing name. It keeps airport media clear while adding Mukesh Arts trust.",
   },
   {
     name: "Rajkot Airport Media",
-    note: "Clear, direct, credible. Strong if owners want the safest public name.",
+    note: "Clear and direct for public search, media kits, and advertiser conversations.",
   },
   {
-    name: "RAM Airport Media",
-    note: "Good monogram potential if owners want a branded operating system later.",
+    name: "Mukesh Arts Airport Media",
+    note: "Stronger Mukesh-led name if the owners want the parent advertising brand more visible.",
   },
 ];
 
 export const LOGO_CONCEPTS = [
   {
-    id: "rajkot",
-    name: "Rajkot Airport Marketing",
-    label: "RA",
-    motif: "Runway line cutting through a compact RA mark",
-    note: "Best balance of modern, memorable, and easy to place on website headers.",
+    id: "partnership",
+    name: "Rajkot Airport x Mukesh Arts",
+    label: "RA x MA",
+    motif: "Airport media name backed by the Mukesh Arts red and blue mark",
+    note: "Best route for client review: clear airport proposition with parent-brand credibility.",
   },
   {
-    id: "ram",
+    id: "media",
     name: "Rajkot Airport Media",
     label: "RAM",
-    motif: "Monogram with a takeoff stroke",
-    note: "More formal and premium for agencies, media kits, and B2B proposals.",
+    motif: "Public-facing media platform name with Mukesh Arts as operator/partner",
+    note: "Safer for SEO and advertiser clarity if the public website should stay airport-first.",
   },
 ] as const;
 

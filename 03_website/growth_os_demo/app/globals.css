@@ -5,113 +5,113 @@
 @tailwind utilities;
 
 /* =================================================================
-   Tokens — Classic Day Takeoff (default)
+   Tokens - Mukesh Maroon/Blue Day (default)
    ================================================================= */
 :root,
 [data-theme="day"],
-[data-brand="classic"][data-theme="day"] {
-  --bg:           #F4EFE3;
-  --bg-deep:      #E9E2CC;
-  --surface:      #FBF8EF;
-  --surface-2:    #F1EADA;
-  --ink:          #14110D;
-  --ink-2:        #3A3328;
-  --muted:        #7A6F5F;
-  --rule:         #D4C9A8;
-  --rule-soft:    rgba(180,160,110,0.28);
-  --accent:       #B8863B;
-  --accent-deep:  #7E5A20;
-  --forest:       #1F3B2D;
-  --forest-2:     #2F5742;
-  --oxblood:      #6E2226;
-  --paper-shadow: 0 30px 60px -40px rgba(20,16,8,0.35);
-  --card-shadow:  0 22px 50px -34px rgba(20,16,8,0.30);
-  --hover-shadow: 0 38px 70px -32px rgba(20,14,8,0.38);
-  --gold-line:    linear-gradient(90deg, transparent, #B8863B 18%, #B8863B 82%, transparent);
+[data-brand="maroonBlue"][data-theme="day"] {
+  --bg:           #F5F6FA;
+  --bg-deep:      #E8ECF6;
+  --surface:      #FFFFFF;
+  --surface-2:    #EEF2FA;
+  --ink:          #111111;
+  --ink-2:        #2C3142;
+  --muted:        #6B6B6B;
+  --rule:         #C8D0E6;
+  --rule-soft:    rgba(30,42,120,0.18);
+  --accent:       #E21D2D;
+  --accent-deep:  #A3162B;
+  --forest:       #1E2A78;
+  --forest-2:     #27389A;
+  --oxblood:      #7C0F23;
+  --paper-shadow: 0 30px 60px -40px rgba(17,17,17,0.25);
+  --card-shadow:  0 22px 50px -34px rgba(17,17,17,0.28);
+  --hover-shadow: 0 38px 70px -32px rgba(17,17,17,0.34);
+  --gold-line:    linear-gradient(90deg, transparent, #E21D2D 16%, #1E2A78 84%, transparent);
   color-scheme: light;
 }
 
 /* =================================================================
-   Tokens — Classic Night Runway
+   Tokens - Mukesh Maroon/Blue Night
    ================================================================= */
 [data-theme="night"],
-[data-brand="classic"][data-theme="night"] {
-  --bg:           #0C0B09;
-  --bg-deep:      #050504;
-  --surface:      #1A1814;
-  --surface-2:    #211D18;
-  --ink:          #F4ECD8;
-  --ink-2:        #C9BDA3;
-  --muted:        #8A7F6D;
-  --rule:         #3B342A;
-  --rule-soft:    rgba(224,170,82,0.18);
-  --accent:       #E0AA52;
-  --accent-deep:  #C68A2E;
-  --forest:       #2F5742;
-  --forest-2:     #4B7A5E;
-  --oxblood:      #A53A3D;
+[data-brand="maroonBlue"][data-theme="night"] {
+  --bg:           #070811;
+  --bg-deep:      #03040A;
+  --surface:      #12141E;
+  --surface-2:    #1B1E2D;
+  --ink:          #F4F6FF;
+  --ink-2:        #C5CAE2;
+  --muted:        #8C91A8;
+  --rule:         #2B3156;
+  --rule-soft:    rgba(226,29,45,0.18);
+  --accent:       #E21D2D;
+  --accent-deep:  #FF4A58;
+  --forest:       #1E2A78;
+  --forest-2:     #4C64D8;
+  --oxblood:      #7C0F23;
   --paper-shadow: 0 40px 80px -40px rgba(0,0,0,0.85);
   --card-shadow:  0 30px 70px -40px rgba(0,0,0,0.85);
-  --hover-shadow: 0 50px 90px -36px rgba(0,0,0,0.95), 0 0 0 1px rgba(224,170,82,0.18);
-  --gold-line:    linear-gradient(90deg, transparent, #E0AA52 18%, #E0AA52 82%, transparent);
+  --hover-shadow: 0 50px 90px -36px rgba(0,0,0,0.95), 0 0 0 1px rgba(226,29,45,0.20);
+  --gold-line:    linear-gradient(90deg, transparent, #7C0F23 16%, #1E2A78 50%, #E21D2D 84%, transparent);
   color-scheme: dark;
 }
 
 /* =================================================================
-   Tokens — Saurashtra Sunrise (day + oxblood-forward palette)
+   Tokens - Mukesh Red/Sky Day
    ================================================================= */
-[data-brand="saurashtra"][data-theme="day"] {
-  --bg:           #F4EBDD;
-  --bg-deep:      #E9D8C2;
-  --surface:      #FFF9F0;
-  --surface-2:    #EDE0CB;
-  --ink:          #241A16;
-  --ink-2:        #4A3528;
-  --muted:        #846C5A;
-  --rule:         #C7A983;
-  --rule-soft:    rgba(199,169,131,0.32);
-  --accent:       #B8863B;
-  --accent-deep:  #7E5A20;
-  --forest:       #3A241F;     /* dark brown stand-in */
-  --forest-2:     #5A382E;
-  --oxblood:      #8B2D2F;
-  --paper-shadow: 0 30px 60px -40px rgba(58,36,31,0.35);
-  --card-shadow:  0 22px 50px -34px rgba(58,36,31,0.32);
-  --hover-shadow: 0 38px 70px -30px rgba(58,36,31,0.42);
-  --gold-line:    linear-gradient(90deg, transparent, #8B2D2F 18%, #8B2D2F 82%, transparent);
+[data-brand="redSky"][data-theme="day"] {
+  --bg:           #F5FBFF;
+  --bg-deep:      #E3F3FF;
+  --surface:      #FFFFFF;
+  --surface-2:    #EAF7FF;
+  --ink:          #111111;
+  --ink-2:        #263445;
+  --muted:        #627083;
+  --rule:         #B9DAF2;
+  --rule-soft:    rgba(11,116,209,0.18);
+  --accent:       #E21D2D;
+  --accent-deep:  #B41525;
+  --forest:       #0B74D1;
+  --forest-2:     #1597E5;
+  --oxblood:      #E21D2D;
+  --paper-shadow: 0 30px 60px -40px rgba(11,116,209,0.25);
+  --card-shadow:  0 22px 50px -34px rgba(17,17,17,0.22);
+  --hover-shadow: 0 38px 70px -30px rgba(11,116,209,0.30);
+  --gold-line:    linear-gradient(90deg, transparent, #E21D2D 16%, #1597E5 84%, transparent);
   color-scheme: light;
 }
 
 /* =================================================================
-   Tokens — Saurashtra Midnight (dark brown + oxblood + warm amber)
+   Tokens - Mukesh Red/Sky Night
    ================================================================= */
-[data-brand="saurashtra"][data-theme="night"] {
-  --bg:           #1A0E0A;
-  --bg-deep:      #0E0606;
-  --surface:      #251714;
-  --surface-2:    #2E1D19;
-  --ink:          #F4E9D6;
-  --ink-2:        #D5C5A8;
-  --muted:        #9B7E62;
-  --rule:         #4A2E26;
-  --rule-soft:    rgba(224,170,82,0.22);
-  --accent:       #E0AA52;
-  --accent-deep:  #C68A2E;
-  --forest:       #4A2E26;
-  --forest-2:     #6A4234;
-  --oxblood:      #C04244;
+[data-brand="redSky"][data-theme="night"] {
+  --bg:           #07111C;
+  --bg-deep:      #030912;
+  --surface:      #0E1624;
+  --surface-2:    #142238;
+  --ink:          #F4FAFF;
+  --ink-2:        #C8DBEA;
+  --muted:        #89A6BC;
+  --rule:         #1E3D5E;
+  --rule-soft:    rgba(21,151,229,0.20);
+  --accent:       #E21D2D;
+  --accent-deep:  #FF5A64;
+  --forest:       #0D4E86;
+  --forest-2:     #1597E5;
+  --oxblood:      #E21D2D;
   --paper-shadow: 0 40px 80px -40px rgba(0,0,0,0.85);
   --card-shadow:  0 30px 70px -40px rgba(0,0,0,0.85);
-  --hover-shadow: 0 50px 90px -34px rgba(0,0,0,0.95), 0 0 0 1px rgba(192,66,68,0.22);
-  --gold-line:    linear-gradient(90deg, transparent, #E0AA52 18%, #C04244 50%, #E0AA52 82%, transparent);
+  --hover-shadow: 0 50px 90px -34px rgba(0,0,0,0.95), 0 0 0 1px rgba(21,151,229,0.22);
+  --gold-line:    linear-gradient(90deg, transparent, #E21D2D 16%, #1597E5 84%, transparent);
   color-scheme: dark;
 }
 
 /* Brand-specific scenic overrides (Future / Range / etc.) */
-[data-brand="saurashtra"][data-theme="day"] .future { background: var(--forest); }
-[data-brand="saurashtra"][data-theme="night"] .future { background: #0E0606; }
-[data-brand="saurashtra"][data-theme="day"] .h-section em { color: var(--oxblood); }
-[data-brand="saurashtra"][data-theme="night"] .h-section em { color: var(--accent); }
+[data-brand="redSky"][data-theme="day"] .future { background: linear-gradient(135deg, #073B64, #0B74D1); }
+[data-brand="redSky"][data-theme="night"] .future { background: #030912; }
+[data-brand="redSky"][data-theme="day"] .h-section em { color: var(--accent); }
+[data-brand="redSky"][data-theme="night"] .h-section em { color: var(--forest-2); }
 
 /* =================================================================
    Reset & base
@@ -253,26 +253,25 @@ img, svg { display: block; max-width: 100%; }
 /* Airport-tower brand mark */
 .brand-mark {
   position: relative;
-  width: 50px;
+  width: 54px;
   height: 50px;
   display: grid;
   place-items: center;
-  background:
-    linear-gradient(135deg, #0F2238 0%, #1A3556 45%, #122844 100%);
+  background: #FFFFFF;
   border: 1px solid color-mix(in srgb, var(--accent), transparent 35%);
   border-radius: 6px;
   overflow: hidden;
   isolation: isolate;
   transition: transform 0.25s ease, box-shadow 0.4s ease, border-color 0.3s ease;
-  box-shadow: 0 6px 18px -10px rgba(15, 34, 56, 0.55),
-              inset 0 0 0 1px rgba(255, 235, 180, 0.08);
+  box-shadow: 0 6px 18px -10px rgba(17, 17, 17, 0.30),
+              inset 0 0 0 1px rgba(30, 42, 120, 0.06);
 }
 
 .brand-mark::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 30% 22%, rgba(232,200,130,0.22), transparent 60%);
+  background: radial-gradient(circle at 30% 22%, rgba(226,29,45,0.12), transparent 62%);
   pointer-events: none;
 }
 
@@ -287,7 +286,7 @@ img, svg { display: block; max-width: 100%; }
   background: linear-gradient(
     100deg,
     transparent 20%,
-    rgba(255, 235, 180, 0.22) 50%,
+    rgba(226, 29, 45, 0.16) 50%,
     transparent 80%
   );
   transform: skewX(-18deg);
@@ -297,17 +296,16 @@ img, svg { display: block; max-width: 100%; }
 .brand:hover .brand-mark::after { left: 130%; }
 .brand:hover .brand-mark {
   transform: translateY(-1px);
-  box-shadow: 0 14px 28px -12px rgba(15, 34, 56, 0.65),
-              inset 0 0 0 1px rgba(255, 235, 180, 0.18);
+  box-shadow: 0 14px 28px -12px rgba(17, 17, 17, 0.38),
+              inset 0 0 0 1px rgba(30, 42, 120, 0.14);
 }
 
 .brand-mark svg {
   position: relative;
   z-index: 2;
-  width: 64%;
-  height: 64%;
-  color: #E8C882; /* warm brass */
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+  width: 82%;
+  height: 82%;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
 }
 
 /* Footer copy uses a slightly smaller variant */
@@ -348,7 +346,7 @@ img, svg { display: block; max-width: 100%; }
   gap: 12px;
 }
 
-/* Brand-palette toggle pill (Classic ↔ Saurashtra) */
+/* Brand-palette toggle pill (Maroon/Blue <-> Red/Sky) */
 .brand-toggle {
   position: relative;
   display: inline-flex;
@@ -358,7 +356,7 @@ img, svg { display: block; max-width: 100%; }
   padding: 4px 16px 4px 6px;
   border-radius: 999px;
   border: 1px solid var(--rule);
-  background: var(--surface);
+  background: #FFFFFF;
   color: var(--ink);
   transition: border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 18px -14px rgba(20, 16, 8, 0.45);
@@ -377,8 +375,8 @@ img, svg { display: block; max-width: 100%; }
   box-shadow: inset 0 0 0 1px rgba(255, 235, 180, 0.18);
 }
 
-.brand-toggle.is-saurashtra .brand-toggle-dot {
-  background: linear-gradient(135deg, var(--oxblood) 0%, var(--accent) 55%, #3A241F 100%);
+.brand-toggle.is-red-sky .brand-toggle-dot {
+  background: linear-gradient(135deg, #E21D2D 0%, #1597E5 58%, #F5FBFF 100%);
 }
 
 .brand-toggle-label { display: grid; line-height: 1; text-align: left; }
@@ -878,8 +876,7 @@ img, svg { display: block; max-width: 100%; }
 .logo-card-mark {
   width: 120px;
   height: 80px;
-  background:
-    linear-gradient(135deg, #0F2238 0%, #1A3556 45%, #122844 100%);
+  background: var(--surface);
   border: 1px solid color-mix(in srgb, var(--accent), transparent 45%);
   border-radius: 4px;
   display: grid;
@@ -887,8 +884,8 @@ img, svg { display: block; max-width: 100%; }
   overflow: hidden;
   position: relative;
   isolation: isolate;
-  box-shadow: 0 12px 28px -16px rgba(15, 34, 56, 0.55),
-              inset 0 0 0 1px rgba(255, 235, 180, 0.06);
+  box-shadow: 0 12px 28px -16px rgba(17, 17, 17, 0.30),
+              inset 0 0 0 1px rgba(30, 42, 120, 0.06);
   transition: transform 0.25s ease;
 }
 
@@ -896,7 +893,7 @@ img, svg { display: block; max-width: 100%; }
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 30% 22%, rgba(232,200,130,0.22), transparent 60%);
+  background: radial-gradient(circle at 30% 22%, rgba(226,29,45,0.12), transparent 60%);
 }
 
 .logo-card-mark::after {
@@ -909,7 +906,7 @@ img, svg { display: block; max-width: 100%; }
   background: linear-gradient(
     100deg,
     transparent 20%,
-    rgba(255, 235, 180, 0.28) 50%,
+    rgba(21, 151, 229, 0.18) 50%,
     transparent 80%
   );
   transform: skewX(-18deg);
@@ -922,10 +919,9 @@ img, svg { display: block; max-width: 100%; }
 .logo-card-mark svg {
   position: relative;
   z-index: 2;
-  width: 64%;
-  height: 64%;
-  color: #E8C882;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+  width: 82%;
+  height: 82%;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.18));
 }
 
 .palette-row {

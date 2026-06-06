@@ -45,7 +45,7 @@ const heroImage = (name: string) => `${BASE_PATH}/img/${name}.png`;
 
 export default function Shell() {
   const [themeId, setThemeId] = useState<ThemeId>("day");
-  const [brandId, setBrandId] = useState<BrandId>("classic");
+  const [brandId, setBrandId] = useState<BrandId>("maroonBlue");
   const [filter, setFilter] = useState<"All" | InventoryCategory>("All");
   const [filterTick, setFilterTick] = useState(0);
   const [unlocked, setUnlocked] = useState(false);
@@ -58,7 +58,7 @@ export default function Shell() {
       const savedTheme = window.localStorage.getItem("ram-theme") as ThemeId | null;
       const savedBrand = window.localStorage.getItem("ram-brand") as BrandId | null;
       if (savedTheme === "night" || savedTheme === "day") setThemeId(savedTheme);
-      if (savedBrand === "classic" || savedBrand === "saurashtra") setBrandId(savedBrand);
+      if (savedBrand === "maroonBlue" || savedBrand === "redSky") setBrandId(savedBrand);
     } catch {}
     const t = window.setTimeout(() => setBooting(false), 1100);
     return () => window.clearTimeout(t);
@@ -105,7 +105,7 @@ export default function Shell() {
         toggleTheme={toggleTheme}
         brandId={brandId}
         toggleBrand={() =>
-          setBrandId((b) => (b === "classic" ? "saurashtra" : "classic"))
+          setBrandId((b) => (b === "maroonBlue" ? "redSky" : "maroonBlue"))
         }
       />
 
@@ -161,13 +161,13 @@ function TopNav({
   return (
     <header className="nav">
       <div className="container nav-inner">
-        <a href="#top" className="brand" aria-label="Rajkot Airport Marketing">
+        <a href="#top" className="brand" aria-label="Rajkot Airport x Mukesh Arts">
           <span className="brand-mark">
             <AirportLogoMark />
           </span>
           <span className="brand-text">
-            <b>Rajkot Airport Marketing</b>
-            <small>Rajkot International — Draft</small>
+            <b>Rajkot Airport x Mukesh Arts</b>
+            <small>Airport media - Draft</small>
           </span>
         </a>
         <nav className="nav-links" aria-label="Primary">
@@ -196,19 +196,19 @@ function BrandToggle({
   brandId: BrandId;
   onToggle: () => void;
 }) {
-  const isSaurashtra = brandId === "saurashtra";
+  const isRedSky = brandId === "redSky";
   return (
     <button
       type="button"
-      className={`brand-toggle ${isSaurashtra ? "is-saurashtra" : "is-classic"}`}
+      className={`brand-toggle ${isRedSky ? "is-red-sky" : "is-maroon-blue"}`}
       onClick={onToggle}
-      aria-label={isSaurashtra ? "Switch to Classic palette" : "Switch to Saurashtra palette"}
-      title={isSaurashtra ? "Switch to Classic palette" : "Switch to Saurashtra palette"}
+      aria-label={isRedSky ? "Switch to Maroon Blue palette" : "Switch to Red Sky palette"}
+      title={isRedSky ? "Switch to Maroon Blue palette" : "Switch to Red Sky palette"}
     >
       <span className="brand-toggle-dot" aria-hidden="true" />
       <span className="brand-toggle-label">
         <small>Palette</small>
-        <b>{isSaurashtra ? "Saurashtra" : "Classic"}</b>
+        <b>{isRedSky ? "Red/Sky" : "Maroon/Blue"}</b>
       </span>
     </button>
   );
@@ -266,7 +266,7 @@ function Hero() {
       />
 
       <div className="container hero-content">
-        <span className="eyebrow hero-eyebrow">Rajkot International · Airport Media</span>
+        <span className="eyebrow hero-eyebrow">Rajkot Airport x Mukesh Arts</span>
         <h1 className="hero-h1">
           Airport visibility, <em>engineered.</em>
         </h1>
@@ -398,13 +398,12 @@ function Identity({
           <div>
             <span className="eyebrow">Identity routes</span>
             <h2 className="h-section">
-              Confirm the public name, mark, and palette <em>before the full build</em>.
+              Confirm the Mukesh Arts-backed name and palette <em>before the full build</em>.
             </h2>
           </div>
           <p className="section-head-right">
-            Four decisions — name, mark, palette, tagline. Use the day/night
-            toggle in the header to preview each palette live; the cards below
-            are static reference swatches.
+            The palette now follows the Mukesh Arts mark: red, deep blue, black,
+            grey, and a lighter red/sky-blue route for a cleaner web version.
           </p>
         </div>
 
@@ -425,7 +424,7 @@ function Identity({
 
             <article className="logo-card" style={{ alignItems: "start" }}>
               <div className="logo-card-mark" aria-hidden="true">
-                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 22, color: "#E8C882" }}>Aa</span>
+                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 22, color: "var(--accent)" }}>Aa</span>
               </div>
               <div>
                 <h4 style={{ marginBottom: 10 }}>Name options</h4>
@@ -875,7 +874,7 @@ function Footer() {
           <div>
             <div className="foot-brand">
               <span className="brand-mark"><AirportLogoMark /></span>
-              <h3>Rajkot Airport Marketing</h3>
+              <h3>Rajkot Airport x Mukesh Arts</h3>
             </div>
             <p>
               Draft reference website. No final legal, official partnership,
@@ -967,37 +966,38 @@ function Airliner() {
 function AirportLogoMark() {
   return (
     <svg
-      viewBox="0 0 100 60"
+      viewBox="0 0 140 90"
       xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
       aria-hidden="true"
     >
-      {/* Terminal roof arch */}
-      <path d="M6 46 Q14 22 30 22 Q50 22 70 22 Q86 22 94 46" strokeWidth="2.6" />
-
-      {/* Ground / terrace line */}
-      <path d="M10 48 L90 48" strokeWidth="1.5" />
-
-      {/* Glass-facade hairlines under roof */}
-      <g strokeWidth="0.7" opacity="0.55">
-        <path d="M20 48 L34 24" />
-        <path d="M44 48 L48 22" />
-        <path d="M60 48 L60 22" />
-        <path d="M76 48 L72 22" />
-      </g>
-
-      {/* Control tower */}
-      <path d="M30 22 L30 8" strokeWidth="2" />
-      <rect x="27" y="6" width="6" height="3" rx="0.6" fill="currentColor" stroke="none" />
-      {/* Antenna */}
-      <path d="M30 6 L30 1" strokeWidth="1.4" />
-
-      {/* Takeoff / runway sweep with arrowhead pointing up-right */}
-      <path d="M40 50 Q60 42 78 30 Q86 24 91 14" strokeWidth="2.2" />
-      <path d="M86 17 L92 12 L89 6" strokeWidth="2.2" />
+      <rect x="0" y="0" width="140" height="90" rx="10" fill="currentColor" opacity="0" />
+      <path d="M18 38 L45 5 L70 38 C54 31 34 31 18 38 Z" fill="#E21D2D" />
+      <path d="M70 38 L96 5 L122 38 C105 31 86 31 70 38 Z" fill="#1E2A78" />
+      <text
+        x="70"
+        y="63"
+        textAnchor="middle"
+        fontFamily="Arial, Helvetica, sans-serif"
+        fontSize="24"
+        fontWeight="800"
+        letterSpacing="2.5"
+        fill="#111111"
+      >
+        MUKESH
+      </text>
+      <rect x="79" y="70" width="43" height="9" rx="1.5" fill="#E21D2D" />
+      <text
+        x="101"
+        y="78"
+        textAnchor="middle"
+        fontFamily="Arial, Helvetica, sans-serif"
+        fontSize="8"
+        fontWeight="800"
+        letterSpacing="3"
+        fill="#FFFFFF"
+      >
+        ART
+      </text>
     </svg>
   );
 }
