@@ -2,7 +2,7 @@ export type ThemeId = "day" | "night";
 
 export const AIRPORT_NAME = "Rajkot International Airport";
 export const BRAND_DISPLAY_NAME = "Rajkot Airport Media x Mukesh Art";
-export const CLIENT_PROOF_LINE = "Partnered with 50+ national and international brands";
+export const CLIENT_PROOF_LINE = "Worked with 50+ national and international brands";
 export const MAIN_OFFICE_ADDRESS =
   "Mukesh Art Main Office, PLOT NO. 71, SURVEY NO. 145, JAMBUDIYA, Morbi, Gujarat - 363642";
 
@@ -31,6 +31,16 @@ export type InventoryItem = {
   gallery: string[];
   visualKind: "digital" | "static" | "backlit" | "journey" | "custom";
   source: string;
+};
+
+export type AirportConnection = {
+  city: string;
+  code: string;
+  lon: number;
+  lat: number;
+  mins: string;
+  labelDx?: number;
+  labelDy?: number;
 };
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -284,13 +294,20 @@ export const AIRPORT_STATS = [
   { value: "2L+", label: "Starting inventory range" },
 ];
 
-export const AIRPORT_CONNECTIONS = [
-  { city: "Delhi", code: "DEL", x: 379, y: 196, angle: -28, labelDx: 18, labelDy: -28 },
-  { city: "Mumbai", code: "BOM", x: 290, y: 400, angle: 74, labelDx: -58, labelDy: -18 },
-  { city: "Navi Mumbai", code: "NMI", x: 293, y: 401, angle: 78, labelDx: -76, labelDy: 20 },
-  { city: "Pune", code: "PNQ", x: 311, y: 412, angle: 82, labelDx: 58, labelDy: 14 },
-  { city: "Hyderabad", code: "HYD", x: 409, y: 436, angle: 65, labelDx: 92, labelDy: 8 },
-  { city: "Bengaluru", code: "BLR", x: 390, y: 530, angle: 88, labelDx: 86, labelDy: 24 },
+export const AIRPORT_HUB = {
+  city: "Rajkot Intl",
+  code: "RAJ",
+  lon: 70.78,
+  lat: 22.31,
+} as const;
+
+export const AIRPORT_CONNECTIONS: readonly AirportConnection[] = [
+  { city: "Delhi", code: "DEL", lon: 77.10, lat: 28.57, mins: "1h 55m", labelDx: 34, labelDy: -34 },
+  { city: "Mumbai", code: "BOM", lon: 72.87, lat: 19.09, mins: "1h 10m", labelDx: -92, labelDy: 62 },
+  { city: "Navi Mumbai", code: "NMI", lon: 73.03, lat: 19.03, mins: "1h 10m", labelDx: -96, labelDy: 20 },
+  { city: "Pune", code: "PNQ", lon: 73.92, lat: 18.58, mins: "1h 25m", labelDx: 88, labelDy: 28 },
+  { city: "Hyderabad", code: "HYD", lon: 78.43, lat: 17.24, mins: "1h 45m", labelDx: 116, labelDy: 20 },
+  { city: "Bengaluru", code: "BLR", lon: 77.71, lat: 13.20, mins: "2h 05m", labelDx: 100, labelDy: 42 },
 ] as const;
 
 export const FEATURED_CLIENTS = [
@@ -315,18 +332,18 @@ export const CAMPAIGN_TYPES = [
 export const WHY_US = [
   {
     n: "01",
-    t: "Local OOH execution",
-    p: "Mukesh Arts understands ground execution, vendor coordination, display quality, and campaign follow-through across real outdoor media.",
+    t: "Owner-side execution",
+    p: "Mukesh Arts brings ground production, airport coordination, client handling, and follow-through under one accountable operating team.",
   },
   {
     n: "02",
-    t: "Airport protocol handling",
-    p: "The operating flow is built around airport coordination, site access, inventory clarity, and owner-side approvals.",
+    t: "Airport protocol support",
+    p: "Site visits, access windows, creative checks, and approvals are handled with the airport operating rhythm in mind.",
   },
   {
     n: "03",
-    t: "Faster advertiser decisions",
-    p: "The website turns scattered PDFs into a sharper inventory story, helping brands shortlist formats and request the right media kit sooner.",
+    t: "Faster campaign decisions",
+    p: "The website and lead flow turn scattered inventory PDFs into a sharper buying journey for serious marketing teams.",
   },
 ] as const;
 
@@ -343,7 +360,7 @@ export const POCS = [
   },
   {
     name: "Ridham Bhuva",
-    role: "Airport ASCO & Manager",
+    role: "Airport ASCO & Partner/Manager",
     focus: "Airport protocol, site visits, approvals, and operations coordination.",
   },
 ];

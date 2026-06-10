@@ -1,10 +1,18 @@
 "use client";
 
-import { CSSProperties, useEffect, useMemo, useState } from "react";
 import {
-  AIRPORT_STATS,
+  CSSProperties,
+  FormEvent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import {
   AIRPORT_CONNECTIONS,
+  AIRPORT_HUB,
   AIRPORT_NAME,
+  AIRPORT_STATS,
   BRAND_DISPLAY_NAME,
   CAMPAIGN_TYPES,
   CLIENT_PROOF_LINE,
@@ -12,6 +20,7 @@ import {
   FUTURE_MODULES,
   INVENTORY,
   InventoryCategory,
+  InventoryItem,
   MAIN_OFFICE_ADDRESS,
   POCS,
   ThemeId,
@@ -26,49 +35,63 @@ const FILTERS: Array<"All" | InventoryCategory> = [
   "Custom Plans",
 ];
 
-type LeadForm = {
-  name: string;
-  company: string;
-  phone: string;
-  window: string;
-  interest: string;
-};
-
-const EMPTY_LEAD: LeadForm = {
-  name: "",
-  company: "",
-  phone: "",
-  window: "",
-  interest: "",
-};
-
-const FEATURED_FOR_GATE = ["PKG-01", "AD-3", "PKG-03", "DIGITAL-FULL"];
+const COUNTRY_CODES = ["+91", "+1", "+44", "+971", "+61"];
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const heroImage = (name: string) => `${BASE_PATH}/img/${name}.png`;
 const publicAsset = (file: string) => `${BASE_PATH}/img/${file}`;
+const PENDING_LEADS_KEY = "ram-pending-leads";
+
+type LeadEventType =
+  | "inventory_viewed"
+  | "inventory_download_requested"
+  | "contact_request";
+
+type LeadForm = {
+  name: string;
+  countryCode: string;
+  phone: string;
+  company: string;
+  designation: string;
+  window: string;
+  interest: string;
+  email: string;
+  message: string;
+};
+
+type LeadErrors = Partial<Record<keyof LeadForm, string>>;
+
+const EMPTY_LEAD: LeadForm = {
+  name: "",
+  countryCode: "+91",
+  phone: "",
+  company: "",
+  designation: "",
+  window: "",
+  interest: "",
+  email: "",
+  message: "",
+};
 
 export default function Shell() {
   const [themeId, setThemeId] = useState<ThemeId>("day");
   const [filter, setFilter] = useState<"All" | InventoryCategory>("All");
-  const [filterTick, setFilterTick] = useState(0);
-  const [unlocked, setUnlocked] = useState(false);
-  const [lead, setLead] = useState<LeadForm>(EMPTY_LEAD);
+  const [selectedItem, setSelectedItem] = useState<InventoryItem | null>(null);
+  const [unlockedCodes, setUnlockedCodes] = useState<string[]>([]);
+  const [leadByCode, setLeadByCode] = useState<Record<string, LeadForm>>({});
   const [booting, setBooting] = useState(true);
 
-  // Read saved theme + hide loader after first paint.
   useEffect(() => {
     try {
       const savedTheme = window.localStorage.getItem("ram-theme") as ThemeId | null;
       if (savedTheme === "night" || savedTheme === "day") setThemeId(savedTheme);
       window.localStorage.removeItem("ram-brand");
     } catch {}
-    const t = window.setTimeout(() => setBooting(false), 1700);
+
+    const t = window.setTimeout(() => setBooting(false), 1420);
     return () => window.clearTimeout(t);
   }, []);
 
-  // Propagate the production Red/Sky brand + selected day/night mode.
   useEffect(() => {
-    if (typeof document === "undefined") return;
     document.documentElement.dataset.theme = themeId;
     document.documentElement.dataset.brand = "redSky";
     try {
@@ -82,18 +105,9 @@ export default function Shell() {
     return INVENTORY.filter((item) => item.category === filter);
   }, [filter]);
 
-  const featured = useMemo(
-    () => INVENTORY.filter((item) => FEATURED_FOR_GATE.includes(item.code)),
-    [],
-  );
-
-  function toggleTheme() {
-    setThemeId((id) => (id === "night" ? "day" : "night"));
-  }
-
-  function changeFilter(next: "All" | InventoryCategory) {
-    setFilter(next);
-    setFilterTick((v) => v + 1);
+  function unlockInventory(code: string, lead: LeadForm) {
+    setUnlockedCodes((current) => (current.includes(code) ? current : [...current, code]));
+    setLeadByCode((current) => ({ ...current, [code]: lead }));
   }
 
   return (
@@ -102,7 +116,7 @@ export default function Shell() {
 
       <TopNav
         themeId={themeId}
-        toggleTheme={toggleTheme}
+        toggleTheme={() => setThemeId((id) => (id === "night" ? "day" : "night"))}
       />
 
       <main>
@@ -112,14 +126,9 @@ export default function Shell() {
         <Connectivity />
         <Portfolio
           filter={filter}
-          setFilter={changeFilter}
-          filterTick={filterTick}
+          setFilter={setFilter}
           visible={visible}
-          featured={featured}
-          unlocked={unlocked}
-          setUnlocked={setUnlocked}
-          lead={lead}
-          setLead={setLead}
+          onOpen={setSelectedItem}
         />
         <RangeBand />
         <ClientTrust />
@@ -129,18 +138,26 @@ export default function Shell() {
       </main>
 
       <Footer />
+
+      {selectedItem && (
+        <InventoryModal
+          item={selectedItem}
+          initialLead={leadByCode[selectedItem.code]}
+          unlocked={unlockedCodes.includes(selectedItem.code)}
+          onClose={() => setSelectedItem(null)}
+          onUnlock={unlockInventory}
+        />
+      )}
     </>
   );
 }
-
-/* ---------- Sub-components ---------- */
 
 function RouteLoader() {
   return (
     <div className="loader" aria-label="Loading airport media routes">
       <div className="loader-blueprint">
         <div className="loader-logo-card">
-          <AirportLogoMark />
+          <MukeshArtsLogoMark />
         </div>
         <div className="loader-copy">
           <span>{BRAND_DISPLAY_NAME}</span>
@@ -172,7 +189,7 @@ function TopNav({
       <div className="container nav-inner">
         <a href="#top" className="brand" aria-label={BRAND_DISPLAY_NAME}>
           <span className="brand-mark">
-            <AirportLogoMark />
+            <MukeshArtsLogoMark />
           </span>
           <span className="brand-text">
             <b>{BRAND_DISPLAY_NAME}</b>
@@ -180,7 +197,7 @@ function TopNav({
           </span>
         </a>
         <nav className="nav-links" aria-label="Primary">
-          <a href="#why">Why Airport</a>
+          <a href="#why">Why Rajkot Int Airport</a>
           <a href="#connectivity">Connectivity</a>
           <a href="#inventory">Inventory</a>
           <a href="#clients">Clients</a>
@@ -188,7 +205,7 @@ function TopNav({
           <a href="#contact">Contact</a>
         </nav>
         <div className="nav-end">
-          <FlightToggle themeId={themeId} onToggle={toggleTheme} />
+          <IconThemeToggle themeId={themeId} onToggle={toggleTheme} />
           <a href="#inventory" className="btn-primary">
             View Inventory
           </a>
@@ -198,7 +215,7 @@ function TopNav({
   );
 }
 
-function FlightToggle({
+function IconThemeToggle({
   themeId,
   onToggle,
 }: {
@@ -210,51 +227,33 @@ function FlightToggle({
     <button
       type="button"
       onClick={onToggle}
-      className="toggle"
+      className="icon-toggle"
       aria-pressed={isNight}
       aria-label={isNight ? "Switch to day theme" : "Switch to night theme"}
       title={isNight ? "Switch to day theme" : "Switch to night theme"}
     >
-      <span className="toggle-scene" aria-hidden="true">
-        <span className="toggle-orb">
-          <ThemeGlyph isNight={isNight} />
-        </span>
-        <span className="toggle-track-line" />
-      </span>
-      <span className="toggle-label">
-        <small>Theme</small>
-        <b>{isNight ? "Night" : "Day"}</b>
-      </span>
-    </button>
-  );
-}
-
-function ThemeGlyph({ isNight }: { isNight: boolean }) {
-  if (isNight) {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
+      <svg className="ico-sun" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" fill="currentColor" />
+        <g stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
+          <path d="M12 2.8v2.4" />
+          <path d="M12 18.8v2.4" />
+          <path d="M4.5 4.5l1.7 1.7" />
+          <path d="M17.8 17.8l1.7 1.7" />
+          <path d="M2.8 12h2.4" />
+          <path d="M18.8 12h2.4" />
+          <path d="M4.5 19.5l1.7-1.7" />
+          <path d="M17.8 6.2l1.7-1.7" />
+        </g>
+      </svg>
+      <svg className="ico-moon" viewBox="0 0 24 24" aria-hidden="true">
         <path
-          d="M18.5 15.7A7.5 7.5 0 0 1 8.3 5.5a8 8 0 1 0 10.2 10.2Z"
+          d="M18.7 15.8A7.8 7.8 0 0 1 8.2 5.3a8.4 8.4 0 1 0 10.5 10.5Z"
           fill="currentColor"
         />
+        <circle cx="7" cy="7" r="1" fill="currentColor" opacity="0.55" />
+        <circle cx="17" cy="5" r="0.8" fill="currentColor" opacity="0.55" />
       </svg>
-    );
-  }
-
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="12" r="4.2" fill="currentColor" />
-      <g stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-        <path d="M12 2.8v2.5" />
-        <path d="M12 18.7v2.5" />
-        <path d="m4.5 4.5 1.8 1.8" />
-        <path d="m17.7 17.7 1.8 1.8" />
-        <path d="M2.8 12h2.5" />
-        <path d="M18.7 12h2.5" />
-        <path d="m4.5 19.5 1.8-1.8" />
-        <path d="m17.7 6.3 1.8-1.8" />
-      </g>
-    </svg>
+    </button>
   );
 }
 
@@ -270,8 +269,6 @@ function Hero() {
         style={{ backgroundImage: `url(${heroImage("hero-night")})` }}
       />
 
-      <BrandBubbleSky />
-
       <div className="container hero-content">
         <span className="eyebrow hero-eyebrow">{BRAND_DISPLAY_NAME}</span>
         <h1 className="hero-h1">
@@ -279,9 +276,9 @@ function Hero() {
         </h1>
         <p className="hero-sub">
           A premium media network for brands that want Rajkot International
-          Airport&apos;s travelling audience and the high-context recall only an
-          airport environment delivers. Inventory you can shortlist, plans you
-          can pitch internally, and a path to a CRM-tracked relationship.
+          Airport&apos;s travelling audience, cleaner attention, and high-recall
+          airport context. Shortlist curated inventory, qualify campaign fit,
+          and move into owner-side follow-up without PDF back-and-forth.
         </p>
 
         <div className="hero-actions">
@@ -308,33 +305,14 @@ function Hero() {
   );
 }
 
-function BrandBubbleSky() {
-  return (
-    <aside className="brand-bubble-sky" aria-label={CLIENT_PROOF_LINE}>
-      <p>{CLIENT_PROOF_LINE}</p>
-      <div className="brand-bubble-track">
-        {FEATURED_CLIENTS.map((client, i) => (
-          <span
-            className="brand-bubble"
-            key={client}
-            style={{ "--bubble-delay": `${i * 0.16}s` } as CSSProperties}
-          >
-            {client}
-          </span>
-        ))}
-      </div>
-    </aside>
-  );
-}
-
 function Manifesto() {
   return (
     <section className="manifesto">
       <div className="container manifesto-inner">
         <p className="manifesto-quote">
           &ldquo;Airport media is one of the last formats where a brand still
-          earns time, attention, and a captive audience that is already
-          travelling with intent.&rdquo;
+          earns time, attention, and a captive audience already moving with
+          intent.&rdquo;
         </p>
         <dl className="manifesto-meta">
           <div>
@@ -348,14 +326,15 @@ function Manifesto() {
             <dt>Audience</dt>
             <dd>
               Business travellers, NRI corridors, family decision makers, and
-              premium households moving through Rajkot&apos;s international gateway.
+              premium households moving through Gujarat&apos;s Saurashtra gateway.
             </dd>
           </div>
           <div>
             <dt>Window</dt>
             <dd>
-              First-year operating partner: the right moment to lock category
-              exclusivity before the airport scales further.
+              Early operating years are the right time for serious brands to
+              lock recall, routes, and category conversations before demand
+              hardens.
             </dd>
           </div>
         </dl>
@@ -365,45 +344,47 @@ function Manifesto() {
 }
 
 function WhyAirport() {
+  const cards = [
+    {
+      n: "01",
+      t: "Gujarat gateway audience",
+      p: "Rajkot International Airport connects Saurashtra's business families, NRI travel, industrial corridors, and premium regional buyers in one controlled environment.",
+    },
+    {
+      n: "02",
+      t: "Cleaner attention than street OOH",
+      p: "Airport movement has fewer distractions than crowded road media. Passengers wait, scan, and remember brands in a context that already feels premium.",
+    },
+    {
+      n: "03",
+      t: "Consultative media planning",
+      p: "Instead of public price-sheet selling, buyers get the right mix of digital, static, and journey placements after campaign window and audience fit are understood.",
+    },
+  ];
+
   return (
-    <section className="section" id="why">
+    <section className="section reveal-section" id="why">
       <div className="container">
         <div className="section-head">
           <div>
-            <span className="eyebrow">Why this format</span>
+            <span className="eyebrow">Why Rajkot Int Airport</span>
             <h2 className="h-section">
-              Airport visibility for brands ready <em>to be remembered</em>.
+              Premium airport recall for Gujarat brands ready <em>to lead the market</em>.
             </h2>
           </div>
           <p className="section-head-right">
-            We treat airport media as a portfolio, not a price sheet. Buyers see
-            a premium product, a clear inventory shape, and a consultative
-            conversation about fit, window, and audience.
+            The strongest airport media pitch is not only about boards. It is
+            about audience quality, travel intent, clean dwell time, and a
+            buying process that helps marketing teams defend the campaign.
           </p>
         </div>
 
         <div className="why-grid">
-          {[
-            {
-              n: "01",
-              t: "Premium context",
-              p: "Airport movement gives brands a cleaner environment than cluttered outdoor corridors and an audience that is already attentive, not scrolling.",
-            },
-            {
-              n: "02",
-              t: "Right buyer fit",
-              p: "We qualify campaigns by window, format and budget, so every package shown is one a marketing lead can defend internally without rework.",
-            },
-            {
-              n: "03",
-              t: "Consultative plans",
-              p: "We lead with examples and stories, then guide buyers into the right digital, static, or hybrid plan once the campaign window is confirmed.",
-            },
-          ].map((c) => (
-            <article className="why-card" key={c.n}>
-              <span className="why-card-num">{c.n}</span>
-              <h3>{c.t}</h3>
-              <p>{c.p}</p>
+          {cards.map((card) => (
+            <article className="why-card" key={card.n}>
+              <span className="why-card-num">{card.n}</span>
+              <h3>{card.t}</h3>
+              <p>{card.p}</p>
             </article>
           ))}
         </div>
@@ -413,16 +394,22 @@ function WhyAirport() {
 }
 
 function Connectivity() {
-  const hub = { x: 245, y: 332, label: "Rajkot Intl", code: "RAJ" };
+  const hub = geoToSvg(AIRPORT_HUB.lon, AIRPORT_HUB.lat);
+  const cities = AIRPORT_CONNECTIONS.map((city) => ({
+    ...city,
+    p: geoToSvg(city.lon, city.lat),
+  }));
 
-  const routePath = (city: (typeof AIRPORT_CONNECTIONS)[number]) => {
-    const midX = (hub.x + city.x) / 2;
-    const midY = Math.min(hub.y, city.y) - 78;
-    return `M ${hub.x} ${hub.y} Q ${midX} ${midY} ${city.x} ${city.y}`;
+  const routePath = (city: (typeof cities)[number]) => {
+    const midX = (hub.x + city.p.x) / 2;
+    const midY = (hub.y + city.p.y) / 2;
+    const distance = Math.hypot(city.p.x - hub.x, city.p.y - hub.y);
+    const controlY = midY - Math.max(42, distance * 0.16);
+    return `M ${hub.x.toFixed(1)} ${hub.y.toFixed(1)} Q ${midX.toFixed(1)} ${controlY.toFixed(1)} ${city.p.x.toFixed(1)} ${city.p.y.toFixed(1)}`;
   };
 
   return (
-    <section className="section connectivity" id="connectivity">
+    <section className="section connectivity reveal-section" id="connectivity">
       <div className="container">
         <div className="section-head">
           <div>
@@ -438,112 +425,513 @@ function Connectivity() {
           </p>
         </div>
 
-        <div className="connectivity-grid">
-          <div className="route-frame">
-            <svg
-              viewBox="0 0 1000 700"
-              className="route-svg"
-              role="img"
-              aria-label="Route map from Rajkot International Airport to Mumbai, Delhi, Bengaluru, Hyderabad and Pune"
-            >
-              <defs>
-                <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.55" />
-                  <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
-                </radialGradient>
-              </defs>
+        <div className="map-frame">
+          <svg
+            viewBox="0 0 1000 700"
+            className="route-svg"
+            role="img"
+            aria-label="Map of India showing routes from Rajkot International Airport to major metro markets"
+          >
+            <defs>
+              <radialGradient id="routeIndiaGlow" cx="42%" cy="48%" r="58%">
+                <stop offset="0%" stopColor="#1597E5" stopOpacity="0.35" />
+                <stop offset="62%" stopColor="#1597E5" stopOpacity="0.08" />
+                <stop offset="100%" stopColor="#1597E5" stopOpacity="0" />
+              </radialGradient>
+              <radialGradient id="routeHubGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.7" />
+                <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
+              </radialGradient>
+            </defs>
 
-              <g className="route-grid-lines">
-                {[110, 220, 330, 440, 550, 660].map((y) => (
-                  <line key={`h-${y}`} x1="40" y1={y} x2="960" y2={y} />
-                ))}
-                {[120, 260, 400, 540, 680, 820].map((x) => (
-                  <line key={`v-${x}`} x1={x} y1="40" x2={x} y2="660" />
-                ))}
-              </g>
+            <g className="map-grid">
+              {[0, 1, 2, 3, 4, 5, 6].map((i) => (
+                <line key={`h-${i}`} x1="30" y1={(700 / 6) * i} x2="970" y2={(700 / 6) * i} />
+              ))}
+              {[0, 1, 2, 3, 4, 5, 6].map((i) => (
+                <line key={`v-${i}`} x1={(1000 / 6) * i} y1="30" x2={(1000 / 6) * i} y2="670" />
+              ))}
+            </g>
 
+            <rect x="0" y="0" width="1000" height="700" fill="url(#routeIndiaGlow)" opacity="0.9" />
               <image
                 className="india-map-image"
-                href={publicAsset("india-natural-earth.svg")}
+                href={publicAsset("india-survey-of-india-outline.svg")}
                 x="0"
                 y="0"
                 width="1000"
-                height="700"
-                preserveAspectRatio="xMidYMid meet"
-              />
+              height="700"
+              preserveAspectRatio="xMidYMid meet"
+            />
 
-              {AIRPORT_CONNECTIONS.map((city, i) => (
-                <path
-                  key={city.code}
-                  d={routePath(city)}
-                  className="route-line"
-                  style={{ "--route-delay": `${i * 0.2}s` } as CSSProperties}
-                />
-              ))}
+            {cities.map((city, i) => {
+              const d = routePath(city);
+              return (
+                <g key={city.code}>
+                  <path d={d} className="route-arc" />
+                  <path
+                    d={d}
+                    className="route-arc-dash"
+                    style={{ animationDelay: `${i * 0.18}s` } as CSSProperties}
+                  />
+                  <g
+                    className="route-plane"
+                    style={{ "--plane-delay": `${i * 0.2}s` } as CSSProperties}
+                    transform={`translate(${(hub.x + city.p.x) / 2} ${(hub.y + city.p.y) / 2}) rotate(${Math.atan2(city.p.y - hub.y, city.p.x - hub.x) * (180 / Math.PI)}) scale(0.72)`}
+                  >
+                    <path d="M-13 1 L0 -2 L15 -13 L19 -10 L7 0 L19 8 L15 12 L0 3 L-13 5 Z" />
+                  </g>
+                </g>
+              );
+            })}
 
-              {AIRPORT_CONNECTIONS.map((city, i) => (
-                <g
-                  key={`plane-${city.code}`}
-                  className="route-plane"
-                  style={{ "--plane-delay": `${i * 0.22}s` } as CSSProperties}
-                  transform={`translate(${(hub.x + city.x) / 2} ${(hub.y + city.y) / 2}) rotate(${city.angle})`}
+            <circle cx={hub.x} cy={hub.y} r="74" fill="url(#routeHubGlow)" />
+            <circle cx={hub.x} cy={hub.y} r="7" className="hub-core" />
+            <circle cx={hub.x} cy={hub.y} r="7" className="hub-pulse" />
+            <text x={hub.x - 16} y={hub.y - 12} textAnchor="end" className="hub-label">
+              {AIRPORT_HUB.city.toUpperCase()}
+            </text>
+            <text x={hub.x - 16} y={hub.y + 8} textAnchor="end" className="hub-code">
+              {AIRPORT_HUB.code} HUB
+            </text>
+
+            {cities.map((city) => (
+              <g key={`${city.code}-node`} className="city-node">
+                <circle cx={city.p.x} cy={city.p.y} r="6" className="city-dot" />
+                <text
+                  x={city.p.x + (city.labelDx ?? 0)}
+                  y={city.p.y + (city.labelDy ?? -18)}
+                  textAnchor="middle"
+                  className="city-name"
                 >
-                  <path d="M-13 1 L0 -2 L15 -13 L19 -10 L7 0 L19 8 L15 12 L0 3 L-13 5 Z" />
-                </g>
-              ))}
-
-              <circle cx={hub.x} cy={hub.y} r="70" fill="url(#hubGlow)" />
-              <circle cx={hub.x} cy={hub.y} r="10" className="route-hub" />
-              <circle cx={hub.x} cy={hub.y} r="10" className="route-hub-pulse" />
-              <text x={hub.x} y={hub.y + 36} className="route-hub-label" textAnchor="middle">
-                {hub.label.toUpperCase()}
-              </text>
-              <text x={hub.x} y={hub.y + 58} className="route-hub-code" textAnchor="middle">
-                {hub.code} HUB
-              </text>
-
-              {AIRPORT_CONNECTIONS.map((city) => (
-                <g key={city.code} className="route-node">
-                  <circle cx={city.x} cy={city.y} r="6" className="route-dot" />
-                  <text
-                    x={city.x + city.labelDx}
-                    y={city.y + city.labelDy}
-                    textAnchor="middle"
-                    className="route-city"
-                  >
-                    {city.city}
-                  </text>
-                  <text
-                    x={city.x + city.labelDx}
-                    y={city.y + city.labelDy + 20}
-                    textAnchor="middle"
-                    className="route-code"
-                  >
-                    {city.code}
-                  </text>
-                </g>
-              ))}
-            </svg>
-            <p className="map-credit">India outline: Natural Earth public domain data.</p>
-          </div>
-
-          <div className="connectivity-panel">
-            <span className="eyebrow">Route value</span>
-            <h3>Metro-linked attention, local execution.</h3>
-            <p>
-              This section gives buyers a fast business reason for airport media:
-              Rajkot is not only a local terminal, it is a connection point into
-              national metro travel and premium regional movement.
-            </p>
-            <div className="metro-list" aria-label="Connected metro cities">
-              {AIRPORT_CONNECTIONS.map((city) => (
-                <span key={city.code}>
-                  <b>{city.code}</b>
                   {city.city}
-                </span>
-              ))}
+                </text>
+                <text
+                  x={city.p.x + (city.labelDx ?? 0)}
+                  y={city.p.y + (city.labelDy ?? -18) + 18}
+                  textAnchor="middle"
+                  className="city-code"
+                >
+                  {city.code} - {city.mins}
+                </text>
+              </g>
+            ))}
+          </svg>
+
+            <div className="map-legend">
+              <div>
+                <span className="k">Connected metros</span>
+                <span className="v">{AIRPORT_CONNECTIONS.length}</span>
+              </div>
+              <div>
+                <span className="k">Airport hub</span>
+                <span className="v">RAJ</span>
+              </div>
             </div>
+            <div className="map-source">Outline source: Survey of India</div>
           </div>
+
+        <div className="route-table">
+          {AIRPORT_CONNECTIONS.map((city) => (
+            <article key={city.code}>
+              <span className="rt-city">{city.city}</span>
+              <span className="rt-meta">
+                {city.code} - <b>{city.mins}</b>
+              </span>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Portfolio({
+  filter,
+  setFilter,
+  visible,
+  onOpen,
+}: {
+  filter: "All" | InventoryCategory;
+  setFilter: (f: "All" | InventoryCategory) => void;
+  visible: typeof INVENTORY;
+  onOpen: (item: InventoryItem) => void;
+}) {
+  return (
+    <section className="section reveal-section" id="inventory">
+      <div className="container">
+        <div className="section-head">
+          <div>
+            <span className="eyebrow">Inventory Portfolio</span>
+            <h2 className="h-section">
+              Inventory presented like <em>a body of work</em>.
+            </h2>
+          </div>
+          <p className="section-head-right">
+            We show range, credibility, and starting level publicly. Full board,
+            references, and commercials unlock once a buyer shares basic contact
+            details, creating a clean lead trail for owner-side follow-up.
+          </p>
+        </div>
+
+        <div className="inv-filter">
+          <div className="chips" role="tablist" aria-label="Inventory filters">
+            {FILTERS.map((f) => (
+              <button
+                key={f}
+                type="button"
+                className={`chip ${filter === f ? "active" : ""}`}
+                onClick={() => setFilter(f)}
+              >
+                {f}
+              </button>
+            ))}
+          </div>
+          <span className="inv-count">
+            <b>{visible.length}</b> {visible.length === 1 ? "unit" : "units"} shown
+          </span>
+        </div>
+
+        <div className="inv-grid">
+          {visible.map((item, i) => (
+            <div
+              className={`inv-cell ${filter === "All" && i === 0 ? "span-2" : ""}`}
+              key={item.code}
+            >
+              <InventoryCard item={item} onOpen={() => onOpen(item)} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function InventoryCard({
+  item,
+  onOpen,
+}: {
+  item: InventoryItem;
+  onOpen: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      className="inv-card"
+      onClick={onOpen}
+      aria-label={`Open ${item.title} details`}
+    >
+      <div className="inv-photo">
+        <div className="inv-photo-img inv-photo-day" style={{ backgroundImage: `url(${item.image})` }} />
+        <div
+          className="inv-photo-img inv-photo-night"
+          style={{ backgroundImage: `url(${item.imageNight ?? item.image})` }}
+        />
+        <span className="inv-badge">{item.code} - {item.category}</span>
+        <span className="inv-fan" aria-hidden="true">
+          {item.gallery.slice(0, 4).map((src) => (
+            <i key={`${item.code}-${src}`} style={{ backgroundImage: `url(${src})` }} />
+          ))}
+        </span>
+        <span className="inv-fan-count">{item.gallery.length} site stills</span>
+      </div>
+      <div className="inv-body">
+        <span className="inv-code">
+          {item.code} - {item.unitCount}
+        </span>
+        <h3 className="inv-title">{item.title}</h3>
+        <p className="inv-summary">{item.summary}</p>
+        <p className="inv-lead">{item.leadLine}</p>
+        <span className="inv-open">
+          View details
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M5 12h12M12 6l7 6-7 6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
+      </div>
+    </button>
+  );
+}
+
+function InventoryModal({
+  item,
+  initialLead,
+  unlocked,
+  onClose,
+  onUnlock,
+}: {
+  item: InventoryItem;
+  initialLead?: LeadForm;
+  unlocked: boolean;
+  onClose: () => void;
+  onUnlock: (code: string, lead: LeadForm) => void;
+}) {
+  const [lead, setLead] = useState<LeadForm>(
+    initialLead ?? { ...EMPTY_LEAD, interest: item.title },
+  );
+  const [errors, setErrors] = useState<LeadErrors>({});
+  const [status, setStatus] = useState("");
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [onClose]);
+
+  function updateLead(key: keyof LeadForm, value: string) {
+    setLead((current) => ({ ...current, [key]: value }));
+    setErrors((current) => ({ ...current, [key]: undefined }));
+  }
+
+  async function unlock(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const nextErrors = validateLead(lead);
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) return;
+
+    setStatus("Saving lead...");
+    const result = await sendLeadEvent("inventory_viewed", lead, {
+      inventoryCode: item.code,
+      inventoryTitle: item.title,
+      inventoryCategory: item.category,
+      source: "inventory_modal",
+    });
+    onUnlock(item.code, lead);
+    setStatus(result.persisted ? "Lead sent. Full details unlocked." : "Details unlocked. Lead saved locally for retry.");
+  }
+
+  async function requestDownload() {
+    setStatus("Recording download request...");
+    const result = await sendLeadEvent("inventory_download_requested", lead, {
+      inventoryCode: item.code,
+      inventoryTitle: item.title,
+      inventoryCategory: item.category,
+      source: "inventory_modal_download",
+    });
+    setStatus(result.persisted ? "Download request recorded." : "Download request saved locally for retry.");
+  }
+
+  return (
+    <div
+      className="modal-scrim open"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
+      <div className="inventory-modal" role="dialog" aria-modal="true" aria-label={`${item.title} details`}>
+        <button type="button" className="modal-close" onClick={onClose} aria-label="Close inventory details">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M6 6l12 12M18 6L6 18"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            />
+          </svg>
+        </button>
+
+        <div className="modal-media">
+          <div
+            className="modal-media-img"
+            style={{ backgroundImage: `url(${item.imageNight ?? item.image})` }}
+          />
+          <span className="inv-badge">{item.code} - {item.category}</span>
+          <div className="modal-media-cap">
+            <span>{item.category}</span>
+            <h4>{item.title}</h4>
+          </div>
+        </div>
+
+        <div className="modal-side">
+          <span className="modal-code">
+            {item.code} - {item.unitCount}
+          </span>
+          <h3 className="modal-title">{item.title}</h3>
+          <p className="modal-summary">{item.summary}</p>
+
+          {!unlocked ? (
+            <div className="modal-locked">
+              <span className="locked-note">
+                <LockIcon /> Full board and commercials locked
+              </span>
+              <form className="modal-form" onSubmit={unlock} noValidate>
+                <LeadField
+                  label="Name"
+                  value={lead.name}
+                  onChange={(value) => updateLead("name", value)}
+                  placeholder="Marketing lead name"
+                  error={errors.name}
+                  required
+                  wide
+                />
+                <PhoneField
+                  countryCode={lead.countryCode}
+                  phone={lead.phone}
+                  onCountryChange={(value) => updateLead("countryCode", value)}
+                  onPhoneChange={(value) => updateLead("phone", value)}
+                  error={errors.phone}
+                />
+                <LeadField
+                  label="Company / Brand"
+                  value={lead.company}
+                  onChange={(value) => updateLead("company", value)}
+                  placeholder="Brand / agency"
+                />
+                <LeadField
+                  label="Designation"
+                  value={lead.designation}
+                  onChange={(value) => updateLead("designation", value)}
+                  placeholder="Marketing manager / owner"
+                />
+                <LeadField
+                  label="Campaign window"
+                  value={lead.window}
+                  onChange={(value) => updateLead("window", value)}
+                  placeholder="Festive / Q3 / launch burst"
+                  wide
+                />
+                <LeadField
+                  label="Inventory interest"
+                  value={lead.interest}
+                  onChange={(value) => updateLead("interest", value)}
+                  placeholder="Digital package, front-lit board, full airport plan"
+                  wide
+                />
+                <button type="submit" className="btn-primary">
+                  Unlock full details
+                </button>
+                {status && <p className="form-status">{status}</p>}
+              </form>
+            </div>
+          ) : (
+            <div className="modal-locked">
+              <span className="unlock-ok">
+                <CheckIcon /> Unlocked - full specification
+              </span>
+              <dl className="spec-list">
+                {[
+                  ["Format", item.format],
+                  ["Units", item.unitCount],
+                  ["Location", item.location],
+                  ["References", item.unitRefs.join(", ")],
+                  ["Best use", item.leadLine],
+                ].map(([label, value]) => (
+                  <div className="row" key={label}>
+                    <dt>{label}</dt>
+                    <dd>{value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <div className="modal-actions">
+                <button type="button" className="btn-primary" onClick={requestDownload}>
+                  Request plan download
+                </button>
+                <a href="#contact" className="btn-ghost" onClick={onClose}>
+                  Talk to team
+                </a>
+              </div>
+              {status && <p className="form-status">{status}</p>}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function LeadField({
+  label,
+  value,
+  onChange,
+  placeholder,
+  error,
+  required,
+  wide,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+  error?: string;
+  required?: boolean;
+  wide?: boolean;
+}) {
+  return (
+    <label className={wide ? "wide" : undefined}>
+      <span>
+        {label}
+        {required ? " *" : ""}
+      </span>
+      <input value={value} onChange={(event) => onChange(event.target.value)} placeholder={placeholder} />
+      {error && <small className="field-err">{error}</small>}
+    </label>
+  );
+}
+
+function PhoneField({
+  countryCode,
+  phone,
+  onCountryChange,
+  onPhoneChange,
+  error,
+}: {
+  countryCode: string;
+  phone: string;
+  onCountryChange: (value: string) => void;
+  onPhoneChange: (value: string) => void;
+  error?: string;
+}) {
+  return (
+    <label className="phone-field">
+      <span>Phone / WhatsApp *</span>
+      <div className="phone-row">
+        <select value={countryCode} onChange={(event) => onCountryChange(event.target.value)}>
+          {COUNTRY_CODES.map((code) => (
+            <option key={code} value={code}>
+              {code}
+            </option>
+          ))}
+        </select>
+        <input value={phone} onChange={(event) => onPhoneChange(event.target.value)} placeholder="99999 99999" />
+      </div>
+      {error && <small className="field-err">{error}</small>}
+    </label>
+  );
+}
+
+function RangeBand() {
+  return (
+    <section className="section reveal-section" style={{ paddingTop: 0 }}>
+      <div className="container">
+        <div className="range">
+          <div>
+            <span className="eyebrow" style={{ color: "var(--accent)" }}>
+              Commercial range
+            </span>
+            <h2 style={{ marginTop: 16 }}>
+              Wide airport media inventory, starting from <em>2L+ per month</em>.
+            </h2>
+          </div>
+          <p>
+            We keep detailed package commercials off the public page. Serious
+            buyers share their campaign window first, then receive the right
+            media kit, availability, and final plan for owner-side discussion.
+          </p>
         </div>
       </div>
     </section>
@@ -551,66 +939,90 @@ function Connectivity() {
 }
 
 function ClientTrust() {
-  const radius = 210;
-  const count = FEATURED_CLIENTS.length;
+  const stageRef = useRef<HTMLDivElement | null>(null);
+  const [live, setLive] = useState(false);
+  const positions = [
+    { x: 50, y: 13 },
+    { x: 70, y: 23 },
+    { x: 82, y: 44 },
+    { x: 68, y: 66 },
+    { x: 50, y: 76 },
+    { x: 30, y: 66 },
+    { x: 18, y: 44 },
+    { x: 30, y: 23 },
+  ];
+
+  useEffect(() => {
+    const el = stageRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setLive(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section className="section clients" id="clients">
+    <section className="section clients reveal-section" id="clients">
       <div className="container">
         <div className="section-head">
           <div>
-            <span className="eyebrow">Clients and campaigns</span>
+            <span className="eyebrow">Clients and partnership</span>
             <h2 className="h-section">
-              Selected brands that show <em>real market trust</em>.
+              {CLIENT_PROOF_LINE.split("50+")[0]}
+              <em>50+ national and international brands</em>.
             </h2>
           </div>
           <p className="section-head-right">
-            We only show public-facing names here. The full historical client
-            depth stays private for owner-side conversations and direct pitches.
+            Mukesh Arts has worked across technology, mobile retail, ceramics,
+            jewellery, local premium brands, and regional corporate campaigns.
+            The proof sits here, away from the hero, as a trust layer for serious buyers.
           </p>
         </div>
 
-        <div className="client-stage">
-          <div className="client-orbit" aria-label="Selected public clients">
-            <div className="orbit-ring">
-              {FEATURED_CLIENTS.map((client, i) => {
-                const angle = (360 / count) * i;
-                return (
-                  <span
-                    key={client}
-                    className="orbit-node"
-                    style={
-                      {
-                        "--orbit-transform": `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg) translate(-50%, -50%)`,
-                      } as CSSProperties
-                    }
-                  >
-                    <span className="orbit-chip">{client}</span>
-                  </span>
-                );
-              })}
-            </div>
-            <div className="orbit-core">
-              <span>Selected</span>
-              <strong>8</strong>
-              <small>public clients</small>
-            </div>
+        <div className="proof-stage" ref={stageRef}>
+          <div className="proof-baseline" />
+          {FEATURED_CLIENTS.map((client, i) => {
+            const pos = positions[i % positions.length];
+            return (
+              <span
+                key={client}
+                className={`proof-bubble ${live ? "rise" : ""}`}
+                style={
+                  {
+                    left: `${pos.x}%`,
+                    top: `${pos.y}%`,
+                    animationDelay: `${i * 0.09}s`,
+                  } as CSSProperties
+                }
+              >
+                {client}
+              </span>
+            );
+          })}
+          <div className="proof-core">
+            <span>Trusted across</span>
+            <strong>50+</strong>
+            <small>brand conversations</small>
           </div>
+        </div>
 
-          <div className="client-copy">
-            <span className="eyebrow">Campaign formats</span>
-            <h3>Built for launches, events, private pushes, and corporate visibility.</h3>
-            <p>
-              The site should feel like an inventory portal and a trust document:
-              it shows enough proof to start a serious enquiry without exposing
-              the full client list or sensitive campaign history.
-            </p>
-            <div className="campaign-types">
-              {CAMPAIGN_TYPES.map((type) => (
-                <span key={type}>{type}</span>
-              ))}
-            </div>
-          </div>
+        <div className="proof-scroll">
+          {FEATURED_CLIENTS.map((client) => (
+            <span key={client}>{client}</span>
+          ))}
+        </div>
+
+        <div className="campaign-types">
+          {CAMPAIGN_TYPES.map((type) => (
+            <span key={type}>{type}</span>
+          ))}
         </div>
 
         <div className="operator-grid">
@@ -627,298 +1039,21 @@ function ClientTrust() {
   );
 }
 
-function Portfolio({
-  filter,
-  setFilter,
-  filterTick,
-  visible,
-  featured,
-  unlocked,
-  setUnlocked,
-  lead,
-  setLead,
-}: {
-  filter: "All" | InventoryCategory;
-  setFilter: (f: "All" | InventoryCategory) => void;
-  filterTick: number;
-  visible: typeof INVENTORY;
-  featured: typeof INVENTORY;
-  unlocked: boolean;
-  setUnlocked: (v: boolean) => void;
-  lead: LeadForm;
-  setLead: (l: LeadForm) => void;
-}) {
-  function updateLead(k: keyof LeadForm, v: string) {
-    setLead({ ...lead, [k]: v });
-  }
-
-  return (
-    <section className="section" id="inventory">
-      <div className="container">
-        <div className="section-head">
-          <div>
-            <span className="eyebrow">Inventory Portfolio</span>
-            <h2 className="h-section">
-              Inventory presented like <em>a body of work</em>.
-            </h2>
-          </div>
-          <p className="section-head-right">
-            We show range, credibility, and starting level on the public face.
-            Full board, references, and commercials unlock once a buyer shares
-            their campaign window, creating a clean lead trail for the owner side.
-          </p>
-        </div>
-
-        {!unlocked ? (
-          <div className="gate-preview">
-            <div className="gate-collage" aria-label="Inventory preview">
-              {featured.map((item, i) => {
-                const nightSrc = item.imageNight ?? item.image;
-                return (
-                  <article
-                    key={item.code}
-                    className={i === 0 ? "feature-collage" : undefined}
-                  >
-                    <div
-                      className="gate-layer gate-layer-day"
-                      style={{ backgroundImage: `url(${item.image})` }}
-                    />
-                    <div
-                      className="gate-layer gate-layer-night"
-                      style={{ backgroundImage: `url(${nightSrc})` }}
-                    />
-                    <div className="gate-gallery-dots" aria-hidden="true">
-                      {item.gallery.slice(0, 3).map((src, g) => (
-                        <span
-                          key={`${item.code}-gate-${src}`}
-                          style={
-                            {
-                              backgroundImage: `url(${src})`,
-                              "--thumb-delay": `${g * 0.16}s`,
-                            } as CSSProperties
-                          }
-                        />
-                      ))}
-                    </div>
-                    <div className="gate-collage-meta">
-                      <span>{item.category}</span>
-                      <h4>{item.title}</h4>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-
-            <form
-              className="gate-form"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setUnlocked(true);
-                const el = document.getElementById("inventory");
-                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-              }}
-            >
-              <span className="eyebrow">Buyer info first</span>
-              <h3>Unlock the full inventory board</h3>
-              <p>
-                Serious buyers share their campaign window before seeing full
-                inventory depth, and the lead is routed straight to owner-side
-                follow-up.
-              </p>
-
-              <label>
-                <span>Name</span>
-                <input
-                  value={lead.name}
-                  onChange={(e) => updateLead("name", e.target.value)}
-                  placeholder="Marketing lead name"
-                />
-              </label>
-              <label>
-                <span>Company</span>
-                <input
-                  value={lead.company}
-                  onChange={(e) => updateLead("company", e.target.value)}
-                  placeholder="Brand / agency"
-                />
-              </label>
-              <label>
-                <span>Phone / WhatsApp</span>
-                <input
-                  value={lead.phone}
-                  onChange={(e) => updateLead("phone", e.target.value)}
-                  placeholder="+91"
-                />
-              </label>
-              <label>
-                <span>Campaign window</span>
-                <input
-                  value={lead.window}
-                  onChange={(e) => updateLead("window", e.target.value)}
-                  placeholder="Festive / Q3 / launch burst"
-                />
-              </label>
-              <label className="wide">
-                <span>Inventory interest</span>
-                <input
-                  value={lead.interest}
-                  onChange={(e) => updateLead("interest", e.target.value)}
-                  placeholder="Digital package, front-lit board, full airport plan"
-                />
-              </label>
-
-              <button type="submit" className="btn-primary">
-                Unlock Inventory
-              </button>
-            </form>
-          </div>
-        ) : (
-          <>
-            <div className="chips" role="tablist">
-              {FILTERS.map((f) => (
-                <button
-                  key={f}
-                  type="button"
-                  className={`chip ${filter === f ? "active" : ""}`}
-                  onClick={() => setFilter(f)}
-                >
-                  {f}
-                </button>
-              ))}
-            </div>
-
-            <div className="portfolio" key={filterTick}>
-              {visible.map((item, i) => {
-                const span = i === 0 ? "feature" : i % 5 === 4 ? "tall" : "";
-                const nightSrc = item.imageNight ?? item.image;
-                return (
-                  <article
-                    key={item.code}
-                    className={`work ${span}`.trim()}
-                    style={{ animationDelay: `${i * 70}ms` } as CSSProperties}
-                  >
-                    <div className="work-image-wrap">
-                      <div
-                        className="work-image work-image-day"
-                        style={{ backgroundImage: `url(${item.image})` }}
-                      />
-                      <div
-                        className="work-image work-image-night"
-                        style={{ backgroundImage: `url(${nightSrc})` }}
-                      />
-                      <div className="work-gallery-stack" aria-hidden="true">
-                        {item.gallery.slice(0, 4).map((src, g) => (
-                          <span
-                            key={`${item.code}-gallery-${src}`}
-                            className={`gallery-shot shot-${g + 1}`}
-                            style={{ backgroundImage: `url(${src})` }}
-                          />
-                        ))}
-                      </div>
-                      <div className="work-shade" />
-                      <div className="work-veil" />
-                      <span className="work-tag">
-                        {item.code} - {item.category}
-                      </span>
-                      <span className="work-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M5 12 L17 12 M12 6 L19 12 L12 18"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="1.6"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </span>
-                      <div className="work-image-meta">
-                        <span className="work-image-meta-cat">{item.category}</span>
-                        <h4>{item.title}</h4>
-                      </div>
-                    </div>
-
-                    <div className="work-body">
-                      <span className="work-code">
-                        {item.code} - {item.unitCount}
-                      </span>
-                      <h3>{item.title}</h3>
-                      <p>{item.summary}</p>
-                      <p className="work-lead">{item.leadLine}</p>
-                      <dl className="work-dl">
-                        <div>
-                          <dt>Format</dt>
-                          <dd>{item.format}</dd>
-                        </div>
-                        <div>
-                          <dt>Units</dt>
-                          <dd>{item.unitCount}</dd>
-                        </div>
-                        <div>
-                          <dt>Location</dt>
-                          <dd>{item.location}</dd>
-                        </div>
-                        <div>
-                          <dt>References</dt>
-                          <dd>{item.unitRefs.slice(0, 6).join(", ")}</dd>
-                        </div>
-                      </dl>
-                      <div className="work-zones">
-                        {item.zones.map((z) => (
-                          <span key={z}>{z}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          </>
-        )}
-      </div>
-    </section>
-  );
-}
-
-function RangeBand() {
-  return (
-    <section className="section" style={{ paddingTop: 0 }}>
-      <div className="container">
-        <div className="range">
-          <div>
-            <span className="eyebrow" style={{ color: "var(--accent)" }}>
-              Commercial range
-            </span>
-            <h2 style={{ marginTop: 16 }}>
-              Wide airport media inventory, starting from <em>INR 2,00,000 / month</em>.
-            </h2>
-          </div>
-          <p>
-            We do not show every package price publicly. The site qualifies
-            intent first, then shares the correct media kit, availability, and
-            final commercials once the campaign window is understood.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Team() {
   return (
-    <section className="section" id="team" style={{ paddingTop: 0 }}>
+    <section className="section reveal-section" id="team" style={{ paddingTop: 0 }}>
       <div className="container">
         <div className="section-head">
           <div>
             <span className="eyebrow">Owner-side POCs</span>
             <h2 className="h-section">
-              Clear contacts, without a homepage <em>built around faces</em>.
+              A team built so brands do not have to <em>chase execution</em>.
             </h2>
           </div>
           <p className="section-head-right">
-            The public brand stays focused on the airport media offer. Serious
-            leads route through the form and are matched to the right owner-side
-            person for follow-up.
+            The public brand stays focused on the airport media offer. Qualified
+            leads route to the right owner-side person for commercial direction,
+            airport protocol, and campaign follow-through.
           </p>
         </div>
 
@@ -940,7 +1075,7 @@ function Team() {
 
 function FutureLayer() {
   return (
-    <section className="future" id="future">
+    <section className="future reveal-section" id="future">
       <div className="container">
         <div className="future-inner">
           <div>
@@ -951,15 +1086,15 @@ function FutureLayer() {
               Website, inventory operations, and <em>lead follow-through</em>.
             </h2>
             <p className="future-lede">
-              The website builds trust first. The operating layer helps
-              maintain inventory, qualify the right companies, track serious
-              leads, and reduce manual follow-up leakage.
+              The website builds trust first. The operating layer helps maintain
+              inventory, qualify the right companies, track serious leads, and
+              reduce manual follow-up leakage.
             </p>
           </div>
 
           <div className="future-modules">
-            {FUTURE_MODULES.map((m) => (
-              <article key={m}>{m}</article>
+            {FUTURE_MODULES.map((module) => (
+              <article key={module}>{module}</article>
             ))}
           </div>
         </div>
@@ -969,8 +1104,30 @@ function FutureLayer() {
 }
 
 function Contact() {
+  const [lead, setLead] = useState<LeadForm>(EMPTY_LEAD);
+  const [errors, setErrors] = useState<LeadErrors>({});
+  const [status, setStatus] = useState("");
+
+  function updateLead(key: keyof LeadForm, value: string) {
+    setLead((current) => ({ ...current, [key]: value }));
+    setErrors((current) => ({ ...current, [key]: undefined }));
+  }
+
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const nextErrors = validateLead(lead);
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) return;
+
+    setStatus("Sending request...");
+    const result = await sendLeadEvent("contact_request", lead, {
+      source: "contact_form",
+    });
+    setStatus(result.persisted ? "Request sent to the team." : "Request saved locally for retry.");
+  }
+
   return (
-    <section className="section" id="contact">
+    <section className="section reveal-section" id="contact">
       <div className="container">
         <div className="contact-grid">
           <div>
@@ -984,28 +1141,66 @@ function Contact() {
             </p>
           </div>
 
-          <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
-            {[
-              { k: "Full name", w: false },
-              { k: "Brand / company", w: false },
-              { k: "Phone / WhatsApp", w: false },
-              { k: "Email", w: false },
-              { k: "Campaign window", w: false },
-              { k: "Inventory interest", w: false },
-              { k: "Budget range", w: true },
-            ].map(({ k, w }) => (
-              <label key={k} className={w ? "wide" : ""}>
-                <span>{k}</span>
-                <input placeholder={k} />
-              </label>
-            ))}
+          <form className="contact-form" onSubmit={submit} noValidate>
+            <LeadField
+              label="Full name"
+              value={lead.name}
+              onChange={(value) => updateLead("name", value)}
+              placeholder="Full name"
+              error={errors.name}
+              required
+            />
+            <LeadField
+              label="Brand / company"
+              value={lead.company}
+              onChange={(value) => updateLead("company", value)}
+              placeholder="Brand / company"
+            />
+            <PhoneField
+              countryCode={lead.countryCode}
+              phone={lead.phone}
+              onCountryChange={(value) => updateLead("countryCode", value)}
+              onPhoneChange={(value) => updateLead("phone", value)}
+              error={errors.phone}
+            />
+            <LeadField
+              label="Email"
+              value={lead.email}
+              onChange={(value) => updateLead("email", value)}
+              placeholder="Email"
+            />
+            <LeadField
+              label="Campaign window"
+              value={lead.window}
+              onChange={(value) => updateLead("window", value)}
+              placeholder="Festive / Q3 / launch burst"
+            />
+            <LeadField
+              label="Inventory interest"
+              value={lead.interest}
+              onChange={(value) => updateLead("interest", value)}
+              placeholder="Digital, static, full airport plan"
+            />
+            <LeadField
+              label="Designation"
+              value={lead.designation}
+              onChange={(value) => updateLead("designation", value)}
+              placeholder="Marketing manager / owner"
+              wide
+            />
             <label className="wide">
               <span>Message</span>
-              <textarea rows={4} placeholder="Campaign brief, preferred dates, or notes" />
+              <textarea
+                rows={4}
+                value={lead.message}
+                onChange={(event) => updateLead("message", event.target.value)}
+                placeholder="Campaign brief, preferred dates, or notes"
+              />
             </label>
             <button type="submit" className="btn-primary">
               Request Media Kit
             </button>
+            {status && <p className="form-status">{status}</p>}
           </form>
         </div>
       </div>
@@ -1020,7 +1215,9 @@ function Footer() {
         <div className="foot-inner">
           <div>
             <div className="foot-brand">
-              <span className="brand-mark"><AirportLogoMark /></span>
+              <span className="brand-mark">
+                <MukeshArtsLogoMark />
+              </span>
               <h3>{BRAND_DISPLAY_NAME}</h3>
             </div>
             <p>
@@ -1032,7 +1229,7 @@ function Footer() {
           <div className="foot-col">
             <h6>Sections</h6>
             <ul>
-              <li><a href="#why">Why Airport</a></li>
+              <li><a href="#why">Why Rajkot Int Airport</a></li>
               <li><a href="#connectivity">Connectivity</a></li>
               <li><a href="#inventory">Inventory Portfolio</a></li>
               <li><a href="#clients">Clients</a></li>
@@ -1060,62 +1257,32 @@ function Footer() {
   );
 }
 
-/* Draft co-brand mark: airport media first, Mukesh Art as operating signature. */
-function AirportLogoMark() {
+function MukeshArtsLogoMark() {
   return (
-    <svg
-      viewBox="0 0 180 106"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <rect x="0" y="0" width="180" height="106" rx="12" fill="#F5FBFF" />
-      <path d="M17 76 C48 48 91 40 148 33" fill="none" stroke="#0B74D1" strokeWidth="4" strokeLinecap="round" />
-      <path d="M122 30 L150 18 L155 22 L139 35 L166 40 L170 45 L130 43 L113 51 L108 48 L120 39 L96 36 L92 31 Z" fill="#E21D2D" />
-      <circle cx="42" cy="72" r="14" fill="none" stroke="#E21D2D" strokeWidth="3" />
-      <circle cx="42" cy="72" r="5" fill="#E21D2D" />
+    <svg viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M18 38 L45 5 L70 38 C54 31 34 31 18 38 Z" fill="#E21D2D" />
+      <path className="logo-blue" d="M70 38 L96 5 L122 38 C105 31 86 31 70 38 Z" fill="#1E2A78" />
       <text
-        x="22"
-        y="42"
-        fontFamily="Arial, Helvetica, sans-serif"
-        fontSize="24"
-        fontWeight="900"
-        letterSpacing="1"
-        fill="#111111"
-      >
-        RAM
-      </text>
-      <text
-        x="22"
-        y="58"
-        fontFamily="Arial, Helvetica, sans-serif"
-        fontSize="9"
-        fontWeight="800"
-        letterSpacing="1.4"
-        fill="#0B74D1"
-      >
-        AIRPORT MEDIA
-      </text>
-      <text
-        x="116"
-        y="82"
+        x="70"
+        y="63"
         textAnchor="middle"
         fontFamily="Arial, Helvetica, sans-serif"
-        fontSize="13"
+        fontSize="24"
         fontWeight="800"
-        letterSpacing="1.6"
-        fill="#1E2A78"
+        letterSpacing="2.5"
+        className="logo-word"
       >
         MUKESH
       </text>
-      <rect x="139" y="72" width="26" height="12" rx="2" fill="#E21D2D" />
+      <rect x="79" y="70" width="43" height="9" rx="1.5" fill="#E21D2D" />
       <text
-        x="152"
-        y="81"
+        x="101"
+        y="78"
         textAnchor="middle"
         fontFamily="Arial, Helvetica, sans-serif"
-        fontSize="7"
+        fontSize="8"
         fontWeight="800"
-        letterSpacing="2"
+        letterSpacing="3"
         fill="#FFFFFF"
       >
         ART
@@ -1124,10 +1291,136 @@ function AirportLogoMark() {
   );
 }
 
+function LockIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="5" y="11" width="14" height="9" rx="1" fill="none" stroke="currentColor" strokeWidth="1.7" />
+      <path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" strokeWidth="1.7" />
+    </svg>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" strokeWidth="2" />
+    </svg>
+  );
+}
+
+function geoToSvg(lon: number, lat: number) {
+  const degToRad = Math.PI / 180;
+  const radius = 6378137;
+  const falseEasting = 4000000;
+  const falseNorthing = 4000000;
+  const centralMeridian = 80 * degToRad;
+  const latitudeOrigin = 24 * degToRad;
+  const standardParallel1 = 12.472944 * degToRad;
+  const standardParallel2 = 35.172806 * degToRad;
+  const sourceBounds = {
+    minX: 2818364.2018000046,
+    minY: 2177526.7756000045,
+    maxX: 5679118.517199999,
+    maxY: 5444563.216300001,
+  };
+  const paddingY = 30;
+  const scale = (700 - paddingY * 2) / (sourceBounds.maxY - sourceBounds.minY);
+  const paddingX =
+    (1000 - (sourceBounds.maxX - sourceBounds.minX) * scale) / 2;
+
+  const n =
+    Math.log(Math.cos(standardParallel1) / Math.cos(standardParallel2)) /
+    Math.log(
+      Math.tan(Math.PI / 4 + standardParallel2 / 2) /
+        Math.tan(Math.PI / 4 + standardParallel1 / 2),
+    );
+  const f =
+    (Math.cos(standardParallel1) *
+      Math.pow(Math.tan(Math.PI / 4 + standardParallel1 / 2), n)) /
+    n;
+  const rho0 =
+    (radius * f) / Math.pow(Math.tan(Math.PI / 4 + latitudeOrigin / 2), n);
+  const rho =
+    (radius * f) / Math.pow(Math.tan(Math.PI / 4 + lat * degToRad / 2), n);
+  const theta = n * (lon * degToRad - centralMeridian);
+  const projectedX = falseEasting + rho * Math.sin(theta);
+  const projectedY = falseNorthing + rho0 - rho * Math.cos(theta);
+
+  return {
+    x: paddingX + (projectedX - sourceBounds.minX) * scale,
+    y: paddingY + (sourceBounds.maxY - projectedY) * scale,
+  };
+}
+
+function validateLead(lead: LeadForm) {
+  const errors: LeadErrors = {};
+  if (lead.name.trim().length < 2) errors.name = "Enter a contact name.";
+
+  const digits = lead.phone.replace(/\D/g, "");
+  if (lead.countryCode === "+91") {
+    if (digits.length !== 10) errors.phone = "Enter a valid 10-digit Indian mobile number.";
+  } else if (digits.length < 6 || digits.length > 15) {
+    errors.phone = "Enter a valid phone number.";
+  }
+
+  return errors;
+}
+
+async function sendLeadEvent(
+  eventType: LeadEventType,
+  lead: LeadForm,
+  context: Record<string, string>,
+) {
+  const payload = {
+    eventType,
+    ...context,
+    name: lead.name.trim(),
+    countryCode: lead.countryCode,
+    phone: lead.phone.replace(/\D/g, ""),
+    company: lead.company.trim(),
+    designation: lead.designation.trim(),
+    campaignWindow: lead.window.trim(),
+    inventoryInterest: lead.interest.trim(),
+    email: lead.email.trim(),
+    message: lead.message.trim(),
+    pagePath: typeof window !== "undefined" ? window.location.pathname : "",
+    createdAt: new Date().toISOString(),
+  };
+
+  try {
+    const response = await fetch("/api/leads/", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const result = (await response.json()) as { persisted?: boolean };
+
+    if (!response.ok || result.persisted === false) {
+      storePendingLead(payload);
+      return { persisted: false };
+    }
+
+    return { persisted: true };
+  } catch {
+    storePendingLead(payload);
+    return { persisted: false };
+  }
+}
+
+function storePendingLead(payload: Record<string, string>) {
+  if (typeof window === "undefined") return;
+  try {
+    const existing = window.localStorage.getItem(PENDING_LEADS_KEY);
+    const rows = existing ? (JSON.parse(existing) as Record<string, string>[]) : [];
+    rows.push(payload);
+    window.localStorage.setItem(PENDING_LEADS_KEY, JSON.stringify(rows.slice(-50)));
+  } catch {}
+}
+
 function getInitials(name: string) {
   return name
     .split(" ")
     .slice(0, 2)
-    .map((p) => p[0])
+    .map((part) => part[0])
     .join("");
 }

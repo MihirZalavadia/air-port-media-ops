@@ -4,7 +4,7 @@ const basePath = isGithubPages ? "/air-port-media-ops" : "";
 
 const nextConfig = {
   reactStrictMode: true,
-  output: "export",
+  ...(isGithubPages ? { output: "export" } : {}),
   trailingSlash: true,
   images: {
     unoptimized: true,
