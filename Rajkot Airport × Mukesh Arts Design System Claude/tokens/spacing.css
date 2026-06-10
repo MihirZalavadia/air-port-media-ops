@@ -1,0 +1,57 @@
+/* =================================================================
+   SPACING · RADIUS · SHADOW · MOTION — Rajkot Airport × Mukesh Arts
+   -----------------------------------------------------------------
+   The system is built on sharp, architectural geometry: square
+   corners on cards and buttons, full pills (999px) only on chips and
+   toggles. Borders are thin hairlines; elevation is soft and
+   long-throw, never a tight drop shadow.
+   ================================================================= */
+:root {
+  /* Spacing scale (8px base, with a few editorial half-steps) */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   22px;
+  --space-6:   28px;
+  --space-8:   40px;
+  --space-10:  56px;
+  --space-12:  72px;
+
+  /* Vertical rhythm for full-bleed sections (fluid) */
+  --section-y: clamp(72px, 9vw, 140px); /* @kind spacing */
+
+  /* Container */
+  --container-max: 1320px;
+  --container-pad: clamp(20px, 4vw, 56px);
+
+  /* Radii — deliberately tight. The brand is sharp, not rounded. */
+  --radius-0:    0px;     /* default for cards, buttons, inputs   */
+  --radius-sm:   4px;     /* logo plates, brand mark              */
+  --radius-md:   6px;     /* nav brand mark                       */
+  --radius-pill: 999px;   /* chips, toggles, status dots          */
+
+  /* Control heights */
+  --control-h:     44px;  /* buttons, toggles, nav CTA            */
+  --control-h-sm:  38px;  /* filter chips                         */
+
+  /* Borders */
+  --border-w:      1px;
+  --border-hairline: 1px solid var(--rule);
+
+  /* Elevation (also re-declared per-theme in colors.css for tint) */
+  --shadow-card:  var(--card-shadow);
+  --shadow-hover: var(--hover-shadow);
+  --shadow-paper: var(--paper-shadow);
+
+  /* Motion — calm, premium easing. No bounce. */
+  --ease-out:    cubic-bezier(0.22, 0.61, 0.24, 1); /* @kind other */
+  --ease-soft:   cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --ease-sweep:  cubic-bezier(0.65, 0, 0.25, 1); /* @kind other */
+  --dur-fast:    0.2s; /* @kind other */
+  --dur-base:    0.3s; /* @kind other */
+  --dur-slow:    0.55s; /* @kind other */
+  --dur-sweep:   0.65s; /* @kind other */
+  --lift:        -2px; /* @kind spacing */
+  --lift-lg:     -6px; /* @kind spacing */
+}

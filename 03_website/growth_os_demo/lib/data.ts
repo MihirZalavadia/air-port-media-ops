@@ -1,98 +1,10 @@
-// Draft website data only. No fake testimonials, client logos, GST details,
-// legal claims, or final contact details are included until owner approval.
-
 export type ThemeId = "day" | "night";
-export type BrandId = "maroonBlue" | "redSky";
-export type PaletteId = `${BrandId}-${ThemeId}`;
 
-export type Palette = {
-  id: PaletteId;
-  brandId: BrandId;
-  themeId: ThemeId;
-  name: string;
-  note: string;
-  swatches: {
-    deep: string;
-    accent: string;
-    surface: string;
-    ink: string;
-  };
-};
-
-export const PALETTES: Palette[] = [
-  {
-    id: "maroonBlue-day",
-    brandId: "maroonBlue",
-    themeId: "day",
-    name: "Maroon Blue Day",
-    note: "Mukesh Arts red and deep blue on a clean ivory base. Corporate, sharp, and pitch-ready.",
-    swatches: { deep: "#1E2A78", accent: "#A3162B", surface: "#F8F9FC", ink: "#111111" },
-  },
-  {
-    id: "maroonBlue-night",
-    brandId: "maroonBlue",
-    themeId: "night",
-    name: "Maroon Blue Night",
-    note: "Dark maroon, deep logo blue, and black graphite for a premium night-airport mood.",
-    swatches: { deep: "#1E2A78", accent: "#7C0F23", surface: "#12141E", ink: "#F4F6FF" },
-  },
-  {
-    id: "redSky-day",
-    brandId: "redSky",
-    themeId: "day",
-    name: "Red Sky Day",
-    note: "Light red and sky blue derived from the Mukesh Arts mark. Fresh, modern, and web-friendly.",
-    swatches: { deep: "#0B74D1", accent: "#E21D2D", surface: "#F5FBFF", ink: "#111111" },
-  },
-  {
-    id: "redSky-night",
-    brandId: "redSky",
-    themeId: "night",
-    name: "Red Sky Night",
-    note: "A softer night mode with cool airport blue, bright red accents, and clean white contrast.",
-    swatches: { deep: "#0D4E86", accent: "#E21D2D", surface: "#0E1624", ink: "#F4FAFF" },
-  },
-];
-
-export const BRAND_NAMES = [
-  {
-    name: "Rajkot Airport x Mukesh Arts",
-    note: "Recommended partnership-facing name. It keeps airport media clear while adding Mukesh Arts trust.",
-  },
-  {
-    name: "Rajkot Airport Media",
-    note: "Clear and direct for public search, media kits, and advertiser conversations.",
-  },
-  {
-    name: "Mukesh Arts Airport Media",
-    note: "Stronger Mukesh-led name if the owners want the parent advertising brand more visible.",
-  },
-];
-
-export const LOGO_CONCEPTS = [
-  {
-    id: "partnership",
-    name: "Rajkot Airport x Mukesh Arts",
-    label: "RA x MA",
-    motif: "Airport media name backed by the Mukesh Arts red and blue mark",
-    note: "Best route for client review: clear airport proposition with parent-brand credibility.",
-  },
-  {
-    id: "media",
-    name: "Rajkot Airport Media",
-    label: "RAM",
-    motif: "Public-facing media platform name with Mukesh Arts as operator/partner",
-    note: "Safer for SEO and advertiser clarity if the public website should stay airport-first.",
-  },
-] as const;
-
-export const TAGLINES = [
-  "Own the airport moment.",
-  "Rajkot's runway for brand recall.",
-  "Where Saurashtra's premium audience meets your brand.",
-  "A premium route to Saurashtra's travellers.",
-  "Be seen where decisions travel.",
-];
+export const AIRPORT_NAME = "Rajkot International Airport";
+export const BRAND_DISPLAY_NAME = "Rajkot Airport Media x Mukesh Art";
+export const CLIENT_PROOF_LINE = "Partnered with 50+ national and international brands";
+export const MAIN_OFFICE_ADDRESS =
+  "Mukesh Art Main Office, PLOT NO. 71, SURVEY NO. 145, JAMBUDIYA, Morbi, Gujarat - 363642";
 
 export type InventoryCategory =
   | "Digital Packages"
@@ -115,6 +27,8 @@ export type InventoryItem = {
   image: string;
   /** Optional dedicated night-mode photo */
   imageNight?: string;
+  /** Related photos used in the inventory hover gallery */
+  gallery: string[];
   visualKind: "digital" | "static" | "backlit" | "journey" | "custom";
   source: string;
 };
@@ -143,6 +57,7 @@ export const INVENTORY: InventoryItem[] = [
     ],
     unitRefs: ["AD_12", "AD_14", "AD_19", "AD_20", "AD_21", "AD_22", "AD_33-38"],
     image: IMG("pkg-01"),
+    gallery: [IMG("pkg-01"), IMG("pkg-02"), IMG("pkg-03")],
     visualKind: "digital",
     source: "Package - 1 (18 unit).pdf",
   },
@@ -165,6 +80,7 @@ export const INVENTORY: InventoryItem[] = [
     ],
     unitRefs: ["AD_8", "AD_9", "AD_29", "AD_30", "AD_31", "AD_32", "AD_41"],
     image: IMG("pkg-02"),
+    gallery: [IMG("pkg-02"), IMG("digital-full"), IMG("pkg-01")],
     visualKind: "digital",
     source: "Package-2 (7 UNIT).pdf",
   },
@@ -187,6 +103,7 @@ export const INVENTORY: InventoryItem[] = [
     ],
     unitRefs: ["AD_10", "AD_16", "AD_23", "AD_24", "AD_43-48"],
     image: IMG("pkg-03"),
+    gallery: [IMG("pkg-03"), IMG("backlit-sc"), IMG("backlit-ws")],
     visualKind: "digital",
     source: "Package-3 14 UNIT.pdf",
   },
@@ -209,6 +126,7 @@ export const INVENTORY: InventoryItem[] = [
     ],
     unitRefs: ["PKG-01", "PKG-02", "PKG-03"],
     image: IMG("digital-full"),
+    gallery: [IMG("digital-full"), IMG("pkg-01"), IMG("pkg-02"), IMG("pkg-03")],
     visualKind: "journey",
     source: "deck_a_digital_signage_v1.md",
   },
@@ -226,6 +144,7 @@ export const INVENTORY: InventoryItem[] = [
     zones: ["Airport approach road", "Terminal city-side visibility"],
     unitRefs: ["AD-2"],
     image: IMG("ad-2"),
+    gallery: [IMG("ad-2"), IMG("ad-3"), IMG("ad-5")],
     visualKind: "static",
     source: "AD-2 AIRPORT FRONT LIT BOARD.pdf",
   },
@@ -244,6 +163,7 @@ export const INVENTORY: InventoryItem[] = [
     unitRefs: ["AD-3"],
     image: IMG("ad-3"),
     imageNight: IMG("ad-3-night"),
+    gallery: [IMG("ad-3"), IMG("ad-3-night"), IMG("ad-4")],
     visualKind: "static",
     source: "AD - 3 AIRPORT FRONT LIT BOARD.pdf",
   },
@@ -261,6 +181,7 @@ export const INVENTORY: InventoryItem[] = [
     zones: ["Departure route", "Airport road-facing media"],
     unitRefs: ["AD-4"],
     image: IMG("ad-4"),
+    gallery: [IMG("ad-4"), IMG("ad-3"), IMG("ad-6")],
     visualKind: "static",
     source: "AD - 4 AIRPORT FRONTLIT BOARD.pdf",
   },
@@ -278,6 +199,7 @@ export const INVENTORY: InventoryItem[] = [
     zones: ["Arrival exit", "Pickup/drop movement"],
     unitRefs: ["AD-5"],
     image: IMG("ad-5"),
+    gallery: [IMG("ad-5"), IMG("ad-6"), IMG("ad-2")],
     visualKind: "static",
     source: "AD - 5 AIRPORT FRONTLIT BOARD.pdf",
   },
@@ -295,6 +217,7 @@ export const INVENTORY: InventoryItem[] = [
     zones: ["Arrival route", "Airport exit movement"],
     unitRefs: ["AD-6"],
     image: IMG("ad-6"),
+    gallery: [IMG("ad-6"), IMG("ad-5"), IMG("ad-4")],
     visualKind: "static",
     source: "AD-6 AIRPORT  FRONT LIT BOARD.pdf",
   },
@@ -312,6 +235,7 @@ export const INVENTORY: InventoryItem[] = [
     zones: ["Security clearance", "Passenger processing flow"],
     unitRefs: ["Security clearance backlit"],
     image: IMG("backlit-sc"),
+    gallery: [IMG("backlit-sc"), IMG("pkg-03"), IMG("digital-full")],
     visualKind: "backlit",
     source: "STATIC BACKLIT SECURITY CLEARANCE.pdf",
   },
@@ -329,6 +253,7 @@ export const INVENTORY: InventoryItem[] = [
     zones: ["Laptop workstation", "Indoor dwell zone"],
     unitRefs: ["Laptop workstation backlit"],
     image: IMG("backlit-ws"),
+    gallery: [IMG("backlit-ws"), IMG("backlit-sc"), IMG("pkg-02")],
     visualKind: "backlit",
     source: "static backlit Laptop Work Station.pdf",
   },
@@ -346,6 +271,7 @@ export const INVENTORY: InventoryItem[] = [
     zones: ["Media mix planning", "Campaign window matching", "Owner-side coordination"],
     unitRefs: ["Custom"],
     image: IMG("plan"),
+    gallery: [IMG("plan"), IMG("digital-full"), IMG("ad-2")],
     visualKind: "custom",
     source: "Planning layer",
   },
@@ -357,6 +283,52 @@ export const AIRPORT_STATS = [
   { value: "28", label: "Daily flight movements" },
   { value: "2L+", label: "Starting inventory range" },
 ];
+
+export const AIRPORT_CONNECTIONS = [
+  { city: "Delhi", code: "DEL", x: 379, y: 196, angle: -28, labelDx: 18, labelDy: -28 },
+  { city: "Mumbai", code: "BOM", x: 290, y: 400, angle: 74, labelDx: -58, labelDy: -18 },
+  { city: "Navi Mumbai", code: "NMI", x: 293, y: 401, angle: 78, labelDx: -76, labelDy: 20 },
+  { city: "Pune", code: "PNQ", x: 311, y: 412, angle: 82, labelDx: 58, labelDy: 14 },
+  { city: "Hyderabad", code: "HYD", x: 409, y: 436, angle: 65, labelDx: 92, labelDy: 8 },
+  { city: "Bengaluru", code: "BLR", x: 390, y: 530, angle: 88, labelDx: 86, labelDy: 24 },
+] as const;
+
+export const FEATURED_CLIENTS = [
+  "Apple",
+  "Google",
+  "Vivo",
+  "Oppo",
+  "Jade Blue",
+  "Simpolo",
+  "Poojara Mobiles",
+  "Radhika Jewellers",
+] as const;
+
+export const CAMPAIGN_TYPES = [
+  "Events",
+  "Campaigns",
+  "Private Campaigns",
+  "Corporate Campaigns",
+  "Temporary Agency Campaigns",
+] as const;
+
+export const WHY_US = [
+  {
+    n: "01",
+    t: "Local OOH execution",
+    p: "Mukesh Arts understands ground execution, vendor coordination, display quality, and campaign follow-through across real outdoor media.",
+  },
+  {
+    n: "02",
+    t: "Airport protocol handling",
+    p: "The operating flow is built around airport coordination, site access, inventory clarity, and owner-side approvals.",
+  },
+  {
+    n: "03",
+    t: "Faster advertiser decisions",
+    p: "The website turns scattered PDFs into a sharper inventory story, helping brands shortlist formats and request the right media kit sooner.",
+  },
+] as const;
 
 export const POCS = [
   {
@@ -371,7 +343,7 @@ export const POCS = [
   },
   {
     name: "Ridham Bhuva",
-    role: "Airport ASCO & Partner",
+    role: "Airport ASCO & Manager",
     focus: "Airport protocol, site visits, approvals, and operations coordination.",
   },
 ];

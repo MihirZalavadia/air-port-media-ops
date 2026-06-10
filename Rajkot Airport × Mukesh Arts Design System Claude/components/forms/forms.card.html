@@ -1,0 +1,40 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Forms — Lead Gate" subtitle="Field inputs in the 2-column gate form with submit" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--bg-deep); color: var(--ink); padding: 30px; }
+  .gate { background: var(--surface); border: 1px solid var(--rule); padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .gate h3 { grid-column: 1/-1; margin: 6px 0 4px; font-family: var(--font-display); font-weight: 500; font-size: 28px; }
+  .gate > p { grid-column: 1/-1; margin: 0 0 6px; color: var(--ink-2); font-size: 14px; line-height: 1.6; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="../../_ds_bundle.js"></script>
+  <script type="text/babel">
+    const { Field, Button, Eyebrow } = window.RajkotAirportMukeshArtsDesignSystem_f86af9;
+    function Demo() {
+      return (
+        <form className="gate" onSubmit={(e)=>e.preventDefault()}>
+          <Eyebrow style={{gridColumn:"1/-1"}}>Buyer info first</Eyebrow>
+          <h3>Unlock the full inventory board</h3>
+          <p>Serious buyers share their campaign window before seeing full inventory depth — a clean lead trail for the owner side.</p>
+          <Field label="Name" placeholder="Marketing lead name" />
+          <Field label="Company" placeholder="Brand / agency" />
+          <Field label="Phone / WhatsApp" placeholder="+91" />
+          <Field label="Campaign window" placeholder="Festive · Q3 · launch burst" />
+          <Field label="Inventory interest" wide placeholder="Digital package, front-lit board, full airport plan" />
+          <Button type="submit" variant="primary" style={{gridColumn:"1/-1"}}>Unlock Demo Inventory</Button>
+        </form>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<Demo/>);
+  </script>
+</body>
+</html>

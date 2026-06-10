@@ -3,16 +3,19 @@
 import { CSSProperties, useEffect, useMemo, useState } from "react";
 import {
   AIRPORT_STATS,
-  BRAND_NAMES,
-  BrandId,
+  AIRPORT_CONNECTIONS,
+  AIRPORT_NAME,
+  BRAND_DISPLAY_NAME,
+  CAMPAIGN_TYPES,
+  CLIENT_PROOF_LINE,
+  FEATURED_CLIENTS,
   FUTURE_MODULES,
   INVENTORY,
   InventoryCategory,
-  LOGO_CONCEPTS,
-  PALETTES,
+  MAIN_OFFICE_ADDRESS,
   POCS,
-  TAGLINES,
   ThemeId,
+  WHY_US,
 } from "@/lib/data";
 
 const FILTERS: Array<"All" | InventoryCategory> = [
@@ -23,7 +26,7 @@ const FILTERS: Array<"All" | InventoryCategory> = [
   "Custom Plans",
 ];
 
-type LeadDraft = {
+type LeadForm = {
   name: string;
   company: string;
   phone: string;
@@ -31,7 +34,7 @@ type LeadDraft = {
   interest: string;
 };
 
-const EMPTY_LEAD: LeadDraft = {
+const EMPTY_LEAD: LeadForm = {
   name: "",
   company: "",
   phone: "",
@@ -42,40 +45,37 @@ const EMPTY_LEAD: LeadDraft = {
 const FEATURED_FOR_GATE = ["PKG-01", "AD-3", "PKG-03", "DIGITAL-FULL"];
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const heroImage = (name: string) => `${BASE_PATH}/img/${name}.png`;
+const publicAsset = (file: string) => `${BASE_PATH}/img/${file}`;
 
 export default function Shell() {
   const [themeId, setThemeId] = useState<ThemeId>("day");
-  const [brandId, setBrandId] = useState<BrandId>("maroonBlue");
   const [filter, setFilter] = useState<"All" | InventoryCategory>("All");
   const [filterTick, setFilterTick] = useState(0);
   const [unlocked, setUnlocked] = useState(false);
-  const [lead, setLead] = useState<LeadDraft>(EMPTY_LEAD);
+  const [lead, setLead] = useState<LeadForm>(EMPTY_LEAD);
   const [booting, setBooting] = useState(true);
 
-  // Read saved theme/brand + hide loader after first paint
+  // Read saved theme + hide loader after first paint.
   useEffect(() => {
     try {
       const savedTheme = window.localStorage.getItem("ram-theme") as ThemeId | null;
-      const savedBrand = window.localStorage.getItem("ram-brand") as BrandId | null;
       if (savedTheme === "night" || savedTheme === "day") setThemeId(savedTheme);
-      if (savedBrand === "maroonBlue" || savedBrand === "redSky") setBrandId(savedBrand);
+      window.localStorage.removeItem("ram-brand");
     } catch {}
-    const t = window.setTimeout(() => setBooting(false), 1100);
+    const t = window.setTimeout(() => setBooting(false), 1700);
     return () => window.clearTimeout(t);
   }, []);
 
-  // Propagate brand + theme onto <html> so CSS tokens flip everywhere
+  // Propagate the production Red/Sky brand + selected day/night mode.
   useEffect(() => {
     if (typeof document === "undefined") return;
     document.documentElement.dataset.theme = themeId;
-    document.documentElement.dataset.brand = brandId;
+    document.documentElement.dataset.brand = "redSky";
     try {
       window.localStorage.setItem("ram-theme", themeId);
-      window.localStorage.setItem("ram-brand", brandId);
+      window.localStorage.removeItem("ram-brand");
     } catch {}
-  }, [themeId, brandId]);
-
-  const paletteId = `${brandId}-${themeId}` as const;
+  }, [themeId]);
 
   const visible = useMemo(() => {
     if (filter === "All") return INVENTORY;
@@ -103,17 +103,13 @@ export default function Shell() {
       <TopNav
         themeId={themeId}
         toggleTheme={toggleTheme}
-        brandId={brandId}
-        toggleBrand={() =>
-          setBrandId((b) => (b === "maroonBlue" ? "redSky" : "maroonBlue"))
-        }
       />
 
       <main>
         <Hero />
         <Manifesto />
         <WhyAirport />
-        <Identity paletteId={paletteId} />
+        <Connectivity />
         <Portfolio
           filter={filter}
           setFilter={changeFilter}
@@ -126,6 +122,7 @@ export default function Shell() {
           setLead={setLead}
         />
         <RangeBand />
+        <ClientTrust />
         <Team />
         <FutureLayer />
         <Contact />
@@ -141,8 +138,24 @@ export default function Shell() {
 function RouteLoader() {
   return (
     <div className="loader" aria-label="Loading airport media routes">
-      <span>Loading airport media routes</span>
-      <div className="loader-bar" />
+      <div className="loader-blueprint">
+        <div className="loader-logo-card">
+          <AirportLogoMark />
+        </div>
+        <div className="loader-copy">
+          <span>{BRAND_DISPLAY_NAME}</span>
+          <strong>Preparing airport media view</strong>
+        </div>
+        <div className="loader-flight" aria-hidden="true">
+          <svg viewBox="0 0 120 36">
+            <path
+              d="M5 20 L48 18 L82 4 L90 7 L64 20 L108 24 L114 29 L54 27 L30 34 L23 31 L40 24 L5 23 Z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+        <div className="loader-bar" />
+      </div>
     </div>
   );
 }
@@ -150,67 +163,38 @@ function RouteLoader() {
 function TopNav({
   themeId,
   toggleTheme,
-  brandId,
-  toggleBrand,
 }: {
   themeId: ThemeId;
   toggleTheme: () => void;
-  brandId: BrandId;
-  toggleBrand: () => void;
 }) {
   return (
     <header className="nav">
       <div className="container nav-inner">
-        <a href="#top" className="brand" aria-label="Rajkot Airport x Mukesh Arts">
+        <a href="#top" className="brand" aria-label={BRAND_DISPLAY_NAME}>
           <span className="brand-mark">
             <AirportLogoMark />
           </span>
           <span className="brand-text">
-            <b>Rajkot Airport x Mukesh Arts</b>
-            <small>Airport media - Draft</small>
+            <b>{BRAND_DISPLAY_NAME}</b>
+            <small>Airport media platform</small>
           </span>
         </a>
         <nav className="nav-links" aria-label="Primary">
           <a href="#why">Why Airport</a>
-          <a href="#identity">Identity</a>
+          <a href="#connectivity">Connectivity</a>
           <a href="#inventory">Inventory</a>
-          <a href="#future">CRM Layer</a>
+          <a href="#clients">Clients</a>
+          <a href="#future">Growth Layer</a>
           <a href="#contact">Contact</a>
         </nav>
         <div className="nav-end">
-          <BrandToggle brandId={brandId} onToggle={toggleBrand} />
           <FlightToggle themeId={themeId} onToggle={toggleTheme} />
           <a href="#inventory" className="btn-primary">
-            Unlock Inventory
+            View Inventory
           </a>
         </div>
       </div>
     </header>
-  );
-}
-
-function BrandToggle({
-  brandId,
-  onToggle,
-}: {
-  brandId: BrandId;
-  onToggle: () => void;
-}) {
-  const isRedSky = brandId === "redSky";
-  return (
-    <button
-      type="button"
-      className={`brand-toggle ${isRedSky ? "is-red-sky" : "is-maroon-blue"}`}
-      onClick={onToggle}
-      aria-label={isRedSky ? "Switch to Maroon Blue palette" : "Switch to Red Sky palette"}
-      title={isRedSky ? "Switch to Maroon Blue palette" : "Switch to Red Sky palette"}
-    >
-      <span className="brand-toggle-dot" aria-hidden="true" />
-      <span className="brand-toggle-label">
-        <small>Palette</small>
-        <b>{isRedSky ? "Red/Sky" : "Maroon/Blue"}</b>
-      </span>
-    </button>
   );
 }
 
@@ -228,28 +212,49 @@ function FlightToggle({
       onClick={onToggle}
       className="toggle"
       aria-pressed={isNight}
-      aria-label={isNight ? "Switch to Day Takeoff" : "Switch to Night Runway"}
-      title={isNight ? "Switch to Day Takeoff" : "Switch to Night Runway"}
+      aria-label={isNight ? "Switch to day theme" : "Switch to night theme"}
+      title={isNight ? "Switch to day theme" : "Switch to night theme"}
     >
       <span className="toggle-scene" aria-hidden="true">
-        <span className="toggle-sun" />
-        <span className="toggle-moon" />
-        <span className="toggle-cloud toggle-cloud-a" />
-        <span className="toggle-cloud toggle-cloud-b" />
-        <span className="toggle-star toggle-star-1" />
-        <span className="toggle-star toggle-star-2" />
-        <span className="toggle-star toggle-star-3" />
-        <span className="toggle-runway" />
-        <span className="toggle-plane">
-          <Airliner />
+        <span className="toggle-orb">
+          <ThemeGlyph isNight={isNight} />
         </span>
-        <span className="toggle-trail" />
+        <span className="toggle-track-line" />
       </span>
       <span className="toggle-label">
-        <small>{isNight ? "Night" : "Day"}</small>
-        <b>{isNight ? "Runway" : "Takeoff"}</b>
+        <small>Theme</small>
+        <b>{isNight ? "Night" : "Day"}</b>
       </span>
     </button>
+  );
+}
+
+function ThemeGlyph({ isNight }: { isNight: boolean }) {
+  if (isNight) {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M18.5 15.7A7.5 7.5 0 0 1 8.3 5.5a8 8 0 1 0 10.2 10.2Z"
+          fill="currentColor"
+        />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="4.2" fill="currentColor" />
+      <g stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+        <path d="M12 2.8v2.5" />
+        <path d="M12 18.7v2.5" />
+        <path d="m4.5 4.5 1.8 1.8" />
+        <path d="m17.7 17.7 1.8 1.8" />
+        <path d="M2.8 12h2.5" />
+        <path d="M18.7 12h2.5" />
+        <path d="m4.5 19.5 1.8-1.8" />
+        <path d="m17.7 6.3 1.8-1.8" />
+      </g>
+    </svg>
   );
 }
 
@@ -265,24 +270,26 @@ function Hero() {
         style={{ backgroundImage: `url(${heroImage("hero-night")})` }}
       />
 
+      <BrandBubbleSky />
+
       <div className="container hero-content">
-        <span className="eyebrow hero-eyebrow">Rajkot Airport x Mukesh Arts</span>
+        <span className="eyebrow hero-eyebrow">{BRAND_DISPLAY_NAME}</span>
         <h1 className="hero-h1">
           Airport visibility, <em>engineered.</em>
         </h1>
         <p className="hero-sub">
-          A premium media network for brands that want Saurashtra&apos;s
-          travelling audience and the high-context recall only an airport
-          environment delivers. Inventory you can shortlist, plans you can
-          actually pitch internally, and a path to a CRM-tracked relationship.
+          A premium media network for brands that want Rajkot International
+          Airport&apos;s travelling audience and the high-context recall only an
+          airport environment delivers. Inventory you can shortlist, plans you
+          can pitch internally, and a path to a CRM-tracked relationship.
         </p>
 
         <div className="hero-actions">
           <a href="#inventory" className="btn-primary">
-            Preview the Portfolio
+            View Inventory
           </a>
-          <a href="#identity" className="btn-ghost">
-            Compare Identity Routes
+          <a href="#contact" className="btn-ghost">
+            Request Media Kit
           </a>
         </div>
       </div>
@@ -301,6 +308,25 @@ function Hero() {
   );
 }
 
+function BrandBubbleSky() {
+  return (
+    <aside className="brand-bubble-sky" aria-label={CLIENT_PROOF_LINE}>
+      <p>{CLIENT_PROOF_LINE}</p>
+      <div className="brand-bubble-track">
+        {FEATURED_CLIENTS.map((client, i) => (
+          <span
+            className="brand-bubble"
+            key={client}
+            style={{ "--bubble-delay": `${i * 0.16}s` } as CSSProperties}
+          >
+            {client}
+          </span>
+        ))}
+      </div>
+    </aside>
+  );
+}
+
 function Manifesto() {
   return (
     <section className="manifesto">
@@ -314,15 +340,15 @@ function Manifesto() {
           <div>
             <dt>Footprint</dt>
             <dd>
-              10 – 15 advertising sites and 70 – 80 screen and static surfaces
+              10-15 advertising sites and 70-80 screen and static surfaces
               across the terminal envelope.
             </dd>
           </div>
           <div>
             <dt>Audience</dt>
             <dd>
-              Saurashtra business travellers, NRI corridors, family decision
-              makers, and Tier-2 premium households.
+              Business travellers, NRI corridors, family decision makers, and
+              premium households moving through Rajkot&apos;s international gateway.
             </dd>
           </div>
           <div>
@@ -361,7 +387,7 @@ function WhyAirport() {
             {
               n: "01",
               t: "Premium context",
-              p: "Airport movement gives brands a cleaner environment than cluttered outdoor corridors — and an audience that is already attentive, not scrolling.",
+              p: "Airport movement gives brands a cleaner environment than cluttered outdoor corridors and an audience that is already attentive, not scrolling.",
             },
             {
               n: "02",
@@ -386,115 +412,215 @@ function WhyAirport() {
   );
 }
 
-function Identity({
-  paletteId,
-}: {
-  paletteId: string;
-}) {
+function Connectivity() {
+  const hub = { x: 245, y: 332, label: "Rajkot Intl", code: "RAJ" };
+
+  const routePath = (city: (typeof AIRPORT_CONNECTIONS)[number]) => {
+    const midX = (hub.x + city.x) / 2;
+    const midY = Math.min(hub.y, city.y) - 78;
+    return `M ${hub.x} ${hub.y} Q ${midX} ${midY} ${city.x} ${city.y}`;
+  };
+
   return (
-    <section className="section" id="identity" style={{ background: "var(--bg-deep)" }}>
+    <section className="section connectivity" id="connectivity">
       <div className="container">
         <div className="section-head">
           <div>
-            <span className="eyebrow">Identity routes</span>
+            <span className="eyebrow">Connectivity</span>
             <h2 className="h-section">
-              Confirm the Mukesh Arts-backed name and palette <em>before the full build</em>.
+              Connected to India&apos;s key <em>metro markets</em>.
             </h2>
           </div>
           <p className="section-head-right">
-            The palette now follows the Mukesh Arts mark: red, deep blue, black,
-            grey, and a lighter red/sky-blue route for a cleaner web version.
+            {AIRPORT_NAME} links Rajkot&apos;s business corridor with metro
+            demand centres, making airport media valuable for regional launches,
+            corporate campaigns, and national brand recall.
           </p>
         </div>
 
-        <div className="identity-grid">
-          <div className="logo-stack">
-            {LOGO_CONCEPTS.map((c) => (
-              <article className="logo-card" key={c.id}>
-                <div className="logo-card-mark">
-                  <AirportLogoMark />
-                </div>
-                <div>
-                  <h4>{c.name}</h4>
-                  <p>{c.note}</p>
-                  <small className="logo-card-label">{c.label}</small>
-                </div>
-              </article>
-            ))}
+        <div className="connectivity-grid">
+          <div className="route-frame">
+            <svg
+              viewBox="0 0 1000 700"
+              className="route-svg"
+              role="img"
+              aria-label="Route map from Rajkot International Airport to Mumbai, Delhi, Bengaluru, Hyderabad and Pune"
+            >
+              <defs>
+                <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.55" />
+                  <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
+                </radialGradient>
+              </defs>
 
-            <article className="logo-card" style={{ alignItems: "start" }}>
-              <div className="logo-card-mark" aria-hidden="true">
-                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 22, color: "var(--accent)" }}>Aa</span>
-              </div>
-              <div>
-                <h4 style={{ marginBottom: 10 }}>Name options</h4>
-                <div style={{ display: "grid", gap: 10 }}>
-                  {BRAND_NAMES.map((b) => (
-                    <div key={b.name}>
-                      <strong style={{ color: "var(--ink)", fontSize: 14 }}>{b.name}</strong>
-                      <p style={{ margin: "4px 0 0", color: "var(--muted)", fontSize: 12.5, lineHeight: 1.5 }}>
-                        {b.note}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </article>
+              <g className="route-grid-lines">
+                {[110, 220, 330, 440, 550, 660].map((y) => (
+                  <line key={`h-${y}`} x1="40" y1={y} x2="960" y2={y} />
+                ))}
+                {[120, 260, 400, 540, 680, 820].map((x) => (
+                  <line key={`v-${x}`} x1={x} y1="40" x2={x} y2="660" />
+                ))}
+              </g>
+
+              <image
+                className="india-map-image"
+                href={publicAsset("india-natural-earth.svg")}
+                x="0"
+                y="0"
+                width="1000"
+                height="700"
+                preserveAspectRatio="xMidYMid meet"
+              />
+
+              {AIRPORT_CONNECTIONS.map((city, i) => (
+                <path
+                  key={city.code}
+                  d={routePath(city)}
+                  className="route-line"
+                  style={{ "--route-delay": `${i * 0.2}s` } as CSSProperties}
+                />
+              ))}
+
+              {AIRPORT_CONNECTIONS.map((city, i) => (
+                <g
+                  key={`plane-${city.code}`}
+                  className="route-plane"
+                  style={{ "--plane-delay": `${i * 0.22}s` } as CSSProperties}
+                  transform={`translate(${(hub.x + city.x) / 2} ${(hub.y + city.y) / 2}) rotate(${city.angle})`}
+                >
+                  <path d="M-13 1 L0 -2 L15 -13 L19 -10 L7 0 L19 8 L15 12 L0 3 L-13 5 Z" />
+                </g>
+              ))}
+
+              <circle cx={hub.x} cy={hub.y} r="70" fill="url(#hubGlow)" />
+              <circle cx={hub.x} cy={hub.y} r="10" className="route-hub" />
+              <circle cx={hub.x} cy={hub.y} r="10" className="route-hub-pulse" />
+              <text x={hub.x} y={hub.y + 36} className="route-hub-label" textAnchor="middle">
+                {hub.label.toUpperCase()}
+              </text>
+              <text x={hub.x} y={hub.y + 58} className="route-hub-code" textAnchor="middle">
+                {hub.code} HUB
+              </text>
+
+              {AIRPORT_CONNECTIONS.map((city) => (
+                <g key={city.code} className="route-node">
+                  <circle cx={city.x} cy={city.y} r="6" className="route-dot" />
+                  <text
+                    x={city.x + city.labelDx}
+                    y={city.y + city.labelDy}
+                    textAnchor="middle"
+                    className="route-city"
+                  >
+                    {city.city}
+                  </text>
+                  <text
+                    x={city.x + city.labelDx}
+                    y={city.y + city.labelDy + 20}
+                    textAnchor="middle"
+                    className="route-code"
+                  >
+                    {city.code}
+                  </text>
+                </g>
+              ))}
+            </svg>
+            <p className="map-credit">India outline: Natural Earth public domain data.</p>
           </div>
 
-          <div>
-            <div className="palette-row">
-              {PALETTES.map((p) => (
-                <div
-                  key={p.id}
-                  className={`palette ${paletteId === p.id ? "active" : ""}`}
-                  aria-current={paletteId === p.id ? "true" : undefined}
-                >
-                  <span className="palette-swatches">
-                    <b style={{ background: p.swatches.deep }} />
-                    <b style={{ background: p.swatches.accent }} />
-                    <b style={{ background: p.swatches.surface }} />
-                    <b style={{ background: p.swatches.ink }} />
-                  </span>
-                  <strong>{p.name}</strong>
-                  <small>{p.note}</small>
-                  {paletteId === p.id && <span className="palette-current">Currently active</span>}
-                </div>
+          <div className="connectivity-panel">
+            <span className="eyebrow">Route value</span>
+            <h3>Metro-linked attention, local execution.</h3>
+            <p>
+              This section gives buyers a fast business reason for airport media:
+              Rajkot is not only a local terminal, it is a connection point into
+              national metro travel and premium regional movement.
+            </p>
+            <div className="metro-list" aria-label="Connected metro cities">
+              {AIRPORT_CONNECTIONS.map((city) => (
+                <span key={city.code}>
+                  <b>{city.code}</b>
+                  {city.city}
+                </span>
               ))}
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
-            <div className="confirm-strip">
-              <b>Awaiting confirmation</b>
-              <span>
-                Palette and rate-card share format are draft references. Final
-                visual system locks with Mukesh sir before any external send.
-              </span>
-            </div>
+function ClientTrust() {
+  const radius = 210;
+  const count = FEATURED_CLIENTS.length;
 
-            <div style={{ marginTop: 30 }}>
-              <span className="eyebrow" style={{ marginBottom: 16, display: "inline-flex" }}>
-                Tagline directions
-              </span>
-              <div style={{ display: "grid", gap: 14, marginTop: 16 }}>
-                {TAGLINES.map((t) => (
-                  <p
-                    key={t}
-                    className="serif"
-                    style={{
-                      margin: 0,
-                      paddingLeft: 16,
-                      borderLeft: "2px solid var(--accent)",
-                      color: "var(--ink)",
-                      fontSize: 22,
-                      lineHeight: 1.2,
-                    }}
+  return (
+    <section className="section clients" id="clients">
+      <div className="container">
+        <div className="section-head">
+          <div>
+            <span className="eyebrow">Clients and campaigns</span>
+            <h2 className="h-section">
+              Selected brands that show <em>real market trust</em>.
+            </h2>
+          </div>
+          <p className="section-head-right">
+            We only show public-facing names here. The full historical client
+            depth stays private for owner-side conversations and direct pitches.
+          </p>
+        </div>
+
+        <div className="client-stage">
+          <div className="client-orbit" aria-label="Selected public clients">
+            <div className="orbit-ring">
+              {FEATURED_CLIENTS.map((client, i) => {
+                const angle = (360 / count) * i;
+                return (
+                  <span
+                    key={client}
+                    className="orbit-node"
+                    style={
+                      {
+                        "--orbit-transform": `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg) translate(-50%, -50%)`,
+                      } as CSSProperties
+                    }
                   >
-                    {t}
-                  </p>
-                ))}
-              </div>
+                    <span className="orbit-chip">{client}</span>
+                  </span>
+                );
+              })}
+            </div>
+            <div className="orbit-core">
+              <span>Selected</span>
+              <strong>8</strong>
+              <small>public clients</small>
             </div>
           </div>
+
+          <div className="client-copy">
+            <span className="eyebrow">Campaign formats</span>
+            <h3>Built for launches, events, private pushes, and corporate visibility.</h3>
+            <p>
+              The site should feel like an inventory portal and a trust document:
+              it shows enough proof to start a serious enquiry without exposing
+              the full client list or sensitive campaign history.
+            </p>
+            <div className="campaign-types">
+              {CAMPAIGN_TYPES.map((type) => (
+                <span key={type}>{type}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="operator-grid">
+          {WHY_US.map((card) => (
+            <article className="operator-card" key={card.n}>
+              <span>{card.n}</span>
+              <h3>{card.t}</h3>
+              <p>{card.p}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -519,10 +645,10 @@ function Portfolio({
   featured: typeof INVENTORY;
   unlocked: boolean;
   setUnlocked: (v: boolean) => void;
-  lead: LeadDraft;
-  setLead: (l: LeadDraft) => void;
+  lead: LeadForm;
+  setLead: (l: LeadForm) => void;
 }) {
-  function updateLead(k: keyof LeadDraft, v: string) {
+  function updateLead(k: keyof LeadForm, v: string) {
     setLead({ ...lead, [k]: v });
   }
 
@@ -531,7 +657,7 @@ function Portfolio({
       <div className="container">
         <div className="section-head">
           <div>
-            <span className="eyebrow">Inventory · Portfolio</span>
+            <span className="eyebrow">Inventory Portfolio</span>
             <h2 className="h-section">
               Inventory presented like <em>a body of work</em>.
             </h2>
@@ -539,7 +665,7 @@ function Portfolio({
           <p className="section-head-right">
             We show range, credibility, and starting level on the public face.
             Full board, references, and commercials unlock once a buyer shares
-            their campaign window — a clean lead trail for the owner side.
+            their campaign window, creating a clean lead trail for the owner side.
           </p>
         </div>
 
@@ -561,6 +687,19 @@ function Portfolio({
                       className="gate-layer gate-layer-night"
                       style={{ backgroundImage: `url(${nightSrc})` }}
                     />
+                    <div className="gate-gallery-dots" aria-hidden="true">
+                      {item.gallery.slice(0, 3).map((src, g) => (
+                        <span
+                          key={`${item.code}-gate-${src}`}
+                          style={
+                            {
+                              backgroundImage: `url(${src})`,
+                              "--thumb-delay": `${g * 0.16}s`,
+                            } as CSSProperties
+                          }
+                        />
+                      ))}
+                    </div>
                     <div className="gate-collage-meta">
                       <span>{item.category}</span>
                       <h4>{item.title}</h4>
@@ -582,9 +721,9 @@ function Portfolio({
               <span className="eyebrow">Buyer info first</span>
               <h3>Unlock the full inventory board</h3>
               <p>
-                The website behaviour we can pitch: serious buyers share their
-                campaign window before seeing full inventory depth, and the
-                lead is routed straight to owner-side follow-up.
+                Serious buyers share their campaign window before seeing full
+                inventory depth, and the lead is routed straight to owner-side
+                follow-up.
               </p>
 
               <label>
@@ -616,7 +755,7 @@ function Portfolio({
                 <input
                   value={lead.window}
                   onChange={(e) => updateLead("window", e.target.value)}
-                  placeholder="Festive · Q3 · launch burst"
+                  placeholder="Festive / Q3 / launch burst"
                 />
               </label>
               <label className="wide">
@@ -629,7 +768,7 @@ function Portfolio({
               </label>
 
               <button type="submit" className="btn-primary">
-                Unlock Demo Inventory
+                Unlock Inventory
               </button>
             </form>
           </div>
@@ -667,10 +806,19 @@ function Portfolio({
                         className="work-image work-image-night"
                         style={{ backgroundImage: `url(${nightSrc})` }}
                       />
+                      <div className="work-gallery-stack" aria-hidden="true">
+                        {item.gallery.slice(0, 4).map((src, g) => (
+                          <span
+                            key={`${item.code}-gallery-${src}`}
+                            className={`gallery-shot shot-${g + 1}`}
+                            style={{ backgroundImage: `url(${src})` }}
+                          />
+                        ))}
+                      </div>
                       <div className="work-shade" />
                       <div className="work-veil" />
                       <span className="work-tag">
-                        {item.code} · {item.category}
+                        {item.code} - {item.category}
                       </span>
                       <span className="work-arrow" aria-hidden="true">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -692,7 +840,7 @@ function Portfolio({
 
                     <div className="work-body">
                       <span className="work-code">
-                        {item.code} · {item.unitCount}
+                        {item.code} - {item.unitCount}
                       </span>
                       <h3>{item.title}</h3>
                       <p>{item.summary}</p>
@@ -742,7 +890,7 @@ function RangeBand() {
               Commercial range
             </span>
             <h2 style={{ marginTop: 16 }}>
-              Wide airport media inventory, starting from <em>₹2,00,000 / month</em>.
+              Wide airport media inventory, starting from <em>INR 2,00,000 / month</em>.
             </h2>
           </div>
           <p>
@@ -781,7 +929,7 @@ function Team() {
               <span className="poc-role">{p.role}</span>
               <h3>{p.name}</h3>
               <p>{p.focus}</p>
-              <small>Direct contact details TBC after owner approval</small>
+              <small>Owner-side coordination</small>
             </article>
           ))}
         </div>
@@ -797,16 +945,15 @@ function FutureLayer() {
         <div className="future-inner">
           <div>
             <span className="eyebrow" style={{ color: "var(--accent)" }}>
-              Future operating layer
+              Growth operating layer
             </span>
             <h2 style={{ marginTop: 16 }}>
-              Public website now. Selected-user <em>CRM in month 2/3</em>.
+              Website, inventory operations, and <em>lead follow-through</em>.
             </h2>
             <p className="future-lede">
-              The starter website wins trust first. Once the public story is
-              approved, the selected-user layer helps maintain inventory,
-              qualify the right companies, track serious leads, and reduce
-              manual follow-up leakage.
+              The website builds trust first. The operating layer helps
+              maintain inventory, qualify the right companies, track serious
+              leads, and reduce manual follow-up leakage.
             </p>
           </div>
 
@@ -832,8 +979,8 @@ function Contact() {
               Tell us the campaign window. We&apos;ll suggest <em>the right inventory path</em>.
             </h2>
             <p className="lede">
-              Draft front-end only. Final form routing, contact numbers, CRM
-              connection, and WhatsApp workflow connect after owner approval.
+              Share your campaign window, preferred format, and budget range.
+              The team will respond with the most relevant airport media path.
             </p>
           </div>
 
@@ -874,12 +1021,11 @@ function Footer() {
           <div>
             <div className="foot-brand">
               <span className="brand-mark"><AirportLogoMark /></span>
-              <h3>Rajkot Airport x Mukesh Arts</h3>
+              <h3>{BRAND_DISPLAY_NAME}</h3>
             </div>
             <p>
-              Draft reference website. No final legal, official partnership,
-              contact, GST, or campaign claims included until owner approval.
-              Inventory and visuals are working drafts for the partner meeting.
+              Premium airport media inventory across digital screens, static
+              hoardings, and campaign plans at Rajkot International Airport.
             </p>
           </div>
 
@@ -887,9 +1033,10 @@ function Footer() {
             <h6>Sections</h6>
             <ul>
               <li><a href="#why">Why Airport</a></li>
-              <li><a href="#identity">Identity Routes</a></li>
+              <li><a href="#connectivity">Connectivity</a></li>
               <li><a href="#inventory">Inventory Portfolio</a></li>
-              <li><a href="#future">CRM Layer</a></li>
+              <li><a href="#clients">Clients</a></li>
+              <li><a href="#future">Growth Layer</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
@@ -897,103 +1044,78 @@ function Footer() {
           <div className="foot-col">
             <h6>Reach</h6>
             <ul>
-              <li>Rajkot International Airport</li>
-              <li>Saurashtra · Gujarat</li>
+              <li>{AIRPORT_NAME}</li>
+              <li>{MAIN_OFFICE_ADDRESS}</li>
               <li>Owner-side response within 1 working day</li>
             </ul>
           </div>
         </div>
 
         <div className="foot-base">
-          <span>v0.2 · Draft Reference Site · {new Date().getFullYear()}</span>
-          <span>Built for owner review</span>
+          <span>{BRAND_DISPLAY_NAME} - {new Date().getFullYear()}</span>
+          <span>Built for advertiser enquiries</span>
         </div>
       </div>
     </footer>
   );
 }
 
-function Airliner() {
-  // Front-view passenger jet, line-art style.
-  // Vertical tail fin at top centre, horizontal stabilizer below, circular
-  // fuselage in the middle, swept wings extending left + right with twin
-  // engines below. Reads as a real airliner head-on.
-  return (
-    <svg
-      viewBox="0 0 60 36"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      {/* Vertical tail fin (top centre) */}
-      <path d="M29 7 Q30 2.5 30 2.5 Q30 2.5 31 7 L31 13" strokeWidth="1.3" />
-
-      {/* Horizontal tail stabilizer */}
-      <path d="M24 14 L36 14" strokeWidth="1.3" />
-      <path d="M24 14 L23 13" strokeWidth="1.2" />
-      <path d="M36 14 L37 13" strokeWidth="1.2" />
-
-      {/* Fuselage (centre body, slightly elongated oval) */}
-      <ellipse cx="30" cy="20" rx="4" ry="6" strokeWidth="1.3" />
-
-      {/* Left wing — swept back */}
-      <path d="M6 25 L25 17 L25 20 L9 27 Z" strokeWidth="1.3" />
-
-      {/* Right wing — swept back */}
-      <path d="M54 25 L35 17 L35 20 L51 27 Z" strokeWidth="1.3" />
-
-      {/* Engines */}
-      <ellipse cx="15" cy="26.5" rx="2.6" ry="1.5" strokeWidth="1.2" />
-      <ellipse cx="45" cy="26.5" rx="2.6" ry="1.5" strokeWidth="1.2" />
-
-      {/* Motion / descent lines below engines */}
-      <g strokeWidth="0.8" opacity="0.6">
-        <path d="M12 30 L12 33" />
-        <path d="M15 30 L15 34" />
-        <path d="M18 30 L18 33" />
-        <path d="M42 30 L42 33" />
-        <path d="M45 30 L45 34" />
-        <path d="M48 30 L48 33" />
-      </g>
-    </svg>
-  );
-}
-
-/* Airport-tower brand mark — arch + control tower + takeoff sweep */
+/* Draft co-brand mark: airport media first, Mukesh Art as operating signature. */
 function AirportLogoMark() {
   return (
     <svg
-      viewBox="0 0 140 90"
+      viewBox="0 0 180 106"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <rect x="0" y="0" width="140" height="90" rx="10" fill="currentColor" opacity="0" />
-      <path d="M18 38 L45 5 L70 38 C54 31 34 31 18 38 Z" fill="#E21D2D" />
-      <path d="M70 38 L96 5 L122 38 C105 31 86 31 70 38 Z" fill="#1E2A78" />
+      <rect x="0" y="0" width="180" height="106" rx="12" fill="#F5FBFF" />
+      <path d="M17 76 C48 48 91 40 148 33" fill="none" stroke="#0B74D1" strokeWidth="4" strokeLinecap="round" />
+      <path d="M122 30 L150 18 L155 22 L139 35 L166 40 L170 45 L130 43 L113 51 L108 48 L120 39 L96 36 L92 31 Z" fill="#E21D2D" />
+      <circle cx="42" cy="72" r="14" fill="none" stroke="#E21D2D" strokeWidth="3" />
+      <circle cx="42" cy="72" r="5" fill="#E21D2D" />
       <text
-        x="70"
-        y="63"
-        textAnchor="middle"
+        x="22"
+        y="42"
         fontFamily="Arial, Helvetica, sans-serif"
         fontSize="24"
-        fontWeight="800"
-        letterSpacing="2.5"
+        fontWeight="900"
+        letterSpacing="1"
         fill="#111111"
+      >
+        RAM
+      </text>
+      <text
+        x="22"
+        y="58"
+        fontFamily="Arial, Helvetica, sans-serif"
+        fontSize="9"
+        fontWeight="800"
+        letterSpacing="1.4"
+        fill="#0B74D1"
+      >
+        AIRPORT MEDIA
+      </text>
+      <text
+        x="116"
+        y="82"
+        textAnchor="middle"
+        fontFamily="Arial, Helvetica, sans-serif"
+        fontSize="13"
+        fontWeight="800"
+        letterSpacing="1.6"
+        fill="#1E2A78"
       >
         MUKESH
       </text>
-      <rect x="79" y="70" width="43" height="9" rx="1.5" fill="#E21D2D" />
+      <rect x="139" y="72" width="26" height="12" rx="2" fill="#E21D2D" />
       <text
-        x="101"
-        y="78"
+        x="152"
+        y="81"
         textAnchor="middle"
         fontFamily="Arial, Helvetica, sans-serif"
-        fontSize="8"
+        fontSize="7"
         fontWeight="800"
-        letterSpacing="3"
+        letterSpacing="2"
         fill="#FFFFFF"
       >
         ART

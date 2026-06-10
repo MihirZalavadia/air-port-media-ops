@@ -1,0 +1,7 @@
+<svg viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mukesh Arts">
+  <path d="M18 38 L45 5 L70 38 C54 31 34 31 18 38 Z" fill="#E21D2D"></path>
+  <path d="M70 38 L96 5 L122 38 C105 31 86 31 70 38 Z" fill="#4C64D8"></path>
+  <text x="70" y="63" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="800" letter-spacing="2.5" fill="#F4F6FF">MUKESH</text>
+  <rect x="79" y="70" width="43" height="9" rx="1.5" fill="#E21D2D"></rect>
+  <text x="101" y="78" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="800" letter-spacing="3" fill="#FFFFFF">ART</text>
+</svg>

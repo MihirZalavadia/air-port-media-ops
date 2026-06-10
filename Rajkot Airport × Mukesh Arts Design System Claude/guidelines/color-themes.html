@@ -1,0 +1,37 @@
+<!-- @dsCard group="Colors" viewport="700x230" name="The Four Themes" subtitle="maroonBlue / redSky × day / night — set via data-brand + data-theme." -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--bg); color: var(--ink); padding: 22px; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .pal { border: 1px solid var(--rule); padding: 16px; }
+  .row { display: flex; gap: 5px; margin-bottom: 11px; }
+  .row b { flex: 1; height: 34px; border: 1px solid rgba(0,0,0,0.08); }
+  .pal strong { font-family: var(--font-display); font-weight: 500; font-size: 18px; display: block; }
+  .pal small { display: block; margin-top: 3px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="pal">
+      <div class="row"><b style="background:#1E2A78"></b><b style="background:#A3162B"></b><b style="background:#F8F9FC"></b><b style="background:#111111"></b></div>
+      <strong>Maroon Blue · Day</strong><small>maroonBlue-day · default</small>
+    </div>
+    <div class="pal" style="background:#12141E;border-color:#2B3156;">
+      <div class="row"><b style="background:#1E2A78"></b><b style="background:#7C0F23"></b><b style="background:#12141E"></b><b style="background:#F4F6FF"></b></div>
+      <strong style="color:#F4F6FF">Maroon Blue · Night</strong><small style="color:#8C91A8">maroonBlue-night</small>
+    </div>
+    <div class="pal">
+      <div class="row"><b style="background:#0B74D1"></b><b style="background:#E21D2D"></b><b style="background:#F5FBFF"></b><b style="background:#111111"></b></div>
+      <strong>Red Sky · Day</strong><small>redSky-day</small>
+    </div>
+    <div class="pal" style="background:#0E1624;border-color:#1E3D5E;">
+      <div class="row"><b style="background:#0D4E86"></b><b style="background:#E21D2D"></b><b style="background:#0E1624"></b><b style="background:#F4FAFF"></b></div>
+      <strong style="color:#F4FAFF">Red Sky · Night</strong><small style="color:#89A6BC">redSky-night</small>
+    </div>
+  </div>
+</body>
+</html>
