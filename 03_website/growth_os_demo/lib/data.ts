@@ -303,11 +303,11 @@ export const AIRPORT_HUB = {
 
 export const AIRPORT_CONNECTIONS: readonly AirportConnection[] = [
   { city: "Delhi", code: "DEL", lon: 77.10, lat: 28.57, mins: "1h 55m", labelDx: 34, labelDy: -34 },
-  { city: "Mumbai", code: "BOM", lon: 72.87, lat: 19.09, mins: "1h 10m", labelDx: -92, labelDy: 62 },
-  { city: "Navi Mumbai", code: "NMI", lon: 73.03, lat: 19.03, mins: "1h 10m", labelDx: -96, labelDy: 20 },
-  { city: "Pune", code: "PNQ", lon: 73.92, lat: 18.58, mins: "1h 25m", labelDx: 88, labelDy: 28 },
-  { city: "Hyderabad", code: "HYD", lon: 78.43, lat: 17.24, mins: "1h 45m", labelDx: 116, labelDy: 20 },
-  { city: "Bengaluru", code: "BLR", lon: 77.71, lat: 13.20, mins: "2h 05m", labelDx: 100, labelDy: 42 },
+  { city: "Mumbai", code: "BOM", lon: 72.87, lat: 19.09, mins: "1h 10m", labelDx: -88, labelDy: 58 },
+  { city: "Navi Mumbai", code: "NMI", lon: 73.03, lat: 19.03, mins: "1h 10m", labelDx: -92, labelDy: 14 },
+  { city: "Pune", code: "PNQ", lon: 73.86, lat: 18.52, mins: "1h 25m", labelDx: 58, labelDy: -10 },
+  { city: "Hyderabad", code: "HYD", lon: 78.47, lat: 17.45, mins: "1h 45m", labelDx: 86, labelDy: 0 },
+  { city: "Bengaluru", code: "BLR", lon: 77.67, lat: 13.20, mins: "2h 05m", labelDx: 82, labelDy: 38 },
 ] as const;
 
 export const FEATURED_CLIENTS = [

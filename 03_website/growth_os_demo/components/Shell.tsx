@@ -404,7 +404,7 @@ function Connectivity() {
     const midX = (hub.x + city.p.x) / 2;
     const midY = (hub.y + city.p.y) / 2;
     const distance = Math.hypot(city.p.x - hub.x, city.p.y - hub.y);
-    const controlY = midY - Math.max(42, distance * 0.16);
+    const controlY = midY - Math.max(28, distance * 0.1);
     return `M ${hub.x.toFixed(1)} ${hub.y.toFixed(1)} Q ${midX.toFixed(1)} ${controlY.toFixed(1)} ${city.p.x.toFixed(1)} ${city.p.y.toFixed(1)}`;
   };
 
@@ -474,13 +474,13 @@ function Connectivity() {
                     className="route-arc-dash"
                     style={{ animationDelay: `${i * 0.18}s` } as CSSProperties}
                   />
-                  <g
-                    className="route-plane"
-                    style={{ "--plane-delay": `${i * 0.2}s` } as CSSProperties}
-                    transform={`translate(${(hub.x + city.p.x) / 2} ${(hub.y + city.p.y) / 2}) rotate(${Math.atan2(city.p.y - hub.y, city.p.x - hub.x) * (180 / Math.PI)}) scale(0.72)`}
-                  >
-                    <path d="M-13 1 L0 -2 L15 -13 L19 -10 L7 0 L19 8 L15 12 L0 3 L-13 5 Z" />
-                  </g>
+                    <g
+                      className="route-plane"
+                      style={{ "--plane-delay": `${i * 0.2}s` } as CSSProperties}
+                      transform={`translate(${(hub.x + city.p.x) / 2} ${(hub.y + city.p.y) / 2}) rotate(${Math.atan2(city.p.y - hub.y, city.p.x - hub.x) * (180 / Math.PI)}) scale(0.72)`}
+                    >
+                      <path d="M-16 1 L-2 -2 L14 -11 L18 -8 L6 0 L18 8 L14 11 L-2 3 L-16 5 Z" />
+                    </g>
                 </g>
               );
             })}
@@ -495,9 +495,10 @@ function Connectivity() {
               {AIRPORT_HUB.code} HUB
             </text>
 
-            {cities.map((city) => (
-              <g key={`${city.code}-node`} className="city-node">
-                <circle cx={city.p.x} cy={city.p.y} r="6" className="city-dot" />
+              {cities.map((city) => (
+                <g key={`${city.code}-node`} className="city-node">
+                  <circle cx={city.p.x} cy={city.p.y} r="12" className="city-dot-ring" />
+                  <circle cx={city.p.x} cy={city.p.y} r="5" className="city-dot" />
                 <text
                   x={city.p.x + (city.labelDx ?? 0)}
                   y={city.p.y + (city.labelDy ?? -18)}

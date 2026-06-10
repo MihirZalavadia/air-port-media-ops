@@ -144,13 +144,13 @@ def build_svg(source_shp: Path, output_svg: Path) -> None:
   <desc>Generated from Survey of India Outline of India vector data: {SOURCE_URL}. Presentation styling only.</desc>
   <defs>
     <linearGradient id="indiaLand" x1="360" y1="40" x2="640" y2="690" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#D9F5FF" stop-opacity="0.96"/>
-      <stop offset="0.52" stop-color="#9FD5EA" stop-opacity="0.74"/>
-      <stop offset="1" stop-color="#E8FCFF" stop-opacity="0.9"/>
+      <stop offset="0" stop-color="#16384E" stop-opacity="0.96"/>
+      <stop offset="0.52" stop-color="#0E2B3F" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#1E4E64" stop-opacity="0.94"/>
     </linearGradient>
     <filter id="indiaGlow" x="-18%" y="-12%" width="136%" height="128%">
-      <feDropShadow dx="0" dy="20" stdDeviation="18" flood-color="#1597E5" flood-opacity="0.22"/>
-      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#E8FCFF" flood-opacity="0.48"/>
+      <feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#0B2335" flood-opacity="0.24"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#FFFFFF" flood-opacity="0.3"/>
     </filter>
   </defs>
   <g filter="url(#indiaGlow)">
@@ -158,15 +158,15 @@ def build_svg(source_shp: Path, output_svg: Path) -> None:
       d="{path_data}"
       fill="url(#indiaLand)"
       fill-rule="evenodd"
-      stroke="#6FCAE9"
-      stroke-width="1.7"
+      stroke="#5BA9C7"
+      stroke-width="1.45"
       stroke-linejoin="round"
       stroke-linecap="round"
     />
     <path
       d="{path_data}"
       fill="none"
-      stroke="#FFFFFF"
+      stroke="#B8E8F6"
       stroke-width="0.45"
       stroke-linejoin="round"
       stroke-linecap="round"
