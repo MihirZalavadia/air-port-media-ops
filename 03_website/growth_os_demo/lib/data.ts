@@ -360,7 +360,7 @@ export const POCS = [
   },
   {
     name: "Ridham Bhuva",
-    role: "Airport ASCO & Partner/Manager",
+    role: "Airport ASCO & Manager",
     focus: "Airport protocol, visitor handling, access coordination, hospitality, and ground-team readiness.",
   },
 ];
