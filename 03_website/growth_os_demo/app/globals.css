@@ -3301,6 +3301,258 @@ img, svg { display: block; max-width: 100%; }
   grid-column: 1 / -1;
 }
 
+/* ---------- Premium motion polish ---------- */
+.hero-eyebrow,
+.hero-h1,
+.hero-sub,
+.hero-actions,
+.hero-stats article {
+  opacity: 0;
+  animation: textLiftIn 0.78s cubic-bezier(0.22, 0.61, 0.24, 1) both;
+}
+
+.hero-eyebrow { animation-delay: 0.18s; }
+.hero-h1 { animation-delay: 0.28s; }
+.hero-sub { animation-delay: 0.4s; }
+.hero-actions { animation-delay: 0.52s; }
+.hero-stats article:nth-child(1) { animation-delay: 0.62s; }
+.hero-stats article:nth-child(2) { animation-delay: 0.7s; }
+.hero-stats article:nth-child(3) { animation-delay: 0.78s; }
+.hero-stats article:nth-child(4) { animation-delay: 0.86s; }
+
+.reveal-section .eyebrow,
+.reveal-section .h-section,
+.reveal-section .section-head-right,
+.manifesto-quote,
+.manifesto-meta div {
+  opacity: 0;
+  animation: textLiftIn 0.68s cubic-bezier(0.22, 0.61, 0.24, 1) both;
+}
+
+.reveal-section .h-section { animation-delay: 0.08s; }
+.reveal-section .section-head-right { animation-delay: 0.16s; }
+.manifesto-meta div:nth-child(1) { animation-delay: 0.12s; }
+.manifesto-meta div:nth-child(2) { animation-delay: 0.2s; }
+.manifesto-meta div:nth-child(3) { animation-delay: 0.28s; }
+
+.why-card,
+.operator-card,
+.poc,
+.future-modules article,
+.inv-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.why-card,
+.operator-card,
+.poc,
+.future-modules article {
+  animation: cardLiftIn 0.7s cubic-bezier(0.22, 0.61, 0.24, 1) both;
+}
+
+.why-card:nth-child(2),
+.operator-card:nth-child(2),
+.poc:nth-child(2),
+.future-modules article:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.why-card:nth-child(3),
+.operator-card:nth-child(3),
+.poc:nth-child(3),
+.future-modules article:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.future-modules article:nth-child(4) { animation-delay: 0.24s; }
+.future-modules article:nth-child(5) { animation-delay: 0.32s; }
+.future-modules article:nth-child(6) { animation-delay: 0.4s; }
+
+.why-card::before,
+.operator-card::before,
+.poc::before,
+.future-modules article::before,
+.inv-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      112deg,
+      transparent 0%,
+      transparent 36%,
+      rgba(255, 255, 255, 0.46) 46%,
+      rgba(226, 29, 45, 0.18) 50%,
+      rgba(21, 151, 229, 0.18) 54%,
+      transparent 66%,
+      transparent 100%
+    );
+  mix-blend-mode: screen;
+  transform: translateX(-125%) skewX(-16deg);
+  transition: transform 0.9s cubic-bezier(0.22, 0.61, 0.24, 1);
+}
+
+.why-card::after,
+.operator-card::after,
+.poc::after,
+.future-modules article::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 1;
+  pointer-events: none;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    linear-gradient(120deg, rgba(226, 29, 45, 0), rgba(226, 29, 45, 0.42), rgba(21, 151, 229, 0.42), rgba(21, 151, 229, 0)) border-box;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.future-modules article::after {
+  background:
+    linear-gradient(rgba(244, 236, 216, 0.08), rgba(244, 236, 216, 0.08)) padding-box,
+    linear-gradient(120deg, rgba(226, 29, 45, 0), rgba(226, 29, 45, 0.55), rgba(21, 151, 229, 0.55), rgba(21, 151, 229, 0)) border-box;
+}
+
+.why-card > *,
+.operator-card > *,
+.poc > *,
+.future-modules article > * {
+  position: relative;
+  z-index: 2;
+}
+
+.why-card:hover,
+.operator-card:hover,
+.poc:hover,
+.future-modules article:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--accent), transparent 24%);
+  box-shadow: var(--hover-shadow);
+}
+
+.why-card:hover::before,
+.operator-card:hover::before,
+.poc:hover::before,
+.future-modules article:hover::before,
+.inv-card:hover::before,
+.inv-card:focus-visible::before {
+  transform: translateX(125%) skewX(-16deg);
+}
+
+.why-card:hover::after,
+.operator-card:hover::after,
+.poc:hover::after,
+.future-modules article:hover::after {
+  opacity: 1;
+}
+
+.range {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.range::after,
+.proof-stage::after,
+.contact-form::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.range::after,
+.proof-stage::after {
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(255, 255, 255, 0.18), transparent 16%),
+    linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.16), transparent 58%);
+  transition: opacity 0.35s ease, transform 0.65s ease;
+  transform: translateX(-8%);
+}
+
+.contact-form {
+  position: relative;
+  isolation: isolate;
+}
+
+.contact-form::before {
+  inset: -1px;
+  border: 1px solid color-mix(in srgb, var(--accent), transparent 72%);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--forest-2), transparent 82%);
+  transition: opacity 0.3s ease;
+}
+
+.range:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--hover-shadow);
+}
+
+.range:hover::after,
+.proof-stage:hover::after,
+.contact-form:focus-within::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@keyframes textLiftIn {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardLiftIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-eyebrow,
+  .hero-h1,
+  .hero-sub,
+  .hero-actions,
+  .hero-stats article,
+  .reveal-section .eyebrow,
+  .reveal-section .h-section,
+  .reveal-section .section-head-right,
+  .manifesto-quote,
+  .manifesto-meta div,
+  .why-card,
+  .operator-card,
+  .poc,
+  .future-modules article {
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .why-card::before,
+  .operator-card::before,
+  .poc::before,
+  .future-modules article::before,
+  .inv-card::before,
+  .range::after,
+  .proof-stage::after,
+  .contact-form::before {
+    display: none !important;
+  }
+}
+
 @media (max-width: 1080px) {
   .map-frame,
   .route-svg { min-height: 500px; }

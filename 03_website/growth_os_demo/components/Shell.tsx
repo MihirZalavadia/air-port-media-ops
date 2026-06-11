@@ -15,7 +15,6 @@ import {
   AIRPORT_STATS,
   BRAND_DISPLAY_NAME,
   CAMPAIGN_TYPES,
-  CLIENT_PROOF_LINE,
   FEATURED_CLIENTS,
   FUTURE_MODULES,
   INVENTORY,
@@ -272,13 +271,11 @@ function Hero() {
       <div className="container hero-content">
         <span className="eyebrow hero-eyebrow">{BRAND_DISPLAY_NAME}</span>
         <h1 className="hero-h1">
-          Airport visibility, <em>engineered.</em>
+          Airport media, <em>managed from the ground up.</em>
         </h1>
         <p className="hero-sub">
-          A premium media network for brands that want Rajkot International
-          Airport&apos;s travelling audience, cleaner attention, and high-recall
-          airport context. Shortlist curated inventory, qualify campaign fit,
-          and move into owner-side follow-up without PDF back-and-forth.
+          One accountable team for airport inventory, protocol, site visits,
+          hospitality, and brand follow-through at Rajkot International Airport.
         </p>
 
         <div className="hero-actions">
@@ -310,31 +307,29 @@ function Manifesto() {
     <section className="manifesto">
       <div className="container manifesto-inner">
         <p className="manifesto-quote">
-          &ldquo;Airport media is one of the last formats where a brand still
-          earns time, attention, and a captive audience already moving with
-          intent.&rdquo;
+          &ldquo;We are not only selling airport media. We understand the ground,
+          the airport process, and the business relationship behind every deal.&rdquo;
         </p>
         <dl className="manifesto-meta">
           <div>
-            <dt>Footprint</dt>
+            <dt>Operations</dt>
             <dd>
-              10-15 advertising sites and 70-80 screen and static surfaces
-              across the terminal envelope.
+              Inventory, site access, checks, production, and campaign movement
+              stay with one accountable operating team.
             </dd>
           </div>
           <div>
-            <dt>Audience</dt>
+            <dt>Airport Handling</dt>
             <dd>
-              Business travellers, NRI corridors, family decision makers, and
-              premium households moving through Gujarat&apos;s Saurashtra gateway.
+              ASCO-led visit coordination, airport protocol support, and ground
+              readiness make serious buyer visits smoother.
             </dd>
           </div>
           <div>
-            <dt>Window</dt>
+            <dt>Partnership</dt>
             <dd>
-              Early operating years are the right time for serious brands to
-              lock recall, routes, and category conversations before demand
-              hardens.
+              We build trust through hospitality, direct follow-through, and
+              long-term interpersonal business relationships.
             </dd>
           </div>
         </dl>
@@ -347,18 +342,18 @@ function WhyAirport() {
   const cards = [
     {
       n: "01",
-      t: "Gujarat gateway audience",
-      p: "Rajkot International Airport connects Saurashtra's business families, NRI travel, industrial corridors, and premium regional buyers in one controlled environment.",
+      t: "Premium Gujarat audience",
+      p: "Business families, NRI movement, industrial corridors, and premium regional buyers pass through one controlled airport environment.",
     },
     {
       n: "02",
-      t: "Cleaner attention than street OOH",
-      p: "Airport movement has fewer distractions than crowded road media. Passengers wait, scan, and remember brands in a context that already feels premium.",
+      t: "Cleaner brand attention",
+      p: "Airport dwell time gives brands a calmer, higher-recall environment than crowded outdoor corridors.",
     },
     {
       n: "03",
-      t: "Consultative media planning",
-      p: "Instead of public price-sheet selling, buyers get the right mix of digital, static, and journey placements after campaign window and audience fit are understood.",
+      t: "Guided media planning",
+      p: "We match digital, static, and journey placements to the campaign window before commercial discussion.",
     },
   ];
 
@@ -369,13 +364,13 @@ function WhyAirport() {
           <div>
             <span className="eyebrow">Why Rajkot Int Airport</span>
             <h2 className="h-section">
-              Premium airport recall for Gujarat brands ready <em>to lead the market</em>.
+              Premium recall, airport access, and <em>ground-backed execution</em>.
             </h2>
           </div>
           <p className="section-head-right">
-            The strongest airport media pitch is not only about boards. It is
-            about audience quality, travel intent, clean dwell time, and a
-            buying process that helps marketing teams defend the campaign.
+            The value is not only the board. It is the audience, the access,
+            the visit handling, and the team that knows how airport media
+            actually moves.
           </p>
         </div>
 
@@ -569,9 +564,8 @@ function Portfolio({
             </h2>
           </div>
           <p className="section-head-right">
-            We show range, credibility, and starting level publicly. Full board,
-            references, and commercials unlock once a buyer shares basic contact
-            details, creating a clean lead trail for owner-side follow-up.
+            Buyers see the range first. Full references, availability, and
+            commercial discussion unlock when the campaign intent is real.
           </p>
         </div>
 
@@ -929,9 +923,9 @@ function RangeBand() {
             </h2>
           </div>
           <p>
-            We keep detailed package commercials off the public page. Serious
-            buyers share their campaign window first, then receive the right
-            media kit, availability, and final plan for owner-side discussion.
+            Pricing stays consultative. Serious buyers share their campaign
+            window, then receive the right plan, availability, and owner-side
+            follow-up.
           </p>
         </div>
       </div>
@@ -976,14 +970,12 @@ function ClientTrust() {
           <div>
             <span className="eyebrow">Clients and partnership</span>
             <h2 className="h-section">
-              {CLIENT_PROOF_LINE.split("50+")[0]}
-              <em>50+ national and international brands</em>.
+              Trusted by <em>50+ national and international brands</em>.
             </h2>
           </div>
           <p className="section-head-right">
-            Mukesh Arts has worked across technology, mobile retail, ceramics,
-            jewellery, local premium brands, and regional corporate campaigns.
-            The proof sits here, away from the hero, as a trust layer for serious buyers.
+            Mukesh Arts brings brand trust, airport coordination, and
+            relationship-led execution into one business conversation.
           </p>
         </div>
 
@@ -1048,13 +1040,12 @@ function Team() {
           <div>
             <span className="eyebrow">Owner-side POCs</span>
             <h2 className="h-section">
-              A team built so brands do not have to <em>chase execution</em>.
+              One team for access, hospitality, and <em>campaign confidence</em>.
             </h2>
           </div>
           <p className="section-head-right">
-            The public brand stays focused on the airport media offer. Qualified
-            leads route to the right owner-side person for commercial direction,
-            airport protocol, and campaign follow-through.
+            Qualified buyers connect with the right person for commercial
+            direction, airport protocol, site visits, and ground coordination.
           </p>
         </div>
 
@@ -1084,12 +1075,12 @@ function FutureLayer() {
               Growth operating layer
             </span>
             <h2 style={{ marginTop: 16 }}>
-              Website, inventory operations, and <em>lead follow-through</em>.
+              Website, inventory operations, and <em>relationship follow-through</em>.
             </h2>
             <p className="future-lede">
-              The website builds trust first. The operating layer helps maintain
-              inventory, qualify the right companies, track serious leads, and
-              reduce manual follow-up leakage.
+              The public site builds trust. The operating layer helps qualify
+              serious brands, coordinate visits, maintain inventory, and
+              protect every important follow-up.
             </p>
           </div>
 
@@ -1134,11 +1125,11 @@ function Contact() {
           <div>
             <span className="eyebrow">Request media kit</span>
             <h2 className="h-section" style={{ marginTop: 16 }}>
-              Tell us the campaign window. We&apos;ll suggest <em>the right inventory path</em>.
+              Share the campaign window. We&apos;ll guide <em>the right airport path</em>.
             </h2>
             <p className="lede">
-              Share your campaign window, preferred format, and budget range.
-              The team will respond with the most relevant airport media path.
+              Tell us your brand, timeline, and format interest. The owner-side
+              team will respond with the most relevant airport media direction.
             </p>
           </div>
 
@@ -1222,8 +1213,9 @@ function Footer() {
               <h3>{BRAND_DISPLAY_NAME}</h3>
             </div>
             <p>
-              Premium airport media inventory across digital screens, static
-              hoardings, and campaign plans at Rajkot International Airport.
+              Owner-operated airport media across digital screens, static
+              hoardings, site visits, and campaign planning at Rajkot
+              International Airport.
             </p>
           </div>
 
@@ -1244,7 +1236,7 @@ function Footer() {
             <ul>
               <li>{AIRPORT_NAME}</li>
               <li>{MAIN_OFFICE_ADDRESS}</li>
-              <li>Owner-side response within 1 working day</li>
+              <li>Owner-side response and visit coordination</li>
             </ul>
           </div>
         </div>

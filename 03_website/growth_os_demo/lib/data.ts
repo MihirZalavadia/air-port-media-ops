@@ -332,18 +332,18 @@ export const CAMPAIGN_TYPES = [
 export const WHY_US = [
   {
     n: "01",
-    t: "Owner-side execution",
-    p: "Mukesh Arts brings ground production, airport coordination, client handling, and follow-through under one accountable operating team.",
+    t: "Owner-operated media",
+    p: "The same team that sells the plan also understands sites, operations, approvals, and campaign delivery.",
   },
   {
     n: "02",
-    t: "Airport protocol support",
-    p: "Site visits, access windows, creative checks, and approvals are handled with the airport operating rhythm in mind.",
+    t: "ASCO-led airport access",
+    p: "Airport visits, checks, access windows, and protocol coordination are handled by the ASCO side with a ready ground team.",
   },
   {
     n: "03",
-    t: "Faster campaign decisions",
-    p: "The website and lead flow turn scattered inventory PDFs into a sharper buying journey for serious marketing teams.",
+    t: "Relationship-first execution",
+    p: "Brands get hospitality, clear follow-through, and a deeper business relationship beyond a one-time media transaction.",
   },
 ] as const;
 
@@ -351,25 +351,25 @@ export const POCS = [
   {
     name: "Mukesh Patel",
     role: "Founder / Owner",
-    focus: "Commercial direction, long-term relationships, and owner-level approvals.",
+    focus: "Commercial direction, trusted relationships, and owner-level campaign confidence.",
   },
   {
     name: "Mayur Patel",
     role: "Managing Partner",
-    focus: "Client coordination, campaign follow-through, and business operations.",
+    focus: "Business operations, client coordination, and campaign follow-through from first call to closure.",
   },
   {
     name: "Ridham Bhuva",
     role: "Airport ASCO & Partner/Manager",
-    focus: "Airport protocol, site visits, approvals, and operations coordination.",
+    focus: "Airport protocol, visitor handling, access coordination, hospitality, and ground-team readiness.",
   },
 ];
 
 export const FUTURE_MODULES = [
-  "Selected-user CRM for serious leads",
-  "Inventory maintenance for each plan",
-  "Owner dashboard for follow-ups and booked value",
-  "Outreach tracker for the right company categories",
+  "Qualified lead CRM for serious brands",
+  "Live inventory and visit coordination",
+  "Owner dashboard for relationship follow-ups",
+  "Right-category outreach planning",
   "Proposal and media-kit library",
-  "Campaign value attribution for CRM-originated deals",
+  "Booked-value tracking for CRM-led deals",
 ];
