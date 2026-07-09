@@ -38,9 +38,9 @@ import "./globals.css";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  minimumScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  minimumScale: 0.7,
+  maximumScale: 1.3,
+  userScalable: true,
 };
 
 export const metadata: Metadata = {

@@ -35,9 +35,8 @@ export default function Hero() {
                 </h1>
 
                 <p className="hero-sub hero-anim">
-                    Showcase your brand across Rajkot Airport’s premium advertising
-                    network with high-visibility airport media, digital screens, static
-                    boards, and passenger journey touchpoints designed for maximum recall.
+                    70+ screens and boards. Every passenger touchpoint, arrival
+                    to takeoff. One media partner at Rajkot International Airport.
                 </p>
 
                 <div className="hero-trust hero-anim">
