@@ -358,3 +358,47 @@ button {
     clip-path: none !important;
   }
 }
+/* ============================================================
+   Serif display safety floor.
+   Many headline rules shipped with line-height 0.9–1.05; Cormorant's
+   descenders collide with the next line's caps once a headline wraps.
+   1.14 keeps the tight editorial look but lines never touch.
+   !important on purpose: this must beat every scattered tight value.
+   ============================================================ */
+.hero-h1,
+.about-title,
+.about-title-main,
+.inventory-head h2,
+.why-editorial-title,
+.premium-heading,
+.clients-head h2,
+.clients-center-content h2,
+.commercial-content h2,
+.commercial-fixed-content h2,
+.connectivity-top h2,
+.connectivity-panel h3,
+.contact-content h2,
+.editorial-statement-title,
+.footer-brand-row h2,
+.gallery-premium-head h2,
+.gallery-premium-overlay h3,
+.team-head h2,
+.brand-moment-quote,
+.seo-intro h1,
+.grp h1,
+.grp h2,
+.grp-division h3,
+.inv-detail h1,
+.inv-detail h2,
+.inv-unit-group h3,
+.inv-plan-card h3,
+.inventory-popup-side h3,
+.inventory-work-body h3,
+.lead-form-box h3,
+.legacy-signal-head h3,
+.packages-head h3,
+.ram-route-panel h3,
+.team-body h3,
+.tile-structural-title {
+  line-height: 1.14 !important;
+}
