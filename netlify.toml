@@ -1,0 +1,12 @@
+# Netlify build config — the site lives in the raamxmukeshart-main subfolder.
+# Static export (out/), no Next.js runtime needed.
+# Note: GITHUB_PAGES is NOT set here, so next.config.ts applies no basePath —
+# correct for Netlify, which serves from the domain root.
+
+[build]
+  base = "raamxmukeshart-main"
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20"
