@@ -184,11 +184,11 @@ export default function Footer() {
                     <div>
                         <h4>Explore</h4>
                         <nav aria-label="Footer navigation">
-                            <Link href="/#about">About Us</Link>
-                            <Link href="/#inventory">Inventory & Packages</Link>
-                            <Link href="/#whyairportmedia">Why Airport Media</Link>
-                            <Link href="/#gallery">Gallery</Link>
-                            <Link href="/#contact">Contact Us</Link>
+                            <Link href="/airport/#about">About Us</Link>
+                            <Link href="/airport/#inventory">Inventory & Packages</Link>
+                            <Link href="/airport/#whyairportmedia">Why Airport Media</Link>
+                            <Link href="/airport/#gallery">Gallery</Link>
+                            <Link href="/airport/#contact">Contact Us</Link>
                         </nav>
                     </div>
 

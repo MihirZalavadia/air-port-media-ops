@@ -48,7 +48,7 @@ export default function InventoryDetail({ slug }: { slug: string }) {
             <main className="inv-detail">
                 <section className="inv-hero" aria-labelledby="inv-title">
                     <div className="container">
-                        <Link href="/#inventory" className="inv-back" data-motion="up">
+                        <Link href="/airport/#inventory" className="inv-back" data-motion="up">
                             <svg viewBox="0 0 24 24" aria-hidden="true">
                                 <path
                                     d="M19 12H7m5 6-7-6 7-6"
@@ -214,12 +214,12 @@ export default function InventoryDetail({ slug }: { slug: string }) {
                                         Download plan PDF
                                     </a>
                                 ) : (
-                                    <Link className="inv-cta-primary" href="/#contact">
+                                    <Link className="inv-cta-primary" href="/airport/#contact">
                                         Request the plan PDF
                                     </Link>
                                 )}
 
-                                <Link className="inv-cta-secondary" href="/#contact">
+                                <Link className="inv-cta-secondary" href="/airport/#contact">
                                     Talk to the team
                                 </Link>
                             </div>

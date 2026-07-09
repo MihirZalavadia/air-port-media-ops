@@ -31,8 +31,6 @@
 // src/app/layout.tsx
 
 import type { Metadata, Viewport } from "next";
-import Header from "@/src/components/common/Header";
-import Footer from "@/src/components/common/Footer";
 import ZoomLock from "@/src/components/common/ZoomLock";
 import { siteConfig } from "@/src/lib/seo";
 import "./globals.css";
@@ -114,13 +112,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Header/Footer moved to src/app/(airport)/layout.tsx — they belong to the
+  // airport sub-site; the Mukesh Media Group landing at "/" has its own chrome
   return (
     <html lang="en-IN" data-theme="day" suppressHydrationWarning>
       <body suppressHydrationWarning>
         <ZoomLock />
-        <Header />
         {children}
-        <Footer />
       </body>
     </html>
   );

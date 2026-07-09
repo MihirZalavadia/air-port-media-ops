@@ -52,6 +52,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "weekly",
             priority: 1,
         },
+        {
+            url: `${siteConfig.url}/airport/`,
+            lastModified: new Date(),
+            changeFrequency: "weekly" as const,
+            priority: 0.95,
+        },
         ...inventoryCategories.map((category) => ({
             url: `${siteConfig.url}/inventory/${category.slug}/`,
             lastModified: new Date(),

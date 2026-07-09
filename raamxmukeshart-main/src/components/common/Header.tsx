@@ -338,7 +338,7 @@ export default function Header() {
                 }`}
         >
             <div className="container nav-inner">
-                <Link href="/#top" className="brand" aria-label="Mukesh Airport Media">
+                <Link href="/airport/#top" className="brand" aria-label="Mukesh Airport Media">
                     <span className="brand-mark">
                         <AirportLogoMark />
                     </span>
@@ -357,11 +357,11 @@ export default function Header() {
                     <a href="#contact">Contact Us</a>
                 </nav> */}
                 <nav className="nav-links" aria-label="Primary">
-                    <Link onClick={() => setIsMenuOpen(false)} href="/#about">About Us</Link>
-                    <Link onClick={() => setIsMenuOpen(false)} href="/#inventory">Inventory & Packages</Link>
-                    <Link onClick={() => setIsMenuOpen(false)} href="/#whyairportmedia">Why Airport Media</Link>
-                    <Link onClick={() => setIsMenuOpen(false)} href="/#gallery">Gallery</Link>
-                    <Link onClick={() => setIsMenuOpen(false)} href="/#contact">Contact Us</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} href="/airport/#about">About Us</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} href="/airport/#inventory">Inventory & Packages</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} href="/airport/#whyairportmedia">Why Airport Media</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} href="/airport/#gallery">Gallery</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} href="/airport/#contact">Contact Us</Link>
                     {/* <a onClick={closeMobileMenu} href="#about">About Us</a>
                     <a onClick={closeMobileMenu} href="#inventory">Inventory & Packages</a>
                     <a onClick={closeMobileMenu} href="#whyairportmedia">Why Airport Media</a>
