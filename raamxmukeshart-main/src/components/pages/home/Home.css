@@ -6716,8 +6716,9 @@ body.site-ready .hero-scroll.hero-anim {
   height: 100%;
   border-radius: 20px;
   overflow: hidden;
-  /* background: #f8fafc; */
-  background: var(--about-bg);
+  /* always a light plate — client logos (Radhika, OnePlus, vivo…) are
+     drawn for light backgrounds and vanish on the night surface */
+  background: #f8fafc;
   color: var(--ink);
   box-shadow:
     0 12px 30px rgba(15, 23, 42, 0.08),
