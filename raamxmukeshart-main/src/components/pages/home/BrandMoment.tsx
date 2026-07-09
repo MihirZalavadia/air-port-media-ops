@@ -242,18 +242,18 @@ function WhyAirport() {
     const cards = [
         {
             n: "01",
-            t: "Premium airport audience",
-            p: "Reach business travellers, families, NRI visitors, and regional buyers inside Rajkot Airport.",
+            t: "Gateway to Saurashtra",
+            p: "The arrival point for one of Gujarat's fastest-growing industrial and business regions — trade, manufacturing, and the NRI corridor.",
         },
         {
             n: "02",
-            t: "Cleaner brand attention",
-            p: "Airport media gives brands a calmer, high-visibility space compared to crowded outdoor locations.",
+            t: "High-value audience",
+            p: "Business leaders, entrepreneurs, investors, professionals, and leisure travellers move through the terminal every single day.",
         },
         {
             n: "03",
-            t: "Planned media placement",
-            p: "We help align digital screens, static boards, and terminal branding with your campaign goals.",
+            t: "Exclusive advertising rights",
+            p: "As the Exclusive Airport Advertising Rights Holder, Mukesh Airport Media offers unparalleled, strategically positioned brand placements.",
         },
     ];
 
@@ -277,15 +277,16 @@ function WhyAirport() {
                             data-motion="up"
                             data-motion-delay="0.08"
                         >
-                            Why choose airport advertising in{" "}
-                            <em>Rajkot?</em>
+                            Why Rajkot International{" "}
+                            <em>Airport?</em>
                         </h2>
                     </div>
 
                     <p data-motion="right" data-motion-delay="0.14">
-                        Rajkot Airport advertising helps brands build premium visibility
-                        through digital screens, static boards, and high-impact airport
-                        media spaces.
+                        Rajkot International Airport is the gateway to Saurashtra,
+                        connecting one of Gujarat&apos;s fastest-growing industrial and
+                        business regions — a powerful destination for premium brand
+                        visibility.
                     </p>
                 </div>
 
@@ -312,8 +313,8 @@ function WhyAirport() {
                     data-motion="zoom"
                     data-motion-delay="0.1"
                 >
-                    Airport media is not only about visibility.<br />
-                    It is about being seen in the right environment.
+                    Where Every Journey<br />
+                    Creates a Brand Impression.
                 </div>
             </div>
         </section>
