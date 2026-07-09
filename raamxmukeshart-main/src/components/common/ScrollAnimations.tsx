@@ -277,10 +277,18 @@ export default function ScrollAnimations() {
                         scale: 1,
                         rotateX: 0,
                         filter: "blur(0px)",
-                        clipPath: "inset(0% 0% 0% 0%)",
+                        // only the "clip" variant animates clip-path — setting
+                        // it on every element left a permanent inset(0) that
+                        // shaved serif descenders on tight line-heights
+                        ...(type === "clip"
+                            ? { clipPath: "inset(0% 0% 0% 0%)" }
+                            : {}),
                         duration: 1,
                         delay,
                         ease: "power3.out",
+                        // restore stylesheet values once done so no inline
+                        // clip/filter/transform lingers on finished text
+                        clearProps: "clipPath,filter,transform,opacity,visibility",
                         scrollTrigger: {
                             trigger: el,
                             start: "top 86%",
@@ -311,6 +319,7 @@ export default function ScrollAnimations() {
                         duration: 0.95,
                         stagger: 0.12,
                         ease: "power3.out",
+                        clearProps: "filter,transform,opacity,visibility",
                         scrollTrigger: {
                             trigger: group,
                             start: "top 82%",
