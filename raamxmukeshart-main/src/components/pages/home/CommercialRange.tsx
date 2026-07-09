@@ -98,35 +98,30 @@
 
 
 
-import Link from "next/link";
 import "./Home.css";
 
-// budget ladder a media buyer can place themselves on — each rung is a real
-// category with its actual starting teaser, linking to the full inventory
+// budget ladder a media buyer can place themselves on — starting teasers
+// only, no direct plan links: full inventory unlocks through the form
 const commercialTiers = [
     {
-        price: "₹1.5L/mo",
+        price: "From ₹1.5L/mo",
         name: "In-Terminal Backlit",
         line: "Always-on board at security — no loop, no sharing",
-        href: "/inventory/in-terminal-backlit-boards/",
     },
     {
-        price: "₹2L/mo",
+        price: "From ₹2L/mo",
         name: "Digital Screen Packages",
         line: "7 to 39 LED screens playing your creative every 2 minutes",
-        href: "/inventory/digital-screen-network/",
     },
     {
-        price: "₹6L/mo",
+        price: "From ₹6L/mo",
         name: "City-Side Landmark",
         line: "30'×10' unipole every visitor drives past — flyer or not",
-        href: "/inventory/landmark-outdoor-boards/",
     },
     {
         price: "Custom",
         name: "Full-Airport Hybrid",
         line: "Digital + static bookending the whole passenger journey",
-        href: "/inventory/hybrid-journey-plans/",
     },
 ];
 
@@ -148,14 +143,23 @@ export default function CommercialRange() {
                         data-motion="up"
                         data-motion-delay="0.08"
                     >
-                        Every budget has <br />
-                        <em> a place at the airport.</em>
+                        Brand Beyond <br />
+                        <em> Boundaries.</em>
                     </h2>
 
-                    <p data-motion="up" data-motion-delay="0.16">
-                        From a single always-on backlit board to owning every screen
-                        in the terminal — pick the rung that fits, and we shortlist
-                        placements and availability for your campaign window.
+                    <p
+                        className="commercial-punchline"
+                        data-motion="right"
+                        data-motion-delay="0.14"
+                    >
+                        We Create Visibility. We Build Influence.
+                    </p>
+
+                    <p data-motion="up" data-motion-delay="0.18">
+                        A Mukesh Media Group company — from a single always-on
+                        backlit board to owning every screen in the terminal, every
+                        budget has a place at Rajkot Airport. Share your campaign
+                        window and we shortlist placements and availability.
                     </p>
 
                     {/* <a href="#contact">Discuss campaign</a> */}
@@ -167,9 +171,8 @@ export default function CommercialRange() {
                     data-motion-group
                 >
                     {commercialTiers.map((tier) => (
-                        <Link
+                        <div
                             className="commercial-tier"
-                            href={tier.href}
                             key={tier.name}
                             data-motion-item
                         >
@@ -179,18 +182,7 @@ export default function CommercialRange() {
                                 <b>{tier.name}</b>
                                 <i>{tier.line}</i>
                             </span>
-
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path
-                                    d="M5 12h12M12 6l7 6-7 6"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="1.7"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                            </svg>
-                        </Link>
+                        </div>
                     ))}
                 </div>
             </div>

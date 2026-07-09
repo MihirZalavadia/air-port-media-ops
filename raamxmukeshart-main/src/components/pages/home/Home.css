@@ -3154,8 +3154,8 @@ body.site-ready .hero-scroll.hero-anim {
     linear-gradient(90deg,
       rgba(8, 8, 8, 0.94) 0%,
       rgba(8, 8, 8, 0.82) 45%,
-      rgba(8, 8, 8, 0.38) 100%),
-    url("/images/home/herobg.png");
+      rgba(8, 8, 8, 0.42) 100%),
+    url("/images/inventory/updated/ad_2.webp");
 
   background-size: cover;
   background-position: center;
@@ -10940,7 +10940,7 @@ section,
 
 .commercial-tier {
     display: grid;
-    grid-template-columns: 96px 1fr 20px;
+    grid-template-columns: 134px 1fr;
     align-items: center;
     gap: 16px;
     padding: 18px 22px;
@@ -10952,23 +10952,29 @@ section,
     color: #f4f6ff;
     text-decoration: none;
     transition:
-        transform 0.35s ease,
         background 0.35s ease,
         border-color 0.35s ease;
 }
 
 .commercial-tier:hover {
-    transform: translateX(6px);
-    background: rgba(255, 255, 255, 0.16);
-    border-color: rgba(226, 29, 45, 0.55);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(226, 29, 45, 0.45);
 }
 
 .commercial-tier strong {
     font-family: "JetBrains Mono", monospace;
-    font-size: 17px;
+    font-size: 14.5px;
     font-weight: 700;
     color: #ff6b76;
     white-space: nowrap;
+}
+
+.commercial-punchline {
+    margin: 18px 0 0;
+    font-size: clamp(15px, 1.6vw, 18px);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #f4f6ff;
 }
 
 .commercial-tier-copy {
@@ -11007,11 +11013,11 @@ section,
     }
 
     .commercial-tier {
-        grid-template-columns: 78px 1fr 18px;
+        grid-template-columns: 112px 1fr;
         padding: 15px 18px;
     }
 
     .commercial-tier strong {
-        font-size: 15px;
+        font-size: 13px;
     }
 }

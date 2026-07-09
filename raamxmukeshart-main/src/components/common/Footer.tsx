@@ -199,11 +199,12 @@ export default function Footer() {
 
                     <div>
                         <h4>Media</h4>
+                        {/* inventory unlocks via the lead form — no direct plan links */}
                         <nav aria-label="Airport media services">
-                            <Link href="/inventory/digital-screen-network/">Digital Screens</Link>
-                            <Link href="/inventory/landmark-outdoor-boards/">Outdoor Boards</Link>
-                            <Link href="/inventory/in-terminal-backlit-boards/">Backlit Boards</Link>
-                            <Link href="/inventory/hybrid-journey-plans/">Hybrid Plans</Link>
+                            <Link href="/airport/#inventory">Digital Screens</Link>
+                            <Link href="/airport/#inventory">Outdoor Boards</Link>
+                            <Link href="/airport/#inventory">Backlit Boards</Link>
+                            <Link href="/airport/#inventory">Hybrid Plans</Link>
                         </nav>
                     </div>
 
