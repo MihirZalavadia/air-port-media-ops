@@ -2003,50 +2003,6 @@ export default function About() {
                 }
             );
 
-            gsap.from(".premium-roller", {
-                autoAlpha: 0,
-                x: 24,
-                rotate: -8,
-                duration: 0.9,
-                ease: "power3.out",
-                clearProps: "transform,opacity,visibility",
-                scrollTrigger: {
-                    trigger: ".wall-paint-vector",
-                    start: "top 84%",
-                    once: true,
-                },
-            });
-
-            gsap.from(".premium-spotlight", {
-                autoAlpha: 0,
-                y: 18,
-                scale: 0.9,
-                duration: 0.82,
-                stagger: 0.12,
-                ease: "power3.out",
-                clearProps: "transform,opacity,visibility",
-                scrollTrigger: {
-                    trigger: ".hoarding-vector",
-                    start: "top 84%",
-                    once: true,
-                },
-            });
-
-            gsap.from(".premium-plane", {
-                autoAlpha: 0,
-                x: -26,
-                y: 14,
-                rotate: -10,
-                duration: 0.9,
-                ease: "power3.out",
-                clearProps: "transform,opacity,visibility",
-                scrollTrigger: {
-                    trigger: ".airport-media-vector",
-                    start: "top 84%",
-                    once: true,
-                },
-            });
-
             gsap.from(".legacy-signal-dock", {
                 autoAlpha: 0,
                 y: 72,
@@ -2210,157 +2166,62 @@ export default function About() {
 }
 
 function renderPillarVector(type: PillarKey) {
-    if (type === "arts") return <WallPaintingVector />;
-    if (type === "publicity") return <HoardingVector />;
-    return <AirportMediaVector />;
+    if (type === "arts") return <DivisionLogo label="ART" />;
+    if (type === "publicity") return <DivisionLogo label="PUBLICITY" />;
+    return <DivisionLogo label="AIRPORT MEDIA" />;
 }
 
-function WallPaintingVector() {
+// the actual brand mark — twin peaks over the Mukesh wordmark, with the
+// division name where the real logo carries "AIRPORT MEDIA"
+function DivisionLogo({ label }: { label: string }) {
     return (
-        <svg viewBox="0 0 220 180" className="pillar-vector wall-paint-vector" aria-hidden="true">
-            <defs>
-                <linearGradient id="wallPremiumBg" x1="0" x2="1" y1="0" y2="1">
-                    <stop offset="0%" stopColor="#ffffff" />
-                    <stop offset="100%" stopColor="#eef7ff" />
-                </linearGradient>
-
-                <linearGradient id="paintRedBlue" x1="0" x2="1">
-                    <stop offset="0%" stopColor="#E21D2D" />
-                    <stop offset="100%" stopColor="#1E2A78" />
-                </linearGradient>
-            </defs>
-
+        <svg
+            viewBox="0 0 220 180"
+            className="division-logo"
+            aria-hidden="true"
+        >
             <path
-                d="M36 42 H158 C168 42 176 50 176 60 V122 C176 132 168 140 158 140 H36 Z"
-                className="premium-wall-panel"
-            />
-
-            <path d="M48 62 H136" className="wall-grid-line" />
-            <path d="M48 84 H150" className="wall-grid-line" />
-            <path d="M48 106 H122" className="wall-grid-line" />
-
-            <path
-                d="M48 66 C78 52 105 76 136 60"
-                className="premium-paint-stroke paint-stroke-one"
+                className="division-peak-left"
+                d="M66 78 L92 44 L117 78 C101 68 82 68 66 78 Z"
             />
             <path
-                d="M48 88 C82 74 112 98 150 80"
-                className="premium-paint-stroke paint-stroke-two"
-            />
-            <path
-                d="M48 110 C74 96 98 122 126 104"
-                className="premium-paint-stroke paint-stroke-three"
+                className="division-peak-right"
+                d="M117 78 L142 44 L167 78 C152 68 133 68 117 78 Z"
             />
 
-            <g className="premium-roller">
-                <rect x="126" y="42" width="54" height="18" rx="9" className="roller-premium-head" />
-                <path d="M153 60 V80 C153 88 159 94 167 94 H178" className="premium-dark-line" />
-                <rect x="174" y="88" width="12" height="42" rx="6" className="roller-premium-handle" />
-            </g>
+            <text
+                x="110"
+                y="112"
+                textAnchor="middle"
+                fontFamily="Georgia, 'Times New Roman', serif"
+                fontSize="34"
+                fontWeight="600"
+                letterSpacing="0.5"
+                className="division-logo-word"
+            >
+                Mukesh
+            </text>
 
-            <path
-                d="M34 148 C58 132 86 158 112 143 C140 126 158 144 186 132"
-                className="premium-flow-line"
+            <line
+                x1="56"
+                y1="124"
+                x2="164"
+                y2="124"
+                className="division-logo-rule"
             />
 
-            <circle cx="188" cy="54" r="10" className="floating-dot dot-red" />
-            <circle cx="194" cy="104" r="7" className="floating-dot dot-blue" />
-            <circle cx="30" cy="112" r="5" className="floating-dot dot-soft" />
-        </svg>
-    );
-}
-
-function HoardingVector() {
-    return (
-        <svg viewBox="0 0 220 180" className="pillar-vector hoarding-vector" aria-hidden="true">
-            <defs>
-                <linearGradient id="hoardingGlow" x1="0" x2="1" y1="0" y2="1">
-                    <stop offset="0%" stopColor="#ffffff" />
-                    <stop offset="100%" stopColor="#edf6ff" />
-                </linearGradient>
-            </defs>
-
-            <path d="M32 146 H188" className="premium-road-line" />
-
-            <rect x="38" y="34" width="144" height="76" rx="12" className="premium-hoarding-frame" />
-            <rect x="50" y="46" width="120" height="52" rx="7" className="premium-hoarding-screen" />
-
-            <path d="M62 61 H150" className="hoarding-copy-line red-copy" />
-            <path d="M62 78 H126" className="hoarding-copy-line blue-copy" />
-            <path d="M62 91 H146" className="hoarding-copy-line soft-copy" />
-
-            <path d="M72 110 V145" className="premium-dark-line" />
-            <path d="M148 110 V145" className="premium-dark-line" />
-            <path d="M58 145 H162" className="premium-dark-line" />
-
-            <g className="premium-spotlight left-spot">
-                <circle cx="47" cy="128" r="7" className="spotlight-source" />
-                <path d="M48 126 L76 110 L96 145 Z" className="spotlight-beam-premium" />
-            </g>
-
-            <g className="premium-spotlight right-spot">
-                <circle cx="173" cy="128" r="7" className="spotlight-source" />
-                <path d="M172 126 L144 110 L124 145 Z" className="spotlight-beam-premium" />
-            </g>
-
-            <path
-                d="M30 32 C68 12 152 12 190 32"
-                className="premium-flow-line hoarding-top-arc"
-            />
-
-            <g className="mini-traffic">
-                <rect x="94" y="136" width="28" height="9" rx="4" />
-                <circle cx="101" cy="146" r="3" />
-                <circle cx="116" cy="146" r="3" />
-            </g>
-        </svg>
-    );
-}
-
-function AirportMediaVector() {
-    return (
-        <svg viewBox="0 0 220 180" className="pillar-vector airport-media-vector" aria-hidden="true">
-            <defs>
-                <linearGradient id="terminalPremium" x1="0" x2="1" y1="0" y2="1">
-                    <stop offset="0%" stopColor="#ffffff" />
-                    <stop offset="100%" stopColor="#eef7ff" />
-                </linearGradient>
-            </defs>
-
-            <path
-                d="M36 132 H184 V86 C184 66 166 48 146 48 H74 C54 48 36 66 36 86 Z"
-                className="premium-terminal-shell"
-            />
-
-            <path d="M52 84 H168" className="terminal-roof-line" />
-            <path d="M56 132 V152" className="premium-dark-line" />
-            <path d="M92 132 V152" className="premium-dark-line" />
-            <path d="M128 132 V152" className="premium-dark-line" />
-            <path d="M164 132 V152" className="premium-dark-line" />
-            <path d="M42 152 H178" className="premium-dark-line" />
-
-            <rect x="62" y="70" width="96" height="44" rx="9" className="premium-airport-screen" />
-            <path d="M78 88 H143" className="screen-light-line" />
-            <path d="M78 101 H121" className="screen-light-line short" />
-
-            <path
-                d="M38 48 C78 14 142 16 182 48"
-                className="premium-flow-line airport-flight-route"
-            />
-
-            <path
-                d="M174 42 L198 50 L174 58 L180 50 Z"
-                className="premium-plane"
-            />
-
-            <circle cx="110" cy="92" r="48" className="premium-radar radar-large" />
-            <circle cx="110" cy="92" r="28" className="premium-radar radar-small" />
-
-            <g className="airport-passenger-dots">
-                <circle cx="72" cy="124" r="4" />
-                <circle cx="110" cy="124" r="4" />
-                <circle cx="148" cy="124" r="4" />
-            </g>
+            <text
+                x="110"
+                y="144"
+                textAnchor="middle"
+                fontFamily="Arial, Helvetica, sans-serif"
+                fontSize={label.length > 9 ? 12 : 14}
+                fontWeight="700"
+                letterSpacing="2.5"
+                className="division-logo-sub"
+            >
+                {label}
+            </text>
         </svg>
     );
 }

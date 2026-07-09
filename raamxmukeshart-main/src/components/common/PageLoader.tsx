@@ -6,32 +6,27 @@ import mukeshLogoLight from "@/public/images/home/logo_mark_light.png";
 
 import "./PageLoader.css";
 
-// the boarding curtain plays once per session — client-side hops back to
-// the homepage shouldn't re-run the whole show
-const PLAYED_KEY = "ram-loader-played";
-
-function alreadyPlayed() {
-    try {
-        return sessionStorage.getItem(PLAYED_KEY) === "1";
-    } catch {
-        return false;
-    }
-}
+// Module-level flag: resets on every real page load/refresh (so the curtain
+// always plays then), but survives client-side route changes (so hopping to
+// an inventory page and back doesn't replay it).
+let playedThisPageLoad = false;
 
 export default function PageLoader() {
     const [progress, setProgress] = useState(0);
     const [takeoff, setTakeoff] = useState(false);
     const [hide, setHide] = useState(false);
-    const [skipped, setSkipped] = useState(false);
+    // synchronous initial value — a skipped loader never renders at all,
+    // so there's no one-frame flash on client-side navigation
+    const [skipped] = useState(() => playedThisPageLoad);
     const loadedRef = useRef(false);
 
     useEffect(() => {
-        if (alreadyPlayed()) {
-            setSkipped(true);
-            setHide(true);
+        if (skipped) {
             document.body.classList.add("site-ready");
             return;
         }
+
+        playedThisPageLoad = true;
 
         const start = Date.now();
         const MIN = 1400; // keep the boarding moment for at least ~1.4s
@@ -73,9 +68,6 @@ export default function PageLoader() {
                         setHide(true);
                         // tell the page (hero entrance, etc.) the curtain is lifting
                         document.body.classList.add("site-ready");
-                        try {
-                            sessionStorage.setItem(PLAYED_KEY, "1");
-                        } catch {}
                     }, 620);
 
                     return 100;

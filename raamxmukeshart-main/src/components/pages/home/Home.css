@@ -8805,6 +8805,10 @@ body.site-ready .hero-scroll.hero-anim {
   opacity: 0;
   visibility: hidden;
   margin-top: auto;
+  /* fixed width = the panel's final expanded size, so text keeps its final
+     line-wrapping while the flex sweep runs — no mid-animation reflow
+     ("stretching" fonts) */
+  width: min(720px, 54vw);
   max-width: 820px;
   transform: translateY(15px);
   transition: opacity 0.4s ease, transform 0.5s ease, visibility 0.4s;
@@ -9305,6 +9309,7 @@ body.site-ready .hero-scroll.hero-anim {
 
   .strip-expanded-content {
     margin-top: 24px;
+    width: auto;
     max-width: 100%;
   }
 
@@ -10874,4 +10879,43 @@ section,
     font-size: 12.5px;
     font-weight: 600;
     color: var(--accent);
+}
+
+/* [[ Division logo tiles — About timeline ]]
+   Deliberately NOT .pillar-vector — that class strips fills and forces
+   4px strokes, which would gut the logo mark. */
+
+.division-logo {
+    width: 86%;
+    height: 86%;
+}
+
+.division-peak-left {
+    fill: #e21d2d;
+}
+
+.division-peak-right {
+    fill: #1e2a78;
+}
+
+.division-logo-word {
+    fill: var(--ink, #14110d);
+}
+
+.division-logo-rule {
+    stroke: #1e2a78;
+    stroke-width: 2.5;
+}
+
+.division-logo-sub {
+    fill: #1e2a78;
+}
+
+/* night theme: keep the tile a light plate so the logo reads true */
+[data-theme="night"] .segment-vector-card {
+    background: #f7f8fc;
+}
+
+[data-theme="night"] .segment-vector-card .division-logo-word {
+    fill: #14110d;
 }
