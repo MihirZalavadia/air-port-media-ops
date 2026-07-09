@@ -211,6 +211,7 @@ const team = [
         initials: "MP",
         role: "Founder / Owner",
         label: "Commercial Direction",
+        division: "Mukesh Media Group",
         image: mukeshPhoto,
         linkedin: "https://www.linkedin.com/in/mukesh-patel-082403313/",
         desc: "Leads owner-side conversations, trusted client relationships, commercial clarity, and premium campaign confidence.",
@@ -220,6 +221,7 @@ const team = [
         initials: "MP",
         role: "Managing Partner",
         label: "Client Coordination",
+        division: "Mukesh Airport Media",
         image: mayurPhoto,
         linkedin: "https://www.linkedin.com/in/mayur-gopani-378614385/",
         desc: "Handles business operations, campaign follow-through, client coordination, and execution support from first call to closure.",
@@ -229,6 +231,7 @@ const team = [
         initials: "RB",
         role: "Airport ASCO & Manager",
         label: "Airport Protocol",
+        division: "Mukesh Airport Media",
         image: ridhamPhoto,
         // pending — Ridham hasn't shared his profile URL yet
         linkedin: "",
@@ -283,24 +286,68 @@ export default function Team() {
                                     height={400}
                                     loading="lazy"
                                 />
-
-                                {person.linkedin && (
-                                    <a
-                                        href={person.linkedin}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="team-linkedin"
-                                        aria-label={`${person.name} LinkedIn profile`}
-                                    >
-                                        in
-                                    </a>
-                                )}
                             </div>
 
                             <div className="team-body">
-                                <small>{person.role}</small>
                                 <h3>{person.name}</h3>
+
+                                <div
+                                    className="team-spec"
+                                    aria-label={`${person.name} details`}
+                                >
+                                    <div className="team-spec-row">
+                                        <span>Role</span>
+                                        <b>{person.role}</b>
+                                    </div>
+
+                                    <div className="team-spec-row">
+                                        <span>Focus</span>
+                                        <b>{person.label}</b>
+                                    </div>
+
+                                    <div className="team-spec-row">
+                                        <span>Division</span>
+                                        <b>{person.division}</b>
+                                    </div>
+                                </div>
+
                                 <p>{person.desc}</p>
+
+                                <div className="team-links">
+                                    {person.linkedin ? (
+                                        <a
+                                            href={person.linkedin}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={`${person.name} LinkedIn profile`}
+                                        >
+                                            in
+                                        </a>
+                                    ) : (
+                                        <span
+                                            className="pending"
+                                            title="LinkedIn profile coming soon"
+                                        >
+                                            in
+                                        </span>
+                                    )}
+
+                                    <a
+                                        href="#contact"
+                                        aria-label={`Start a conversation with ${person.name}`}
+                                    >
+                                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M5 12h12M12 6l7 6-7 6"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="1.7"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                            />
+                                        </svg>
+                                    </a>
+                                </div>
                             </div>
                         </article>
                     ))}
