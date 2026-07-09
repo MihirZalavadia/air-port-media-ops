@@ -153,8 +153,8 @@
 import { useState, type FormEvent } from "react";
 import "./Home.css";
 
-// Replace with the real WhatsApp number (country code, no + or spaces) and email.
-const WHATSAPP_NUMBER = "917436080536";
+// WhatsApp: +91 98253 40818 (country code, no + or spaces)
+const WHATSAPP_NUMBER = "919825340818";
 const CONTACT_EMAIL = "info@example.com";
 
 const whatsappMessage = encodeURIComponent(

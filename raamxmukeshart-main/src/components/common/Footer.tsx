@@ -173,7 +173,12 @@ export default function Footer() {
                                 <FaLinkedinIn aria-hidden="true" />
                             </a>
 
-                            <a href="#" aria-label="Contact Rajkot Airport Media on WhatsApp">
+                            <a
+                                href="https://wa.me/919825340818"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Contact Rajkot Airport Media on WhatsApp"
+                            >
                                 <FaWhatsapp aria-hidden="true" />
                             </a>
                         </div>
