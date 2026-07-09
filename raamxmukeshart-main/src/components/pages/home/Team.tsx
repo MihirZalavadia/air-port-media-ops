@@ -201,9 +201,9 @@
 import "./Home.css";
 import Image from "next/image";
 
-import team1 from "@/public/images/team/team1.jpg";
-import team2 from "@/public/images/team/team2.jpg";
-import team3 from "@/public/images/team/team3.jpg";
+import mukeshPhoto from "@/public/images/team/mukesh_patel.webp";
+import mayurPhoto from "@/public/images/team/mayur_patel.webp";
+import ridhamPhoto from "@/public/images/team/ridham_bhuva.webp";
 
 const team = [
     {
@@ -211,8 +211,8 @@ const team = [
         initials: "MP",
         role: "Founder / Owner",
         label: "Commercial Direction",
-        image: team1,
-        linkedin: "https://www.linkedin.com/in/mukesh-patel/",
+        image: mukeshPhoto,
+        linkedin: "https://www.linkedin.com/in/mukesh-patel-082403313/",
         desc: "Leads owner-side conversations, trusted client relationships, commercial clarity, and premium campaign confidence.",
     },
     {
@@ -220,8 +220,8 @@ const team = [
         initials: "MP",
         role: "Managing Partner",
         label: "Client Coordination",
-        image: team2,
-        linkedin: "https://www.linkedin.com/in/mayur-patel/",
+        image: mayurPhoto,
+        linkedin: "https://www.linkedin.com/in/mayur-gopani-378614385/",
         desc: "Handles business operations, campaign follow-through, client coordination, and execution support from first call to closure.",
     },
     {
@@ -229,8 +229,9 @@ const team = [
         initials: "RB",
         role: "Airport ASCO & Manager",
         label: "Airport Protocol",
-        image: team3,
-        linkedin: "https://www.linkedin.com/in/ridham-bhuva/",
+        image: ridhamPhoto,
+        // pending — Ridham hasn't shared his profile URL yet
+        linkedin: "",
         desc: "Supports airport protocol, access coordination, visitor handling, hospitality, and ground-team readiness.",
     },
 ];
@@ -283,15 +284,17 @@ export default function Team() {
                                     loading="lazy"
                                 />
 
-                                <a
-                                    href={person.linkedin}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="team-linkedin"
-                                    aria-label={`${person.name} LinkedIn profile`}
-                                >
-                                    in
-                                </a>
+                                {person.linkedin && (
+                                    <a
+                                        href={person.linkedin}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="team-linkedin"
+                                        aria-label={`${person.name} LinkedIn profile`}
+                                    >
+                                        in
+                                    </a>
+                                )}
                             </div>
 
                             <div className="team-body">

@@ -247,6 +247,38 @@ export default function Header() {
         }
     }
 
+    // Same-page section links: Next's hash navigation races Lenis's scroll
+    // state and intermittently loses. When already on /airport/, scroll
+    // through Lenis directly instead of navigating.
+    function handleSectionClick(
+        event: MouseEvent<HTMLAnchorElement>,
+        sectionId: string
+    ) {
+        setIsMenuOpen(false);
+
+        const path = window.location.pathname.replace(/\/+$/, "");
+        if (!path.endsWith("/airport")) return; // different page — let Link navigate
+
+        const target = document.getElementById(sectionId);
+        if (!target) return;
+
+        event.preventDefault();
+
+        const lenis = (
+            window as unknown as {
+                __lenis?: { scrollTo: (t: Element, o?: object) => void };
+            }
+        ).__lenis;
+
+        if (lenis) {
+            lenis.scrollTo(target, { offset: -84 });
+        } else {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        history.replaceState(null, "", `#${sectionId}`);
+    }
+
     useEffect(() => {
         const savedTheme = localStorage.getItem("ram-theme") as ThemeId | null;
 
@@ -357,11 +389,11 @@ export default function Header() {
                     <a href="#contact">Contact Us</a>
                 </nav> */}
                 <nav className="nav-links" aria-label="Primary">
-                    <Link onClick={() => setIsMenuOpen(false)} href="/airport/#about">About Us</Link>
-                    <Link onClick={() => setIsMenuOpen(false)} href="/airport/#inventory">Inventory & Packages</Link>
-                    <Link onClick={() => setIsMenuOpen(false)} href="/airport/#whyairportmedia">Why Airport Media</Link>
-                    <Link onClick={() => setIsMenuOpen(false)} href="/airport/#gallery">Gallery</Link>
-                    <Link onClick={() => setIsMenuOpen(false)} href="/airport/#contact">Contact Us</Link>
+                    <Link onClick={(e) => handleSectionClick(e, "about")} href="/airport/#about">About Us</Link>
+                    <Link onClick={(e) => handleSectionClick(e, "inventory")} href="/airport/#inventory">Inventory & Packages</Link>
+                    <Link onClick={(e) => handleSectionClick(e, "whyairportmedia")} href="/airport/#whyairportmedia">Why Airport Media</Link>
+                    <Link onClick={(e) => handleSectionClick(e, "gallery")} href="/airport/#gallery">Gallery</Link>
+                    <Link onClick={(e) => handleSectionClick(e, "contact")} href="/airport/#contact">Contact Us</Link>
                     {/* <a onClick={closeMobileMenu} href="#about">About Us</a>
                     <a onClick={closeMobileMenu} href="#inventory">Inventory & Packages</a>
                     <a onClick={closeMobileMenu} href="#whyairportmedia">Why Airport Media</a>

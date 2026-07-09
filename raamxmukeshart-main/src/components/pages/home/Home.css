@@ -10919,3 +10919,10 @@ section,
 [data-theme="night"] .segment-vector-card .division-logo-word {
     fill: #14110d;
 }
+
+/* real division logo images in the About timeline tiles */
+.division-logo-img {
+    width: 82%;
+    height: 82%;
+    object-fit: contain;
+}

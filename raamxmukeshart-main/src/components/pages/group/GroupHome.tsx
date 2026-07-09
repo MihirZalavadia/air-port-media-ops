@@ -7,7 +7,9 @@ import SmoothScroll from "@/src/components/common/SmoothScroller";
 import "./GroupHome.css";
 
 import logoMark from "@/public/images/home/logo_mark.png";
-import airportPhoto from "@/public/images/inventory/updated/ad_2.webp";
+import groupLogo from "@/public/images/home/mukesh_media_group_logo.png";
+import artLogo from "@/public/images/home/mukesh_art_logo.png";
+import publicityLogo from "@/public/images/home/mukesh_publicity_logo.png";
 
 const divisions = [
     {
@@ -15,12 +17,14 @@ const divisions = [
         name: "Mukesh Art",
         line: "The original studio — signage, wall media, and visual brand communication built over decades.",
         live: false,
+        logo: artLogo,
     },
     {
         code: "02",
         name: "Mukesh Publicity",
         line: "Outdoor hoardings, billboards, and city-scale OOH campaigns across Saurashtra.",
         live: false,
+        logo: publicityLogo,
     },
     {
         code: "03",
@@ -28,6 +32,7 @@ const divisions = [
         line: "Premium advertising inventory at Rajkot International Airport — digital screens, boards, and journey plans.",
         live: true,
         href: "/airport/",
+        logo: logoMark,
     },
 ];
 
@@ -42,10 +47,10 @@ export default function GroupHome() {
                     <div className="grp-container grp-top-inner">
                         <span className="grp-brand">
                             <Image
-                                src={logoMark}
+                                src={groupLogo}
                                 alt="Mukesh Media Group"
                                 width={251}
-                                height={202}
+                                height={204}
                                 quality={100}
                                 priority
                             />
@@ -121,10 +126,10 @@ export default function GroupHome() {
                                         className="grp-division live"
                                         data-motion-item
                                     >
-                                        <figure>
+                                        <figure className="grp-division-logo">
                                             <img
-                                                src={airportPhoto.src}
-                                                alt="Rajkot Airport advertising by Mukesh Airport Media"
+                                                src={division.logo.src}
+                                                alt={`${division.name} logo`}
                                             />
                                         </figure>
                                         <small>{division.code}</small>
@@ -150,6 +155,12 @@ export default function GroupHome() {
                                         className="grp-division"
                                         data-motion-item
                                     >
+                                        <figure className="grp-division-logo">
+                                            <img
+                                                src={division.logo.src}
+                                                alt={`${division.name} logo`}
+                                            />
+                                        </figure>
                                         <small>{division.code}</small>
                                         <h3>{division.name}</h3>
                                         <p>{division.line}</p>

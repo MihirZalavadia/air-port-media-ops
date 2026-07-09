@@ -231,13 +231,13 @@
 import "./Home.css";
 import Image from "next/image";
 
-import gal1 from "@/public/images/inventory/air1.png";
-import gal2 from "@/public/images/inventory/air2.png";
-import gal3 from "@/public/images/inventory/air3.png";
-import gal4 from "@/public/images/inventory/air5.png";
-import gal5 from "@/public/images/inventory/air6.png";
-import gal6 from "@/public/images/inventory/air7.png";
-import gal7 from "@/public/images/inventory/air8.png";
+import gal1 from "@/public/images/inventory/updated/ws_1.webp";
+import gal2 from "@/public/images/inventory/updated/p1_1.webp";
+import gal3 from "@/public/images/inventory/updated/p3_3.webp";
+import gal4 from "@/public/images/inventory/updated/ad_3.webp";
+import gal5 from "@/public/images/inventory/updated/p1_3.webp";
+import gal6 from "@/public/images/inventory/updated/ad_2.webp";
+import gal7 from "@/public/images/inventory/updated/sec_1.webp";
 
 const galleryItems = [
     {
@@ -276,17 +276,17 @@ const galleryItems = [
         gridClass: "type-standard",
     },
     {
-        title: "Arrival Area Branding",
-        category: "Passenger Journey",
+        title: "City-Side Landmark",
+        category: "OOH",
         image: gal6,
-        alt: "Airport passenger journey branding placement",
+        alt: "City-side frontlit unipole at the Rajkot Airport approach",
         gridClass: "type-wide",
     },
     {
-        title: "Arrival Area Branding",
+        title: "Security Hold Area",
         category: "Passenger Journey",
         image: gal7,
-        alt: "Premium arrival area media space at Rajkot Airport",
+        alt: "Backlit media placement at the Rajkot Airport security hold area",
         gridClass: "type-standard",
     },
 ];

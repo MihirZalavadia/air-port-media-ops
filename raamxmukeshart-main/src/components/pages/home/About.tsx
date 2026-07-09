@@ -1775,6 +1775,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Home.css";
 
+import artLogo from "@/public/images/home/mukesh_art_logo.png";
+import publicityLogo from "@/public/images/home/mukesh_publicity_logo.png";
+import airportLogo from "@/public/images/home/logo_mark.png";
+
 type PillarKey = "arts" | "publicity" | "airport";
 
 interface PillarData {
@@ -2166,62 +2170,21 @@ export default function About() {
 }
 
 function renderPillarVector(type: PillarKey) {
-    if (type === "arts") return <DivisionLogo label="ART" />;
-    if (type === "publicity") return <DivisionLogo label="PUBLICITY" />;
-    return <DivisionLogo label="AIRPORT MEDIA" />;
-}
+    const logo =
+        type === "arts" ? artLogo : type === "publicity" ? publicityLogo : airportLogo;
+    const name =
+        type === "arts"
+            ? "Mukesh Art"
+            : type === "publicity"
+              ? "Mukesh Publicity"
+              : "Mukesh Airport Media";
 
-// the actual brand mark — twin peaks over the Mukesh wordmark, with the
-// division name where the real logo carries "AIRPORT MEDIA"
-function DivisionLogo({ label }: { label: string }) {
     return (
-        <svg
-            viewBox="0 0 220 180"
-            className="division-logo"
-            aria-hidden="true"
-        >
-            <path
-                className="division-peak-left"
-                d="M66 78 L92 44 L117 78 C101 68 82 68 66 78 Z"
-            />
-            <path
-                className="division-peak-right"
-                d="M117 78 L142 44 L167 78 C152 68 133 68 117 78 Z"
-            />
-
-            <text
-                x="110"
-                y="112"
-                textAnchor="middle"
-                fontFamily="Georgia, 'Times New Roman', serif"
-                fontSize="34"
-                fontWeight="600"
-                letterSpacing="0.5"
-                className="division-logo-word"
-            >
-                Mukesh
-            </text>
-
-            <line
-                x1="56"
-                y1="124"
-                x2="164"
-                y2="124"
-                className="division-logo-rule"
-            />
-
-            <text
-                x="110"
-                y="144"
-                textAnchor="middle"
-                fontFamily="Arial, Helvetica, sans-serif"
-                fontSize={label.length > 9 ? 12 : 14}
-                fontWeight="700"
-                letterSpacing="2.5"
-                className="division-logo-sub"
-            >
-                {label}
-            </text>
-        </svg>
+        <img
+            className="division-logo-img"
+            src={logo.src}
+            alt={`${name} logo`}
+            loading="lazy"
+        />
     );
 }

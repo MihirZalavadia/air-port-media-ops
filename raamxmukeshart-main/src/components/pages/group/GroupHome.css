@@ -199,23 +199,30 @@
     box-shadow: 0 44px 84px -42px rgba(15, 23, 42, 0.5);
 }
 
-.grp-division figure {
+/* white logo plate at the top of every division card */
+.grp-division-logo {
     margin: -26px -26px 22px;
     width: calc(100% + 52px);
     border-radius: 19px 19px 0 0;
     overflow: hidden;
-}
-
-.grp-division figure img {
-    display: block;
-    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid var(--rule-soft);
+    display: grid;
+    place-items: center;
     aspect-ratio: 16 / 9;
-    object-fit: cover;
-    transition: transform 0.7s ease;
 }
 
-.grp-division.live:hover figure img {
-    transform: scale(1.06);
+.grp-division-logo img {
+    display: block;
+    width: auto;
+    height: 72%;
+    max-width: 80%;
+    object-fit: contain;
+    transition: transform 0.6s ease;
+}
+
+.grp-division:hover .grp-division-logo img {
+    transform: scale(1.05);
 }
 
 .grp-division small {
