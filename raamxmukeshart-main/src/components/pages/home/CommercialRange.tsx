@@ -98,7 +98,37 @@
 
 
 
+import Link from "next/link";
 import "./Home.css";
+
+// budget ladder a media buyer can place themselves on — each rung is a real
+// category with its actual starting teaser, linking to the full inventory
+const commercialTiers = [
+    {
+        price: "₹1.5L/mo",
+        name: "In-Terminal Backlit",
+        line: "Always-on board at security — no loop, no sharing",
+        href: "/inventory/in-terminal-backlit-boards/",
+    },
+    {
+        price: "₹2L/mo",
+        name: "Digital Screen Packages",
+        line: "7 to 39 LED screens playing your creative every 2 minutes",
+        href: "/inventory/digital-screen-network/",
+    },
+    {
+        price: "₹6L/mo",
+        name: "City-Side Landmark",
+        line: "30'×10' unipole every visitor drives past — flyer or not",
+        href: "/inventory/landmark-outdoor-boards/",
+    },
+    {
+        price: "Custom",
+        name: "Full-Airport Hybrid",
+        line: "Digital + static bookending the whole passenger journey",
+        href: "/inventory/hybrid-journey-plans/",
+    },
+];
 
 export default function CommercialRange() {
     return (
@@ -118,33 +148,50 @@ export default function CommercialRange() {
                         data-motion="up"
                         data-motion-delay="0.08"
                     >
-                        Airport media <br /> plans starting from <br />
-                        <em> ₹2L+ per month.</em>
+                        Every budget has <br />
+                        <em> a place at the airport.</em>
                     </h2>
 
                     <p data-motion="up" data-motion-delay="0.16">
-                        Share your campaign window and preferred media mix. We help
-                        shortlist the right airport placements, availability, and plan
-                        based on your brand goals.
+                        From a single always-on backlit board to owning every screen
+                        in the terminal — pick the rung that fits, and we shortlist
+                        placements and availability for your campaign window.
                     </p>
 
                     {/* <a href="#contact">Discuss campaign</a> */}
                 </div>
 
                 <div
-                    className="commercial-fixed-meta"
-                    aria-label="Airport advertising commercial highlights"
+                    className="commercial-tier-ladder"
+                    aria-label="Airport advertising starting budgets"
                     data-motion-group
                 >
-                    <div data-motion-item>
-                        <strong>₹2L+</strong>
-                        <span>Starting monthly range</span>
-                    </div>
+                    {commercialTiers.map((tier) => (
+                        <Link
+                            className="commercial-tier"
+                            href={tier.href}
+                            key={tier.name}
+                            data-motion-item
+                        >
+                            <strong>{tier.price}</strong>
 
-                    <div data-motion-item>
-                        <strong>Custom</strong>
-                        <span>Plan based on media mix</span>
-                    </div>
+                            <span className="commercial-tier-copy">
+                                <b>{tier.name}</b>
+                                <i>{tier.line}</i>
+                            </span>
+
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M5 12h12M12 6l7 6-7 6"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="1.7"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+                            </svg>
+                        </Link>
+                    ))}
                 </div>
             </div>
         </section>

@@ -145,8 +145,23 @@ export const inventoryCategories: InventoryCategory[] = [
                 price: "Starting ₹6 Lac/mo",
             },
             {
-                name: "AD-3 to AD-6",
-                detail: "Frontlit boards · Airport approach & exterior",
+                name: "AD-3 Frontlit",
+                detail: "Frontlit board · Airport approach — full specs in plan PDF",
+                price: "On request",
+            },
+            {
+                name: "AD-4 Frontlit",
+                detail: "Frontlit board · Airport approach — full specs in plan PDF",
+                price: "On request",
+            },
+            {
+                name: "AD-5 Frontlit",
+                detail: "Frontlit board · Airport exterior — full specs in plan PDF",
+                price: "On request",
+            },
+            {
+                name: "AD-6 Frontlit",
+                detail: "Frontlit board · Airport exterior — full specs in plan PDF",
                 price: "On request",
             },
         ],

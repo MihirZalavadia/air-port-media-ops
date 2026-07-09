@@ -109,13 +109,26 @@ export default function InventoryDetail({ slug }: { slug: string }) {
                         </h2>
 
                         <div className="inv-plan-grid" data-motion-group>
-                            {category.plans.map((plan) => (
+                            {category.plans.map((plan, planIndex) => {
+                                const photo = visuals.planPhotos[planIndex];
+
+                                return (
                                 <article className="inv-plan-card" data-motion-item key={plan.name}>
+                                    {photo && (
+                                        <figure className="inv-plan-photo">
+                                            <img
+                                                src={photo.src}
+                                                alt={`${plan.name} — site photo`}
+                                                loading="lazy"
+                                            />
+                                        </figure>
+                                    )}
                                     <h3>{plan.name}</h3>
                                     <p>{plan.detail}</p>
                                     <b>{plan.price}</b>
                                 </article>
-                            ))}
+                                );
+                            })}
                         </div>
 
                         <p className="inv-note" data-motion="up">

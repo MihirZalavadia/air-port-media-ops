@@ -42,6 +42,9 @@ export type CategoryVisuals = {
     cardGallery: StaticImageData[];
     /** detail page hero */
     hero: StaticImageData;
+    /** one photo per plan, same order as inventoryData.plans (null = no
+        dedicated site photo yet — never substitute a wrong location) */
+    planPhotos: (StaticImageData | null)[];
     /** one gallery per unit group, same order as inventoryData.unitGroups */
     groupGalleries: StaticImageData[][];
 };
@@ -51,6 +54,8 @@ export const inventoryVisuals: Record<string, CategoryVisuals> = {
         card: p1_1,
         cardGallery: [p1_2, p2_1, p3_1],
         hero: p1_1,
+        // Package 1, Package 2, Package 3, All-Digital Bundle
+        planPhotos: [p1_1, p2_1, p3_1, p1_5],
         groupGalleries: [
             [p1_2, p1_3, p1_4, p1_5],
             [p2_1, p2_2, p2_3, p2_4],
@@ -61,18 +66,24 @@ export const inventoryVisuals: Record<string, CategoryVisuals> = {
         card: ad2,
         cardGallery: [ad3, ad4, ad5],
         hero: ad2,
+        // AD-2, AD-3, AD-4, AD-5, AD-6 — one board, one photo
+        planPhotos: [ad2, ad3, ad4, ad5, ad6],
         groupGalleries: [[ad2, ad3, ad4, ad5, ad6]],
     },
     "in-terminal-backlit-boards": {
         card: ws_1,
         cardGallery: [ws_2, ws_3, sec_1],
         hero: ws_1,
+        // AD-15 (no dedicated photo yet), Security Clearance, Laptop Workstation
+        planPhotos: [null, sec_1, ws_1],
         groupGalleries: [[sec_1, ws_2, ws_3, ws_4]],
     },
     "hybrid-journey-plans": {
         card: p2_5,
         cardGallery: [ad6, p1_6, ws_4],
         hero: p2_5,
+        // Launch, Dominance, Arrival — composites of real assets
+        planPhotos: [p2_3, ad2, p1_4],
         groupGalleries: [[p2_2, ad3, p1_6, ws_2]],
     },
 };
