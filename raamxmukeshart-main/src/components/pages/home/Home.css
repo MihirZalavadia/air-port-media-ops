@@ -68,7 +68,9 @@
 }
 
 .hero-content {
-  padding: clamp(160px, 18vh, 220px) 0 64px;
+  /* block padding only — the inline gutters come from .container; the old
+     shorthand zeroed them and pinned the hero copy to the screen edge */
+  padding-block: clamp(160px, 18vh, 220px) 64px;
 }
 
 .hero-eyebrow {
