@@ -4027,10 +4027,11 @@ body.site-ready .hero-scroll.hero-anim {
 
 .team-image {
   position: relative;
-  aspect-ratio: 4 / 4.6;
+  /* portraits are square (1000×1000) — match them so the crop never
+     cuts below the chin; the old fixed 320px height showed heads only */
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: #dbeafe;
-  height: 320px;
   width: 100%;
 }
 
@@ -4039,7 +4040,7 @@ body.site-ready .hero-scroll.hero-anim {
   height: 100%;
   object-fit: cover;
   transition: 0.6s ease;
-  object-position: top;
+  object-position: center top;
 }
 
 .team-card:hover .team-image img {
@@ -4207,7 +4208,7 @@ body.site-ready .hero-scroll.hero-anim {
 .team-image {
   position: relative;
   z-index: 1;
-  aspect-ratio: 4 / 4.6;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: #0f172a;
 }
