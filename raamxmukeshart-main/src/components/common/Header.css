@@ -16,19 +16,39 @@
     right: 0;
     width: 100%;
     z-index: 99999;
-    /* background: var(--surface); */
-    background-color: whitesmoke;
+    background: color-mix(in srgb, var(--surface) 72%, transparent);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
     color: var(--ink);
     border-bottom: 1px solid var(--rule-soft);
+    will-change: transform;
     transition:
-        background-color 0.35s ease,
-        border-color 0.35s ease,
-        color 0.35s ease;
+        transform 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+        background 0.45s ease,
+        border-color 0.45s ease,
+        box-shadow 0.45s ease,
+        color 0.45s ease;
 }
 
 html[data-theme="night"] .nav {
-    background: rgba(18, 20, 30, 0.96);
+    background: color-mix(in srgb, #0e1018 68%, transparent);
     border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+/* stays glassy once scrolled (slightly more opaque for legibility), never solid white */
+.nav.scrolled {
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
+    box-shadow: 0 10px 34px -16px rgba(15, 23, 42, 0.24);
+}
+
+html[data-theme="night"] .nav.scrolled {
+    background: color-mix(in srgb, #0e1018 80%, transparent);
+}
+
+/* smart hide on scroll-down, slide back down on scroll-up — pure translate,
+   no opacity, so it visibly slides rather than fading in/out */
+.nav.nav-hidden {
+    transform: translateY(-100%);
 }
 
 .nav-inner {
@@ -36,7 +56,9 @@ html[data-theme="night"] .nav {
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 32px;
-    padding: 6px 0;
+    max-width: 1500px;
+    margin-inline: auto;
+    padding: 10px clamp(20px, 3.5vw, 52px);
 }
 
 /* Brand */
@@ -49,78 +71,34 @@ html[data-theme="night"] .nav {
     color: inherit;
 }
 
+/* Box keeps the logo's native 1002×809 proportions; the image is contained
+   exactly like the footer's, so the lockup can never stretch. */
 .brand-mark {
-    position: relative;
-    width: 100%;
-    height: 100%;
     display: grid;
     place-items: center;
+    height: 62px;
+    aspect-ratio: 1002 / 809;
     flex-shrink: 0;
-    overflow: hidden;
 }
 
 .airport-logo-img {
-    /* width: 120px;
-    height: 108px;
-    object-fit: cover;
-    display: block; */
     width: 100%;
     height: 100%;
+    max-width: none;
     object-fit: contain;
+    object-position: center;
+    display: block;
 }
 
-/* Laptop / small desktop */
-@media (max-width: 1280px) {
-    .brand-mark {
-        width: 110px;
-        height: 98px;
-    }
+/* theme-aware logo swap (both preloaded; CSS toggles which shows — no flicker) */
+.airport-logo-img--night {
+    display: none;
 }
-
-/* Tablet */
-@media (max-width: 992px) {
-    .brand-mark {
-        width: 96px;
-        height: 86px;
-    }
+html[data-theme="night"] .airport-logo-img--day {
+    display: none;
 }
-
-/* Mobile */
-@media (max-width: 768px) {
-    .brand-mark {
-        width: 76px;
-        height: 68px;
-    }
-
-    .airport-logo-img {
-        width: 100%;
-        height: 76px;
-        object-fit: cover;
-        display: block;
-    }
-}
-
-/* Small Mobile */
-@media (max-width: 480px) {
-    .brand-mark {
-        width: 100%;
-        height: 200px;
-    }
-
-    .airport-logo-img {
-        width: 100%;
-        height: 76px;
-        object-fit: cover;
-        display: block;
-    }
-}
-
-/* Extra Small Mobile */
-@media (max-width: 390px) {
-    .brand-mark {
-        width: 62px;
-        height: 56px;
-    }
+html[data-theme="night"] .airport-logo-img--night {
+    display: block;
 }
 
 .brand-text {
@@ -130,20 +108,28 @@ html[data-theme="night"] .nav {
 }
 
 .brand-text b {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
+    letter-spacing: -0.01em;
     color: var(--ink);
     white-space: nowrap;
 }
 
 .brand-text small {
-    margin-top: 8px;
+    margin-top: 7px;
     color: var(--muted);
     font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: 0.12em;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     white-space: nowrap;
+}
+
+/* Mobile brand scale */
+@media (max-width: 768px) {
+    .brand-mark {
+        height: 46px;
+    }
 }
 
 /* Navigation Links */
@@ -424,20 +410,14 @@ body.menu-open {
 
 /* Mobile */
 @media (max-width: 768px) {
-    .nav {
-        /* background: var(--surface); */
-        background: whitesmoke;
-    }
-
     .nav-inner {
         grid-template-columns: 1fr auto;
         gap: 12px;
-        padding: 14px 20px;
+        padding: 12px 20px;
     }
 
     .brand-mark {
-        width: 54px;
-        height: 46px;
+        height: 44px;
     }
 
     .brand-text b {
@@ -598,8 +578,7 @@ body.menu-open {
     }
 
     .brand-mark {
-        width: 50px;
-        height: 42px;
+        height: 40px;
     }
 
     .brand-text b {

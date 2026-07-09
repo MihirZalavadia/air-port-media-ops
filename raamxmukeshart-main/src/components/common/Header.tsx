@@ -54,12 +54,12 @@
 //     return (
 //         <header className={`nav ${isMenuOpen ? "mobile-open" : ""}`}>
 //             <div className="container nav-inner">
-//                 <a href="#top" className="brand" aria-label="Rajkot Airport x Mukesh Arts">
+//                 <a href="#top" className="brand" aria-label="Rajkot Airport x Mukesh Art">
 //                     <span className="brand-mark">
 //                         <AirportLogoMark />
 //                     </span>
 //                     <span className="brand-text">
-//                         <b>Rajkot Airport x Mukesh Arts</b>
+//                         <b>Rajkot Airport x Mukesh Art</b>
 //                         <small>Airport Advertising Media </small>
 //                     </span>
 //                 </a>
@@ -201,14 +201,13 @@
 "use client";
 
 import Image from "next/image";
-// import { useEffect, useState } from "react";
-import { useEffect, useState, type MouseEvent } from "react";
+import Link from "next/link";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { HiBars3BottomRight, HiXMark } from "react-icons/hi2";
 import "./Header.css";
 
-// import logo from "@/public/images/home/logo.png";
-// import logo from "@/public/images/home/mukesh airport media-Photoroom.png";
-import logo from "@/public/images/home/cover_logo.png";
+import logoDay from "@/public/images/home/logo_mark.png";
+import logoNight from "@/public/images/home/logo_mark_light.png";
 
 type ThemeId = "day" | "night";
 
@@ -218,17 +217,13 @@ type ViewTransitionDocument = Document & {
     };
 };
 
-function getInitialTheme(): ThemeId {
-    if (typeof document === "undefined") return "day";
-
-    const domTheme = document.documentElement.dataset.theme;
-    return domTheme === "night" || domTheme === "day" ? domTheme : "day";
-}
-
 export default function Header() {
-    const [themeId, setThemeId] = useState<ThemeId>(getInitialTheme);
+    const [themeId, setThemeId] = useState<ThemeId>("day");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isMenuClosing, setIsMenuClosing] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const [hidden, setHidden] = useState(false);
+    const lastYRef = useRef(0);
 
     function closeMobileMenu() {
         if (window.innerWidth > 768) return;
@@ -253,10 +248,17 @@ export default function Header() {
     }
 
     useEffect(() => {
+        const savedTheme = localStorage.getItem("ram-theme") as ThemeId | null;
+
+        if (savedTheme === "night" || savedTheme === "day") {
+            setThemeId(savedTheme);
+            document.documentElement.dataset.theme = savedTheme;
+        }
+    }, []);
+
+    useEffect(() => {
         document.documentElement.dataset.theme = themeId;
-        try {
-            window.localStorage.setItem("ram-theme", themeId);
-        } catch {}
+        localStorage.setItem("ram-theme", themeId);
     }, [themeId]);
 
     useEffect(() => {
@@ -268,6 +270,22 @@ export default function Header() {
             document.body.classList.remove("menu-open");
         };
     }, [isMenuOpen]);
+
+    // Smart scroll: solidify once past the top; hide on scroll-down, roll back on scroll-up.
+    useEffect(() => {
+        lastYRef.current = window.scrollY;
+        const onScroll = () => {
+            const y = window.scrollY;
+            setScrolled(y > 16);
+            const last = lastYRef.current;
+            if (y > last && y > 160) setHidden(true);
+            else if (y < last - 4) setHidden(false);
+            lastYRef.current = y;
+        };
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
 
     const isNight = themeId === "night";
 
@@ -290,9 +308,7 @@ export default function Header() {
         const updateTheme = () => {
             setThemeId(nextTheme);
             root.dataset.theme = nextTheme;
-            try {
-                window.localStorage.setItem("ram-theme", nextTheme);
-            } catch {}
+            localStorage.setItem("ram-theme", nextTheme);
         };
 
         const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -318,20 +334,20 @@ export default function Header() {
         // >
         <header
             className={`nav ${isMenuOpen || isMenuClosing ? "mobile-open" : ""
-                } ${isMenuClosing ? "mobile-closing" : ""}`}
+                } ${isMenuClosing ? "mobile-closing" : ""} ${scrolled ? "scrolled" : ""} ${hidden && !isMenuOpen && !isMenuClosing ? "nav-hidden" : ""
+                }`}
         >
             <div className="container nav-inner">
-                <a href="#top" className="brand" aria-label="Rajkot Airport x Mukesh Arts">
+                <Link href="/#top" className="brand" aria-label="Mukesh Airport Media">
                     <span className="brand-mark">
                         <AirportLogoMark />
                     </span>
 
                     <span className="brand-text">
-                        {/* <b>Rajkot Airport x Mukesh Arts</b> */}
                         <b>Mukesh Airport Media</b>
-                        <small>Rajkot Airport Advertising </small>
+                        <small>Rajkot Airport Advertising</small>
                     </span>
-                </a>
+                </Link>
 
                 {/* <nav className="nav-links" aria-label="Primary">
                     <a href="#about">About Us</a>
@@ -341,11 +357,11 @@ export default function Header() {
                     <a href="#contact">Contact Us</a>
                 </nav> */}
                 <nav className="nav-links" aria-label="Primary">
-                    <a onClick={() => setIsMenuOpen(false)} href="#about">About Us</a>
-                    <a onClick={() => setIsMenuOpen(false)} href="#inventory">Inventory & Packages</a>
-                    <a onClick={() => setIsMenuOpen(false)} href="#whyairportmedia">Why Airport Media</a>
-                    <a onClick={() => setIsMenuOpen(false)} href="#gallery">Gallery</a>
-                    <a onClick={() => setIsMenuOpen(false)} href="#contact">Contact Us</a>
+                    <Link onClick={() => setIsMenuOpen(false)} href="/#about">About Us</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} href="/#inventory">Inventory & Packages</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} href="/#whyairportmedia">Why Airport Media</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} href="/#gallery">Gallery</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} href="/#contact">Contact Us</Link>
                     {/* <a onClick={closeMobileMenu} href="#about">About Us</a>
                     <a onClick={closeMobileMenu} href="#inventory">Inventory & Packages</a>
                     <a onClick={closeMobileMenu} href="#whyairportmedia">Why Airport Media</a>
@@ -362,10 +378,6 @@ export default function Header() {
                         isNight={isNight}
                         onToggle={handleThemeToggle}
                     />
-
-                    <a href="#inventory" className="btn-primary">
-                        Unlock Inventory
-                    </a>
                 </div>
 
                 {/* <button
@@ -672,22 +684,27 @@ function ThemeToggle({
 
 function AirportLogoMark() {
     return (
-        // <Image
-        //     src={logo}
-        //     alt="Mukesh Airport Media Logo"
-        //     priority
-        //     className="airport-logo-img"
-        //     sizes="(max-width: 768px) 54px, 70px"
-        // />
-        <Image
-    src={logo}
-    alt="Mukesh Airport Media Logo"
-    width={300}
-    height={300}
-    quality={100}
-    priority
-    className="airport-logo-img"
-/>
+        <>
+            <Image
+                src={logoDay}
+                alt="Mukesh Airport Media"
+                width={251}
+                height={202}
+                quality={100}
+                priority
+                className="airport-logo-img airport-logo-img--day"
+            />
+            <Image
+                src={logoNight}
+                alt=""
+                aria-hidden
+                width={251}
+                height={202}
+                quality={100}
+                priority
+                className="airport-logo-img airport-logo-img--night"
+            />
+        </>
     );
 }
 

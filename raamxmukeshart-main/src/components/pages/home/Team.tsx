@@ -2,7 +2,7 @@
 
 // const team = [
 //     {
-//         name: "Mukesh Arts",
+//         name: "Mukesh Art",
 //         role: "Airport Media Partner",
 //         image: "/images/team/team-1.jpg",
 //         desc: "Leads brand relationships, campaign planning, and premium media coordination.",
@@ -78,7 +78,7 @@
 
 // // const team = [
 // //     {
-// //         name: "Mukesh Arts",
+// //         name: "Mukesh Art",
 // //         role: "Airport Media Partner",
 // //         image: "/images/team/team-1.jpg",
 // //         linkedin: "https://www.linkedin.com/",

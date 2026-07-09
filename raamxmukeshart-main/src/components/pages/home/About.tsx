@@ -26,7 +26,7 @@
 //     {
 //         index: "1997",
 //         key: "legacy",
-//         title: "The Mukesh Arts Foundation",
+//         title: "The Mukesh Art Foundation",
 //         meta: "Rooted Experience // Regional Legacy",
 //         body: "Built on decades of outdoor advertising dominance. Rajkot Airport Media inherits a strong eye for high-scale brand presence across Gujarat’s economic and travel corridors.",
 //         metric: "29+ Years Authority",
@@ -125,7 +125,7 @@
 //                     </h2>
 
 //                     <p className="about-description">
-//                         Since 1997, Mukesh Arts has delivered high-impact advertising
+//                         Since 1997, Mukesh Art has delivered high-impact advertising
 //                         experiences across Gujarat. Through Rajkot Airport Media, we help
 //                         brands engage affluent travellers, business leaders, NRIs, and
 //                         decision-makers through premium airport advertising environments.
@@ -337,9 +337,9 @@
 //     {
 //         index: "1997",
 //         key: "legacy",
-//         title: "Mukesh Arts Legacy",
+//         title: "Mukesh Art Legacy",
 //         meta: "Outdoor Media Experience",
-//         body: "Since 1997, Mukesh Arts has helped brands build visibility across Gujarat through outdoor media and planned brand placements.",
+//         body: "Since 1997, Mukesh Art has helped brands build visibility across Gujarat through outdoor media and planned brand placements.",
 //         metric: "Since 1997",
 //         coords: "420 / 01.A",
 //     },
@@ -441,7 +441,7 @@
 //     //                 </h2>
 
 //     //                 <p className="about-description">
-//     //                     Since 1997, Mukesh Arts has helped brands build strong visibility
+//     //                     Since 1997, Mukesh Art has helped brands build strong visibility
 //     //                     across Gujarat. Today, we bring that experience to Rajkot Airport
 //     //                     through planned media spaces, clear execution, and premium placements.
 //     //                 </p>
@@ -450,7 +450,7 @@
 //     //             <div
 //     //                 className={`cinematic-strip-matrix ${isPending ? "is-transitioning" : ""}`}
 //     //                 ref={containerRef}
-//     //                 aria-label={`About Mukesh Arts and Rajkot Airport Media: ${active.title}`}
+//     //                 aria-label={`About Mukesh Art and Rajkot Airport Media: ${active.title}`}
 //     //             >
 //     //                 {strategicPillars.map((item, index) => {
 //     //                     const isCurrent = activeSegment === index;
@@ -570,7 +570,7 @@
 //                         data-motion="up"
 //                         data-motion-delay="0.14"
 //                     >
-//                         Since 1997, Mukesh Arts has helped brands build strong visibility
+//                         Since 1997, Mukesh Art has helped brands build strong visibility
 //                         across Gujarat. Today, we bring that experience to Rajkot Airport
 //                         through planned media spaces, clear execution, and premium placements.
 //                     </p>
@@ -579,7 +579,7 @@
 //                 <div
 //                     className={`cinematic-strip-matrix ${isPending ? "is-transitioning" : ""}`}
 //                     ref={containerRef}
-//                     aria-label={`About Mukesh Arts and Rajkot Airport Media: ${active.title}`}
+//                     aria-label={`About Mukesh Art and Rajkot Airport Media: ${active.title}`}
 //                     data-motion-group
 //                 >
 //                     {strategicPillars.map((item, index) => {
@@ -808,7 +808,7 @@
 //     {
 //         index: "1997",
 //         key: "legacy",
-//         title: "The Mukesh Arts Foundation",
+//         title: "The Mukesh Art Foundation",
 //         meta: "Rooted Experience // Regional Legacy",
 //         body: "Built on decades of outdoor advertising dominance. Rajkot Airport Media inherits a strong eye for high-scale brand presence across Gujarat’s economic and travel corridors.",
 //         metric: "29+ Years Authority",
@@ -906,7 +906,7 @@
 //                     </h2>
 
 //                     <p className="about-description" data-motion="up" data-motion-delay="0.16">
-//                         Since 1997, Mukesh Arts has delivered high-impact advertising
+//                         Since 1997, Mukesh Art has delivered high-impact advertising
 //                         experiences across Gujarat. Through Rajkot Airport Media, we help
 //                         brands engage affluent travellers, business leaders, NRIs, and
 //                         decision-makers through premium airport advertising environments.
@@ -1126,9 +1126,9 @@
 //     {
 //         index: "2004",
 //         key: "arts",
-//         title: "Mukesh Arts",
+//         title: "Mukesh Art",
 //         meta: "Wall Painting & Advertising",
-//         body: "Mukesh Arts started with wall painting and local advertising, building a strong foundation in visual brand communication and on-ground campaign execution.",
+//         body: "Mukesh Art started with wall painting and local advertising, building a strong foundation in visual brand communication and on-ground campaign execution.",
 //         metric: "Wall Painting",
 //         coords: "01 / Foundation",
 //     },
@@ -1425,9 +1425,9 @@
 //     {
 //         index: "2004",
 //         key: "arts",
-//         title: "Mukesh Arts",
+//         title: "Mukesh Art",
 //         meta: "Wall Painting & Advertising",
-//         body: "Mukesh Arts started with wall painting and local advertising, building a strong foundation in visual brand communication and on-ground campaign execution.",
+//         body: "Mukesh Art started with wall painting and local advertising, building a strong foundation in visual brand communication and on-ground campaign execution.",
 //         metric: "Wall Painting",
 //         coords: "01 / Foundation",
 //     },
@@ -1460,7 +1460,7 @@
 //     {
 //         number: "03",
 //         title: "Strong Media Chapters",
-//         body: "Mukesh Arts, Mukesh Publicity, and Mukesh Airport Media built step by step.",
+//         body: "Mukesh Art, Mukesh Publicity, and Mukesh Airport Media built step by step.",
 //     },
 //     {
 //         number: "2023",
@@ -1797,9 +1797,9 @@ const strategicPillars: PillarData[] = [
     {
         index: "2004",
         key: "arts",
-        title: "Mukesh Arts",
+        title: "Mukesh Art",
         meta: "Wall Painting & Advertising",
-        body: "Mukesh Arts started with wall painting and local advertising, building a strong foundation in visual brand communication and on-ground campaign execution.",
+        body: "Mukesh Art started with wall painting and local advertising, building a strong foundation in visual brand communication and on-ground campaign execution.",
         metric: "Wall Painting",
         coords: "01 / Foundation",
     },
@@ -1832,7 +1832,7 @@ const legacySignals: LegacySignal[] = [
     {
         number: "03",
         title: "Strong Media Chapters",
-        body: "Mukesh Arts, Mukesh Publicity, and Mukesh Airport Media built step by step.",
+        body: "Mukesh Art, Mukesh Publicity, and Mukesh Airport Media built step by step.",
     },
     {
         number: "2023",

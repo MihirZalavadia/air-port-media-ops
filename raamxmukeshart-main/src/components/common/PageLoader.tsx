@@ -1,93 +1,179 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import mukeshLogo from "@/public/images/home/cover_logo.png";
+import mukeshLogoLight from "@/public/images/home/logo_mark_light.png";
 
 import "./PageLoader.css";
 
-/**
- * Cinematic airport-media opening moment.
- * - thin runway / frame lines draw in
- * - brand lockup rises cleanly
- * - single aircraft fly-by (~1.15s core pass)
- * - premium curtain reveal splits away to show the page
- * Respects prefers-reduced-motion (skips straight to a quick fade).
- */
+// the boarding curtain plays once per session — client-side hops back to
+// the homepage shouldn't re-run the whole show
+const PLAYED_KEY = "ram-loader-played";
+
+function alreadyPlayed() {
+    try {
+        return sessionStorage.getItem(PLAYED_KEY) === "1";
+    } catch {
+        return false;
+    }
+}
+
 export default function PageLoader() {
-    const [hide, setHide] = useState(false); // triggers curtain reveal
-    const [gone, setGone] = useState(false); // removes from flow
+    const [progress, setProgress] = useState(0);
+    const [takeoff, setTakeoff] = useState(false);
+    const [hide, setHide] = useState(false);
+    const [skipped, setSkipped] = useState(false);
+    const loadedRef = useRef(false);
 
     useEffect(() => {
-        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-        const timers: ReturnType<typeof setTimeout>[] = [];
-
-        if (reduce) {
-            timers.push(setTimeout(() => setHide(true), 220));
-            timers.push(setTimeout(() => setGone(true), 520));
-        } else {
-            // core fly-by ~1.15s + brand hold, then curtain reveal
-            timers.push(setTimeout(() => setHide(true), 2050));
-            timers.push(setTimeout(() => setGone(true), 2950));
+        if (alreadyPlayed()) {
+            setSkipped(true);
+            setHide(true);
+            document.body.classList.add("site-ready");
+            return;
         }
 
-        return () => timers.forEach(clearTimeout);
+        const start = Date.now();
+        const MIN = 1400; // keep the boarding moment for at least ~1.4s
+        const MAX = 5000; // never trap the user if something is slow
+
+        const markLoaded = () => {
+            loadedRef.current = true;
+        };
+
+        if (document.readyState === "complete") {
+            markLoaded();
+        } else {
+            window.addEventListener("load", markLoaded, { once: true });
+        }
+        const cap = window.setTimeout(markLoaded, MAX);
+
+        let finished = false;
+
+        // Counter taxis to ~90% on its own, then sprints to 100 once the
+        // page is actually loaded AND the minimum brand moment has passed.
+        const tick = window.setInterval(() => {
+            const canFinish =
+                loadedRef.current && Date.now() - start >= MIN;
+
+            setProgress((current) => {
+                const target = canFinish ? 100 : 90;
+                const step =
+                    (target - current) * (canFinish ? 0.18 : 0.05) +
+                    Math.random() * 0.6;
+                const next = Math.min(target, current + step);
+
+                if (next >= 99.4 && !finished) {
+                    finished = true;
+                    window.clearInterval(tick);
+
+                    // wheels up, then lift the curtain
+                    setTakeoff(true);
+                    window.setTimeout(() => {
+                        setHide(true);
+                        // tell the page (hero entrance, etc.) the curtain is lifting
+                        document.body.classList.add("site-ready");
+                        try {
+                            sessionStorage.setItem(PLAYED_KEY, "1");
+                        } catch {}
+                    }, 620);
+
+                    return 100;
+                }
+
+                return next;
+            });
+        }, 50);
+
+        return () => {
+            window.removeEventListener("load", markLoaded);
+            window.clearTimeout(cap);
+            window.clearInterval(tick);
+        };
     }, []);
 
-    if (gone) return null;
+    const shown = Math.floor(progress);
+
+    if (skipped) return null;
 
     return (
-        <div className={`airport-loader ${hide ? "hide" : ""}`} aria-hidden="true">
-            <div className="loader-grid" />
-            <div className="loader-glow loader-glow-red" />
-            <div className="loader-glow loader-glow-blue" />
+        <div
+            className={`airport-loader ${takeoff ? "takeoff" : ""} ${hide ? "hide" : ""}`}
+            aria-hidden={hide}
+        >
+            {/* accent layer sweeps up just behind the main curtain */}
+            <span className="loader-veil" aria-hidden="true" />
 
-            <svg className="loader-frame" preserveAspectRatio="none" viewBox="0 0 100 100">
-                <line className="lf" x1="0" y1="0" x2="100" y2="0" pathLength={1} />
-                <line className="lf" x1="100" y1="0" x2="100" y2="100" pathLength={1} />
-                <line className="lf" x1="100" y1="100" x2="0" y2="100" pathLength={1} />
-                <line className="lf" x1="0" y1="100" x2="0" y2="0" pathLength={1} />
-                <line
-                    className="loader-runway-dash"
-                    x1="0"
-                    y1="50"
-                    x2="100"
-                    y2="50"
-                    vectorEffect="non-scaling-stroke"
-                />
-            </svg>
+            <div className="loader-panel">
+                <div className="loader-inner">
+                    <div className="loader-logo">
+                        <Image
+                            src={mukeshLogoLight}
+                            alt="Mukesh Airport Media"
+                            width={226}
+                            height={183}
+                            quality={100}
+                            priority
+                        />
+                    </div>
 
-            <div className="loader-plane">
-                <svg viewBox="0 0 120 40" aria-hidden="true">
-                    <path
-                        d="M8 22 L45 18 L78 5 C88 1 98 3 106 9 L111 13 L80 23 L106 31 L99 36 L64 28 L35 33 L24 39 L18 37 L29 27 L8 26 Z"
-                        fill="currentColor"
-                    />
-                </svg>
-            </div>
+                    <div className="loader-title">
+                        <span className="loader-kicker">Airport Advertising Media</span>
+                        <h1>
+                            Rajkot Airport <em>×</em> Mukesh Art
+                        </h1>
+                    </div>
 
-            <div className="loader-center">
-                <Image
-                    className="loader-logo"
-                    src={mukeshLogo}
-                    alt="Mukesh Arts"
-                    width={168}
-                    height={108}
-                    priority
-                />
-                <span className="loader-kicker">Airport Advertising Media</span>
-                <h1 className="loader-title">
-                    Rajkot Airport
-                    <span className="x">×</span>
-                    Mukesh Arts
-                </h1>
-            </div>
+                    <div
+                        className="loader-runway"
+                        role="progressbar"
+                        aria-label="Loading"
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                        aria-valuenow={shown}
+                    >
+                        <span className="loader-runway-line" />
+                        <span
+                            className="loader-runway-fill"
+                            style={{ width: `${progress}%` }}
+                        />
+                        <span
+                            className="loader-plane"
+                            style={{ left: `${progress}%` }}
+                        >
+                            <PlaneIcon />
+                        </span>
+                    </div>
+                </div>
 
-            <div className="loader-curtain">
-                <i className="c-left" />
-                <i className="c-right" />
+                <span className="loader-corner loader-corner-tl">
+                    RAJ · Rajkot International
+                </span>
+
+                <span className="loader-corner loader-corner-tr">
+                    Now Boarding
+                </span>
+
+                <span className="loader-corner loader-corner-bl">
+                    Authorised Advertising Partner · AAI
+                </span>
+
+                <span className="loader-count" aria-hidden="true">
+                    {String(shown).padStart(3, "0")}
+                    <i>%</i>
+                </span>
             </div>
         </div>
+    );
+}
+
+function PlaneIcon() {
+    return (
+        <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+                d="M8 22 L45 18 L78 5 C88 1 98 3 106 9 L111 13 L80 23 L106 31 L99 36 L64 28 L35 33 L24 39 L18 37 L29 27 L8 26 Z"
+                fill="currentColor"
+            />
+        </svg>
     );
 }

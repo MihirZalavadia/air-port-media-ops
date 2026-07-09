@@ -23,14 +23,13 @@ type City = {
 // Every metro sits cleanly on land with no label collisions.
 const CITIES: City[] = [
     { city: "Delhi",     code: "DEL", mins: "110 min", x: 392, y: 188, ldx: 0,  ldy: -20 },
-    { city: "Ahmedabad", code: "AMD", mins: "45 min",  x: 300, y: 350, ldx: 54, ldy: 6 },
-    { city: "Mumbai",    code: "BOM", mins: "75 min",  x: 305, y: 432, ldx: -6, ldy: 30 },
+    { city: "Ahmedabad", code: "AMD", mins: "45 min",  x: 291, y: 336, ldx: 46, ldy: 5 },
+    { city: "Mumbai",    code: "BOM", mins: "75 min",  x: 305, y: 432, ldx: -36, ldy: 20 },
+    { city: "Pune",      code: "PNQ", mins: "85 min",  x: 338, y: 450, ldx: 36, ldy: 5 },
     { city: "Goa",       code: "GOI", mins: "95 min",  x: 322, y: 500, ldx: 2,  ldy: 28 },
-    { city: "Hyderabad", code: "HYD", mins: "115 min", x: 440, y: 478, ldx: 4,  ldy: -20 },
+    { city: "Hyderabad", code: "HYD", mins: "115 min", x: 440, y: 478, ldx: 52, ldy: 6 },
     { city: "Bengaluru", code: "BLR", mins: "130 min", x: 392, y: 552, ldx: 0,  ldy: 30 },
 ];
-
-const PLANE = "M-13 1 L-2 -2 L11 -8 L15 -5 L5 0 L15 5 L11 8 L-2 2 L-13 5 Z";
 
 function routePath(c: City) {
     const midX = (HUB.x + c.x) / 2;
@@ -51,8 +50,8 @@ export default function Connectivity() {
     useEffect(() => {
         const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         if (reduce || typeof IntersectionObserver === "undefined") {
-            const frame = window.requestAnimationFrame(() => setPlayed(true));
-            return () => window.cancelAnimationFrame(frame);
+            setPlayed(true);
+            return;
         }
         const node = sectionRef.current;
         if (!node) return;
@@ -137,7 +136,7 @@ export default function Connectivity() {
                             <title id="ram-conn-map-title">Rajkot Airport connectivity map</title>
                             <desc id="ram-conn-map-desc">
                                 Route map showing Rajkot Airport connections with Delhi,
-                                Ahmedabad, Mumbai, Goa, Hyderabad and Bengaluru.
+                                Ahmedabad, Mumbai, Pune, Goa, Hyderabad and Bengaluru.
                             </desc>
 
                             <defs>
@@ -155,17 +154,6 @@ export default function Connectivity() {
                                 </linearGradient>
                             </defs>
 
-                            {/* 1 — card frame draws first */}
-                            <rect
-                                className="ram-card-frame"
-                                x="14"
-                                y="14"
-                                width="972"
-                                height="672"
-                                rx="18"
-                                pathLength={1}
-                            />
-
                             {/* 2 — India: filled land + outline stroke draw */}
                             <path className="ram-india-fill" d={INDIA_OUTLINE} aria-hidden="true" />
                             <path
@@ -176,9 +164,10 @@ export default function Connectivity() {
                             />
 
                             {/* 5-6 — routes draw outward + aircraft travel the curves */}
+                            {/* all flight paths share one delay so they draw together */}
                             {CITIES.map((c, i) => {
                                 const d = routePath(c);
-                                const delay = { "--rdelay": `${1.7 + i * 0.12}s` } as CSSProperties;
+                                const delay = { "--rdelay": "2.7s" } as CSSProperties;
                                 return (
                                     <g
                                         key={`route-${c.code}`}
@@ -187,26 +176,11 @@ export default function Connectivity() {
                                     >
                                         <path
                                             className="ram-route-base"
-                                            id={`ram-route-${i}`}
                                             d={d}
                                             pathLength={1}
                                             style={delay}
                                         />
                                         <path className="ram-route-flow" d={d} style={delay} />
-                                        <g className="ram-route-plane" style={delay} aria-hidden="true">
-                                            <path className="ram-plane-body" d={PLANE} />
-                                            <animateMotion
-                                                dur={`${3 + i * 0.25}s`}
-                                                repeatCount="indefinite"
-                                                rotate="auto"
-                                                keyPoints="0;1"
-                                                keyTimes="0;1"
-                                                calcMode="spline"
-                                                keySplines="0.45 0 0.25 1"
-                                            >
-                                                <mpath href={`#ram-route-${i}`} />
-                                            </animateMotion>
-                                        </g>
                                     </g>
                                 );
                             })}
@@ -228,7 +202,7 @@ export default function Connectivity() {
                                     key={`node-${c.code}`}
                                     className={`ram-city-node ${active === i ? "active" : ""}`}
                                     data-i={i}
-                                    style={{ "--cdelay": `${1.0 + i * 0.13}s` } as CSSProperties}
+                                    style={{ "--cdelay": "2.0s" } as CSSProperties}
                                     role="button"
                                     tabIndex={0}
                                     aria-label={`${c.city} route, ${c.mins} from Rajkot`}
@@ -265,23 +239,27 @@ export default function Connectivity() {
                                 </g>
                             ))}
                         </svg>
-
-                        <div className="ram-map-stats" aria-label="Rajkot Airport route highlights">
-                            <div>
-                                <span>Connected metros</span>
-                                <strong>{CITIES.length}</strong>
-                            </div>
-                            <div>
-                                <span>Airport hub</span>
-                                <strong>RAJ</strong>
-                            </div>
-                        </div>
                     </div>
 
                     {/* 8 — route list synced with the selected map route */}
                     <aside className="ram-route-panel" aria-label="Rajkot Airport metro access list">
                         <span className="ram-panel-label">Metro access</span>
-                        <h3>Strategic reach from Gujarat&apos;s business corridor.</h3>
+                        <h3>One short hop from India&apos;s biggest markets.</h3>
+
+                        <div className="ram-panel-stats">
+                            <div>
+                                <strong>{CITIES.length}</strong>
+                                <span>Connected metros</span>
+                            </div>
+                            <div>
+                                <strong>RAJ</strong>
+                                <span>Airport hub</span>
+                            </div>
+                            <div>
+                                <strong>45m+</strong>
+                                <span>Fastest reach</span>
+                            </div>
+                        </div>
 
                         <div className="ram-route-list">
                             {CITIES.map((c, i) => (

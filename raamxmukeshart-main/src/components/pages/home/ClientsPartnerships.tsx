@@ -85,7 +85,7 @@
 //                         </h2>
 
 //                         <p className="premium-subtext">
-//                             Mukesh Arts connects premium brands with Rajkot Airport’s passenger journey
+//                             Mukesh Art connects premium brands with Rajkot Airport’s passenger journey
 //                             through trusted media planning, airport coordination, and relationship-led execution.
 //                         </p>
 
@@ -272,7 +272,7 @@
 //                         </h2>
 
 //                         <p className="premium-subtext">
-//                             Mukesh Arts works with brands across Rajkot Airport’s passenger
+//                             Mukesh Art works with brands across Rajkot Airport’s passenger
 //                             journey through planned media placement, airport coordination,
 //                             and reliable campaign execution.
 //                         </p>
@@ -482,7 +482,7 @@ export default function ClientsPartnership() {
                             data-motion="up"
                             data-motion-delay="0.16"
                         >
-                            Mukesh Arts works with brands across Rajkot Airport’s passenger
+                            Mukesh Art works with brands across Rajkot Airport’s passenger
                             journey through planned media placement, airport coordination,
                             and reliable campaign execution.
                         </p>

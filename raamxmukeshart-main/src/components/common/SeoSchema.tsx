@@ -9,11 +9,11 @@ export default function SeoSchema() {
             {
                 "@type": "AdvertisingAgency",
                 "@id": `${siteConfig.url}/#business`,
-                name: "Rajkot Airport x Mukesh Arts",
+                name: "Rajkot Airport x Mukesh Art",
                 alternateName: [
                     "Rajkot Airport Media",
-                    "Mukesh Arts",
-                    "Mukesh Arts Rajkot Airport Media",
+                    "Mukesh Art",
+                    "Mukesh Art Rajkot Airport Media",
                     "Rajkot Airport Advertising Media",
                 ],
                 url: siteConfig.url,

@@ -1,19 +1,26 @@
-import type { NextConfig } from "next";
+// import type { NextConfig } from "next";
 
-const isGithubPages = process.env.GITHUB_PAGES === "true";
-const basePath = isGithubPages ? "/air-port-media-ops" : "";
+// const nextConfig: NextConfig = {
+//   output: "export",
+// };
 
-const nextConfig: NextConfig = {
+// export default nextConfig;
+
+
+
+// GITHUB_PAGES=true is set by .github/workflows/deploy-pages.yml —
+// project pages serve from /<repo>/, so assets need the prefix there
+const isGitHubPages = process.env.GITHUB_PAGES === "true";
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   output: "export",
   trailingSlash: true,
+  basePath: isGitHubPages ? "/air-port-media-ops" : "",
   images: {
     unoptimized: true,
-  },
-  basePath,
-  assetPrefix: basePath ? `${basePath}/` : undefined,
-  env: {
-    NEXT_PUBLIC_BASE_PATH: basePath,
+    qualities: [75, 100],
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

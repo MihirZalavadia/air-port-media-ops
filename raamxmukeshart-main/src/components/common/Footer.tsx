@@ -13,7 +13,7 @@
 
 //                 <div className="footer-brand">
 //                     <div className="footer-brand-row">
-//                         <h2>Rajkot Airport   <br /> <em>x</em> Mukesh Arts</h2>
+//                         <h2>Rajkot Airport   <br /> <em>x</em> Mukesh Art</h2>
 
 //                         <span className="footer-logo">
 //                             <AirportLogoMark />
@@ -76,7 +76,7 @@
 
 //             <div className="container footer-bottom">
 //                 <p>© {new Date().getFullYear()} Rajkot Airport Advertising Media.</p>
-//                 <p>Powered by Mukesh Arts</p>
+//                 <p>Powered by Mukesh Art</p>
 //             </div>
 //         </footer>
 //     );
@@ -129,8 +129,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-// import airportLogo from "@/public/images/home/mukesh airport media-Photoroom.png"
-import airportLogo from "@/public/images/home/cover_logo.png"
+import logoDay from "@/public/images/home/logo_mark.png"
+import logoLight from "@/public/images/home/logo_mark_light.png"
 import "./Footer.css";
 import {
     FaInstagram,
@@ -146,7 +146,7 @@ export default function Footer() {
 
                 <div className="footer-brand">
                     <div className="footer-brand-row">
-                        <h2>Rajkot Airport   <br /> <em>x</em> Mukesh Arts</h2>
+                        <h2>Rajkot Airport   <br /> <em>x</em> Mukesh Art</h2>
 
                         <span className="footer-logo" aria-hidden="true">
                             <AirportLogoMark />
@@ -195,10 +195,10 @@ export default function Footer() {
                     <div>
                         <h4>Media</h4>
                         <nav aria-label="Airport media services">
-                            <Link href="/#inventory">Digital Screens</Link>
-                            <Link href="/#inventory">Static Boards</Link>
-                            <Link href="/#inventory">Airport Branding</Link>
-                            <Link href="/#inventory">OOH Media</Link>
+                            <Link href="/inventory/digital-screen-network/">Digital Screens</Link>
+                            <Link href="/inventory/landmark-outdoor-boards/">Outdoor Boards</Link>
+                            <Link href="/inventory/in-terminal-backlit-boards/">Backlit Boards</Link>
+                            <Link href="/inventory/hybrid-journey-plans/">Hybrid Plans</Link>
                         </nav>
                     </div>
 
@@ -216,7 +216,7 @@ export default function Footer() {
 
             <div className="container footer-bottom">
                 <p>© {new Date().getFullYear()} Rajkot Airport Advertising Media.</p>
-                <p>Powered by Mukesh Arts</p>
+                <p>Powered by Mukesh Art</p>
             </div>
         </footer>
     );
@@ -259,13 +259,24 @@ export default function Footer() {
 
 function AirportLogoMark() {
     return (
-        <Image
-            src={airportLogo}
-            alt="Mukesh Airport Media Logo"
-            width={140}
-            height={90}
-            priority
-            className="airport-logo-img"
-        />
+        <>
+            <Image
+                src={logoDay}
+                alt="Mukesh Airport Media"
+                width={251}
+                height={202}
+                quality={100}
+                className="airport-logo-img airport-logo-img--day"
+            />
+            <Image
+                src={logoLight}
+                alt=""
+                aria-hidden
+                width={251}
+                height={202}
+                quality={100}
+                className="airport-logo-img airport-logo-img--night"
+            />
+        </>
     );
 }

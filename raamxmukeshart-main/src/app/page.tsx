@@ -56,32 +56,31 @@ import SmoothScroll from "@/src/components/common/SmoothScroller";
 import ScrollAnimations from "@/src/components/common/ScrollAnimations";
 import SeoSchema from "@/src/components/common/SeoSchema";
 
-import { pageSeo, siteConfig } from "@/src/lib/seo";
+import { pageSeo } from "@/src/lib/seo";
 
 import "@/src/components/pages/home/Home.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
   title: pageSeo.home.title,
   description: pageSeo.home.description,
 
   alternates: {
-    canonical: siteConfig.url,
+    canonical: pageSeo.home.path,
   },
 
   openGraph: {
     title: pageSeo.home.title,
     description: pageSeo.home.description,
-    url: siteConfig.url,
-    siteName: "Rajkot Airport x Mukesh Arts",
+    url: pageSeo.home.path,
+    siteName: "Rajkot Airport x Mukesh Art",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: `${siteConfig.url}${siteConfig.ogImage}`,
+        url: "/images/og/rajkot-airport-media.jpg",
         width: 1200,
         height: 630,
-        alt: "Rajkot Airport Advertising Media by Mukesh Arts",
+        alt: "Rajkot Airport Advertising Media by Mukesh Art",
       },
     ],
   },
@@ -90,7 +89,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: pageSeo.home.title,
     description: pageSeo.home.description,
-    images: [`${siteConfig.url}${siteConfig.ogImage}`],
+    images: ["/images/og/rajkot-airport-media.jpg"],
   },
 };
 

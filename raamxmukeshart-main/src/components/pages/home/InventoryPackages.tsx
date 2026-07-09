@@ -1,551 +1,721 @@
+// "use client";
+
+// import { useCallback, useEffect, useState } from "react";
+// import type { CSSProperties } from "react";
+// import type { StaticImageData } from "next/image";
+// import "./Home.css";
+
+// import air7 from "@/public/images/inventory/air7.png";
+// import air8 from "@/public/images/inventory/air8.png";
+// import air9 from "@/public/images/inventory/air5.png";
+// import air6 from "@/public/images/inventory/air6.png";
+// import air1 from "@/public/images/inventory/air1.png";
+// import air2 from "@/public/images/inventory/air2.png";
+
+// type InventoryImage = StaticImageData | string;
+
+// type InventoryItem = {
+//     code: string;
+//     category: string;
+//     title: string;
+//     summary: string;
+//     leadLine: string;
+//     image: InventoryImage;
+//     gallery: InventoryImage[];
+//     units: string;
+// };
+
+// function getImageUrl(image: InventoryImage) {
+//     return typeof image === "string" ? image : image.src;
+// }
+
+// const inventoryItems: InventoryItem[] = [
+//     {
+//         code: "PKG-01",
+//         category: "Digital Packages",
+//         title: "Arrival + SHA Digital Loop",
+//         summary:
+//             "Broad digital coverage across arrival and waiting zones where passengers naturally slow down.",
+//         leadLine:
+//             "Good for recall campaigns, local premium launches, real estate, jewellery, education, and auto.",
+//         image: air7,
+//         gallery: [air8, air9, air7],
+//         units: "18 Units",
+//     },
+//     {
+//         code: "PKG-02",
+//         category: "Digital Packages",
+//         title: "Arrival + SHA Digital Loop",
+//         summary:
+//             "Broad digital coverage across arrival and waiting zones where passengers naturally slow down.",
+//         leadLine:
+//             "Good for recall campaigns, local premium launches, real estate, jewellery, education, and auto.",
+//         image: air9,
+//         gallery: [air8, air9, air7],
+//         units: "18 Units",
+//     },
+//     {
+//         code: "PKG-03",
+//         category: "Static Boards",
+//         title: "Arrival + SHA Digital Loop",
+//         summary:
+//             "Broad digital coverage across arrival and waiting zones where passengers naturally slow down.",
+//         leadLine:
+//             "Good for recall campaigns, local premium launches, real estate, jewellery, education, and auto.",
+//         image: air6,
+//         gallery: [air8, air9, air7],
+//         units: "18 Units",
+//     },
+//     {
+//         code: "PKG-04",
+//         category: "Static Boards",
+//         title: "Arrival + SHA Digital Loop",
+//         summary:
+//             "Broad digital coverage across arrival and waiting zones where passengers naturally slow down.",
+//         leadLine:
+//             "Good for recall campaigns, local premium launches, real estate, jewellery, education, and auto.",
+//         image: air2,
+//         gallery: [air8, air9, air7],
+//         units: "18 Units",
+//     },
+//     {
+//         code: "PKG-05",
+//         category: "Custom Plans",
+//         title: "Arrival + SHA Digital Loop",
+//         summary:
+//             "Broad digital coverage across arrival and waiting zones where passengers naturally slow down.",
+//         leadLine:
+//             "Good for recall campaigns, local premium launches, real estate, jewellery, education, and auto.",
+//         image: air1,
+//         gallery: [air8, air9, air7],
+//         units: "18 Units",
+//     },
+// ];
+
+// const filters = [
+//     "All",
+//     "Digital Packages",
+//     "Static Boards",
+//     "Passenger Journey",
+//     "Custom Plans",
+// ];
+
+// export default function InventoryPackages() {
+//     const [activeFilter, setActiveFilter] = useState("All");
+//     const [activeItem, setActiveItem] = useState<InventoryItem | null>(null);
+
+//     const visibleItems =
+//         activeFilter === "All"
+//             ? inventoryItems
+//             : inventoryItems.filter((item) => item.category === activeFilter);
+
+//     return (
+//         <>
+//             <section className="inventory-portfolio" id="inventory" data-animate>
+//                 <div className="container">
+//                     <div className="inventory-head">
+//                         <div>
+//                             <span className="inventory-eyebrow">Inventory Portfolio</span>
+//                             <h2>
+//                                 Inventory presented like <em>a body of work.</em>
+//                             </h2>
+//                         </div>
+
+//                         <p>
+//                             Buyers see the range first. Full references, availability, and
+//                             commercial discussion unlock when the campaign intent is real.
+//                         </p>
+//                     </div>
+
+//                     <div className="inventory-filter-row">
+//                         <div className="inventory-chips">
+//                             {filters.map((filter) => (
+//                                 <button
+//                                     key={filter}
+//                                     type="button"
+//                                     className={activeFilter === filter ? "active" : ""}
+//                                     onClick={() => setActiveFilter(filter)}
+//                                 >
+//                                     {filter}
+//                                 </button>
+//                             ))}
+//                         </div>
+
+//                         <span className="inventory-count">
+//                             <b>{visibleItems.length}</b> units shown
+//                         </span>
+//                     </div>
+
+//                     <div className="inventory-masonry">
+//                         {visibleItems.map((item, index) => (
+//                             <button
+//                                 type="button"
+//                                 className={`inventory-work ${index === 0 ? "large" : ""}`}
+//                                 key={item.code}
+//                                 onClick={() => setActiveItem(item)}
+//                             >
+//                                 <div className="inventory-work-image">
+//                                     <img src={getImageUrl(item.image)} alt={item.title} />
+
+//                                     <span className="inventory-badge">
+//                                         {item.code} - {item.category}
+//                                     </span>
+
+//                                     <div className="inventory-gallery-stack" aria-hidden="true">
+//                                         {item.gallery.slice(0, 3).map((img, index) => (
+//                                             <i
+//                                                 key={`${item.code}-${index}`}
+//                                                 className="gallery-card"
+//                                                 style={
+//                                                     {
+//                                                         backgroundImage: `url(${getImageUrl(img)})`,
+//                                                         "--i": index,
+//                                                     } as React.CSSProperties
+//                                                 }
+//                                             />
+//                                         ))}
+//                                     </div>
+
+//                                     <b className="inventory-site-count">
+//                                         {item.gallery.length} Site Stills
+//                                     </b>
+//                                 </div>
+
+//                                 <div className="inventory-work-body">
+//                                     <small>
+//                                         {item.code} - {item.units}
+//                                     </small>
+
+//                                     <h3>{item.title}</h3>
+//                                     <p>{item.summary}</p>
+//                                     <blockquote>{item.leadLine}</blockquote>
+
+//                                     <strong>
+//                                         <span>View details</span>
+//                                         <svg viewBox="0 0 24 24" aria-hidden="true">
+//                                             <path
+//                                                 d="M5 12h12M12 6l7 6-7 6"
+//                                                 fill="none"
+//                                                 stroke="currentColor"
+//                                                 strokeWidth="1.7"
+//                                                 strokeLinecap="round"
+//                                                 strokeLinejoin="round"
+//                                             />
+//                                         </svg>
+//                                     </strong>
+//                                 </div>
+//                             </button>
+//                         ))}
+//                     </div>
+//                 </div>
+//             </section>
+
+//             {activeItem && (
+//                 <InventoryModal item={activeItem} onClose={() => setActiveItem(null)} />
+//             )}
+//         </>
+//     );
+// }
+
+// function InventoryModal({
+//     item,
+//     onClose,
+// }: {
+//     item: InventoryItem;
+//     onClose: () => void;
+// }) {
+//     const [closing, setClosing] = useState(false);
+
+//     const handleClose = useCallback(() => {
+//         if (closing) return;
+
+//         setClosing(true);
+
+//         setTimeout(() => {
+//             onClose();
+//         }, 500);
+//     }, [closing, onClose]);
+
+//     useEffect(() => {
+//         const onKey = (event: KeyboardEvent) => {
+//             if (event.key === "Escape") handleClose();
+//         };
+
+//         document.addEventListener("keydown", onKey);
+
+//         const previousOverflow = document.body.style.overflow;
+//         document.body.style.overflow = "hidden";
+
+//         return () => {
+//             document.removeEventListener("keydown", onKey);
+//             document.body.style.overflow = previousOverflow;
+//         };
+//     }, [handleClose]);
+
+//     return (
+//         <div
+//             className={`inventory-modal-overlay ${closing ? "closing" : "opening"}`}
+//             onMouseDown={(event) => {
+//                 if (event.target === event.currentTarget) handleClose();
+//             }}
+//         >
+//             <div className={`inventory-popup ${closing ? "closing" : "opening"}`}>
+//                 <button
+//                     type="button"
+//                     className="inventory-popup-close"
+//                     onClick={handleClose}
+//                     aria-label="Close inventory modal"
+//                 >
+//                     ×
+//                 </button>
+
+//                 <div className="inventory-popup-media">
+//                     <img src={getImageUrl(item.image)} alt={item.title} />
+//                     <span>
+//                         {item.code} - {item.category}
+//                     </span>
+//                 </div>
+
+//                 <div className="inventory-popup-side">
+//                     <small>
+//                         {item.code} - {item.units}
+//                     </small>
+
+//                     <h3>{item.title}</h3>
+//                     <p>{item.summary}</p>
+
+//                     <hr />
+
+//                     <form className="inventory-popup-form">
+//                         <label>
+//                             <span>Name *</span>
+//                             <input placeholder="Marketing lead name" />
+//                         </label>
+
+//                         <label>
+//                             <span>Phone / WhatsApp *</span>
+//                             <input placeholder="99999 99999" />
+//                         </label>
+
+//                         <div className="form-two">
+//                             <label>
+//                                 <span>Company / Brand</span>
+//                                 <input placeholder="Brand / agency" />
+//                             </label>
+
+//                             <label>
+//                                 <span>Designation</span>
+//                                 <input placeholder="Marketing manager" />
+//                             </label>
+//                         </div>
+
+//                         <button type="button">Unlock full details</button>
+//                     </form>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { CSSProperties, FormEvent } from "react";
 import type { StaticImageData } from "next/image";
+import { useRouter } from "next/navigation";
+import {
+    inventoryCategories,
+    type InventoryCategory,
+} from "@/src/lib/inventoryData";
+import "./Home.css";
 
-import "./InventoryShowcase.css";
+// one lead form per session — once filled, every category opens directly
+const UNLOCK_KEY = "ram-inventory-unlocked";
 
-import air1 from "@/public/images/inventory/air1.png";
-import air2 from "@/public/images/inventory/air2.png";
-import air5 from "@/public/images/inventory/air5.png";
-import air6 from "@/public/images/inventory/air6.png";
-import air7 from "@/public/images/inventory/air7.png";
-import air8 from "@/public/images/inventory/air8.png";
+function isUnlocked() {
+    try {
+        return sessionStorage.getItem(UNLOCK_KEY) === "1";
+    } catch {
+        return false;
+    }
+}
+
+import { getCategoryVisuals } from "@/src/lib/inventoryVisuals";
 
 type InventoryImage = StaticImageData | string;
 
-type Category = "Digital" | "Static" | "Packages";
+function getVisual(slug: string) {
+    const visuals = getCategoryVisuals(slug);
+    return { image: visuals.card, gallery: visuals.cardGallery };
+}
 
-type InventoryItem = {
-    code: string;
-    cat: Category;
-    title: string;
-    summary: string;
-    surfaces: string;
-    image: InventoryImage;
-    gallery: InventoryImage[];
-};
+function getImageUrl(image: InventoryImage) {
+    return typeof image === "string" ? image : image.src;
+}
 
-const url = (img: InventoryImage) => (typeof img === "string" ? img : img.src);
-
-/* ------------------------------------------------------------------
-   Inventory — generic, confirmed airport-media formats only.
-   Presentation copy; no prices, no invented/unconfirmed surfaces.
-   ------------------------------------------------------------------ */
-const INVENTORY: InventoryItem[] = [
-    {
-        code: "RAM-01",
-        cat: "Digital",
-        title: "Digital Display Network",
-        summary:
-            "A network of digital screens across high-dwell terminal zones — flexible, high-frequency airport visibility you can rotate by campaign window.",
-        surfaces: "Digital LED · Terminal",
-        image: air7,
-        gallery: [air8, air5, air6],
-    },
-    {
-        code: "RAM-02",
-        cat: "Static",
-        title: "Static Backlit Boards",
-        summary:
-            "Illuminated backlit boards along primary passenger routes — a clean, always-on canvas that stays sharp from early departures to late arrivals.",
-        surfaces: "Backlit · Terminal",
-        image: air5,
-        gallery: [air1, air2, air8],
-    },
-    {
-        code: "RAM-03",
-        cat: "Static",
-        title: "Airport Front Lit Boards",
-        summary:
-            "Large front-lit boards on main concourse walls — a confident, editorial format for flagship brand presence in the airport.",
-        surfaces: "Front Lit · Concourse",
-        image: air6,
-        gallery: [air7, air2, air1],
-    },
-    {
-        code: "RAM-04",
-        cat: "Static",
-        title: "Security Clearance Backlit",
-        summary:
-            "Backlit placements around the security-clearance flow, where passengers naturally wait and read — calm, repeat, unmissable exposure.",
-        surfaces: "Backlit · Security",
-        image: air2,
-        gallery: [air6, air8, air5],
-    },
-    {
-        code: "RAM-05",
-        cat: "Static",
-        title: "Laptop Workstation Static Backlit",
-        summary:
-            "Backlit panels at the laptop and charging workstations — close-range attention from a settled, high-intent business audience.",
-        surfaces: "Backlit · Workstation",
-        image: air1,
-        gallery: [air5, air7, air6],
-    },
-    {
-        code: "RAM-06",
-        cat: "Packages",
-        title: "Grouped Media Plans",
-        summary:
-            "Ready-made Package 1, 2 and 3 combinations across digital and static formats — a simple way to book wide airport coverage as one plan.",
-        surfaces: "Bundled · Digital + Static",
-        image: air8,
-        gallery: [air2, air1, air5],
-    },
+const filters = [
+    "All",
+    ...inventoryCategories.map((category) => category.filter),
 ];
 
-const FILTERS = ["All", "Digital", "Static", "Packages"] as const;
-const FILTER_LABEL: Record<string, string> = {
-    All: "All Media",
-    Digital: "Digital",
-    Static: "Static Boards",
-    Packages: "Packages",
-};
-
 export default function InventoryPackages() {
-    const [activeFilter, setActiveFilter] = useState<string>("All");
-    const [activeItem, setActiveItem] = useState<InventoryItem | null>(null);
-    const lastTriggerRef = useRef<HTMLButtonElement | null>(null);
+    const router = useRouter();
+    const [activeFilter, setActiveFilter] = useState("All");
+    const [activeItem, setActiveItem] = useState<InventoryCategory | null>(null);
 
-    const visible =
+    const visibleItems =
         activeFilter === "All"
-            ? INVENTORY
-            : INVENTORY.filter((x) => x.cat === activeFilter);
+            ? inventoryCategories
+            : inventoryCategories.filter((item) => item.filter === activeFilter);
+
+    function openCategory(item: InventoryCategory) {
+        if (isUnlocked()) {
+            router.push(`/inventory/${item.slug}/`);
+        } else {
+            setActiveItem(item);
+        }
+    }
 
     return (
         <>
             <section
-                className="ram-inventory"
+                className="inventory-portfolio"
                 id="inventory"
-                aria-labelledby="ram-inventory-title"
+                data-animate
+                aria-labelledby="inventory-title"
             >
                 <div className="container">
-                    <div className="ram-inv-head">
+                    <div className="inventory-head">
                         <div>
-                            <span className="eyebrow" data-motion="clip">
+                            <span className="inventory-eyebrow" data-motion="clip">
                                 Inventory Portfolio
                             </span>
+
                             <h2
-                                className="ram-inv-display"
-                                id="ram-inventory-title"
+                                id="inventory-title"
                                 data-motion="up"
                                 data-motion-delay="0.08"
                             >
-                                A wide airport media inventory, presented like{" "}
-                                <em>a body of work.</em>
+                                Inventory presented like <em>a body of work.</em>
                             </h2>
                         </div>
+
                         <p data-motion="right" data-motion-delay="0.14">
-                            Browse the range first. Full references, availability and the
-                            complete media plan unlock once your campaign intent is real.
+                            Buyers see the range first. Full references, availability, and
+                            commercial discussion unlock when the campaign intent is real.
                         </p>
                     </div>
 
                     <div
-                        className="ram-inv-filter"
-                        data-motion="up"
-                        data-motion-delay="0.16"
+                        className="inventory-filter-row"
+                        data-motion="zoom"
+                        data-motion-delay="0.18"
                     >
-                        <div className="ram-inv-chips" role="tablist" aria-label="Filter inventory">
-                            {FILTERS.map((f) => (
+                        <div className="inventory-chips">
+                            {filters.map((filter) => (
                                 <button
-                                    key={f}
+                                    key={filter}
                                     type="button"
-                                    role="tab"
-                                    aria-selected={activeFilter === f}
-                                    className={activeFilter === f ? "active" : ""}
-                                    onClick={() => setActiveFilter(f)}
+                                    className={activeFilter === filter ? "active" : ""}
+                                    onClick={() => setActiveFilter(filter)}
                                 >
-                                    {FILTER_LABEL[f]}
+                                    {filter}
                                 </button>
                             ))}
                         </div>
-                        <span className="ram-inv-count">
-                            <b>{visible.length}</b> placements shown
+
+                        <span className="inventory-count">
+                            <b>{visibleItems.length}</b> categories shown
                         </span>
                     </div>
 
-                    <div className="ram-inv-grid" data-motion-group>
-                        {visible.map((it, i) => (
+                    <div className="inventory-masonry" data-motion-group>
+                        {visibleItems.map((item) => {
+                            const visual = getVisual(item.slug);
+
+                            return (
                             <button
                                 type="button"
-                                key={`${activeFilter}-${it.code}`}
-                                className={`ram-inv-card ${i === 0 ? "large" : ""}`}
-                                onClick={(event) => {
-                                    lastTriggerRef.current = event.currentTarget;
-                                    setActiveItem(it);
-                                }}
-                                style={{ "--card-index": i } as CSSProperties}
+                                className="inventory-work"
+                                key={item.code}
+                                onClick={() => openCategory(item)}
                                 data-motion-item
-                                aria-label={`${it.title} — request full media plan`}
                             >
-                                <div className="ram-inv-photo">
+                                <div className="inventory-work-image">
                                     <img
-                                        src={url(it.image)}
-                                        alt={`${it.title} at Rajkot Airport`}
-                                        loading="lazy"
+                                        src={getImageUrl(visual.image)}
+                                        alt={`${item.title} at Rajkot Airport`}
                                     />
-                                    <span className="ram-inv-badge">
-                                        {it.code} · {FILTER_LABEL[it.cat]}
+
+                                    <span className="inventory-badge">
+                                        {item.code} - {item.filter}
                                     </span>
-                                    <div className="ram-inv-fan" aria-hidden="true">
-                                        {it.gallery
-                                            .slice(0, 3)
-                                            .map((g, k) => (
-                                                <i
-                                                    key={`${it.code}-g${k}`}
-                                                    style={
-                                                        {
-                                                            "--i": 2 - k,
-                                                            backgroundImage: `url('${url(g)}')`,
-                                                        } as CSSProperties
-                                                    }
-                                                />
-                                            ))
-                                            .reverse()}
+
+                                    <div className="inventory-gallery-stack" aria-hidden="true">
+                                        {visual.gallery.slice(0, 3).map((img, index) => (
+                                            <i
+                                                key={`${item.code}-${index}`}
+                                                className="gallery-card"
+                                                style={
+                                                    {
+                                                        backgroundImage: `url(${getImageUrl(img)})`,
+                                                        "--i": index,
+                                                    } as CSSProperties
+                                                }
+                                            />
+                                        ))}
                                     </div>
-                                    <span className="ram-inv-stills">
-                                        {it.gallery.length} site stills
-                                    </span>
+
+                                    <b className="inventory-site-count">
+                                        {visual.gallery.length} Site Stills
+                                    </b>
                                 </div>
-                                <div className="ram-inv-body">
-                                    <small>{it.surfaces}</small>
-                                    <h3>{it.title}</h3>
-                                    <p>{it.summary}</p>
-                                    <span className="ram-inv-open">
-                                        <span>Request full media plan</span>
-                                        <svg
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            strokeWidth="1.7"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            aria-hidden="true"
-                                        >
-                                            <path d="M5 12h12M12 6l7 6-7 6" />
+
+                                <div className="inventory-work-body">
+                                    <small>{item.code}</small>
+
+                                    <h3>{item.title}</h3>
+                                    <p>{item.cardText}</p>
+
+                                    <div className="inventory-work-meta">
+                                        <span>{item.units}</span>
+                                        <span className="price">{item.priceLine}</span>
+                                        <span>{item.plans.length} plans</span>
+                                    </div>
+
+                                    <strong>
+                                        <span>View full inventory</span>
+                                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M5 12h12M12 6l7 6-7 6"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="1.7"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                            />
                                         </svg>
-                                    </span>
+                                    </strong>
                                 </div>
                             </button>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </section>
 
             {activeItem && (
-                <InventoryDrawer
-                    item={activeItem}
-                    onClose={() => {
-                        setActiveItem(null);
-                        window.requestAnimationFrame(() => lastTriggerRef.current?.focus());
-                    }}
-                />
+                <InventoryModal item={activeItem} onClose={() => setActiveItem(null)} />
             )}
         </>
     );
 }
 
-/* ------------------------------------------------------------------
-   Lead-gated details drawer (frontend only)
-   ------------------------------------------------------------------ */
-type Lead = {
-    name: string;
-    countryCode: string;
-    phone: string;
-    company: string;
-    designation: string;
-    campaignWindow: string;
-    placement: string;
-};
-
-const UNLOCKED_DETAILS = [
-    "Exact surface map, dimensions and locations for this placement",
-    "Live availability and recommended campaign windows",
-    "Audience and footfall context for premium airport visibility",
-    "Production specs, creative guidelines and turnaround",
-    "A tailored media plan prepared by our owner-operated team",
-];
-
-function InventoryDrawer({
+function InventoryModal({
     item,
     onClose,
 }: {
-    item: InventoryItem;
+    item: InventoryCategory;
     onClose: () => void;
 }) {
-    const [open, setOpen] = useState(false);
-    const [unlocked, setUnlocked] = useState(false);
-
+    const router = useRouter();
+    const [closing, setClosing] = useState(false);
     const [name, setName] = useState("");
-    const [countryCode, setCountryCode] = useState("+91");
     const [phone, setPhone] = useState("");
     const [company, setCompany] = useState("");
     const [designation, setDesignation] = useState("");
-    const [campaignWindow, setCampaignWindow] = useState("");
+    const [error, setError] = useState("");
 
-    const [errors, setErrors] = useState<{ name?: string; phone?: string }>({});
-    const drawerRef = useRef<HTMLElement>(null);
-    const closeRef = useRef<HTMLButtonElement>(null);
-    const nameRef = useRef<HTMLInputElement>(null);
-    const phoneRef = useRef<HTMLInputElement>(null);
+    function handleUnlock(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        if (!name.trim() || !phone.trim()) {
+            setError("Name and phone/WhatsApp are needed to unlock the inventory.");
+            return;
+        }
+
+        try {
+            sessionStorage.setItem(UNLOCK_KEY, "1");
+            // stash the lead locally until CRM wiring lands
+            sessionStorage.setItem(
+                "ram-inventory-lead",
+                JSON.stringify({
+                    name: name.trim(),
+                    phone: phone.trim(),
+                    company: company.trim(),
+                    designation: designation.trim(),
+                    category: item.code,
+                    at: new Date().toISOString(),
+                })
+            );
+        } catch {
+            // storage blocked (private mode) — still let them through
+        }
+
+        router.push(`/inventory/${item.slug}/`);
+    }
 
     const handleClose = useCallback(() => {
-        setOpen(false);
-        window.setTimeout(onClose, 500); // let the slide-out finish
-    }, [onClose]);
+        if (closing) return;
 
-    // slide in on mount, lock scroll, close on Escape
+        setClosing(true);
+
+        setTimeout(() => {
+            onClose();
+        }, 500);
+    }, [closing, onClose]);
+
     useEffect(() => {
-        const id = requestAnimationFrame(() => {
-            setOpen(true);
-            (nameRef.current ?? closeRef.current)?.focus();
-        });
-        const onKey = (e: KeyboardEvent) => {
-            if (e.key === "Escape") {
-                handleClose();
-                return;
-            }
-
-            if (e.key !== "Tab") return;
-
-            const drawer = drawerRef.current;
-            if (!drawer) return;
-
-            const focusable = Array.from(
-                drawer.querySelectorAll<HTMLElement>(
-                    'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
-                )
-            ).filter((element) => !element.hasAttribute("disabled"));
-
-            if (!focusable.length) {
-                e.preventDefault();
-                return;
-            }
-
-            const first = focusable[0];
-            const last = focusable[focusable.length - 1];
-
-            if (e.shiftKey && document.activeElement === first) {
-                e.preventDefault();
-                last.focus();
-            } else if (!e.shiftKey && document.activeElement === last) {
-                e.preventDefault();
-                first.focus();
-            }
+        const onKey = (event: KeyboardEvent) => {
+            if (event.key === "Escape") handleClose();
         };
+
         document.addEventListener("keydown", onKey);
-        const prev = document.body.style.overflow;
+
+        const previousBodyOverflow = document.body.style.overflow;
+        const previousHtmlOverflow = document.documentElement.style.overflow;
         document.body.style.overflow = "hidden";
+        document.documentElement.style.overflow = "hidden";
+
         return () => {
-            cancelAnimationFrame(id);
             document.removeEventListener("keydown", onKey);
-            document.body.style.overflow = prev;
+            document.body.style.overflow = previousBodyOverflow;
+            document.documentElement.style.overflow = previousHtmlOverflow;
         };
     }, [handleClose]);
 
-    const validate = () => {
-        const next: { name?: string; phone?: string } = {};
-        if (name.trim().length < 2) next.name = "Please enter your name.";
-        if (!/^\d{10}$/.test(phone.trim()))
-            next.phone = "Enter a valid 10-digit number.";
-        setErrors(next);
-        return next;
-    };
-
-    const onSubmit = (e: FormEvent) => {
-        e.preventDefault();
-        const next = validate();
-        if (next.name || next.phone) {
-            (next.name ? nameRef : phoneRef).current?.focus();
-            return;
-        }
-        const lead: Lead = {
-            name: name.trim(),
-            countryCode,
-            phone: phone.trim(),
-            company: company.trim(),
-            designation: designation.trim(),
-            campaignWindow: campaignWindow.trim(),
-            placement: item.title,
-        };
-
-        // ---------------------------------------------------------------
-        // TODO (lead capture): persist `lead` to a CRM / Google Sheet /
-        // Excel endpoint. No backend is wired yet — this only unlocks the
-        // details on the client. Example when a backend exists:
-        //   await fetch("/api/leads", {
-        //     method: "POST",
-        //     headers: { "Content-Type": "application/json" },
-        //     body: JSON.stringify(lead),
-        //   });
-        // ---------------------------------------------------------------
-        if (process.env.NODE_ENV !== "production") {
-            console.log("[lead captured — TODO persist to CRM/Sheet]", lead);
-        }
-        setUnlocked(true);
-    };
-
     return (
-        <>
-            <div
-                className={`ram-inv-scrim ${open ? "open" : ""}`}
-                onClick={handleClose}
-                aria-hidden="true"
-            />
-            <aside
-                ref={drawerRef}
-                className={`ram-inv-drawer ${open ? "open" : ""} ${
-                    unlocked ? "unlocked" : ""
-                }`}
-                role="dialog"
-                aria-modal="true"
-                aria-label={`${item.title} — media plan`}
-            >
+        <div
+            className={`inventory-modal-overlay ${closing ? "closing" : "opening"}`}
+            data-lenis-prevent
+            onMouseDown={(event) => {
+                if (event.target === event.currentTarget) handleClose();
+            }}
+        >
+            <div className={`inventory-popup ${closing ? "closing" : "opening"}`}>
                 <button
-                    ref={closeRef}
                     type="button"
-                    className="ram-inv-drawer-close"
+                    className="inventory-popup-close"
                     onClick={handleClose}
-                    aria-label="Close details"
+                    aria-label="Close inventory modal"
                 >
                     ×
                 </button>
 
-                <div className="ram-inv-drawer-media">
-                    <img src={url(item.image)} alt={item.title} />
-                    <span className="ram-inv-dm-code">
-                        {item.code} · {FILTER_LABEL[item.cat]}
+                <div className="inventory-popup-media">
+                    <img
+                        src={getImageUrl(getVisual(item.slug).image)}
+                        alt={`${item.title} details`}
+                    />
+                    <span>
+                        {item.code} - {item.filter}
                     </span>
-                    <h3 className="ram-inv-dm-title">{item.title}</h3>
-                </div>
 
-                <div className="ram-inv-drawer-body">
-                    <p className="ram-inv-summary">{item.summary}</p>
-                    <div className="ram-inv-meta">
-                        <span>{item.surfaces}</span>
-                        <span>Rajkot Int&apos;l Airport</span>
-                        <span>Premium airport visibility</span>
+                    <div className="inventory-popup-thumbs" aria-hidden="true">
+                        {getVisual(item.slug).gallery.slice(0, 3).map((img, index) => (
+                            <i
+                                key={index}
+                                style={{
+                                    backgroundImage: `url(${getImageUrl(img)})`,
+                                }}
+                            />
+                        ))}
                     </div>
-
-                    {!unlocked ? (
-                        <>
-                            <div className="ram-inv-gate">Request full media plan</div>
-                            <form className="ram-inv-form" onSubmit={onSubmit} noValidate>
-                                <div className={`ram-inv-field ${errors.name ? "invalid" : ""}`}>
-                                    <label htmlFor="ram-lead-name">Name *</label>
-                                    <input
-                                        id="ram-lead-name"
-                                        ref={nameRef}
-                                        type="text"
-                                        value={name}
-                                        autoComplete="name"
-                                        placeholder="Marketing lead name"
-                                        aria-invalid={!!errors.name}
-                                        onChange={(e) => {
-                                            setName(e.target.value);
-                                            if (errors.name)
-                                                setErrors((p) => ({ ...p, name: undefined }));
-                                        }}
-                                    />
-                                    <small className="ram-inv-err">{errors.name}</small>
-                                </div>
-
-                                <div className={`ram-inv-field ${errors.phone ? "invalid" : ""}`}>
-                                    <label htmlFor="ram-lead-phone">Phone / WhatsApp *</label>
-                                    <div className="ram-inv-phone">
-                                        <select
-                                            value={countryCode}
-                                            aria-label="Country code"
-                                            onChange={(e) => setCountryCode(e.target.value)}
-                                        >
-                                            <option value="+91">+91</option>
-                                            <option value="+971">+971</option>
-                                            <option value="+1">+1</option>
-                                            <option value="+44">+44</option>
-                                            <option value="+65">+65</option>
-                                        </select>
-                                        <input
-                                            id="ram-lead-phone"
-                                            ref={phoneRef}
-                                            type="tel"
-                                            inputMode="numeric"
-                                            maxLength={10}
-                                            value={phone}
-                                            placeholder="10-digit number"
-                                            aria-invalid={!!errors.phone}
-                                            onChange={(e) => {
-                                                setPhone(
-                                                    e.target.value.replace(/\D/g, "").slice(0, 10)
-                                                );
-                                                if (errors.phone)
-                                                    setErrors((p) => ({ ...p, phone: undefined }));
-                                            }}
-                                        />
-                                    </div>
-                                    <small className="ram-inv-err">{errors.phone}</small>
-                                </div>
-
-                                <div className="ram-inv-row">
-                                    <div className="ram-inv-field">
-                                        <label htmlFor="ram-lead-company">Company / Brand</label>
-                                        <input
-                                            id="ram-lead-company"
-                                            type="text"
-                                            value={company}
-                                            placeholder="Brand or agency"
-                                            onChange={(e) => setCompany(e.target.value)}
-                                        />
-                                    </div>
-                                    <div className="ram-inv-field">
-                                        <label htmlFor="ram-lead-role">Designation</label>
-                                        <input
-                                            id="ram-lead-role"
-                                            type="text"
-                                            value={designation}
-                                            placeholder="e.g. Marketing Manager"
-                                            onChange={(e) => setDesignation(e.target.value)}
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="ram-inv-field">
-                                    <label htmlFor="ram-lead-window">Campaign window</label>
-                                    <input
-                                        id="ram-lead-window"
-                                        type="text"
-                                        value={campaignWindow}
-                                        placeholder="e.g. Diwali 2026 / Q3"
-                                        onChange={(e) => setCampaignWindow(e.target.value)}
-                                    />
-                                </div>
-
-                                <button type="submit" className="ram-inv-submit">
-                                    Unlock full media plan
-                                </button>
-                                <p className="ram-inv-fine">
-                                    We&apos;ll share the complete plan, available surfaces and
-                                    visibility details. No spam — just a serious media conversation.
-                                </p>
-                            </form>
-                        </>
-                    ) : (
-                        <div className="ram-inv-success">
-                            <span className="ram-inv-unlock-badge">✓ Access unlocked</span>
-                            <ul className="ram-inv-unlock-list">
-                                {UNLOCKED_DETAILS.map((t) => (
-                                    <li key={t}>{t}</li>
-                                ))}
-                            </ul>
-                            <p className="ram-inv-fine" style={{ marginTop: 18 }}>
-                                Your plan request has been logged for our team to follow up.
-                            </p>
-                        </div>
-                    )}
                 </div>
-            </aside>
-        </>
+
+                <div className="inventory-popup-side">
+                    <small>
+                        {item.code} - {item.units}
+                    </small>
+
+                    <h3>{item.title}</h3>
+                    <p>{item.summary}</p>
+
+                    <ul className="inventory-popup-plans">
+                        {item.plans.map((plan) => (
+                            <li key={plan.name}>
+                                <div>
+                                    <b>{plan.name}</b>
+                                    <span>{plan.detail}</span>
+                                </div>
+                                <em>{plan.price}</em>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <p className="inventory-popup-note">
+                        Starting rates per month, exclusive of GST. Final rate card
+                        and availability shared on request. All creatives subject to
+                        AAI Rajkot approval.
+                    </p>
+
+                    <span className="inventory-popup-download pending">
+                        Fill this once — every category, unit map, and plan PDF
+                        unlocks for the rest of your visit.
+                    </span>
+
+                    <hr />
+
+                    <form className="inventory-popup-form" onSubmit={handleUnlock}>
+                        <label>
+                            <span>Name *</span>
+                            <input
+                                value={name}
+                                onChange={(event) => setName(event.target.value)}
+                                placeholder="Marketing lead name"
+                                autoComplete="name"
+                            />
+                        </label>
+
+                        <label>
+                            <span>Phone / WhatsApp *</span>
+                            <input
+                                value={phone}
+                                onChange={(event) => setPhone(event.target.value)}
+                                placeholder="99999 99999"
+                                inputMode="tel"
+                                autoComplete="tel"
+                            />
+                        </label>
+
+                        <div className="form-two">
+                            <label>
+                                <span>Company / Brand</span>
+                                <input
+                                    value={company}
+                                    onChange={(event) => setCompany(event.target.value)}
+                                    placeholder="Brand / agency"
+                                    autoComplete="organization"
+                                />
+                            </label>
+
+                            <label>
+                                <span>Designation</span>
+                                <input
+                                    value={designation}
+                                    onChange={(event) => setDesignation(event.target.value)}
+                                    placeholder="Marketing manager"
+                                />
+                            </label>
+                        </div>
+
+                        {error && <p className="inventory-popup-error">{error}</p>}
+
+                        <button type="submit">Unlock the full inventory</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     );
 }

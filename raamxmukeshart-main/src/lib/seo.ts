@@ -1,9 +1,10 @@
 // src/lib/seo.ts
 
 export const siteConfig = {
-    name: "Rajkot Airport x Mukesh Arts",
+    name: "Rajkot Airport x Mukesh Art",
     shortName: "Rajkot Airport Media",
 
+    // GitHub Pages project URL — swap for the custom domain when it lands
     url: "https://mihirzalavadia.github.io/air-port-media-ops",
 
     email: "your-email@example.com",
@@ -12,9 +13,9 @@ export const siteConfig = {
 
     ogImage: "/images/og/rajkot-airport-media.jpg",
 
-    title: "Rajkot Airport Advertising Media | Mukesh Arts",
+    title: "Rajkot Airport Advertising Media | Mukesh Art",
     description:
-        "Advertise your brand at Rajkot Airport with premium airport advertising media, digital screens, static boards, terminal branding, outdoor hoardings, and custom airport media packages by Mukesh Arts.",
+        "Advertise your brand at Rajkot Airport with premium airport advertising media, digital screens, static boards, terminal branding, outdoor hoardings, and custom airport media packages by Mukesh Art.",
 
     keywords: [
         "airport advertising in Rajkot",
@@ -33,8 +34,8 @@ export const siteConfig = {
         "airport branding Gujarat",
         "airport media agency Rajkot",
         "premium advertising spaces Rajkot",
-        "Mukesh Arts Rajkot",
-        "Mukesh Arts airport advertising",
+        "Mukesh Art Rajkot",
+        "Mukesh Art airport advertising",
         "airport advertising Gujarat",
         "digital advertising screens Rajkot",
         "static board advertising Rajkot",
@@ -46,14 +47,14 @@ export const pageSeo = {
     home: {
         title: "Rajkot Airport Advertising Media | Premium Airport Branding",
         description:
-            "Advertise your brand at Rajkot Airport with premium airport media, digital screens, static boards, terminal branding, outdoor hoardings, and custom airport advertising packages by Mukesh Arts.",
+            "Advertise your brand at Rajkot Airport with premium airport media, digital screens, static boards, terminal branding, outdoor hoardings, and custom airport advertising packages by Mukesh Art.",
         path: "/",
     },
 
     about: {
-        title: "About Mukesh Arts | Rajkot Airport Advertising Partner",
+        title: "About Mukesh Art | Rajkot Airport Advertising Partner",
         description:
-            "Mukesh Arts is a trusted advertising media company offering Rajkot Airport branding, outdoor advertising, OOH media, DOOH media, and premium media planning solutions in Gujarat.",
+            "Mukesh Art is a trusted advertising media company offering Rajkot Airport branding, outdoor advertising, OOH media, DOOH media, and premium media planning solutions in Gujarat.",
         path: "/about",
     },
 
@@ -79,9 +80,9 @@ export const pageSeo = {
     },
 
     contact: {
-        title: "Contact Rajkot Airport Advertising Media | Mukesh Arts",
+        title: "Contact Rajkot Airport Advertising Media | Mukesh Art",
         description:
-            "Contact Mukesh Arts for Rajkot Airport advertising, outdoor media, digital screen branding, static boards, terminal branding, and custom airport media packages.",
+            "Contact Mukesh Art for Rajkot Airport advertising, outdoor media, digital screen branding, static boards, terminal branding, and custom airport media packages.",
         path: "/contact",
     },
 };

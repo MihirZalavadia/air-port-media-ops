@@ -1,22 +1,75 @@
 /* ==================================================================
-   Connectivity route board
+   Connectivity route board — Editorial line-map edition (themed)
    ------------------------------------------------------------------
    Strongly namespaced under .ram-connectivity / .ram-map-board /
    .ram-route-panel / .ram-* so nothing collides with the legacy
    .connectivity-modern / .map-card rules still present in Home.css.
 
-   Theme: the section band + headings follow the shared tokens (work in
-   day AND night). The map card is a deliberately luminous light "map
-   inset" and the route side panel is an intentionally dark cinematic
-   panel — both stay constant across themes by design, and every text
-   layer on them carries a halo/overlay so it reads either way.
+   • The map is a minimal single-weight line drawing of India on a
+     soft, softly-lit inset — themed, so it flips with day/night.
+   • Intro: India outline draws → hub lands → ALL city dots appear
+     together → ALL flight paths draw together (no per-city stagger).
    ================================================================== */
+
+/* -------- theme tokens (day default) -------- */
+.ram-connectivity {
+    --map-surf-a: #ffffff;
+    --map-surf-b: #eef4fb;
+    --map-glow: rgba(21, 151, 229, 0.14);
+    --map-dot: rgba(21, 151, 229, 0.06);
+    --map-border: rgba(15, 23, 42, 0.09);
+    --map-shadow: rgba(15, 23, 42, 0.12);
+    --map-outline: rgba(23, 32, 52, 0.8);
+    --map-fill: rgba(15, 23, 42, 0.04);
+    --map-ink: #1a2233;
+    --map-halo: #ffffff;
+    --map-code: #7a8395;
+    --map-ring: rgba(23, 32, 52, 0.3);
+    --map-node-fill: #ffffff;
+    --map-caption: rgba(15, 23, 42, 0.34);
+    --map-stat-bg: rgba(255, 255, 255, 0.9);
+    /* hub + flight paths — light blue in day */
+    --map-hub: #1597e5;
+    --map-hub-glow: rgba(21, 151, 229, 0.15);
+    --map-hub-pulse: rgba(21, 151, 229, 0.85);
+    --map-route: rgba(21, 151, 229, 0.32);
+    --map-route-flow: #1597e5;
+    --map-route-shadow: rgba(21, 151, 229, 0.32);
+    --map-route-active: rgba(21, 151, 229, 0.7);
+    --map-route-dim: rgba(21, 151, 229, 0.1);
+}
+[data-theme="night"] .ram-connectivity {
+    --map-surf-a: #121722;
+    --map-surf-b: #0a0d15;
+    --map-glow: rgba(56, 128, 200, 0.22);
+    --map-dot: rgba(255, 255, 255, 0.05);
+    --map-border: rgba(255, 255, 255, 0.1);
+    --map-shadow: rgba(0, 0, 0, 0.5);
+    --map-outline: rgba(155, 186, 226, 0.62);
+    --map-fill: rgba(255, 255, 255, 0.035);
+    --map-ink: #eaf0fc;
+    --map-halo: #0a0d15;
+    --map-code: #98a2ba;
+    --map-ring: rgba(180, 205, 240, 0.36);
+    --map-node-fill: #0f1420;
+    --map-caption: rgba(210, 224, 245, 0.42);
+    --map-stat-bg: rgba(18, 24, 38, 0.85);
+    /* hub + flight paths — white in dark theme */
+    --map-hub: #ffffff;
+    --map-hub-glow: rgba(255, 255, 255, 0.12);
+    --map-hub-pulse: rgba(255, 255, 255, 0.85);
+    --map-route: rgba(255, 255, 255, 0.3);
+    --map-route-flow: #ffffff;
+    --map-route-shadow: rgba(255, 255, 255, 0.28);
+    --map-route-active: rgba(255, 255, 255, 0.72);
+    --map-route-dim: rgba(255, 255, 255, 0.1);
+}
 
 .ram-connectivity {
     position: relative;
     padding: clamp(80px, 9vw, 140px) 0;
     overflow: hidden;
-    background: var(--bg, #ffffff);
+    background: var(--bg, #f5f6fa);
     color: var(--ink, #111111);
 }
 
@@ -79,27 +132,38 @@
     align-items: stretch;
 }
 
-/* -------- map card (luminous light inset) -------- */
+/* -------- map card (themed line inset with soft background graphics) -------- */
 .ram-map-card {
     position: relative;
     min-height: 660px;
-    border-radius: 28px;
+    border-radius: 24px;
     overflow: hidden;
     background:
-        radial-gradient(circle at 36% 42%, rgba(21, 151, 229, 0.16), transparent 46%),
-        linear-gradient(180deg, #f7fbff 0%, #eaf4fc 100%);
-    border: 1px solid rgba(92, 160, 205, 0.28);
-    box-shadow: 0 35px 90px rgba(15, 23, 42, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+        radial-gradient(circle at 35% 40%, var(--map-glow), transparent 55%),
+        linear-gradient(180deg, var(--map-surf-a), var(--map-surf-b));
+    border: 1px solid var(--map-border);
+    box-shadow: 0 30px 80px var(--map-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
+/* background graphic — fine dot matrix */
 .ram-map-card::after {
     content: "";
     position: absolute;
     inset: 0;
-    background:
-        linear-gradient(rgba(21, 151, 229, 0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(21, 151, 229, 0.045) 1px, transparent 1px);
-    background-size: 44px 44px;
-    opacity: 0.6;
+    z-index: 1;
+    background-image: radial-gradient(var(--map-dot) 1.1px, transparent 1.1px);
+    background-size: 26px 26px;
+    pointer-events: none;
+}
+/* faint corner coordinate caption, editorial style */
+.ram-map-card::before {
+    content: "INDIA · 22.3°N 71.0°E";
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    z-index: 4;
+    font: 600 10.5px "JetBrains Mono", monospace;
+    letter-spacing: 0.14em;
+    color: var(--map-caption);
     pointer-events: none;
 }
 .ram-route-svg {
@@ -111,237 +175,224 @@
     display: block;
 }
 
-/* 1 — card frame draw */
+/* PHASE 1a — subtle card frame draw */
 .ram-card-frame {
     fill: none;
-    stroke: rgba(21, 151, 229, 0.5);
-    stroke-width: 1.4;
+    stroke: var(--map-border);
+    stroke-width: 1;
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
 }
 .ram-map-board.played .ram-card-frame {
-    animation: ram-conn-draw 1.1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    animation: ram-conn-draw 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
-/* 2 — india */
+/* PHASE 1b — India: near-invisible fill + one elegant outline that draws */
 .ram-india-fill {
-    fill: url(#ramLandGrad);
+    fill: var(--map-fill);
     opacity: 0;
-    filter: drop-shadow(0 24px 34px rgba(15, 23, 42, 0.22));
-    transition: opacity 0.9s ease 0.65s;
+    transition: opacity 1s ease 1.5s;
 }
 .ram-map-board.played .ram-india-fill {
-    opacity: 0.96;
+    opacity: 1;
 }
 .ram-india-outline {
     fill: none;
-    stroke: rgba(21, 151, 229, 0.85);
-    stroke-width: 1.1;
+    stroke: var(--map-outline);
+    stroke-width: 1.25;
+    stroke-linejoin: round;
+    stroke-linecap: round;
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
 }
 .ram-map-board.played .ram-india-outline {
-    animation: ram-conn-draw 1.7s cubic-bezier(0.6, 0, 0.3, 1) forwards 0.35s;
+    animation: ram-conn-draw 2s cubic-bezier(0.62, 0, 0.3, 1) forwards 0.25s;
 }
 
-/* 5 — routes */
+/* PHASE 4 — all flight paths draw together (single shared --rdelay) */
 .ram-route-base {
     fill: none;
-    stroke: rgba(226, 29, 45, 0.22);
-    stroke-width: 2;
+    stroke: var(--map-route);
+    stroke-width: 1.5;
     stroke-linecap: round;
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
     transition: stroke 0.3s ease, stroke-width 0.3s ease;
 }
 .ram-map-board.played .ram-route-base {
-    animation: ram-conn-draw 0.9s ease forwards var(--rdelay, 0s);
+    animation: ram-conn-draw 1s ease forwards var(--rdelay, 0s);
 }
 .ram-route-flow {
     fill: none;
-    stroke: var(--accent, #e21d2d);
-    stroke-width: 2.6;
+    stroke: var(--map-route-flow);
+    stroke-width: 2.2;
     stroke-linecap: round;
-    stroke-dasharray: 8 13;
+    stroke-dasharray: 7 13;
     opacity: 0;
-    filter: drop-shadow(0 0 6px rgba(226, 29, 45, 0.32));
+    filter: drop-shadow(0 0 5px var(--map-route-shadow));
     animation: ram-conn-flow 2.4s linear infinite;
     transition: opacity 0.5s ease, stroke-width 0.3s ease;
 }
 .ram-map-board.played .ram-route-flow {
     opacity: 1;
-    transition-delay: var(--rdelay, 0s);
+    transition-delay: calc(var(--rdelay, 0s) + 0.6s);
 }
 
-/* 6 — planes */
-.ram-route-plane {
-    opacity: 0;
-    transition: opacity 0.4s ease calc(var(--rdelay, 0s) + 0.5s);
-}
-.ram-plane-body {
-    fill: #1e293b;
-}
-.ram-map-board.played .ram-route-plane {
-    opacity: 0.9;
-}
-
-/* 3 — hub */
+/* PHASE 2 — Rajkot hub lands */
 .ram-hub-glow {
-    fill: rgba(226, 29, 45, 0.12);
+    fill: var(--map-hub-glow);
     opacity: 0;
-    transition: opacity 0.6s ease 0.5s;
+    transition: opacity 0.6s ease 1.5s;
 }
 .ram-map-board.played .ram-hub-glow {
     opacity: 1;
 }
 .ram-hub-dot {
-    fill: var(--accent, #e21d2d);
-    stroke: #ffffff;
-    stroke-width: 4.5;
+    fill: var(--map-hub);
+    stroke: var(--map-surf-a, #ffffff);
+    stroke-width: 4;
     transform-box: fill-box;
     transform-origin: center;
     transform: scale(0);
-    filter: drop-shadow(0 6px 12px rgba(226, 29, 45, 0.4));
+    filter: drop-shadow(0 6px 12px var(--map-route-shadow));
 }
 .ram-map-board.played .ram-hub-dot {
-    animation: ram-conn-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.55s;
+    animation: ram-conn-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 1.55s;
 }
 .ram-hub-pulse {
     fill: none;
-    stroke: var(--accent, #e21d2d);
+    stroke: var(--map-hub-pulse);
     stroke-width: 2;
     opacity: 0;
 }
 .ram-map-board.played .ram-hub-pulse {
-    animation: ram-conn-hub-pulse 2.4s ease-out infinite 1s;
+    animation: ram-conn-hub-pulse 2.4s ease-out infinite 2s;
 }
 .ram-hub-label {
-    fill: #0f172a;
+    fill: var(--map-ink);
     font: 800 15px "Inter", sans-serif;
     paint-order: stroke;
-    stroke: rgba(255, 255, 255, 0.95);
+    stroke: var(--map-halo);
     stroke-width: 5px;
 }
 .ram-hub-code {
-    fill: var(--accent-deep, #a3162b);
+    fill: var(--map-route-flow);
     font: 800 10px "JetBrains Mono", monospace;
     letter-spacing: 0.12em;
     paint-order: stroke;
-    stroke: rgba(255, 255, 255, 0.92);
+    stroke: var(--map-halo);
     stroke-width: 4px;
 }
 .ram-hub-label,
 .ram-hub-code {
     opacity: 0;
-    transition: opacity 0.6s ease 0.7s;
+    transition: opacity 0.6s ease 1.7s;
 }
 .ram-map-board.played .ram-hub-label,
 .ram-map-board.played .ram-hub-code {
     opacity: 1;
 }
 
-/* 4 — city nodes */
+/* PHASE 3 — all metro city dots appear together (single shared --cdelay) */
 .ram-city-node {
     opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 0.61, 0.24, 1);
+    transform: translateY(7px) scale(0.8);
+    transform-box: fill-box;
+    transform-origin: center;
+    transition:
+        opacity 0.5s ease,
+        transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
     cursor: pointer;
     outline: none;
 }
 .ram-map-board.played .ram-city-node {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     transition-delay: var(--cdelay, 0s);
 }
 .ram-city-node:focus-visible .ram-city-ring {
-    stroke: var(--accent, #e21d2d);
-    stroke-width: 3;
+    stroke: var(--map-route-flow);
+    stroke-width: 2.6;
 }
 .ram-city-ring {
-    fill: rgba(255, 255, 255, 0.9);
-    stroke: rgba(21, 151, 229, 0.55);
-    stroke-width: 2;
-    filter: drop-shadow(0 5px 10px rgba(21, 151, 229, 0.2));
+    fill: var(--map-node-fill);
+    stroke: var(--map-ring);
+    stroke-width: 1.4;
     transition: stroke 0.3s ease, fill 0.3s ease;
 }
 .ram-city-dot {
-    fill: var(--accent-blue, var(--brand-blue-2, #1597e5));
-    stroke: #ffffff;
-    stroke-width: 2.6;
+    fill: var(--map-ink);
     transition: fill 0.3s ease;
 }
 .ram-city-name {
-    fill: #0f172a;
-    font: 800 14px "Inter", sans-serif;
+    fill: var(--map-ink);
+    font: 700 13.5px "Inter", sans-serif;
+    letter-spacing: -0.01em;
     paint-order: stroke;
-    stroke: rgba(255, 255, 255, 0.95);
-    stroke-width: 5px;
+    stroke: var(--map-halo);
+    stroke-width: 4.5px;
 }
 .ram-city-code {
-    fill: #5b6577;
-    font: 700 9.5px "JetBrains Mono", monospace;
-    letter-spacing: 0.1em;
+    fill: var(--map-code);
+    font: 600 9.5px "JetBrains Mono", monospace;
+    letter-spacing: 0.08em;
     paint-order: stroke;
-    stroke: rgba(255, 255, 255, 0.9);
+    stroke: var(--map-halo);
     stroke-width: 4px;
 }
 
-/* 7 — active highlight, others fade */
+/* interaction — hover/tap a route: highlight it, dim the rest */
 .ram-map-board.has-active .ram-route-base {
-    stroke: rgba(226, 29, 45, 0.08);
+    stroke: var(--map-route-dim);
 }
 .ram-map-board.has-active .ram-route-flow {
-    opacity: 0.12;
+    opacity: 0.1;
 }
 .ram-map-board.has-active .ram-city-node:not(.active) {
-    opacity: 0.32;
+    opacity: 0.3;
 }
 .ram-route-group.active .ram-route-base {
-    stroke: rgba(226, 29, 45, 0.55);
-    stroke-width: 2.6;
+    stroke: var(--map-route-active);
+    stroke-width: 2.2;
 }
 .ram-route-group.active .ram-route-flow {
     opacity: 1;
-    stroke-width: 3.2;
-}
-.ram-route-group.active .ram-route-plane {
-    opacity: 1;
+    stroke-width: 3;
 }
 .ram-city-node.active .ram-city-ring {
-    stroke: var(--accent, #e21d2d);
-    fill: #ffffff;
+    stroke: var(--map-route-flow);
 }
 .ram-city-node.active .ram-city-dot {
-    fill: var(--accent, #e21d2d);
+    fill: var(--map-route-flow);
 }
 
 /* map stats */
 .ram-map-stats {
     position: absolute;
-    left: 28px;
-    bottom: 28px;
+    left: 24px;
+    bottom: 24px;
     z-index: 6;
     display: flex;
     flex-direction: column;
     gap: 10px;
     opacity: 0;
-    transition: opacity 0.7s ease 1.2s;
+    transition: opacity 0.7s ease 3.2s;
 }
 .ram-map-board.played .ram-map-stats {
     opacity: 1;
 }
 .ram-map-stats div {
-    min-width: 168px;
-    padding: 16px 20px;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.82);
-    border: 1px solid rgba(15, 23, 42, 0.08);
+    min-width: 164px;
+    padding: 15px 20px;
+    border-radius: 16px;
+    background: var(--map-stat-bg);
+    border: 1px solid var(--map-border);
     backdrop-filter: blur(14px);
-    box-shadow: 0 18px 36px rgba(15, 23, 42, 0.08);
+    box-shadow: 0 16px 34px var(--map-shadow);
 }
 .ram-map-stats span {
     display: block;
-    color: #5b6577;
+    color: var(--map-code);
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.1em;
@@ -350,30 +401,31 @@
 .ram-map-stats strong {
     display: block;
     margin-top: 6px;
-    color: #0f172a;
-    font-size: 32px;
+    color: var(--map-ink);
+    font-size: 30px;
     line-height: 1;
     letter-spacing: -0.04em;
 }
 
-/* -------- route panel (intentionally dark cinematic panel) -------- */
+/* -------- route panel (intentionally dark cinematic panel, both themes) -------- */
 .ram-route-panel {
     position: relative;
     overflow: hidden;
     min-height: 660px;
     padding: 38px 32px;
-    border-radius: 28px;
+    border-radius: 24px;
     background:
         radial-gradient(circle at 100% 100%, rgba(226, 29, 45, 0.2), transparent 40%),
         linear-gradient(180deg, #111827 0%, #0f172a 100%);
     color: #ffffff;
-    box-shadow: 0 35px 90px rgba(15, 23, 42, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 30px 80px var(--map-shadow);
 }
 .ram-route-panel::before {
     content: "";
     position: absolute;
     inset: 18px;
-    border-radius: 20px;
+    border-radius: 18px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     pointer-events: none;
 }
@@ -393,6 +445,34 @@
     line-height: 1.05;
     letter-spacing: -0.03em;
 }
+.ram-panel-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.ram-panel-stats strong {
+    display: block;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(26px, 2.4vw, 32px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+}
+.ram-panel-stats span {
+    display: block;
+    margin-top: 7px;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.3;
+}
+
 .ram-route-list {
     display: grid;
 }
@@ -457,14 +537,14 @@
 }
 
 @keyframes ram-conn-draw { to { stroke-dashoffset: 0; } }
-@keyframes ram-conn-flow { to { stroke-dashoffset: -42; } }
+@keyframes ram-conn-flow { to { stroke-dashoffset: -40; } }
 @keyframes ram-conn-pop {
     from { transform: scale(0); }
     70% { transform: scale(1.25); }
     to { transform: scale(1); }
 }
 @keyframes ram-conn-hub-pulse {
-    0% { r: 8; opacity: 0.55; }
+    0% { r: 8; opacity: 0.5; }
     100% { r: 46; opacity: 0; }
 }
 
@@ -484,10 +564,13 @@
 @media (max-width: 720px) {
     .ram-map-card {
         min-height: 460px;
-        border-radius: 20px;
+        border-radius: 18px;
     }
     .ram-route-svg {
         min-height: 460px;
+    }
+    .ram-map-card::before {
+        display: none;
     }
     .ram-map-stats {
         position: static;
@@ -505,7 +588,7 @@
         animation: none !important;
     }
     .ram-india-fill {
-        opacity: 0.96 !important;
+        opacity: 1 !important;
         transition: none !important;
     }
     .ram-route-flow {
@@ -527,8 +610,5 @@
         opacity: 1 !important;
         transform: none !important;
         transition: none !important;
-    }
-    .ram-route-plane {
-        display: none !important;
     }
 }

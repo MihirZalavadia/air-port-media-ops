@@ -4,8 +4,7 @@ const AIRPORT_STATS = [
     { value: "24/7", label: "Airport Visibility" },
     { value: "100%", label: "Premium Brand Recall" },
 ];
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-const airportVideo = `${basePath}/videos/hero_media.mp4`;
+const airportVideo = "/videos/hero_media.mp4";
 export default function Hero() {
     return (
         <section id="top" className="hero">
@@ -21,26 +20,27 @@ export default function Hero() {
             </video>
 
             <div className="hero-overlay" />
+            <div className="hero-vignette" />
             <div className="hero-glow hero-glow-left" />
             <div className="hero-glow hero-glow-right" />
 
             <div className="container hero-content">
-                <div className="hero-badge">
+                <div className="hero-badge hero-anim">
                     <span></span>
                     Rajkot Airport Advertising Media
                 </div>
 
-                <h1 className="hero-h1">
+                <h1 className="hero-h1 hero-anim">
                     Premium Airport Media for <em>High-Impact Brands.</em>
                 </h1>
 
-                <p className="hero-sub">
+                <p className="hero-sub hero-anim">
                     Showcase your brand across Rajkot Airport’s premium advertising
                     network with high-visibility airport media, digital screens, static
                     boards, and passenger journey touchpoints designed for maximum recall.
                 </p>
 
-                <div className="hero-trust">
+                <div className="hero-trust hero-anim">
                     {[
                         "OOH Media",
                         "Airport Branding",
@@ -55,7 +55,7 @@ export default function Hero() {
                 </div>
             </div>
 
-            <div className="container hero-stats-wrap">
+            <div className="container hero-stats-wrap hero-anim">
                 <div className="hero-stats">
                     {AIRPORT_STATS.map((stat) => (
                         <article key={stat.label}>
@@ -65,6 +65,13 @@ export default function Hero() {
                     ))}
                 </div>
             </div>
+
+            <a href="#about" className="hero-scroll hero-anim" aria-label="Scroll to explore">
+                <span className="hero-scroll-label">Scroll</span>
+                <span className="hero-scroll-track">
+                    <span className="hero-scroll-dot" />
+                </span>
+            </a>
         </section>
     );
 }

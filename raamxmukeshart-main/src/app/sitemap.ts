@@ -40,6 +40,7 @@
 
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/src/lib/seo";
+import { inventoryCategories } from "@/src/lib/inventoryData";
 
 export const dynamic = "force-static";
 
@@ -51,5 +52,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "weekly",
             priority: 1,
         },
+        ...inventoryCategories.map((category) => ({
+            url: `${siteConfig.url}/inventory/${category.slug}/`,
+            lastModified: new Date(),
+            changeFrequency: "weekly" as const,
+            priority: 0.9,
+        })),
     ];
 }

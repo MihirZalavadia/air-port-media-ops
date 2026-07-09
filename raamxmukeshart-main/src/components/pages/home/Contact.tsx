@@ -148,9 +148,14 @@
 
 
 
+"use client";
+
+import { useState, type FormEvent } from "react";
 import "./Home.css";
 
-const WHATSAPP_NUMBER = "917436080536"; // Replace with your WhatsApp number without + or spaces
+// Replace with the real WhatsApp number (country code, no + or spaces) and email.
+const WHATSAPP_NUMBER = "917436080536";
+const CONTACT_EMAIL = "info@example.com";
 
 const whatsappMessage = encodeURIComponent(
     "Hello Mukesh Airport Media, I want to know more about Rajkot Airport Advertising Media and request the media kit."
@@ -158,7 +163,71 @@ const whatsappMessage = encodeURIComponent(
 
 const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
 
+type FieldErrors = { name?: string; phone?: string };
+
 export default function Contact() {
+    const [errors, setErrors] = useState<FieldErrors>({});
+    const [sent, setSent] = useState(false);
+
+    function clearError(field: keyof FieldErrors) {
+        setErrors((prev) => {
+            if (!prev[field]) return prev;
+            const next = { ...prev };
+            delete next[field];
+            return next;
+        });
+    }
+
+    function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        const form = event.currentTarget;
+        const data = new FormData(form);
+
+        const name = String(data.get("name") ?? "").trim();
+        const phoneRaw = String(data.get("phone") ?? "").trim();
+        const phoneDigits = phoneRaw.replace(/\D/g, "");
+        const company = String(data.get("company") ?? "").trim();
+        const campaignInterest = String(data.get("campaignInterest") ?? "").trim();
+        const message = String(data.get("message") ?? "").trim();
+
+        const nextErrors: FieldErrors = {};
+        if (!name) nextErrors.name = "Please enter your name.";
+        if (phoneDigits.length < 10) nextErrors.phone = "Enter a valid phone number.";
+
+        setErrors(nextErrors);
+
+        if (Object.keys(nextErrors).length > 0) {
+            form
+                .querySelector<HTMLElement>("[aria-invalid='true']")
+                ?.focus();
+            return;
+        }
+
+        // TODO (lead capture): also persist the lead server-side so it isn't lost
+        // if the visitor doesn't complete the WhatsApp send, e.g.:
+        //   fetch("/api/leads", { method: "POST", body: JSON.stringify(lead) })
+        const lead = { name, phone: phoneRaw, company, campaignInterest, message };
+
+        const lines = [
+            "New airport media enquiry — Rajkot Airport Media",
+            "",
+            `Name: ${lead.name}`,
+            `Phone: ${lead.phone}`,
+            lead.company && `Company / Brand: ${lead.company}`,
+            lead.campaignInterest && `Interest: ${lead.campaignInterest}`,
+            lead.message && `Message: ${lead.message}`,
+        ].filter(Boolean);
+
+        const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+            lines.join("\n")
+        )}`;
+        window.open(url, "_blank", "noopener,noreferrer");
+
+        setSent(true);
+        form.reset();
+    }
+
     return (
         <section
             className="contact-section"
@@ -202,8 +271,8 @@ export default function Contact() {
                         <div data-motion-item>
                             <span>Email</span>
                             <p>
-                                <a href="mailto:info@example.com">
-                                    info@example.com
+                                <a href={`mailto:${CONTACT_EMAIL}`}>
+                                    {CONTACT_EMAIL}
                                 </a>
                             </p>
                         </div>
@@ -232,33 +301,49 @@ export default function Contact() {
                 <form
                     className="contact-form"
                     aria-label="Request Rajkot Airport media kit"
+                    onSubmit={handleSubmit}
+                    noValidate
                     data-motion-group
                 >
                     <div className="form-row" data-motion-item>
                         <label className="field-wrap">
                             <span>Name *</span>
-                            <div className="premium-input">
+                            <div className={`premium-input ${errors.name ? "is-invalid" : ""}`}>
                                 <input
                                     type="text"
                                     name="name"
                                     placeholder="Your name"
                                     autoComplete="name"
+                                    aria-invalid={errors.name ? "true" : undefined}
+                                    onChange={() => clearError("name")}
                                     required
                                 />
                             </div>
+                            {errors.name && (
+                                <span className="field-error" role="alert">
+                                    {errors.name}
+                                </span>
+                            )}
                         </label>
 
                         <label className="field-wrap">
                             <span>Phone *</span>
-                            <div className="premium-input">
+                            <div className={`premium-input ${errors.phone ? "is-invalid" : ""}`}>
                                 <input
                                     type="tel"
                                     name="phone"
                                     placeholder="+91"
                                     autoComplete="tel"
+                                    aria-invalid={errors.phone ? "true" : undefined}
+                                    onChange={() => clearError("phone")}
                                     required
                                 />
                             </div>
+                            {errors.phone && (
+                                <span className="field-error" role="alert">
+                                    {errors.phone}
+                                </span>
+                            )}
                         </label>
                     </div>
 
@@ -299,6 +384,13 @@ export default function Contact() {
                             />
                         </div>
                     </label>
+
+                    {sent && (
+                        <p className="form-success" role="status">
+                            Thanks — opening WhatsApp so you can send your enquiry. We reply
+                            within 1 working day.
+                        </p>
+                    )}
 
                     <button
                         type="submit"

@@ -30,23 +30,20 @@
 
 // src/app/layout.tsx
 
-import type { Metadata } from "next";
-import Script from "next/script";
+import type { Metadata, Viewport } from "next";
 import Header from "@/src/components/common/Header";
 import Footer from "@/src/components/common/Footer";
+import ZoomLock from "@/src/components/common/ZoomLock";
 import { siteConfig } from "@/src/lib/seo";
 import "./globals.css";
 
-const themeBootstrapScript = `
-(() => {
-  try {
-    const theme = window.localStorage.getItem("ram-theme");
-    if (theme === "day" || theme === "night") {
-      document.documentElement.dataset.theme = theme;
-    }
-  } catch {}
-})();
-`;
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -60,9 +57,9 @@ export const metadata: Metadata = {
   keywords: siteConfig.keywords,
 
   applicationName: siteConfig.shortName,
-  authors: [{ name: "Mukesh Arts" }],
-  creator: "Mukesh Arts",
-  publisher: "Mukesh Arts",
+  authors: [{ name: "Mukesh Art" }],
+  creator: "Mukesh Art",
+  publisher: "Mukesh Art",
 
   alternates: {
     canonical: siteConfig.url,
@@ -80,7 +77,7 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: "Rajkot Airport Advertising Media by Mukesh Arts",
+        alt: "Rajkot Airport Advertising Media by Mukesh Art",
       },
     ],
   },
@@ -119,15 +116,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-IN" data-theme="day" suppressHydrationWarning>
-      <body>
-        <Script
-          id="ram-theme-bootstrap"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{ __html: themeBootstrapScript }}
-        />
-        <noscript>
-          <style>{`.airport-loader{display:none!important}`}</style>
-        </noscript>
+      <body suppressHydrationWarning>
+        <ZoomLock />
         <Header />
         {children}
         <Footer />
