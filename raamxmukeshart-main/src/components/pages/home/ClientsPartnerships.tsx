@@ -413,8 +413,10 @@ const featureSteps = [
 ];
 
 export default function ClientsPartnership() {
-    const startAngle = -75;
-    const endAngle = 75;
+    // ±75° dropped the outermost logos so low they hid behind the content
+    // block — ±58° keeps every brand card clearly visible above it
+    const startAngle = -58;
+    const endAngle = 58;
     const totalItems = items.length;
     const angleStep = (endAngle - startAngle) / (totalItems - 1);
 
