@@ -338,6 +338,7 @@ import {
     inventoryCategories,
     type InventoryCategory,
 } from "@/src/lib/inventoryData";
+import { normalizeIndianMobile } from "@/src/lib/validation";
 import "./Home.css";
 
 // one lead form per session — once filled, every category opens directly
@@ -540,8 +541,16 @@ function InventoryModal({
     function handleUnlock(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        if (!name.trim() || !phone.trim()) {
+        if (!name.trim()) {
             setError("Name and phone/WhatsApp are needed to unlock the inventory.");
+            return;
+        }
+
+        const phoneDigits = normalizeIndianMobile(phone);
+        if (!phoneDigits) {
+            setError(
+                "Enter a valid 10-digit Indian mobile number (starts with 6–9)."
+            );
             return;
         }
 
@@ -552,7 +561,7 @@ function InventoryModal({
                 "ram-inventory-lead",
                 JSON.stringify({
                     name: name.trim(),
-                    phone: phone.trim(),
+                    phone: phoneDigits,
                     company: company.trim(),
                     designation: designation.trim(),
                     category: item.code,

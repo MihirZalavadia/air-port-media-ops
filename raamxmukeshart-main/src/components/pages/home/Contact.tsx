@@ -151,6 +151,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { normalizeIndianMobile } from "@/src/lib/validation";
 import "./Home.css";
 
 // WhatsApp: +91 98253 40818 (country code, no + or spaces)
@@ -186,14 +187,16 @@ export default function Contact() {
 
         const name = String(data.get("name") ?? "").trim();
         const phoneRaw = String(data.get("phone") ?? "").trim();
-        const phoneDigits = phoneRaw.replace(/\D/g, "");
+        const phoneDigits = normalizeIndianMobile(phoneRaw);
         const company = String(data.get("company") ?? "").trim();
         const campaignInterest = String(data.get("campaignInterest") ?? "").trim();
         const message = String(data.get("message") ?? "").trim();
 
         const nextErrors: FieldErrors = {};
         if (!name) nextErrors.name = "Please enter your name.";
-        if (phoneDigits.length < 10) nextErrors.phone = "Enter a valid phone number.";
+        if (!phoneDigits)
+            nextErrors.phone =
+                "Enter a valid 10-digit Indian mobile number (starts with 6–9).";
 
         setErrors(nextErrors);
 
