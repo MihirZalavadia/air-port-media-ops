@@ -156,7 +156,7 @@ export default function CommercialRange() {
                     </p>
 
                     <p data-motion="up" data-motion-delay="0.18">
-                        A Mukesh Media Group company — from a single always-on
+                        A Mukesh Art company — from a single always-on
                         backlit board to owning every screen in the terminal, every
                         budget has a place at Rajkot Airport. Share your campaign
                         window and we shortlist placements and availability.

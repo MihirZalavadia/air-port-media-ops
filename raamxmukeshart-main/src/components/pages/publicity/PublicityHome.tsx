@@ -33,7 +33,7 @@ const whyPoints = [
     {
         n: "03",
         t: "One accountable partner",
-        p: "As a Mukesh Media Group division with 20+ years behind it, campaigns get planned placement, honest upkeep, and follow-through — not just a wall.",
+        p: "As a Mukesh Art division with 20+ years behind it, campaigns get planned placement, honest upkeep, and follow-through — not just a wall.",
     },
 ];
 
@@ -57,7 +57,7 @@ export default function PublicityHome() {
                             />
                             <span>
                                 <b>Mukesh Publicity</b>
-                                <small>A Mukesh Media Group Division</small>
+                                <small>A Mukesh Art Division</small>
                             </span>
                         </Link>
 
@@ -198,7 +198,7 @@ export default function PublicityHome() {
                                 </a>
 
                                 <Link className="grp-cta-secondary" href="/">
-                                    Mukesh Media Group
+                                    Mukesh Art Home
                                 </Link>
                             </div>
                         </div>
@@ -207,7 +207,7 @@ export default function PublicityHome() {
 
                 <footer className="grp-footer">
                     <div className="grp-container grp-footer-inner">
-                        <p>© {new Date().getFullYear()} Mukesh Publicity · Mukesh Media Group.</p>
+                        <p>© {new Date().getFullYear()} Mukesh Publicity · Mukesh Art.</p>
                         <Link href="/airport/">Mukesh Airport Media →</Link>
                     </div>
                 </footer>

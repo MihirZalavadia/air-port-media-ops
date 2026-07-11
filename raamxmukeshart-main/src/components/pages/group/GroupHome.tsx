@@ -7,13 +7,12 @@ import SmoothScroll from "@/src/components/common/SmoothScroller";
 import "./GroupHome.css";
 
 import logoMark from "@/public/images/home/logo_mark.png";
-import groupLogo from "@/public/images/home/mukesh_media_group_logo.png";
 import artLogo from "@/public/images/home/mukesh_art_logo.png";
 import publicityLogo from "@/public/images/home/mukesh_publicity_logo.png";
 
 const stats = [
     { value: "20+", label: "Years of media experience" },
-    { value: "03", label: "Business divisions" },
+    { value: "02", label: "Media divisions" },
     { value: "50+", label: "Brand campaigns" },
     { value: "1.25L", label: "Monthly airport passengers" },
 ];
@@ -21,21 +20,6 @@ const stats = [
 const divisions = [
     {
         code: "01",
-        est: "Est. 2004",
-        name: "Mukesh Art",
-        tag: "Wall Painting & Signage",
-        line: "The original studio — visual brand communication and on-ground campaign execution across Saurashtra.",
-        points: [
-            "Signage & wall media",
-            "Creative production",
-            "On-ground campaign execution",
-        ],
-        live: false,
-        cta: "",
-        logo: artLogo,
-    },
-    {
-        code: "02",
         est: "Est. 2010",
         name: "Mukesh Publicity",
         tag: "Outdoor & Large-Format OOH",
@@ -51,7 +35,7 @@ const divisions = [
         logo: publicityLogo,
     },
     {
-        code: "03",
+        code: "02",
         est: "Est. 2023",
         name: "Mukesh Airport Media",
         tag: "Airport Advertising · Rajkot International",
@@ -106,16 +90,16 @@ export default function GroupHome() {
                     <div className="grp-container grp-top-inner">
                         <span className="grp-brand">
                             <Image
-                                src={groupLogo}
-                                alt="Mukesh Media Group"
+                                src={artLogo}
+                                alt="Mukesh Art"
                                 width={251}
-                                height={204}
+                                height={208}
                                 quality={100}
                                 priority
                             />
                             <span>
-                                <b>Mukesh Media Group</b>
-                                <small>Integrated Media & Advertising</small>
+                                <b>Mukesh Art</b>
+                                <small>Media & Advertising · Since 2004</small>
                             </span>
                         </span>
 
@@ -138,7 +122,7 @@ export default function GroupHome() {
                 <section className="grp-hero" aria-labelledby="grp-title">
                     <div className="grp-container">
                         <span className="grp-eyebrow" data-motion="clip">
-                            Mukesh Media Group
+                            Mukesh Art · Since 2004
                         </span>
 
                         <h1 id="grp-title" data-motion="up" data-motion-delay="0.08">
@@ -150,7 +134,7 @@ export default function GroupHome() {
                         </p>
 
                         <p className="grp-lede" data-motion="up" data-motion-delay="0.18">
-                            Mukesh Media Group is a leading integrated media and
+                            Mukesh Art is a leading integrated media and
                             advertising company delivering impactful brand communication
                             across airports, outdoor media, and innovative advertising
                             platforms. With a commitment to creativity, strategic
@@ -178,17 +162,17 @@ export default function GroupHome() {
                 <section className="grp-divisions" aria-label="Our divisions">
                     <div className="grp-container">
                         <span className="grp-eyebrow" data-motion="clip">
-                            The Group
+                            Our Divisions
                         </span>
 
                         <h2 data-motion="up" data-motion-delay="0.06">
-                            Three divisions, <em>one signature.</em>
+                            Two divisions, <em>one signature.</em>
                         </h2>
 
                         <p className="grp-section-sub" data-motion="right" data-motion-delay="0.12">
-                            Each business runs its own craft — street-level art, city-scale
-                            outdoor, and premium airport media — under one accountable
-                            family name.
+                            Mukesh Art runs two specialised media businesses — city-scale
+                            outdoor and premium airport advertising — under one
+                            accountable family name.
                         </p>
 
                         <div className="grp-division-grid" data-motion-group>
@@ -294,7 +278,7 @@ export default function GroupHome() {
 
                         <div className="grp-about-copy" data-motion="up" data-motion-delay="0.12">
                             <p>
-                                At Mukesh Media Group, we combine decades of experience
+                                At Mukesh Art, we combine decades of experience
                                 with innovative media strategies to create high-impact
                                 advertising campaigns. From iconic outdoor billboards to
                                 premium airport branding, we provide brands with exclusive
@@ -351,7 +335,7 @@ export default function GroupHome() {
 
                 <footer className="grp-footer">
                     <div className="grp-container grp-footer-inner">
-                        <p>© {new Date().getFullYear()} Mukesh Media Group.</p>
+                        <p>© {new Date().getFullYear()} Mukesh Art.</p>
                         <Link href="/airport/">Mukesh Airport Media →</Link>
                     </div>
                 </footer>

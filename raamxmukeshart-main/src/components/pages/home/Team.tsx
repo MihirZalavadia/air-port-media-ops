@@ -211,7 +211,7 @@ const team = [
         initials: "MP",
         role: "Founder / Owner",
         label: "Commercial Direction",
-        division: "Mukesh Media Group",
+        division: "Mukesh Art",
         image: mukeshPhoto,
         linkedin: "https://www.linkedin.com/in/mukesh-patel-082403313/",
         desc: "Leads owner-side conversations, trusted client relationships, commercial clarity, and premium campaign confidence.",

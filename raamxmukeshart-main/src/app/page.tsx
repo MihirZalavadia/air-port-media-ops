@@ -2,25 +2,25 @@ import type { Metadata } from "next";
 import GroupHome from "@/src/components/pages/group/GroupHome";
 
 export const metadata: Metadata = {
-    title: "Mukesh Media Group | Brand Beyond Boundaries",
+    title: "Mukesh Art | Brand Beyond Boundaries — Media & Advertising, Rajkot",
     description:
-        "Mukesh Media Group is an integrated media and advertising company — airport branding, outdoor media, and innovative advertising platforms across Gujarat. Divisions: Mukesh Art, Mukesh Publicity, Mukesh Airport Media.",
+        "Mukesh Art is an integrated media and advertising company in Rajkot, Gujarat — airport branding at Rajkot International Airport and outdoor hoardings across Saurashtra. Divisions: Mukesh Airport Media and Mukesh Publicity.",
 
     alternates: {
         canonical: "/",
     },
 
     openGraph: {
-        title: "Mukesh Media Group | Brand Beyond Boundaries",
+        title: "Mukesh Art | Brand Beyond Boundaries",
         description:
-            "We Create Visibility. We Build Influence. Airport branding, outdoor media, and premium advertising platforms.",
+            "We Create Visibility. We Build Influence. Airport branding, outdoor media, and premium advertising platforms across Rajkot and Saurashtra.",
         url: "/",
-        siteName: "Mukesh Media Group",
+        siteName: "Mukesh Art",
         locale: "en_IN",
         type: "website",
     },
 };
 
-export default function MediaGroupPage() {
+export default function MukeshArtHomePage() {
     return <GroupHome />;
 }

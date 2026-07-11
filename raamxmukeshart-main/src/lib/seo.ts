@@ -40,7 +40,7 @@ export const siteConfig = {
         "outdoor media marketing Rajkot",
         "airport media marketing India",
         "media marketing company Gujarat",
-        "Mukesh Media Group",
+        "Mukesh Art media",
         "Mukesh Art Rajkot",
         "Mukesh Art airport advertising",
         "airport advertising Gujarat",
