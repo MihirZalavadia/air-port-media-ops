@@ -31,6 +31,7 @@ const divisions = [
             "On-ground campaign execution",
         ],
         live: false,
+        cta: "",
         logo: artLogo,
     },
     {
@@ -44,7 +45,9 @@ const divisions = [
             "High-traffic locations",
             "Campaign rotation & upkeep",
         ],
-        live: false,
+        live: true,
+        href: "/publicity/",
+        cta: "Explore outdoor media",
         logo: publicityLogo,
     },
     {
@@ -60,6 +63,7 @@ const divisions = [
         ],
         live: true,
         href: "/airport/",
+        cta: "Enter the airport site",
         logo: logoMark,
     },
 ];
@@ -215,7 +219,7 @@ export default function GroupHome() {
 
                                         {division.live ? (
                                             <strong>
-                                                Enter the airport site
+                                                {division.cta}
                                                 <svg viewBox="0 0 24 24" aria-hidden="true">
                                                     <path
                                                         d="M5 12h12M12 6l7 6-7 6"

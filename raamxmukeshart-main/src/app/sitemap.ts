@@ -58,6 +58,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "weekly" as const,
             priority: 0.95,
         },
+        {
+            url: `${siteConfig.url}/publicity/`,
+            lastModified: new Date(),
+            changeFrequency: "weekly" as const,
+            priority: 0.85,
+        },
         ...inventoryCategories.map((category) => ({
             url: `${siteConfig.url}/inventory/${category.slug}/`,
             lastModified: new Date(),

@@ -402,3 +402,25 @@ button {
 .tile-structural-title {
   line-height: 1.14 !important;
 }
+
+/* classic soft fade between client-side page navigations (template.tsx).
+   Opacity only — no transform, so position: fixed and GSAP stay intact. */
+.page-transition {
+  animation: pageFade 0.5s ease both;
+}
+
+@keyframes pageFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    animation: none;
+  }
+}
