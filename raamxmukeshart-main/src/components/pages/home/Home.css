@@ -11109,53 +11109,138 @@ section,
     height: 18px;
 }
 
-/* [[ Team — role detail hover bubble ]] */
+/* [[ Team — designed media panel + formal speech bubble ]] */
 
 .team-card {
     position: relative;
 }
 
+/* decorated panel: dotted grid, oversized index numeral, brand peaks —
+   the portrait sits smaller and UNCROPPED on top of it */
+.team-media {
+    position: relative;
+    aspect-ratio: 5 / 4;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background-image:
+        radial-gradient(
+            color-mix(in srgb, #1e2a78 12%, transparent) 1.2px,
+            transparent 1.2px
+        ),
+        linear-gradient(
+            160deg,
+            var(--inventory-bg, #eef8ff),
+            var(--surface, #ffffff) 70%
+        );
+    background-size: 20px 20px, cover;
+}
+
+.team-media-num {
+    position: absolute;
+    top: -26px;
+    right: 8px;
+    z-index: 1;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(110px, 12vw, 150px);
+    font-weight: 500;
+    line-height: 1 !important;
+    color: color-mix(in srgb, var(--ink) 8%, transparent);
+    pointer-events: none;
+}
+
+.team-media-peaks {
+    position: absolute;
+    bottom: -14px;
+    left: -12px;
+    z-index: 1;
+    width: 132px;
+    opacity: 0.14;
+    pointer-events: none;
+}
+
+.team-portrait {
+    position: relative;
+    z-index: 2;
+    width: min(56%, 220px);
+    aspect-ratio: 1 / 1;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 4px solid #ffffff;
+    box-shadow: 0 26px 46px -24px rgba(15, 23, 42, 0.5);
+    transform: rotate(-2deg);
+    transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.team-card:hover .team-portrait,
+.team-card:focus .team-portrait {
+    transform: rotate(0deg) scale(1.03);
+}
+
+.team-portrait img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* formal speech bubble — comic grammar (tail + offset shadow), business tone */
 .team-bubble {
     position: absolute;
-    top: 14px;
     left: 14px;
     right: 14px;
-    z-index: 6;
-    padding: 16px 18px;
-    border-radius: 14px;
-    background: rgba(9, 12, 20, 0.92);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(226, 29, 45, 0.45);
-    color: #f4f6ff;
-    font-size: 13px;
-    line-height: 1.7;
+    bottom: 14px;
+    z-index: 3;
+    padding: 14px 16px;
+    background: #ffffff;
+    border: 1.5px solid #14110d;
+    border-radius: 16px;
+    box-shadow: 4px 4px 0 rgba(20, 17, 13, 0.85);
+    color: #1f2430;
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(12px) scale(0.97);
+    transform-origin: bottom center;
     pointer-events: none;
-    transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.team-bubble p {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.65;
 }
 
 .team-bubble::after {
     content: "";
     position: absolute;
-    left: 28px;
-    bottom: -7px;
-    width: 14px;
-    height: 14px;
+    top: -8.5px;
+    left: 36px;
+    width: 15px;
+    height: 15px;
     transform: rotate(45deg);
-    background: rgba(9, 12, 20, 0.92);
-    border-right: 1px solid rgba(226, 29, 45, 0.45);
-    border-bottom: 1px solid rgba(226, 29, 45, 0.45);
+    background: #ffffff;
+    border-top: 1.5px solid #14110d;
+    border-left: 1.5px solid #14110d;
 }
 
 .team-card:hover .team-bubble,
-.team-card:focus-within .team-bubble,
-.team-card:focus .team-bubble {
+.team-card:focus .team-bubble,
+.team-card:focus-within .team-bubble {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 .team-card:focus {
     outline: none;
+}
+
+/* night theme: panel stays subtly lit so the color portrait pops */
+[data-theme="night"] .team-media {
+    background-image:
+        radial-gradient(rgba(244, 246, 255, 0.08) 1.2px, transparent 1.2px),
+        linear-gradient(160deg, #12141e, #0d1017 70%);
+}
+
+[data-theme="night"] .team-media-num {
+    color: rgba(244, 246, 255, 0.08);
 }

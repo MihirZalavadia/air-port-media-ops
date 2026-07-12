@@ -279,17 +279,39 @@ export default function Team() {
                             tabIndex={0}
                             aria-label={`${person.name}, ${person.role}`}
                         >
-                            <div className="team-bubble" role="tooltip">
-                                {person.desc}
-                            </div>
-                            <div className="team-image">
-                                <Image
-                                    src={person.image}
-                                    alt={`${person.name} - ${person.role}`}
-                                    width={600}
-                                    height={400}
-                                    loading="lazy"
-                                />
+                            <div className="team-media">
+                                <span className="team-media-num" aria-hidden="true">
+                                    0{index + 1}
+                                </span>
+
+                                <svg
+                                    className="team-media-peaks"
+                                    viewBox="0 0 240 120"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M20 104 L70 30 L118 104 C88 84 50 84 20 104 Z"
+                                        fill="#e21d2d"
+                                    />
+                                    <path
+                                        d="M122 104 L170 30 L220 104 C190 84 152 84 122 104 Z"
+                                        fill="#1e2a78"
+                                    />
+                                </svg>
+
+                                <div className="team-portrait">
+                                    <Image
+                                        src={person.image}
+                                        alt={`${person.name} - ${person.role}`}
+                                        width={520}
+                                        height={520}
+                                        loading="lazy"
+                                    />
+                                </div>
+
+                                <div className="team-bubble" role="tooltip">
+                                    <p>{person.desc}</p>
+                                </div>
                             </div>
 
                             <div className="team-body">
