@@ -1,0 +1,527 @@
+/* ============================================================
+   Connectivity route board
+   All rules are scoped under .connectivity-board-section so they
+   never collide with the legacy .connectivity-modern / .map-card
+   rules still present in Home.css. Uses the shared theme tokens.
+   ============================================================ */
+
+.connectivity-board-section {
+    position: relative;
+    padding: clamp(80px, 9vw, 140px) 0;
+    overflow: hidden;
+    background: var(--about-bg, #ffffff);
+    color: var(--ink, #111111);
+}
+
+.connectivity-board-section .connectivity-container {
+    width: min(1320px, calc(100% - 40px));
+    margin-inline: auto;
+}
+
+.connectivity-board-section .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    color: var(--accent, #e21d2d);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+}
+
+.connectivity-board-section .eyebrow::before {
+    content: "";
+    width: 34px;
+    height: 1px;
+    background: currentColor;
+}
+
+.connectivity-board-section .conn-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.75fr);
+    gap: clamp(40px, 7vw, 100px);
+    align-items: end;
+    margin-bottom: clamp(40px, 5vw, 64px);
+}
+
+.connectivity-board-section .conn-display {
+    margin: 0;
+    max-width: 760px;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(44px, 5.6vw, 84px);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--ink, #111111);
+}
+
+.connectivity-board-section .conn-display em {
+    font-style: italic;
+    color: var(--accent, #e21d2d);
+}
+
+.connectivity-board-section .conn-top p {
+    margin: 0 0 8px;
+    max-width: 520px;
+    color: var(--ink-2, #2c3142);
+    font-size: clamp(16px, 1.3vw, 19px);
+    line-height: 1.65;
+}
+
+.connectivity-board {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.46fr);
+    gap: 22px;
+    align-items: stretch;
+}
+
+/* -------- map card -------- */
+.connectivity-board .map-card {
+    position: relative;
+    min-height: 660px;
+    border-radius: 28px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 36% 42%, rgba(21, 151, 229, 0.16), transparent 46%),
+        linear-gradient(180deg, #f7fbff 0%, #eaf4fc 100%);
+    border: 1px solid rgba(92, 160, 205, 0.28);
+    box-shadow: 0 35px 90px rgba(15, 23, 42, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.connectivity-board .map-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(21, 151, 229, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21, 151, 229, 0.045) 1px, transparent 1px);
+    background-size: 44px 44px;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.connectivity-board .route-svg {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    min-height: 660px;
+    display: block;
+}
+
+/* 1 — card frame draw */
+.connectivity-board .card-frame {
+    fill: none;
+    stroke: rgba(21, 151, 229, 0.5);
+    stroke-width: 1.4;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+}
+.connectivity-board.played .card-frame {
+    animation: conn-draw 1.1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+/* 2 — india */
+.connectivity-board .india-fill {
+    fill: url(#landGrad);
+    opacity: 0;
+    filter: drop-shadow(0 24px 34px rgba(15, 23, 42, 0.22));
+    transition: opacity 0.9s ease 0.65s;
+}
+.connectivity-board.played .india-fill {
+    opacity: 0.96;
+}
+.connectivity-board .india-outline {
+    fill: none;
+    stroke: rgba(21, 151, 229, 0.85);
+    stroke-width: 1.1;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+}
+.connectivity-board.played .india-outline {
+    animation: conn-draw 1.7s cubic-bezier(0.6, 0, 0.3, 1) forwards 0.35s;
+}
+
+/* 5 — routes */
+.connectivity-board .route-base {
+    fill: none;
+    stroke: rgba(226, 29, 45, 0.22);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke 0.3s ease, stroke-width 0.3s ease;
+}
+.connectivity-board.played .route-base {
+    animation: conn-draw 0.9s ease forwards var(--rdelay, 0s);
+}
+.connectivity-board .route-flow {
+    fill: none;
+    stroke: var(--accent, #e21d2d);
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-dasharray: 8 13;
+    opacity: 0;
+    filter: drop-shadow(0 0 6px rgba(226, 29, 45, 0.32));
+    animation: conn-flow 2.4s linear infinite;
+    transition: opacity 0.5s ease, stroke-width 0.3s ease;
+}
+.connectivity-board.played .route-flow {
+    opacity: 1;
+    transition-delay: var(--rdelay, 0s);
+}
+
+/* 6 — planes */
+.connectivity-board .route-plane {
+    opacity: 0;
+    transition: opacity 0.4s ease calc(var(--rdelay, 0s) + 0.5s);
+}
+.connectivity-board .route-plane .body {
+    fill: #1e293b;
+}
+.connectivity-board.played .route-plane {
+    opacity: 0.9;
+}
+
+/* 3 — hub */
+.connectivity-board .hub-glow {
+    fill: rgba(226, 29, 45, 0.12);
+    opacity: 0;
+    transition: opacity 0.6s ease 0.5s;
+}
+.connectivity-board.played .hub-glow {
+    opacity: 1;
+}
+.connectivity-board .hub-dot {
+    fill: var(--accent, #e21d2d);
+    stroke: #ffffff;
+    stroke-width: 4.5;
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: scale(0);
+    filter: drop-shadow(0 6px 12px rgba(226, 29, 45, 0.4));
+}
+.connectivity-board.played .hub-dot {
+    animation: conn-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.55s;
+}
+.connectivity-board .hub-pulse {
+    fill: none;
+    stroke: var(--accent, #e21d2d);
+    stroke-width: 2;
+    opacity: 0;
+}
+.connectivity-board.played .hub-pulse {
+    animation: conn-hub-pulse 2.4s ease-out infinite 1s;
+}
+.connectivity-board .hub-label {
+    fill: #0f172a;
+    font: 800 15px "Inter", sans-serif;
+    paint-order: stroke;
+    stroke: rgba(255, 255, 255, 0.95);
+    stroke-width: 5px;
+}
+.connectivity-board .hub-code {
+    fill: var(--accent-deep, #a3162b);
+    font: 800 10px "JetBrains Mono", monospace;
+    letter-spacing: 0.12em;
+    paint-order: stroke;
+    stroke: rgba(255, 255, 255, 0.92);
+    stroke-width: 4px;
+}
+.connectivity-board .hub-label,
+.connectivity-board .hub-code {
+    opacity: 0;
+    transition: opacity 0.6s ease 0.7s;
+}
+.connectivity-board.played .hub-label,
+.connectivity-board.played .hub-code {
+    opacity: 1;
+}
+
+/* 4 — city nodes */
+.connectivity-board .city-node {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 0.61, 0.24, 1);
+    cursor: pointer;
+    outline: none;
+}
+.connectivity-board.played .city-node {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: var(--cdelay, 0s);
+}
+.connectivity-board .city-node:focus-visible .city-ring {
+    stroke: var(--accent, #e21d2d);
+    stroke-width: 3;
+}
+.connectivity-board .city-ring {
+    fill: rgba(255, 255, 255, 0.9);
+    stroke: rgba(21, 151, 229, 0.55);
+    stroke-width: 2;
+    filter: drop-shadow(0 5px 10px rgba(21, 151, 229, 0.2));
+    transition: stroke 0.3s ease, fill 0.3s ease;
+}
+.connectivity-board .city-dot {
+    fill: var(--accent-blue, #1597e5);
+    stroke: #ffffff;
+    stroke-width: 2.6;
+    transition: fill 0.3s ease;
+}
+.connectivity-board .city-name {
+    fill: #0f172a;
+    font: 800 14px "Inter", sans-serif;
+    paint-order: stroke;
+    stroke: rgba(255, 255, 255, 0.95);
+    stroke-width: 5px;
+}
+.connectivity-board .city-code {
+    fill: #5b6577;
+    font: 700 9.5px "JetBrains Mono", monospace;
+    letter-spacing: 0.1em;
+    paint-order: stroke;
+    stroke: rgba(255, 255, 255, 0.9);
+    stroke-width: 4px;
+}
+
+/* 7 — active highlight, others fade */
+.connectivity-board.has-active .route-base {
+    stroke: rgba(226, 29, 45, 0.08);
+}
+.connectivity-board.has-active .route-flow {
+    opacity: 0.12;
+}
+.connectivity-board.has-active .city-node:not(.active) {
+    opacity: 0.32;
+}
+.connectivity-board .route-group.active .route-base {
+    stroke: rgba(226, 29, 45, 0.55);
+    stroke-width: 2.6;
+}
+.connectivity-board .route-group.active .route-flow {
+    opacity: 1;
+    stroke-width: 3.2;
+}
+.connectivity-board .route-group.active .route-plane {
+    opacity: 1;
+}
+.connectivity-board .city-node.active .city-ring {
+    stroke: var(--accent, #e21d2d);
+    fill: #ffffff;
+}
+.connectivity-board .city-node.active .city-dot {
+    fill: var(--accent, #e21d2d);
+}
+
+/* map stats */
+.connectivity-board .map-stats {
+    position: absolute;
+    left: 28px;
+    bottom: 28px;
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.7s ease 1.2s;
+}
+.connectivity-board.played .map-stats {
+    opacity: 1;
+}
+.connectivity-board .map-stats div {
+    min-width: 168px;
+    padding: 16px 20px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 18px 36px rgba(15, 23, 42, 0.08);
+}
+.connectivity-board .map-stats span {
+    display: block;
+    color: var(--muted, #6b6b6b);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+.connectivity-board .map-stats strong {
+    display: block;
+    margin-top: 6px;
+    color: #0f172a;
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+/* -------- route panel -------- */
+.connectivity-board .route-panel {
+    position: relative;
+    overflow: hidden;
+    min-height: 660px;
+    padding: 38px 32px;
+    border-radius: 28px;
+    background:
+        radial-gradient(circle at 100% 100%, rgba(226, 29, 45, 0.2), transparent 40%),
+        linear-gradient(180deg, #111827 0%, #0f172a 100%);
+    color: #ffffff;
+    box-shadow: 0 35px 90px rgba(15, 23, 42, 0.2);
+}
+.connectivity-board .route-panel::before {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+}
+.connectivity-board .panel-label {
+    display: inline-flex;
+    color: #fb7185;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+.connectivity-board .route-panel h3 {
+    margin: 22px 0 26px;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(24px, 3vw, 30px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+}
+.connectivity-board .route-list {
+    display: grid;
+}
+.connectivity-board .route-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 14px;
+    margin: 0 -14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    border-radius: 10px;
+    outline: none;
+    transition: background 0.3s ease, padding 0.3s ease;
+}
+.connectivity-board .route-item .ri-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 700;
+}
+.connectivity-board .route-item .ri-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-blue, #1597e5);
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+.connectivity-board .route-item b {
+    color: #93c5fd;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+.connectivity-board .route-item:hover,
+.connectivity-board .route-item.active,
+.connectivity-board .route-item:focus-visible {
+    background: rgba(255, 255, 255, 0.06);
+    padding-left: 18px;
+}
+.connectivity-board .route-item.active .ri-dot {
+    background: var(--accent, #e21d2d);
+    transform: scale(1.5);
+    box-shadow: 0 0 0 4px rgba(226, 29, 45, 0.18);
+}
+.connectivity-board .route-item.active b {
+    color: #fda4af;
+}
+.connectivity-board .panel-foot {
+    position: relative;
+    z-index: 1;
+    margin-top: 26px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+@keyframes conn-draw { to { stroke-dashoffset: 0; } }
+@keyframes conn-flow { to { stroke-dashoffset: -42; } }
+@keyframes conn-pop { from { transform: scale(0); } 70% { transform: scale(1.25); } to { transform: scale(1); } }
+@keyframes conn-hub-pulse { 0% { r: 8; opacity: 0.55; } 100% { r: 46; opacity: 0; } }
+
+/* -------- responsive -------- */
+@media (max-width: 1080px) {
+    .connectivity-board-section .conn-top,
+    .connectivity-board {
+        grid-template-columns: 1fr;
+    }
+    .connectivity-board-section .conn-top p {
+        margin: 0;
+    }
+    .connectivity-board .route-panel {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 720px) {
+    .connectivity-board .map-card {
+        min-height: 460px;
+        border-radius: 20px;
+    }
+    .connectivity-board .route-svg {
+        min-height: 460px;
+    }
+    .connectivity-board .map-stats {
+        position: static;
+        flex-direction: row;
+        padding: 16px;
+    }
+}
+
+/* -------- reduced motion — show the finished board instantly -------- */
+@media (prefers-reduced-motion: reduce) {
+    .connectivity-board .card-frame,
+    .connectivity-board .india-outline,
+    .connectivity-board .route-base {
+        stroke-dashoffset: 0 !important;
+        animation: none !important;
+    }
+    .connectivity-board .india-fill {
+        opacity: 0.96 !important;
+        transition: none !important;
+    }
+    .connectivity-board .route-flow {
+        opacity: 1 !important;
+        animation: none !important;
+    }
+    .connectivity-board .hub-dot {
+        transform: scale(1) !important;
+        animation: none !important;
+    }
+    .connectivity-board .hub-pulse {
+        animation: none !important;
+    }
+    .connectivity-board .city-node,
+    .connectivity-board .hub-label,
+    .connectivity-board .hub-code,
+    .connectivity-board .hub-glow,
+    .connectivity-board .map-stats {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    .connectivity-board .route-plane {
+        display: none !important;
+    }
+}

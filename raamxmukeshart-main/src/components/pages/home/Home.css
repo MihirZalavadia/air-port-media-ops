@@ -4029,9 +4029,7 @@ body.site-ready .hero-scroll.hero-anim {
 
 .team-image {
   position: relative;
-  /* portraits are square (1000×1000) — match them so the crop never
-     cuts below the chin; the old fixed 320px height showed heads only */
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #dbeafe;
   width: 100%;
@@ -4210,7 +4208,7 @@ body.site-ready .hero-scroll.hero-anim {
 .team-image {
   position: relative;
   z-index: 1;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #0f172a;
 }
@@ -11109,4 +11107,55 @@ section,
 .team-links svg {
     width: 18px;
     height: 18px;
+}
+
+/* [[ Team — role detail hover bubble ]] */
+
+.team-card {
+    position: relative;
+}
+
+.team-bubble {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    right: 14px;
+    z-index: 6;
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: rgba(9, 12, 20, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(226, 29, 45, 0.45);
+    color: #f4f6ff;
+    font-size: 13px;
+    line-height: 1.7;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.team-bubble::after {
+    content: "";
+    position: absolute;
+    left: 28px;
+    bottom: -7px;
+    width: 14px;
+    height: 14px;
+    transform: rotate(45deg);
+    background: rgba(9, 12, 20, 0.92);
+    border-right: 1px solid rgba(226, 29, 45, 0.45);
+    border-bottom: 1px solid rgba(226, 29, 45, 0.45);
+}
+
+.team-card:hover .team-bubble,
+.team-card:focus-within .team-bubble,
+.team-card:focus .team-bubble {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.team-card:focus {
+    outline: none;
 }

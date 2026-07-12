@@ -214,7 +214,7 @@ const team = [
         division: "Mukesh Art",
         image: mukeshPhoto,
         linkedin: "https://www.linkedin.com/in/mukesh-patel-082403313/",
-        desc: "Leads owner-side conversations, trusted client relationships, commercial clarity, and premium campaign confidence.",
+        desc: "Opens the relationship and keeps it honest — owner-side conversations, commercial clarity, and the final word your campaign can rely on.",
     },
     {
         name: "Mayur Patel",
@@ -224,7 +224,7 @@ const team = [
         division: "Mukesh Airport Media",
         image: mayurPhoto,
         linkedin: "https://www.linkedin.com/in/mayur-gopani-378614385/",
-        desc: "Handles business operations, campaign follow-through, client coordination, and execution support from first call to closure.",
+        desc: "Your day-to-day coordinator from first call to closure — requirement gathering, campaign follow-through, and transparent billing, end to end.",
     },
     {
         name: "Ridham Bhuva",
@@ -235,7 +235,7 @@ const team = [
         image: ridhamPhoto,
         // pending — Ridham hasn't shared his profile URL yet
         linkedin: "",
-        desc: "Supports airport protocol, access coordination, visitor handling, hospitality, and ground-team readiness.",
+        desc: "Everything airside — entry checks and verification, inventory installation and upkeep, and campaign reporting from go-live to wrap-up.",
     },
 ];
 
@@ -276,8 +276,12 @@ export default function Team() {
                             className="team-card"
                             key={person.name}
                             data-motion-item
+                            tabIndex={0}
                             aria-label={`${person.name}, ${person.role}`}
                         >
+                            <div className="team-bubble" role="tooltip">
+                                {person.desc}
+                            </div>
                             <div className="team-image">
                                 <Image
                                     src={person.image}
@@ -310,8 +314,6 @@ export default function Team() {
                                         <b>{person.division}</b>
                                     </div>
                                 </div>
-
-                                <p>{person.desc}</p>
 
                                 <div className="team-links">
                                     {person.linkedin ? (

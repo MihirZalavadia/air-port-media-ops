@@ -4,8 +4,8 @@ export const siteConfig = {
     name: "Rajkot Airport x Mukesh Art",
     shortName: "Rajkot Airport Media",
 
-    // GitHub Pages project URL — swap for the custom domain when it lands
-    url: "https://mihirzalavadia.github.io/air-port-media-ops",
+    // live domain (Hostinger DNS)
+    url: "https://mukeshart.in",
 
     email: "your-email@example.com",
     phone: "+91 XXXXXXXXXX",

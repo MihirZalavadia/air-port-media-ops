@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rajkot Airport Media × Mukesh Arts — Cinematic Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="proto.css">
+</head>
+<body>
+
+<!-- ============ LOADER ============ -->
+<div class="loader" id="loader">
+  <div class="loader-grid"></div>
+  <div class="loader-glow red"></div>
+  <div class="loader-glow blue"></div>
+
+  <svg class="loader-frame" preserveAspectRatio="none" viewBox="0 0 100 100">
+    <line class="lf" x1="0" y1="0" x2="100" y2="0" pathLength="1"></line>
+    <line class="lf" x1="100" y1="0" x2="100" y2="100" pathLength="1"></line>
+    <line class="lf" x1="100" y1="100" x2="0" y2="100" pathLength="1"></line>
+    <line class="lf" x1="0" y1="100" x2="0" y2="0" pathLength="1"></line>
+    <line class="loader-runway-dash" x1="0" y1="50" x2="100" y2="50" vector-effect="non-scaling-stroke"></line>
+  </svg>
+
+  <div class="loader-plane">
+    <svg viewBox="0 0 120 40" aria-hidden="true">
+      <path d="M8 22 L45 18 L78 5 C88 1 98 3 106 9 L111 13 L80 23 L106 31 L99 36 L64 28 L35 33 L24 39 L18 37 L29 27 L8 26 Z" fill="currentColor"></path>
+    </svg>
+  </div>
+
+  <div class="loader-center">
+    <img class="loader-logo" src="../assets/cover_logo.png" alt="Mukesh Arts">
+    <span class="loader-kicker">Airport Advertising Media</span>
+    <h1 class="loader-title">Rajkot Airport<span class="x">×</span>Mukesh Arts</h1>
+  </div>
+
+  <div class="loader-curtain">
+    <i class="c-left"></i>
+    <i class="c-right"></i>
+  </div>
+</div>
+
+<!-- ============ CONNECTIVITY ============ -->
+<section class="section connectivity" id="connectivity">
+  <div class="container">
+    <div class="conn-top">
+      <div>
+        <span class="eyebrow" data-r="clip">Connectivity</span>
+        <h2 class="display" data-r="up" style="--rd:0.08s">Routes that connect Rajkot with <em>India's metro markets</em></h2>
+      </div>
+      <p data-r="right" style="--rd:0.14s">Rajkot International Airport links Gujarat's business corridor to high-value metro audiences — a clear, premium airport-media touchpoint for regional and national campaigns.</p>
+    </div>
+
+    <div class="conn-layout route-board" id="routeBoard">
+      <div class="map-card" data-r="zoom" style="--rd:0.12s">
+        <svg class="route-svg" id="routeSvg" viewBox="0 0 1000 700" role="img" aria-labelledby="mapTitle mapDesc">
+          <title id="mapTitle">Rajkot Airport connectivity map</title>
+          <desc id="mapDesc">Route map showing Rajkot Airport connections with Delhi, Ahmedabad, Mumbai, Goa, Hyderabad and Bengaluru.</desc>
+          <defs>
+            <linearGradient id="landGrad" x1="360" y1="40" x2="640" y2="690" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#1b4a63"></stop>
+              <stop offset="0.55" stop-color="#143b53"></stop>
+              <stop offset="1" stop-color="#1d5168"></stop>
+            </linearGradient>
+          </defs>
+          <!-- card frame draws first -->
+          <rect class="card-frame" x="14" y="14" width="972" height="672" rx="18" pathLength="1"></rect>
+          <!-- JS injects: india fill+outline, routes, hub, cities, planes -->
+        </svg>
+        <div class="map-stats">
+          <div><span>Connected metros</span><strong>6</strong></div>
+          <div><span>Airport hub</span><strong>RAJ</strong></div>
+        </div>
+      </div>
+
+      <aside class="route-panel">
+        <span class="panel-label">Metro access</span>
+        <h3>Strategic reach from Gujarat's business corridor.</h3>
+        <div class="route-list" id="routeList"></div>
+        <p class="panel-foot">Hover or tap a city to trace its route. Every metro on this board is one short hop from a captive, high-intent airport audience.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INVENTORY ============ -->
+<section class="section inventory" id="inventory">
+  <div class="container">
+    <div class="inv-head">
+      <div>
+        <span class="eyebrow" data-r="clip">Inventory Portfolio</span>
+        <h2 class="display" data-r="up" style="--rd:0.08s">A wide range of airport media, presented like <em>a body of work.</em></h2>
+      </div>
+      <p data-r="right" style="--rd:0.14s">Browse the range first. Full references, availability, and the complete media plan unlock once your campaign intent is real.</p>
+    </div>
+
+    <div class="inv-filter" data-r="up" style="--rd:0.16s">
+      <div class="inv-chips" id="invChips"></div>
+      <span class="inv-count"><b id="invCount">0</b> placements shown</span>
+    </div>
+
+    <div class="inv-grid" id="invGrid"></div>
+  </div>
+</section>
+
+<!-- ============ DRAWER ============ -->
+<div class="drawer-scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-modal="true" role="dialog">
+  <button class="drawer-close" id="drawerClose" aria-label="Close details">×</button>
+  <div class="drawer-media">
+    <img id="dMedia" alt="">
+    <span class="dm-code" id="dCode"></span>
+    <h3 class="dm-title" id="dTitle"></h3>
+  </div>
+  <div class="drawer-body">
+    <p class="d-summary" id="dSummary"></p>
+    <div class="drawer-meta" id="dMeta"></div>
+
+    <div class="gate-line">Request full media plan</div>
+
+    <form class="lead-form" id="leadForm" novalidate>
+      <div class="lead-field" id="f-name">
+        <span>Name *</span>
+        <input type="text" id="in-name" placeholder="Marketing lead name" autocomplete="name">
+        <small class="lead-err"></small>
+      </div>
+      <div class="lead-field" id="f-phone">
+        <span>Phone / WhatsApp *</span>
+        <div class="phone-row">
+          <select id="in-cc" aria-label="Country code">
+            <option value="+91" selected>+91</option>
+            <option value="+971">+971</option>
+            <option value="+1">+1</option>
+            <option value="+44">+44</option>
+            <option value="+65">+65</option>
+          </select>
+          <input type="tel" id="in-phone" inputmode="numeric" maxlength="10" placeholder="10-digit number">
+        </div>
+        <small class="lead-err"></small>
+      </div>
+      <div class="lf-row">
+        <div class="lead-field">
+          <span>Company / Brand</span>
+          <input type="text" id="in-company" placeholder="Brand or agency">
+        </div>
+        <div class="lead-field">
+          <span>Designation</span>
+          <input type="text" id="in-role" placeholder="e.g. Marketing Manager">
+        </div>
+      </div>
+      <div class="lead-field">
+        <span>Campaign window</span>
+        <input type="text" id="in-window" placeholder="e.g. Diwali 2026 / Q3">
+      </div>
+      <button type="submit" class="lead-submit">Unlock full media plan</button>
+      <p class="lead-fine">We'll share the complete plan, available surfaces and visibility details. No spam — just a serious media conversation.</p>
+    </form>
+
+    <div class="lead-success" id="leadSuccess">
+      <span class="ls-badge">✓ Access unlocked</span>
+      <ul class="unlock-list" id="unlockList"></ul>
+      <p class="lead-fine" style="margin-top:18px">A copy of this plan request has been logged for our team to follow up. <!-- TODO: wire to CRM / Google Sheet / Excel lead capture (e.g. POST to /api/leads). No backend connected yet. --></p>
+    </div>
+  </div>
+</aside>
+
+<div class="proto-hint">
+  <span>PROTOTYPE</span>
+  <button id="replayLoader">Replay loader</button>
+  <button id="replayMap">Replay map</button>
+  <button id="themeToggle">Night</button>
+</div>
+
+<script src="../assets/india-path.js"></script>
+<script src="proto.js"></script>
+</body>
+</html>

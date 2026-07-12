@@ -254,29 +254,46 @@ export default function Header() {
         event: MouseEvent<HTMLAnchorElement>,
         sectionId: string
     ) {
-        setIsMenuOpen(false);
-
         const path = window.location.pathname.replace(/\/+$/, "");
-        if (!path.endsWith("/airport")) return; // different page — let Link navigate
+        if (!path.endsWith("/airport")) {
+            setIsMenuOpen(false);
+            return; // different page — let Link navigate
+        }
 
         const target = document.getElementById(sectionId);
-        if (!target) return;
+        if (!target) {
+            setIsMenuOpen(false);
+            return;
+        }
 
         event.preventDefault();
 
-        const lenis = (
-            window as unknown as {
-                __lenis?: { scrollTo: (t: Element, o?: object) => void };
+        const scrollToTarget = () => {
+            const lenis = (
+                window as unknown as {
+                    __lenis?: { scrollTo: (t: Element, o?: object) => void };
+                }
+            ).__lenis;
+
+            if (lenis) {
+                lenis.scrollTo(target, { offset: -84 });
+            } else {
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
             }
-        ).__lenis;
 
-        if (lenis) {
-            lenis.scrollTo(target, { offset: -84 });
+            history.replaceState(null, "", `#${sectionId}`);
+        };
+
+        // Mobile: the open menu locks body scrolling (menu-open class), so
+        // scrolling while it closes silently fails on Android. Close first,
+        // then scroll once the lock is released.
+        if (isMenuOpen) {
+            closeMobileMenu();
+            setIsMenuOpen(false);
+            window.setTimeout(scrollToTarget, 460);
         } else {
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            scrollToTarget();
         }
-
-        history.replaceState(null, "", `#${sectionId}`);
     }
 
     useEffect(() => {

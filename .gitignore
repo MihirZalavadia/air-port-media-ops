@@ -86,3 +86,6 @@ tmp_pdf_images/
 
 # raw inventory photography (102MB) — converted webps live in the site
 updated images/
+
+# built site packages
+mukeshart_site_build*.zip

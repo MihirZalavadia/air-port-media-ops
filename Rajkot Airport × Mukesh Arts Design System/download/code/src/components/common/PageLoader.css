@@ -1,0 +1,249 @@
+/* ============================================================
+   PageLoader — cinematic airport-media opening moment
+   ============================================================ */
+
+.airport-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    overflow: hidden;
+    background: #050814;
+    color: #ffffff;
+}
+
+/* technical grid */
+.loader-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 54px 54px;
+    opacity: 0;
+    animation: l-grid 1s ease forwards 0.1s;
+}
+
+.loader-glow {
+    position: absolute;
+    z-index: 2;
+    width: 540px;
+    height: 540px;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0;
+}
+
+.loader-glow-red {
+    left: -180px;
+    top: -150px;
+    background: rgba(226, 29, 45, 0.36);
+    animation: l-glow 1.4s ease forwards 0.2s;
+}
+
+.loader-glow-blue {
+    right: -180px;
+    bottom: -150px;
+    background: rgba(21, 151, 229, 0.30);
+    animation: l-glow 1.4s ease forwards 0.35s;
+}
+
+/* thin runway / frame lines that draw in */
+.loader-frame {
+    position: absolute;
+    inset: clamp(20px, 4vw, 54px);
+    z-index: 3;
+    pointer-events: none;
+}
+
+.loader-frame line {
+    stroke: rgba(255, 255, 255, 0.55);
+    stroke-width: 1;
+}
+
+.loader-frame .lf {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: l-draw 1.1s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.15s;
+}
+
+.loader-runway-dash {
+    stroke: rgba(255, 255, 255, 0.5);
+    stroke-width: 2;
+    stroke-dasharray: 16 18;
+    opacity: 0;
+    animation: l-fade 0.8s ease forwards 0.55s;
+}
+
+/* brand lockup */
+.loader-center {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    text-align: center;
+    gap: 18px;
+    padding: 24px;
+}
+
+.loader-logo {
+    width: clamp(120px, 18vw, 168px);
+    height: auto;
+    opacity: 0;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+    animation: l-rise 0.9s cubic-bezier(0.22, 0.61, 0.24, 1) forwards 0.45s;
+}
+
+.loader-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #e21d2d;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: l-rise 0.8s ease forwards 0.7s;
+}
+
+.loader-kicker::before,
+.loader-kicker::after {
+    content: "";
+    width: 30px;
+    height: 1px;
+    background: currentColor;
+}
+
+.loader-title {
+    margin: 0;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(34px, 6vw, 76px);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+    color: #fffaf0;
+    opacity: 0;
+    animation: l-rise 0.9s cubic-bezier(0.22, 0.61, 0.24, 1) forwards 0.78s;
+}
+
+.loader-title .x {
+    color: rgba(255, 250, 240, 0.5);
+    font-style: italic;
+    font-size: 0.5em;
+    vertical-align: middle;
+    margin: 0 0.14em;
+}
+
+/* aircraft fly-by */
+.loader-plane {
+    position: absolute;
+    top: 50%;
+    left: -16vw;
+    z-index: 4;
+    width: clamp(64px, 9vw, 104px);
+    color: #ffffff;
+    opacity: 0;
+    filter:
+        drop-shadow(0 12px 22px rgba(226, 29, 45, 0.35)) drop-shadow(0 0 16px rgba(21, 151, 229, 0.2));
+    animation: l-flyby 1.15s cubic-bezier(0.45, 0, 0.25, 1) forwards 0.55s;
+}
+
+/* curtain reveal */
+.loader-curtain {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.loader-curtain i {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: #050814;
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.loader-curtain .c-left {
+    left: 0;
+}
+
+.loader-curtain .c-right {
+    right: 0;
+}
+
+/* reveal */
+.airport-loader.hide .loader-center,
+.airport-loader.hide .loader-frame,
+.airport-loader.hide .loader-grid,
+.airport-loader.hide .loader-glow {
+    animation: l-out 0.4s ease forwards;
+}
+
+.airport-loader.hide .loader-curtain .c-left {
+    animation: curtain-l 0.85s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.airport-loader.hide .loader-curtain .c-right {
+    animation: curtain-r 0.85s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes l-grid { to { opacity: 0.5; } }
+@keyframes l-glow { to { opacity: 0.5; } }
+@keyframes l-draw { to { stroke-dashoffset: 0; } }
+@keyframes l-fade { to { opacity: 1; } }
+@keyframes l-rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes l-out { to { opacity: 0; } }
+
+@keyframes l-flyby {
+    0% { opacity: 0; transform: translateX(0) translateY(10px) rotate(-3deg) scale(0.9); }
+    12% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { opacity: 0; transform: translateX(128vw) translateY(-26px) rotate(-7deg) scale(1.05); }
+}
+
+@keyframes curtain-l { to { transform: translateX(-101%); } }
+@keyframes curtain-r { to { transform: translateX(101%); } }
+
+/* ------------------------------------------------------------
+   Reduced motion — show brand briefly, then a plain quick fade
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+    .loader-grid,
+    .loader-glow,
+    .loader-frame .lf,
+    .loader-runway-dash,
+    .loader-logo,
+    .loader-kicker,
+    .loader-title {
+        animation: none !important;
+        opacity: 1;
+        stroke-dashoffset: 0;
+        transform: none !important;
+    }
+
+    .loader-plane {
+        display: none;
+    }
+
+    .airport-loader.hide {
+        animation: l-out 0.3s ease forwards;
+    }
+
+    .airport-loader.hide .loader-curtain i {
+        animation: none !important;
+    }
+}
+
+/* ------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------ */
+@media (max-width: 640px) {
+    .loader-frame {
+        inset: 18px;
+    }
+}

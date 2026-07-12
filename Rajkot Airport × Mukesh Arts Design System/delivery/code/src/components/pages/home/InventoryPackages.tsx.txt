@@ -1,0 +1,470 @@
+"use client";
+
+import { useCallback, useEffect, useRef, useState } from "react";
+import type { CSSProperties, FormEvent } from "react";
+import type { StaticImageData } from "next/image";
+
+import "./InventoryShowcase.css";
+
+import air1 from "@/public/images/inventory/air1.png";
+import air2 from "@/public/images/inventory/air2.png";
+import air5 from "@/public/images/inventory/air5.png";
+import air6 from "@/public/images/inventory/air6.png";
+import air7 from "@/public/images/inventory/air7.png";
+import air8 from "@/public/images/inventory/air8.png";
+
+type InventoryImage = StaticImageData | string;
+
+type InventoryItem = {
+    code: string;
+    cat: "Digital" | "Static" | "Custom";
+    title: string;
+    summary: string;
+    surfaces: string;
+    image: InventoryImage;
+    gallery: InventoryImage[];
+};
+
+const url = (img: InventoryImage) => (typeof img === "string" ? img : img.src);
+
+/* Standard airport OOH media surfaces — presentation copy only, no prices,
+   no invented business claims. */
+const INVENTORY: InventoryItem[] = [
+    {
+        code: "RAJ-01",
+        cat: "Digital",
+        title: "Arrival Hall Digital Network",
+        summary:
+            "High-frequency digital coverage across the arrival hall, where passengers naturally slow down and look up.",
+        surfaces: "Digital LED · Arrival",
+        image: air7,
+        gallery: [air8, air5, air6],
+    },
+    {
+        code: "RAJ-02",
+        cat: "Digital",
+        title: "Security Hold Area Spectacular",
+        summary:
+            "Long-dwell backlit and digital placements inside the security hold area for unmissable, repeat brand exposure.",
+        surfaces: "Backlit · SHA",
+        image: air5,
+        gallery: [air1, air2, air8],
+    },
+    {
+        code: "RAJ-03",
+        cat: "Static",
+        title: "Baggage Belt Brand Takeover",
+        summary:
+            "Own the baggage-reclaim moment — captive audiences, a calm environment, and premium airport visibility.",
+        surfaces: "Static · Reclaim",
+        image: air6,
+        gallery: [air7, air2, air1],
+    },
+    {
+        code: "RAJ-04",
+        cat: "Static",
+        title: "Departure Concourse Boards",
+        summary:
+            "Large-format static boards along the departure walk — a confident, editorial canvas for flagship campaigns.",
+        surfaces: "Static · Departure",
+        image: air2,
+        gallery: [air6, air8, air5],
+    },
+    {
+        code: "RAJ-05",
+        cat: "Custom",
+        title: "Aerobridge & Apron Wrap",
+        summary:
+            "Bespoke wraps across aerobridge and apron-facing surfaces for a fully custom, high-impact takeover.",
+        surfaces: "Custom · Wrap",
+        image: air1,
+        gallery: [air5, air7, air6],
+    },
+    {
+        code: "RAJ-06",
+        cat: "Digital",
+        title: "Welcome Plaza Anamorphic LED",
+        summary:
+            "A landmark anamorphic LED moment at the welcome plaza — the airport's first and most premium impression.",
+        surfaces: "Digital · Forecourt",
+        image: air8,
+        gallery: [air2, air1, air5],
+    },
+];
+
+const FILTERS = ["All", "Digital", "Static", "Custom"] as const;
+const FILTER_LABEL: Record<string, string> = {
+    All: "All",
+    Digital: "Digital Packages",
+    Static: "Static Boards",
+    Custom: "Custom Plans",
+};
+
+export default function InventoryPackages() {
+    const [activeFilter, setActiveFilter] = useState<string>("All");
+    const [activeItem, setActiveItem] = useState<InventoryItem | null>(null);
+
+    const visible =
+        activeFilter === "All"
+            ? INVENTORY
+            : INVENTORY.filter((x) => x.cat === activeFilter);
+
+    return (
+        <>
+            <section
+                className="inventory-showcase"
+                id="inventory"
+                aria-labelledby="inventory-title"
+            >
+                <div className="container">
+                    <div className="inv-head">
+                        <div>
+                            <span className="eyebrow" data-motion="clip">
+                                Inventory Portfolio
+                            </span>
+                            <h2
+                                className="inv-display"
+                                id="inventory-title"
+                                data-motion="up"
+                                data-motion-delay="0.08"
+                            >
+                                A wide range of airport media, presented like{" "}
+                                <em>a body of work.</em>
+                            </h2>
+                        </div>
+                        <p data-motion="right" data-motion-delay="0.14">
+                            Browse the range first. Full references, availability, and the
+                            complete media plan unlock once your campaign intent is real.
+                        </p>
+                    </div>
+
+                    <div className="inv-filter" data-motion="up" data-motion-delay="0.16">
+                        <div className="inv-chips">
+                            {FILTERS.map((f) => (
+                                <button
+                                    key={f}
+                                    type="button"
+                                    className={activeFilter === f ? "active" : ""}
+                                    onClick={() => setActiveFilter(f)}
+                                >
+                                    {FILTER_LABEL[f]}
+                                </button>
+                            ))}
+                        </div>
+                        <span className="inv-count">
+                            <b>{visible.length}</b> placements shown
+                        </span>
+                    </div>
+
+                    <div className="inv-grid" data-motion-group>
+                        {visible.map((it, i) => (
+                            <button
+                                type="button"
+                                key={it.code}
+                                className={`inv-card ${i === 0 ? "large" : ""}`}
+                                onClick={() => setActiveItem(it)}
+                                data-motion-item
+                                aria-label={`${it.title} — request full media plan`}
+                            >
+                                <div className="inv-photo">
+                                    <img
+                                        src={url(it.image)}
+                                        alt={`${it.title} at Rajkot Airport`}
+                                        loading="lazy"
+                                    />
+                                    <span className="inv-badge">
+                                        {it.code} · {FILTER_LABEL[it.cat]}
+                                    </span>
+                                    <div className="inv-fan" aria-hidden="true">
+                                        {it.gallery
+                                            .slice(0, 3)
+                                            .map((g, k) => (
+                                                <i
+                                                    key={`${it.code}-g${k}`}
+                                                    style={
+                                                        {
+                                                            "--i": 2 - k,
+                                                            backgroundImage: `url('${url(g)}')`,
+                                                        } as CSSProperties
+                                                    }
+                                                />
+                                            ))
+                                            .reverse()}
+                                    </div>
+                                    <span className="inv-stills">
+                                        {it.gallery.length} site stills
+                                    </span>
+                                </div>
+                                <div className="inv-body">
+                                    <small>{it.surfaces}</small>
+                                    <h3>{it.title}</h3>
+                                    <p>{it.summary}</p>
+                                    <span className="inv-open">
+                                        <span>Request full media plan</span>
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="1.7"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            aria-hidden="true"
+                                        >
+                                            <path d="M5 12h12M12 6l7 6-7 6" />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {activeItem && (
+                <InventoryDrawer item={activeItem} onClose={() => setActiveItem(null)} />
+            )}
+        </>
+    );
+}
+
+/* ------------------------------------------------------------
+   Lead-gated details drawer
+   ------------------------------------------------------------ */
+type Lead = {
+    name: string;
+    countryCode: string;
+    phone: string;
+    company: string;
+    designation: string;
+    campaignWindow: string;
+    placement: string;
+};
+
+const UNLOCKED_DETAILS = [
+    "Exact surface map, dimensions and locations for this placement",
+    "Live availability and recommended campaign windows",
+    "Audience and footfall context for premium airport visibility",
+    "Production specs, creative guidelines and turnaround",
+    "A tailored media plan prepared by our owner-operated team",
+];
+
+function InventoryDrawer({
+    item,
+    onClose,
+}: {
+    item: InventoryItem;
+    onClose: () => void;
+}) {
+    const [open, setOpen] = useState(false);
+    const [unlocked, setUnlocked] = useState(false);
+
+    const [name, setName] = useState("");
+    const [countryCode, setCountryCode] = useState("+91");
+    const [phone, setPhone] = useState("");
+    const [company, setCompany] = useState("");
+    const [designation, setDesignation] = useState("");
+    const [campaignWindow, setCampaignWindow] = useState("");
+
+    const [errors, setErrors] = useState<{ name?: string; phone?: string }>({});
+    const nameRef = useRef<HTMLInputElement>(null);
+    const phoneRef = useRef<HTMLInputElement>(null);
+
+    // slide in on mount, lock scroll, close on Escape
+    useEffect(() => {
+        const id = requestAnimationFrame(() => setOpen(true));
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === "Escape") handleClose();
+        };
+        document.addEventListener("keydown", onKey);
+        const prev = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        return () => {
+            cancelAnimationFrame(id);
+            document.removeEventListener("keydown", onKey);
+            document.body.style.overflow = prev;
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    const handleClose = useCallback(() => {
+        setOpen(false);
+        window.setTimeout(onClose, 500); // let the slide-out finish
+    }, [onClose]);
+
+    const validate = () => {
+        const next: { name?: string; phone?: string } = {};
+        if (name.trim().length < 2) next.name = "Please enter your name.";
+        if (!/^\d{10}$/.test(phone.trim())) next.phone = "Enter a valid 10-digit number.";
+        setErrors(next);
+        return next;
+    };
+
+    const onSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        const next = validate();
+        if (next.name || next.phone) {
+            (next.name ? nameRef : phoneRef).current?.focus();
+            return;
+        }
+        const lead: Lead = {
+            name: name.trim(),
+            countryCode,
+            phone: phone.trim(),
+            company: company.trim(),
+            designation: designation.trim(),
+            campaignWindow: campaignWindow.trim(),
+            placement: item.title,
+        };
+        // TODO: persist `lead` to CRM / Google Sheet / Excel lead capture
+        // (e.g. await fetch("/api/leads", { method: "POST", body: JSON.stringify(lead) })).
+        // No backend is connected yet — this only unlocks the details on the client.
+        console.log("LEAD CAPTURED (todo: persist):", lead);
+        setUnlocked(true);
+    };
+
+    return (
+        <>
+            <div
+                className={`ram-scrim ${open ? "open" : ""}`}
+                onClick={handleClose}
+                aria-hidden="true"
+            />
+            <aside
+                className={`ram-drawer ${open ? "open" : ""} ${unlocked ? "unlocked" : ""}`}
+                role="dialog"
+                aria-modal="true"
+                aria-label={`${item.title} — media plan`}
+            >
+                <button
+                    type="button"
+                    className="ram-drawer-close"
+                    onClick={handleClose}
+                    aria-label="Close details"
+                >
+                    ×
+                </button>
+
+                <div className="ram-drawer-media">
+                    <img src={url(item.image)} alt={item.title} />
+                    <span className="dm-code">
+                        {item.code} · {FILTER_LABEL[item.cat]}
+                    </span>
+                    <h3 className="dm-title">{item.title}</h3>
+                </div>
+
+                <div className="ram-drawer-body">
+                    <p className="d-summary">{item.summary}</p>
+                    <div className="drawer-meta">
+                        <span>{item.surfaces}</span>
+                        <span>Rajkot Int&apos;l Airport</span>
+                        <span>Premium airport visibility</span>
+                    </div>
+
+                    {!unlocked ? (
+                        <>
+                            <div className="gate-line">Request full media plan</div>
+                            <form className="lead-form" onSubmit={onSubmit} noValidate>
+                                <div className={`lead-field ${errors.name ? "invalid" : ""}`}>
+                                    <span>Name *</span>
+                                    <input
+                                        ref={nameRef}
+                                        type="text"
+                                        value={name}
+                                        autoComplete="name"
+                                        placeholder="Marketing lead name"
+                                        onChange={(e) => {
+                                            setName(e.target.value);
+                                            if (errors.name) setErrors((p) => ({ ...p, name: undefined }));
+                                        }}
+                                    />
+                                    <small className="lead-err">{errors.name}</small>
+                                </div>
+
+                                <div className={`lead-field ${errors.phone ? "invalid" : ""}`}>
+                                    <span>Phone / WhatsApp *</span>
+                                    <div className="phone-row">
+                                        <select
+                                            value={countryCode}
+                                            aria-label="Country code"
+                                            onChange={(e) => setCountryCode(e.target.value)}
+                                        >
+                                            <option value="+91">+91</option>
+                                            <option value="+971">+971</option>
+                                            <option value="+1">+1</option>
+                                            <option value="+44">+44</option>
+                                            <option value="+65">+65</option>
+                                        </select>
+                                        <input
+                                            ref={phoneRef}
+                                            type="tel"
+                                            inputMode="numeric"
+                                            maxLength={10}
+                                            value={phone}
+                                            placeholder="10-digit number"
+                                            onChange={(e) => {
+                                                setPhone(e.target.value.replace(/\D/g, "").slice(0, 10));
+                                                if (errors.phone) setErrors((p) => ({ ...p, phone: undefined }));
+                                            }}
+                                        />
+                                    </div>
+                                    <small className="lead-err">{errors.phone}</small>
+                                </div>
+
+                                <div className="lf-row">
+                                    <div className="lead-field">
+                                        <span>Company / Brand</span>
+                                        <input
+                                            type="text"
+                                            value={company}
+                                            placeholder="Brand or agency"
+                                            onChange={(e) => setCompany(e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="lead-field">
+                                        <span>Designation</span>
+                                        <input
+                                            type="text"
+                                            value={designation}
+                                            placeholder="e.g. Marketing Manager"
+                                            onChange={(e) => setDesignation(e.target.value)}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="lead-field">
+                                    <span>Campaign window</span>
+                                    <input
+                                        type="text"
+                                        value={campaignWindow}
+                                        placeholder="e.g. Diwali 2026 / Q3"
+                                        onChange={(e) => setCampaignWindow(e.target.value)}
+                                    />
+                                </div>
+
+                                <button type="submit" className="lead-submit">
+                                    Unlock full media plan
+                                </button>
+                                <p className="lead-fine">
+                                    We&apos;ll share the complete plan, available surfaces and
+                                    visibility details. No spam — just a serious media conversation.
+                                </p>
+                            </form>
+                        </>
+                    ) : (
+                        <div className="lead-success">
+                            <span className="ls-badge">✓ Access unlocked</span>
+                            <ul className="unlock-list">
+                                {UNLOCKED_DETAILS.map((t) => (
+                                    <li key={t}>{t}</li>
+                                ))}
+                            </ul>
+                            <p className="lead-fine" style={{ marginTop: 18 }}>
+                                Your plan request has been logged for our team to follow up.
+                            </p>
+                        </div>
+                    )}
+                </div>
+            </aside>
+        </>
+    );
+}
