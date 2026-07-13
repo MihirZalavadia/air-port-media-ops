@@ -43,4 +43,7 @@ jobs:
           password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
           protocol: ftps
           local-dir: raamxmukeshart-main/out/
-          server-dir: public_html/
+          # Hostinger's webroot for the domain. If your FTP account logs in
+          # directly inside public_html, change this to "./"
+          server-dir: domains/mukeshart.in/public_html/
+          log-level: standard
