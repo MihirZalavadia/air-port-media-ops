@@ -43,10 +43,9 @@ jobs:
           password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
           protocol: ftps
           local-dir: raamxmukeshart-main/out/
-          # The FTP account's directory is pointed at the site webroot in
-          # hPanel (FTP Accounts -> edit -> directory = public_html), so we
-          # deploy straight into the login root.
-          server-dir: ./
+          # Main FTP account logs in one level above the webroot; Hostinger
+          # serves the site from public_html/ ("Folder to upload files").
+          server-dir: public_html/
           log-level: standard
           # ONE-TIME: wipe the webroot and upload fresh — the manual upload
           # left stale hashed _next folders the differ can't reconcile.
