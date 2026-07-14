@@ -1,0 +1,22 @@
+name: SSH Diagnose
+
+on:
+  workflow_dispatch:
+
+jobs:
+  map:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Map account filesystem over SSH
+        env:
+          SSHPASS: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+        run: |
+          sudo apt-get -yq install sshpass >/dev/null 2>&1
+          sshpass -e ssh -p 65002 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+            u366143613@82.25.125.220 '
+              echo "===PWD==="; pwd;
+              echo "===HOME==="; ls -la ~;
+              echo "===DOMAINS==="; ls -la ~/domains/ 2>/dev/null; ls -la ~/domains/*/ 2>/dev/null;
+              echo "===INDEXES==="; find ~ -maxdepth 6 -name index.html ! -path "*/_next/*" ! -path "*/node_modules/*" -exec ls -la {} \; 2>/dev/null | head -20;
+              echo "===AIRPORT_DIRS==="; find ~ -maxdepth 6 -type d -name airport 2>/dev/null;
+            '
