@@ -43,11 +43,10 @@ jobs:
           password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
           protocol: ftps
           local-dir: raamxmukeshart-main/out/
-          # srv679: main FTP account lands at the account home; the website
-          # root is domains/<domain>/public_html (File Manager is scoped
-          # inside domains/mukeshart.in/, which is why it shows public_html
-          # at its top level).
-          server-dir: domains/mukeshart.in/public_html/
+          # srv679: FTP root matches File Manager — the webroot is
+          # public_html/ directly at the login root (verified: the
+          # domains/... path was empty on this server).
+          server-dir: public_html/
           log-level: standard
           # ONE-TIME: wipe the webroot and upload fresh — the manual upload
           # left stale hashed _next folders the differ can't reconcile.
