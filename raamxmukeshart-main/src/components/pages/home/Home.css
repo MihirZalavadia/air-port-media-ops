@@ -11182,6 +11182,16 @@ section,
     width: 100%;
     height: 100%;
     object-fit: cover;
+    /* monochrome at rest, full colour on hover/tap — same treatment the
+       old headshots had, carried into the panel design */
+    filter: grayscale(1) contrast(1.05);
+    transition: filter 0.5s ease;
+}
+
+.team-card:hover .team-portrait img,
+.team-card:focus .team-portrait img,
+.team-card:focus-within .team-portrait img {
+    filter: grayscale(0) contrast(1);
 }
 
 /* formal speech bubble — comic grammar (tail + offset shadow), business tone */
