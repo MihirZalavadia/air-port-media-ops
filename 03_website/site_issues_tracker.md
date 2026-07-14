@@ -47,6 +47,7 @@
 
 | Date | Item |
 |------|------|
+| 2026-07-14 | **Hosting saga resolved**: mukeshart.in serves from `/home/u366143613/domains/mukeshart.in/public_html`; deploys via rsync-over-SSH GitHub Action (push -> live ~2 min). Root cause: main FTP account chrooted to sibling dir `~/public_html`, unreachable webroot. FTP-chroot junk cleaned via SSH Maintenance workflow. |
 | 2026-07-10 | Phone validation (Indian mobile, shared util) on contact + unlock forms |
 | 2026-07-10 | Night-theme brand logo plates fixed; group home v2 shipped |
 | 2026-07-09 | Serif line-height floor; clip-path descender fix; hero gutters |
