@@ -1,22 +1,24 @@
-name: SSH Diagnose
+name: SSH Maintenance
 
 on:
   workflow_dispatch:
 
 jobs:
-  map:
+  cleanup:
     runs-on: ubuntu-latest
     steps:
-      - name: Map account filesystem over SSH
+      # One-time cleanup: the FTP chroot dir (~/public_html) collected three
+      # misfired site copies during the FTP-era deploys. The real webroot at
+      # ~/domains/mukeshart.in/public_html is NOT touched.
+      - name: Remove misfired deploy copies from the FTP chroot
         env:
           SSHPASS: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
         run: |
           sudo apt-get -yq install sshpass >/dev/null 2>&1
           sshpass -e ssh -p 65002 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
             u366143613@82.25.125.220 '
-              echo "===PWD==="; pwd;
-              echo "===HOME==="; ls -la ~;
-              echo "===DOMAINS==="; ls -la ~/domains/ 2>/dev/null; ls -la ~/domains/*/ 2>/dev/null;
-              echo "===INDEXES==="; find ~ -maxdepth 6 -name index.html ! -path "*/_next/*" ! -path "*/node_modules/*" -exec ls -la {} \; 2>/dev/null | head -20;
-              echo "===AIRPORT_DIRS==="; find ~ -maxdepth 6 -type d -name airport 2>/dev/null;
+              du -sh ~/public_html 2>/dev/null;
+              rm -rf ~/public_html/* ~/public_html/.ftp-deploy-sync-state.json 2>/dev/null;
+              echo "after cleanup:"; ls -la ~/public_html; du -sh ~/public_html;
+              echo "webroot untouched:"; ls ~/domains/mukeshart.in/public_html | head -5;
             '

@@ -33,18 +33,17 @@ jobs:
       - name: Build static site
         run: npm run build
 
-      # Syncs only changed files after the first full upload (keeps a state
-      # file on the server). Secrets are set in GitHub → Settings → Secrets.
-      - name: Deploy to Hostinger via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.HOSTINGER_FTP_SERVER }}
-          username: ${{ secrets.HOSTINGER_FTP_USERNAME }}
-          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
-          protocol: ftps
-          local-dir: raamxmukeshart-main/out/
-          # srv679: FTP root matches File Manager — the webroot is
-          # public_html/ directly at the login root (verified: the
-          # domains/... path was empty on this server).
-          server-dir: public_html/
-          log-level: standard
+      # rsync over SSH to the website's ABSOLUTE docroot. The main FTP
+      # account is chrooted to /home/u366143613/public_html (a sibling of
+      # the real webroot), which is why FTP deploys could never land —
+      # SSH sees the full filesystem. --delete keeps the webroot exactly
+      # in sync with the build (stale hashed _next folders get removed).
+      - name: Deploy via rsync over SSH
+        env:
+          SSHPASS: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+        run: |
+          sudo apt-get -yq install sshpass >/dev/null 2>&1
+          sshpass -e rsync -az --delete \
+            -e "ssh -p 65002 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
+            out/ u366143613@82.25.125.220:/home/u366143613/domains/mukeshart.in/public_html/
+          echo "Deployed to real webroot."
