@@ -280,10 +280,6 @@ export default function Team() {
                             aria-label={`${person.name}, ${person.role}`}
                         >
                             <div className="team-media">
-                                <span className="team-media-num" aria-hidden="true">
-                                    0{index + 1}
-                                </span>
-
                                 <svg
                                     className="team-media-peaks"
                                     viewBox="0 0 240 120"

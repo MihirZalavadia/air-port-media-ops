@@ -7,7 +7,7 @@ export const siteConfig = {
     // live domain (Hostinger DNS)
     url: "https://mukeshart.in",
 
-    email: "your-email@example.com",
+    email: "info@mukeshart.in",
     phone: "+91 XXXXXXXXXX",
     address: "Rajkot, Gujarat, India",
 

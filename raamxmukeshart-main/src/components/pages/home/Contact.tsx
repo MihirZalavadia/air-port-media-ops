@@ -156,7 +156,7 @@ import "./Home.css";
 
 // WhatsApp: +91 98253 40818 (country code, no + or spaces)
 const WHATSAPP_NUMBER = "919825340818";
-const CONTACT_EMAIL = "info@example.com";
+const CONTACT_EMAIL = "info@mukeshart.in";
 
 const whatsappMessage = encodeURIComponent(
     "Hello Mukesh Airport Media, I want to know more about Rajkot Airport Advertising Media and request the media kit."

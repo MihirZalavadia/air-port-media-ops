@@ -69,7 +69,7 @@
 //                         <h4>Reach</h4>
 //                         <p>Rajkot International Airport</p>
 //                         <p>Mukesh Art Main Office, PLOT NO. 71, SURVEY NO. 145, JAMBUDIYA, Morbi, Gujarat - 363642</p>
-//                         <a href="mailto:info@example.com">info@example.com</a>
+//                         <a href="mailto:info@mukeshart.in">info@mukeshart.in</a>
 //                     </div>
 //                 </div>
 //             </div>
@@ -215,7 +215,7 @@ export default function Footer() {
                             Mukesh Art Main Office, PLOT NO. 71, SURVEY NO. 145,
                             JAMBUDIYA, Morbi, Gujarat - 363642
                         </p>
-                        <a href="mailto:info@example.com">info@example.com</a>
+                        <a href="mailto:info@mukeshart.in">info@mukeshart.in</a>
                     </div>
                 </div>
             </div>
