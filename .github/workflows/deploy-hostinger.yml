@@ -48,7 +48,3 @@ jobs:
           # domains/... path was empty on this server).
           server-dir: public_html/
           log-level: standard
-          # ONE-TIME: wipe the webroot and upload fresh — the manual upload
-          # left stale hashed _next folders the differ can't reconcile.
-          # REMOVE this line after the first green run.
-          dangerous-clean-slate: true
