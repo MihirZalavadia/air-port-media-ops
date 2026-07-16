@@ -152,6 +152,7 @@
 
 import { useState, type FormEvent } from "react";
 import { normalizeIndianMobile } from "@/src/lib/validation";
+import { submitLead } from "@/src/lib/leads";
 import "./Home.css";
 
 // WhatsApp: +91 98253 40818 (country code, no + or spaces)
@@ -207,10 +208,19 @@ export default function Contact() {
             return;
         }
 
-        // TODO (lead capture): also persist the lead server-side so it isn't lost
-        // if the visitor doesn't complete the WhatsApp send, e.g.:
-        //   fetch("/api/leads", { method: "POST", body: JSON.stringify(lead) })
         const lead = { name, phone: phoneRaw, company, campaignInterest, message };
+
+        // capture server-side (email + log) even if the WhatsApp send is
+        // abandoned — fire-and-forget, never blocks the redirect
+        submitLead({
+            name,
+            phone: phoneDigits ?? "",
+            company,
+            interest: campaignInterest,
+            message,
+            source: "contact-form",
+            website: String(data.get("website") ?? ""),
+        });
 
         const lines = [
             "New airport media enquiry — Rajkot Airport Media",
@@ -308,6 +318,16 @@ export default function Contact() {
                     noValidate
                     data-motion-group
                 >
+                    {/* honeypot — hidden from humans, bots autofill it */}
+                    <input
+                        type="text"
+                        name="website"
+                        className="hp-field"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        aria-hidden="true"
+                    />
+
                     <div className="form-row" data-motion-item>
                         <label className="field-wrap">
                             <span>Name *</span>

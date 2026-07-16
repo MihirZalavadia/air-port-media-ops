@@ -339,6 +339,7 @@ import {
     type InventoryCategory,
 } from "@/src/lib/inventoryData";
 import { normalizeIndianMobile } from "@/src/lib/validation";
+import { submitLead } from "@/src/lib/leads";
 import "./Home.css";
 
 // one lead form per session — once filled, every category opens directly
@@ -536,6 +537,7 @@ function InventoryModal({
     const [phone, setPhone] = useState("");
     const [company, setCompany] = useState("");
     const [designation, setDesignation] = useState("");
+    const [honeypot, setHoneypot] = useState("");
     const [error, setError] = useState("");
 
     function handleUnlock(event: FormEvent<HTMLFormElement>) {
@@ -556,21 +558,20 @@ function InventoryModal({
 
         try {
             sessionStorage.setItem(UNLOCK_KEY, "1");
-            // stash the lead locally until CRM wiring lands
-            sessionStorage.setItem(
-                "ram-inventory-lead",
-                JSON.stringify({
-                    name: name.trim(),
-                    phone: phoneDigits,
-                    company: company.trim(),
-                    designation: designation.trim(),
-                    category: item.code,
-                    at: new Date().toISOString(),
-                })
-            );
         } catch {
             // storage blocked (private mode) — still let them through
         }
+
+        // capture the lead server-side (email + log); never blocks the unlock
+        submitLead({
+            name: name.trim(),
+            phone: phoneDigits,
+            company: company.trim(),
+            designation: designation.trim(),
+            interest: `${item.code} · ${item.title}`,
+            source: "inventory-unlock",
+            website: honeypot,
+        });
 
         router.push(`/inventory/${item.slug}/`);
     }
@@ -677,6 +678,18 @@ function InventoryModal({
                     <hr />
 
                     <form className="inventory-popup-form" onSubmit={handleUnlock}>
+                        {/* honeypot — hidden from humans, bots autofill it */}
+                        <input
+                            type="text"
+                            name="website"
+                            value={honeypot}
+                            onChange={(event) => setHoneypot(event.target.value)}
+                            className="hp-field"
+                            tabIndex={-1}
+                            autoComplete="off"
+                            aria-hidden="true"
+                        />
+
                         <label>
                             <span>Name *</span>
                             <input

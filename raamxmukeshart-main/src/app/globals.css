@@ -424,3 +424,13 @@ button {
     animation: none;
   }
 }
+
+/* honeypot form field — invisible to humans, present for bots */
+.hp-field {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
