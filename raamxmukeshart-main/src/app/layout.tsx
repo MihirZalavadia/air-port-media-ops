@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 
   title: {
     default: siteConfig.title,
-    template: "%s | Rajkot Airport Media",
+    template: "%s | Mukesh Art",
   },
 
   description: siteConfig.description,

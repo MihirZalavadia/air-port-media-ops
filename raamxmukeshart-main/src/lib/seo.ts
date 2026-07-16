@@ -8,7 +8,7 @@ export const siteConfig = {
     url: "https://mukeshart.in",
 
     email: "info@mukeshart.in",
-    phone: "+91 XXXXXXXXXX",
+    phone: "+91 98253 40818",
     address: "Rajkot, Gujarat, India",
 
     ogImage: "/images/og/rajkot-airport-media.jpg",
