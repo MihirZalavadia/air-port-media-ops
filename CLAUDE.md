@@ -202,6 +202,7 @@ Every meaningful decision — stack choice, brand direction, pricing model, part
 |------|----------|-----------|
 | 2026-05-17 | Project initialized in Claude Code | Moving from chat-only strategy to executable project workspace |
 | 2026-05-24 | Airport-first website scope reset | Airport media operation is the main commercial project; Mukesh Arts gets a simple credibility website only. |
+| 2026-07-17 | Full public client roster at /partners/ (29 logos) | Mukesh sir/Ridham want every client visible. Logos identified from their zip + official web sources; displayed on fixed light plates so they stay identifiable in the night theme. Inox Casting excluded — company name unverifiable online. |
 | | | |
 
 ---
@@ -218,6 +219,7 @@ Things I still need from Mukesh sir / Ridham — Claude should ask me about thes
 - [ ] **Existing brand assets** — logo files, prior PPTs, photos of sites
 - [ ] **Approved budget** for tools (Zoho, hosting, WhatsApp API, etc.)
 - [ ] **Bank account / payment terms** for my retainer
+- [ ] **"Inox Casting" exact company name** — no Rajkot/Gujarat casting company by that name found online; confirm spelling/legal name with Ridham and get their logo so it can join /partners/
 
 ---
 

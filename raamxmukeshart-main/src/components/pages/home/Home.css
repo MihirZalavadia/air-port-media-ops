@@ -11254,3 +11254,18 @@ section,
 [data-theme="night"] .team-media-num {
     color: rgba(244, 246, 255, 0.08);
 }
+
+/* text link under the clients CTA pointing to the full partners page */
+.premium-secondary-link {
+  display: block;
+  margin-top: 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.premium-secondary-link:hover {
+  color: var(--accent);
+}
