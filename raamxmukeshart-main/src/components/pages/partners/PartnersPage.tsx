@@ -17,12 +17,11 @@ import itaca from "@/public/images/clients/itaca.png";
 import lavishGranito from "@/public/images/clients/lavish_granito.png";
 import mottoGranito from "@/public/images/clients/motto_granito.png";
 import mozart from "@/public/images/clients/mozart.png";
-import skytouch from "@/public/images/clients/skytouch.svg";
+import skytouch from "@/public/images/clients/skytouch.png";
 import rockGranito from "@/public/images/clients/rock_granito.jpg";
 import flaisGranito from "@/public/images/clients/flais_granito.jpg";
 import itoli from "@/public/images/clients/itoli.png";
-import bluezoneGranito from "@/public/images/clients/bluezone_granito.svg";
-import lorence from "@/public/images/clients/lorence.svg";
+import lorence from "@/public/images/clients/lorence.png";
 import lemel from "@/public/images/clients/lemel.jpg";
 
 /* engineering & industrial */
@@ -88,7 +87,6 @@ const partnerGroups: PartnerGroup[] = [
             { name: "Rock Granito", sector: "Vitrified Tiles", img: rockGranito },
             { name: "Flais Granito", sector: "Vitrified Tiles", img: flaisGranito },
             { name: "Itoli", sector: "Granito", img: itoli },
-            { name: "Bluezone", sector: "Wall & Vitrified", img: bluezoneGranito },
             { name: "Lorence", sector: "Vitrified Tiles", img: lorence },
             { name: "Lemel", sector: "Eternal Surfaces", img: lemel },
         ],
