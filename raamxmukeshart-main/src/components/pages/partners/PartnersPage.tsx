@@ -13,11 +13,11 @@ import simpolo from "@/public/images/clients/simpolo.webp";
 import varmora from "@/public/images/clients/varmora.png";
 import simero from "@/public/images/clients/simero.png";
 import iconGranito from "@/public/images/clients/icon_granito.png";
-import itaca from "@/public/images/clients/itaca.jpg";
+import itaca from "@/public/images/clients/itaca.png";
 import lavishGranito from "@/public/images/clients/lavish_granito.png";
 import mottoGranito from "@/public/images/clients/motto_granito.png";
 import mozart from "@/public/images/clients/mozart.png";
-import skytouch from "@/public/images/clients/skytouch.png";
+import skytouch from "@/public/images/clients/skytouch.svg";
 import rockGranito from "@/public/images/clients/rock_granito.jpg";
 import flaisGranito from "@/public/images/clients/flais_granito.jpg";
 import itoli from "@/public/images/clients/itoli.png";
@@ -28,7 +28,7 @@ import meeraCasting from "@/public/images/clients/meera_casting.png";
 import rajanTechnocast from "@/public/images/clients/rajan_technocast.png";
 import shivomCasting from "@/public/images/clients/shivom_casting.png";
 import novaGroup from "@/public/images/clients/nova_group.jpg";
-import esteemAuto from "@/public/images/clients/esteem_auto.jpg";
+import esteemAuto from "@/public/images/clients/esteem_auto.png";
 import speedwell from "@/public/images/clients/speedwell.jpg";
 
 /* jewellery & lifestyle */
