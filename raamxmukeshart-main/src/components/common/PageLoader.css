@@ -344,3 +344,31 @@
         opacity: 0;
     }
 }
+
+/* quick veil for in-site arrivals — the full boarding curtain only plays
+   when the airport page is the entry document */
+.loader-mini {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--bg, #ffffff);
+    border-bottom: 3px solid var(--accent, #e32019);
+    pointer-events: none;
+    animation: loader-mini-lift 0.65s cubic-bezier(0.76, 0, 0.24, 1) 0.05s both;
+}
+
+@keyframes loader-mini-lift {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-103%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loader-mini {
+        display: none;
+    }
+}

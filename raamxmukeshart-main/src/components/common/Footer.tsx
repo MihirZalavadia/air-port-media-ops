@@ -193,7 +193,7 @@ export default function Footer() {
                             <Link href="/airport/#inventory">Inventory & Packages</Link>
                             <Link href="/airport/#whyairportmedia">Why Airport Media</Link>
                             <Link href="/airport/#gallery">Gallery</Link>
-                            <Link href="/airport/#contact">Contact Us</Link>
+                            <Link href="/contact/">Contact Us</Link>
                         </nav>
                     </div>
 

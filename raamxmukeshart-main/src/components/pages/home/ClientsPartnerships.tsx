@@ -360,39 +360,17 @@
 
 "use client";
 
-import type { CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { allPartners } from "@/src/lib/clientLogos";
 import "./Home.css";
 
-import oppo from "@/public/images/clients/oppo.jpg";
-import vivo from "@/public/images/clients/vivo.png";
-import apple from "@/public/images/clients/apple.jpg";
-import poojara from "@/public/images/clients/poojara.svg";
-import google from "@/public/images/clients/google.png";
-import jade from "@/public/images/clients/jadeblue.webp";
-import simpolo from "@/public/images/clients/simpolo.webp";
-import oneplus from "@/public/images/clients/oneplus.png";
-import radhika from "@/public/images/clients/radhikajwl.png";
+const ARCH_SLOTS = 9;
+const ROTATE_MS = 4200;
+const TOTAL = allPartners.length;
 
-const items = [
-    { id: 1, img: poojara, name: "Poojara Telecom" },
-    { id: 2, img: oppo, name: "OPPO" },
-    { id: 3, img: vivo, name: "Vivo" },
-    { id: 4, img: google, name: "Google" },
-    { id: 5, img: apple, name: "Apple" },
-    { id: 6, img: jade, name: "Jade Blue" },
-    { id: 7, img: radhika, name: "Radhika Jewellers" },
-    { id: 8, img: oneplus, name: "OnePlus" },
-    { id: 9, img: simpolo, name: "Simpolo" },
-];
-
-const categories = [
-    "Events",
-    "Campaigns",
-    "Private Campaigns",
-    "Corporate Campaigns",
-    "Temporary Agency Campaigns",
-];
+const mod = (a: number, n: number) => ((a % n) + n) % n;
 
 const featureSteps = [
     {
@@ -417,14 +395,51 @@ export default function ClientsPartnership() {
     // block — ±58° keeps every brand card clearly visible above it
     const startAngle = -58;
     const endAngle = 58;
-    const totalItems = items.length;
-    const angleStep = (endAngle - startAngle) / (totalItems - 1);
+    const angleStep = (endAngle - startAngle) / (ARCH_SLOTS - 1);
+
+    // the arch cycles through the full roster: every tick each card
+    // cross-fades to the brand 9 places ahead, staggered left-to-right
+    const [tick, setTick] = useState(0);
+    const sectionRef = useRef<HTMLElement | null>(null);
+    const visibleRef = useRef(false);
+
+    useEffect(() => {
+        const reduceMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+        if (reduceMotion) return;
+
+        const section = sectionRef.current;
+        let observer: IntersectionObserver | undefined;
+        if (section && "IntersectionObserver" in window) {
+            observer = new IntersectionObserver(
+                ([entry]) => {
+                    visibleRef.current = entry.isIntersecting;
+                },
+                { threshold: 0.15 }
+            );
+            observer.observe(section);
+        } else {
+            visibleRef.current = true;
+        }
+
+        const timer = window.setInterval(() => {
+            // no logo churn (or image downloads) while the arch is off-screen
+            if (visibleRef.current) setTick((t) => t + 1);
+        }, ROTATE_MS);
+
+        return () => {
+            window.clearInterval(timer);
+            observer?.disconnect();
+        };
+    }, []);
 
     return (
         <section
             className="premium-showcase-section"
             id="clients"
             aria-labelledby="clients-title"
+            ref={sectionRef}
         >
             <div className="container">
                 <div className="pre-container">
@@ -432,31 +447,54 @@ export default function ClientsPartnership() {
                         {/* Decorative Arch Container for Desktop */}
                         <div
                             className="premium-arch-wrapper"
-                            aria-label="Selected brand partners and campaign clients"
+                            aria-label="Rotating showcase of partner brand logos"
                         >
-                            {items.map((item, index) => {
-                                const currentAngle = startAngle + angleStep * index;
+                            {Array.from({ length: ARCH_SLOTS }, (_, i) => {
+                                const currentAngle = startAngle + angleStep * i;
                                 const naturalTilt = currentAngle * 0.4;
+                                const current = allPartners[mod(tick * ARCH_SLOTS + i, TOTAL)];
+                                const previous = allPartners[mod((tick - 1) * ARCH_SLOTS + i, TOTAL)];
 
                                 return (
                                     <div
-                                        key={item.id}
+                                        key={i}
                                         className="premium-arch-card"
                                         style={
                                             {
                                                 "--card-angle": `${currentAngle}deg`,
                                                 "--card-tilt": `${naturalTilt}deg`,
+                                                "--swap-delay": `${i * 90}ms`,
                                             } as CSSProperties
                                         }
                                     >
                                         <div className="premium-card-inner" data-motion-item>
-                                            <Image
-                                                src={item.img}
-                                                alt={`${item.name} brand logo`}
-                                                width={600}
-                                                height={400}
-                                                loading="lazy"
-                                            />
+                                            {tick > 0 && (
+                                                <span
+                                                    className="arch-logo-layer"
+                                                    aria-hidden="true"
+                                                    key={`prev-${previous.name}`}
+                                                >
+                                                    <Image
+                                                        src={previous.img}
+                                                        alt=""
+                                                        width={220}
+                                                        height={280}
+                                                        loading="lazy"
+                                                    />
+                                                </span>
+                                            )}
+                                            <span
+                                                className="arch-logo-layer is-active"
+                                                key={`cur-${current.name}`}
+                                            >
+                                                <Image
+                                                    src={current.img}
+                                                    alt={`${current.name} brand logo`}
+                                                    width={220}
+                                                    height={280}
+                                                    loading="lazy"
+                                                />
+                                            </span>
                                         </div>
                                     </div>
                                 );
@@ -466,7 +504,7 @@ export default function ClientsPartnership() {
 
                     <div className="premium-content-block">
                         <span className="premium-eyebrow" data-motion="clip">
-                            Clients & Partnerships
+                            Clients &amp; Partnerships
                         </span>
 
                         <h2
@@ -484,19 +522,19 @@ export default function ClientsPartnership() {
                             data-motion="up"
                             data-motion-delay="0.16"
                         >
-                            Mukesh Art works with brands across Rajkot Airport’s passenger
+                            Mukesh Art works with brands across Rajkot Airport&rsquo;s passenger
                             journey through planned media placement, airport coordination,
                             and reliable campaign execution.
                         </p>
 
-                        <a
-                            href="#contact"
+                        <Link
+                            href="/partners/"
                             className="premium-cta-btn"
-                            aria-label="Plan your Rajkot Airport media campaign"
+                            aria-label="Meet all our partner brands"
                             data-motion="zoom"
                             data-motion-delay="0.22"
                         >
-                            <span>Plan Your Campaign</span>
+                            <span>Meet All 50+ Brands</span>
                             <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
                                 <path
                                     d="M3.5 8h8M8.5 4.5L12 8l-3.5 3.5"
@@ -507,7 +545,7 @@ export default function ClientsPartnership() {
                                     strokeLinejoin="round"
                                 />
                             </svg>
-                        </a>
+                        </Link>
                     </div>
 
                     <div

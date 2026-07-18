@@ -412,7 +412,10 @@ export default function Header() {
                     <Link onClick={(e) => handleSectionClick(e, "gallery")} href="/airport/#gallery">Gallery</Link>
                     {/* /partners/ stays unlinked while the client roster is under
                         review — direct URL only until Mukesh sir approves it */}
-                    <Link onClick={(e) => handleSectionClick(e, "contact")} href="/airport/#contact">Contact Us</Link>
+                    {/* on the airport one-pager this smooth-scrolls to the
+                        on-page section; from every other page it opens the
+                        dedicated /contact/ page (no full boarding loader) */}
+                    <Link onClick={(e) => handleSectionClick(e, "contact")} href="/contact/">Contact Us</Link>
                     {/* <a onClick={closeMobileMenu} href="#about">About Us</a>
                     <a onClick={closeMobileMenu} href="#inventory">Inventory & Packages</a>
                     <a onClick={closeMobileMenu} href="#whyairportmedia">Why Airport Media</a>

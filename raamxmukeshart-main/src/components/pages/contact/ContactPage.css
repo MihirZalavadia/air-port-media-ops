@@ -1,0 +1,113 @@
+/* [[ Dedicated Contact / Plan-Campaign Page ]] */
+
+/* opening sweep — a theme-surface veil lifts off the page on mount,
+   replacing the full-screen boarding loader for this short page */
+.contact-veil {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    background: var(--bg);
+    border-bottom: 3px solid var(--accent);
+    pointer-events: none;
+    animation: contact-veil-lift 0.8s cubic-bezier(0.76, 0, 0.24, 1) 0.1s both;
+}
+
+@keyframes contact-veil-lift {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-103%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contact-veil {
+        display: none;
+    }
+}
+
+.contact-page {
+    background: var(--bg);
+    color: var(--ink);
+}
+
+/* compact hero above the reused contact section */
+.contact-page-hero {
+    padding: clamp(120px, 14vw, 168px) 0 0;
+    background: var(--inventory-bg, var(--surface));
+}
+
+.contact-back {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+    margin-bottom: 30px;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.contact-back svg {
+    width: 18px;
+    height: 18px;
+}
+
+.contact-back:hover {
+    color: var(--accent);
+    transform: translateX(-3px);
+}
+
+.contact-page-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+}
+
+.contact-page-eyebrow::before {
+    content: "";
+    width: 34px;
+    height: 2px;
+    background: var(--accent);
+}
+
+.contact-page-hero h1 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    font-size: clamp(40px, 5.6vw, 72px);
+    line-height: 0.98;
+    margin: 0 0 18px;
+    max-width: 780px;
+    color: var(--ink);
+}
+
+.contact-page-hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+}
+
+.contact-page-tagline {
+    font-size: clamp(16px, 1.6vw, 19px);
+    line-height: 1.7;
+    color: var(--ink-2);
+    max-width: 600px;
+    margin: 0 0 clamp(8px, 2vw, 20px);
+}
+
+/* the reused home contact section brings its own top padding — soften
+   the double gap between hero and form */
+.contact-page .contact-section {
+    padding-top: clamp(24px, 4vw, 48px);
+}

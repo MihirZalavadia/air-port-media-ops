@@ -11269,3 +11269,72 @@ section,
 .premium-secondary-link:hover {
   color: var(--accent);
 }
+
+/* ===== rotating arch: stacked logo layers cross-fade on each swap ===== */
+
+.premium-card-inner {
+    position: relative;
+}
+
+.arch-logo-layer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.arch-logo-layer img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.arch-logo-layer.is-active {
+    animation: arch-logo-in 0.7s cubic-bezier(0.22, 0.61, 0.24, 1) var(--swap-delay, 0ms) both;
+}
+
+.arch-logo-layer:not(.is-active) {
+    animation: arch-logo-out 0.7s ease var(--swap-delay, 0ms) both;
+}
+
+@keyframes arch-logo-in {
+    from {
+        opacity: 0;
+        transform: scale(0.88);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes arch-logo-out {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .arch-logo-layer.is-active,
+    .arch-logo-layer:not(.is-active) {
+        animation: none;
+    }
+
+    .arch-logo-layer.is-active {
+        opacity: 1;
+    }
+
+    .arch-logo-layer:not(.is-active) {
+        opacity: 0;
+    }
+}

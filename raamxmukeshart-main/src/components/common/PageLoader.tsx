@@ -11,22 +11,59 @@ import "./PageLoader.css";
 // an inventory page and back doesn't replay it).
 let playedThisPageLoad = false;
 
+type LoaderMode = "full" | "mini" | "skip";
+
 export default function PageLoader() {
     const [progress, setProgress] = useState(0);
     const [takeoff, setTakeoff] = useState(false);
     const [hide, setHide] = useState(false);
     // synchronous initial value — a skipped loader never renders at all,
-    // so there's no one-frame flash on client-side navigation
-    const [skipped] = useState(() => playedThisPageLoad);
+    // so there's no one-frame flash on client-side navigation.
+    // Full boarding curtain only when this page IS the entry document
+    // (direct visit / refresh); arriving from another page of the site
+    // (e.g. the Mukesh Art group landing) gets a quick veil instead.
+    const [mode] = useState<LoaderMode>(() => {
+        if (playedThisPageLoad) return "skip";
+        if (typeof window !== "undefined") {
+            try {
+                const nav = performance.getEntriesByType("navigation")[0] as
+                    | PerformanceNavigationTiming
+                    | undefined;
+                const strip = (p: string) => p.replace(/\/+$/, "");
+                if (
+                    nav?.name &&
+                    strip(new URL(nav.name).pathname) !==
+                        strip(window.location.pathname)
+                ) {
+                    return "mini";
+                }
+            } catch {
+                /* entry URL unreadable — keep the full curtain */
+            }
+        }
+        return "full";
+    });
     const loadedRef = useRef(false);
 
     useEffect(() => {
-        if (skipped) {
+        if (mode === "skip") {
             document.body.classList.add("site-ready");
             return;
         }
 
         playedThisPageLoad = true;
+
+        if (mode === "mini") {
+            // let the veil start lifting, then release the page entrances
+            const ready = window.setTimeout(() => {
+                document.body.classList.add("site-ready");
+            }, 180);
+            const done = window.setTimeout(() => setHide(true), 800);
+            return () => {
+                window.clearTimeout(ready);
+                window.clearTimeout(done);
+            };
+        }
 
         const start = Date.now();
         const MIN = 1400; // keep the boarding moment for at least ~1.4s
@@ -86,7 +123,12 @@ export default function PageLoader() {
 
     const shown = Math.floor(progress);
 
-    if (skipped) return null;
+    if (mode === "skip") return null;
+
+    if (mode === "mini") {
+        if (hide) return null;
+        return <div className="loader-mini" aria-hidden="true" />;
+    }
 
     return (
         <div

@@ -227,12 +227,12 @@ export default function InventoryDetail({ slug }: { slug: string }) {
                                         Download plan PDF
                                     </a>
                                 ) : (
-                                    <Link className="inv-cta-primary" href="/airport/#contact">
+                                    <Link className="inv-cta-primary" href="/contact/">
                                         Request the plan PDF
                                     </Link>
                                 )}
 
-                                <Link className="inv-cta-secondary" href="/airport/#contact">
+                                <Link className="inv-cta-secondary" href="/contact/">
                                     Talk to the team
                                 </Link>
                             </div>
