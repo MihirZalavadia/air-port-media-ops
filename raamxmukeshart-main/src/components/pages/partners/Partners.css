@@ -250,7 +250,7 @@
     align-items: center;
     gap: 12px;
     flex-shrink: 0;
-    padding: 8px 22px 8px 10px;
+    padding: 8px 20px 8px 8px;
     border-radius: 999px;
     background: #ffffff;
     border: 1px solid var(--rule-soft);
@@ -264,25 +264,24 @@
     box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
 }
 
-/* wide rounded plate, not a circle — most marks are wordmarks and a
-   circular mask crushed them to slivers */
+/* the plate hugs each logo's natural aspect — square marks stay compact,
+   wordmarks stretch wide instead of shrinking into a fixed box */
 .marquee-chip .chip-logo {
-    width: 74px;
-    height: 44px;
-    border-radius: 10px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
     background: #f8fafc;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding: 5px 7px;
+    padding: 5px 8px;
 }
 
 .marquee-chip .chip-logo img {
-    max-width: 100%;
-    max-height: 100%;
+    height: 40px;
     width: auto;
-    height: auto;
+    max-width: 118px;
     object-fit: contain;
 }
 
@@ -421,12 +420,12 @@
 
 /* the logo sits on a fixed light plate in both themes */
 .roster-card .roster-logo {
-    height: 104px;
+    height: 112px;
     background: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 18px 22px;
+    padding: 14px 16px;
     border-bottom: 1px solid var(--rule-soft);
 }
 
@@ -559,6 +558,16 @@
 
     .marquee-chip b {
         font-size: 12px;
+    }
+
+    .marquee-chip .chip-logo {
+        height: 42px;
+        min-width: 42px;
+    }
+
+    .marquee-chip .chip-logo img {
+        height: 34px;
+        max-width: 96px;
     }
 
     .partners-stats .stat span {
