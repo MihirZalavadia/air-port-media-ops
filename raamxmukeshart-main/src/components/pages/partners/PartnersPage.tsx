@@ -21,6 +21,9 @@ import skytouch from "@/public/images/clients/skytouch.svg";
 import rockGranito from "@/public/images/clients/rock_granito.jpg";
 import flaisGranito from "@/public/images/clients/flais_granito.jpg";
 import itoli from "@/public/images/clients/itoli.png";
+import bluezoneGranito from "@/public/images/clients/bluezone_granito.svg";
+import lorence from "@/public/images/clients/lorence.svg";
+import lemel from "@/public/images/clients/lemel.jpg";
 
 /* engineering & industrial */
 import innoxCasting from "@/public/images/clients/innox_casting.png";
@@ -30,6 +33,16 @@ import shivomCasting from "@/public/images/clients/shivom_casting.png";
 import novaGroup from "@/public/images/clients/nova_group.jpg";
 import esteemAuto from "@/public/images/clients/esteem_auto.png";
 import speedwell from "@/public/images/clients/speedwell.jpg";
+import unityCement from "@/public/images/clients/unity_cement.png";
+import leenova from "@/public/images/clients/leenova.png";
+
+/* healthcare */
+import globalIvf from "@/public/images/clients/global_ivf.png";
+import payalMaternity from "@/public/images/clients/payal_maternity.png";
+
+/* services & technology */
+import tirupatiCourier from "@/public/images/clients/tirupati_courier.png";
+import infinitySoftware from "@/public/images/clients/infinity_software.png";
 
 /* jewellery & lifestyle */
 import radhikaJeweltech from "@/public/images/clients/radhika_jeweltech.png";
@@ -75,6 +88,9 @@ const partnerGroups: PartnerGroup[] = [
             { name: "Rock Granito", sector: "Vitrified Tiles", img: rockGranito },
             { name: "Flais Granito", sector: "Vitrified Tiles", img: flaisGranito },
             { name: "Itoli", sector: "Granito", img: itoli },
+            { name: "Bluezone", sector: "Wall & Vitrified", img: bluezoneGranito },
+            { name: "Lorence", sector: "Vitrified Tiles", img: lorence },
+            { name: "Lemel", sector: "Eternal Surfaces", img: lemel },
         ],
     },
     {
@@ -87,6 +103,8 @@ const partnerGroups: PartnerGroup[] = [
             { name: "Nova Group", sector: "Castings", img: novaGroup },
             { name: "Esteem Auto", sector: "Casting & Machining", img: esteemAuto },
             { name: "Speedwell", sector: "Electric", img: speedwell },
+            { name: "Unity Cement", sector: "Cement", img: unityCement },
+            { name: "Leenova", sector: "Kitchen & Food Machinery", img: leenova },
         ],
     },
     {
@@ -100,8 +118,15 @@ const partnerGroups: PartnerGroup[] = [
     {
         label: "Automotive",
         partners: [
-            { name: "Škoda Auto", sector: "Automotive", img: skoda },
-            { name: "MG Auto", sector: "Automotive", img: mgAuto },
+            { name: "Škoda Auto", sector: "Shreenathji Auto · Rajkot", img: skoda },
+            { name: "MG Auto", sector: "Jai Ganesh · Rajkot", img: mgAuto },
+        ],
+    },
+    {
+        label: "Healthcare",
+        partners: [
+            { name: "Global IVF", sector: "IVF & Fertility · Rajkot", img: globalIvf },
+            { name: "Payal Maternity", sector: "Maternity Care · Rajkot", img: payalMaternity },
         ],
     },
     {
@@ -113,6 +138,13 @@ const partnerGroups: PartnerGroup[] = [
             { name: "Apple", sector: "Technology", img: apple },
             { name: "Google", sector: "Technology", img: google },
             { name: "Poojara Telecom", sector: "Telecom Retail", img: poojara },
+        ],
+    },
+    {
+        label: "Services & Technology",
+        partners: [
+            { name: "Tirupati Courier", sector: "Courier & Logistics", img: tirupatiCourier },
+            { name: "Infinity Infoway", sector: "Software & IT", img: infinitySoftware },
         ],
     },
 ];
@@ -206,7 +238,7 @@ export default function PartnersPage() {
                                 <span>Brand Partners</span>
                             </div>
                             <div className="stat">
-                                <b>05</b>
+                                <b>07</b>
                                 <span>Industries Covered</span>
                             </div>
                             <div className="stat">
