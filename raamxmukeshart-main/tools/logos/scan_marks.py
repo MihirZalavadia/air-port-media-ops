@@ -80,9 +80,11 @@ def main() -> int:
     ap.add_argument("files", nargs="*")
     ap.add_argument("--lib", default=str(LIB))
     args = ap.parse_args()
-    targets = [Path(f) for f in args.files] or sorted(
-        p for p in Path(args.lib).iterdir() if p.suffix.lower() in RASTER
-    )
+    lib = Path(args.lib)
+    targets = [
+        p if p.exists() else lib / f
+        for f, p in ((f, Path(f)) for f in args.files)
+    ] or sorted(p for p in lib.iterdir() if p.suffix.lower() in RASTER)
     for p in targets:
         try:
             scan(p)
