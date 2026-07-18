@@ -219,7 +219,7 @@ Things I still need from Mukesh sir / Ridham — Claude should ask me about thes
 - [ ] **Existing brand assets** — logo files, prior PPTs, photos of sites
 - [ ] **Approved budget** for tools (Zoho, hosting, WhatsApp API, etc.)
 - [ ] **Bank account / payment terms** for my retainer
-- [ ] **"Inox Casting" exact company name** — no Rajkot/Gujarat casting company by that name found online; confirm spelling/legal name with Ridham and get their logo so it can join /partners/
+- [x] **"Inox Casting" exact company name** — resolved 2026-07-18: it's **Innox Precision (I) Pvt Ltd** (innoxprecision.com); logo added to /partners/
 
 ---
 

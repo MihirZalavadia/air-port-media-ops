@@ -23,6 +23,7 @@ import flaisGranito from "@/public/images/clients/flais_granito.jpg";
 import itoli from "@/public/images/clients/itoli.png";
 
 /* engineering & industrial */
+import innoxCasting from "@/public/images/clients/innox_casting.png";
 import meeraCasting from "@/public/images/clients/meera_casting.png";
 import rajanTechnocast from "@/public/images/clients/rajan_technocast.png";
 import shivomCasting from "@/public/images/clients/shivom_casting.png";
@@ -79,6 +80,7 @@ const partnerGroups: PartnerGroup[] = [
     {
         label: "Engineering & Industrial",
         partners: [
+            { name: "Innox Precision", sector: "Investment Casting", img: innoxCasting },
             { name: "Meera Casting", sector: "Castings", img: meeraCasting },
             { name: "Rajan Techno Cast", sector: "Investment Casting", img: rajanTechnocast },
             { name: "Shiv Om", sector: "Castings", img: shivomCasting },
@@ -119,25 +121,6 @@ const allPartners = partnerGroups.flatMap((group) => group.partners);
 const marqueeTop = allPartners.filter((_, i) => i % 2 === 0);
 const marqueeBottom = allPartners.filter((_, i) => i % 2 === 1);
 
-/* internal-preview data — this whole block and its section are removed
-   when the page goes public */
-const pendingLogos = [
-    {
-        name: "Inox Casting",
-        note: "No official logo found online — share the exact company name or a logo file and it joins the wall.",
-    },
-];
-
-const confirmNotes = [
-    {
-        name: "Shiv Om",
-        note: "Showing the Shiv-Om Brass Industries mark — confirm this is the right company.",
-    },
-    {
-        name: "MG Auto",
-        note: "Showing the MG Motor octagon — if this is a local dealership with its own logo, share that instead.",
-    },
-];
 
 function MarqueeRow({
     partners,
@@ -291,47 +274,6 @@ export default function PartnersPage() {
                                 </div>
                             </div>
                         ))}
-                    </div>
-                </section>
-
-                {/* internal preview only — delete this section at public launch */}
-                <section className="partners-review" aria-labelledby="review-title">
-                    <div className="container">
-                        <div className="review-panel" data-motion="card">
-                            <span className="review-flag">
-                                Internal preview · not linked anywhere · removed at public launch
-                            </span>
-
-                            <h2 id="review-title">
-                                Pending for <em>review.</em>
-                            </h2>
-
-                            <div className="review-cols">
-                                <div>
-                                    <h3>Logo not found yet</h3>
-                                    <ul>
-                                        {pendingLogos.map((item) => (
-                                            <li key={item.name}>
-                                                <b>{item.name}</b>
-                                                <span>{item.note}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                <div>
-                                    <h3>Please confirm</h3>
-                                    <ul>
-                                        {confirmNotes.map((item) => (
-                                            <li key={item.name}>
-                                                <b>{item.name}</b>
-                                                <span>{item.note}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </section>
 
