@@ -6697,16 +6697,21 @@ body.site-ready .hero-scroll.hero-anim {
   position: absolute;
   bottom: 0;
   left: 50%;
-  width: 110px;
-  height: 140px;
-  margin-left: -55px;
+  width: 96px;
+  height: 122px;
+  margin-left: -48px;
   /* Perfect center offset */
-  transform-origin: 50% 460px;
+  z-index: var(--card-z, 1);
+  transform-origin: 50% 470px;
   /* Origin length determines the curvature size */
 
   /* Arc positioning + custom tilt to match reference design's aesthetic curvature */
-  transform: rotate(var(--card-angle)) translateY(-460px) rotate(var(--card-tilt));
+  transform: rotate(var(--card-angle)) translateY(-470px) rotate(var(--card-tilt));
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.premium-arch-card:hover {
+  z-index: 30;
 }
 
 .premium-card-inner {
@@ -6844,10 +6849,11 @@ body.site-ready .hero-scroll.hero-anim {
   }
 
   .premium-arch-card {
-    width: 90px;
-    height: 115px;
-    transform-origin: 50% 380px;
-    transform: rotate(var(--card-angle)) translateY(-380px) rotate(var(--card-tilt));
+    width: 82px;
+    height: 104px;
+    margin-left: -41px;
+    transform-origin: 50% 390px;
+    transform: rotate(var(--card-angle)) translateY(-390px) rotate(var(--card-tilt));
   }
 
   .premium-arch-wrapper {
@@ -11282,7 +11288,7 @@ section,
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 6px;
 }
 
 .arch-logo-layer img {

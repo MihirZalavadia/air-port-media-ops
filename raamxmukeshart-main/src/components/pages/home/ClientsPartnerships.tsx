@@ -366,8 +366,8 @@ import Link from "next/link";
 import { allPartners } from "@/src/lib/clientLogos";
 import "./Home.css";
 
-const ARCH_SLOTS = 9;
-const ROTATE_MS = 4200;
+const ARCH_SLOTS = 10;
+const ROTATE_MS = 3200;
 const TOTAL = allPartners.length;
 
 const mod = (a: number, n: number) => ((a % n) + n) % n;
@@ -391,10 +391,11 @@ const featureSteps = [
 ];
 
 export default function ClientsPartnership() {
-    // ±75° dropped the outermost logos so low they hid behind the content
-    // block — ±58° keeps every brand card clearly visible above it
-    const startAngle = -58;
-    const endAngle = 58;
+    // ±58° pushed the outermost cards past the viewport edge on scaled
+    // laptop screens — ±48° keeps the whole arch inside every width the
+    // arch layout serves (a grid takes over below 850px)
+    const startAngle = -48;
+    const endAngle = 48;
     const angleStep = (endAngle - startAngle) / (ARCH_SLOTS - 1);
 
     // the arch cycles through the full roster: every tick each card
@@ -464,6 +465,8 @@ export default function ClientsPartnership() {
                                                 "--card-angle": `${currentAngle}deg`,
                                                 "--card-tilt": `${naturalTilt}deg`,
                                                 "--swap-delay": `${i * 90}ms`,
+                                                // tight fan: center cards sit above their neighbours
+                                                "--card-z": ARCH_SLOTS - Math.abs(i - (ARCH_SLOTS - 1) / 2),
                                             } as CSSProperties
                                         }
                                     >
