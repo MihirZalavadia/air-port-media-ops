@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { StaticImageData } from "next/image";
 import ScrollAnimations from "@/src/components/common/ScrollAnimations";
@@ -26,13 +26,36 @@ function AccentTitle({ text }: { text: string }) {
 
 import { getCategoryVisuals } from "@/src/lib/inventoryVisuals";
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+// indoor categories open on a short terminal film; outdoor keeps the
+// real site photos (client rule: our own photos for outdoor inventory)
+const INVENTORY_FILMS: Record<string, { src: string; poster: string }> = {
+    "digital-screen-network": {
+        src: `${BASE}/videos/inv_digital.mp4`,
+        poster: `${BASE}/videos/inv_digital_poster.jpg`,
+    },
+    "in-terminal-backlit-boards": {
+        src: `${BASE}/videos/inv_backlit.mp4`,
+        poster: `${BASE}/videos/inv_backlit_poster.jpg`,
+    },
+    "hybrid-journey-plans": {
+        src: `${BASE}/videos/inv_hybrid.mp4`,
+        poster: `${BASE}/videos/inv_hybrid_poster.jpg`,
+    },
+};
+
 export default function InventoryDetail({ slug }: { slug: string }) {
     const category = getInventoryCategory(slug);
+    const [reduceMotion, setReduceMotion] = useState(false);
 
     // Lenis on the homepage can leave the window deep-scrolled when the
     // route changes — always open a category page at the top
     useEffect(() => {
         window.scrollTo(0, 0);
+        setReduceMotion(
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        );
     }, [slug]);
 
     if (!category) return null;
@@ -81,10 +104,26 @@ export default function InventoryDetail({ slug }: { slug: string }) {
                         </div>
 
                         <figure className="inv-hero-media" data-motion="card" data-motion-delay="0.22">
-                            <img
-                                src={hero.src}
-                                alt={`${category.title} at Rajkot Airport`}
-                            />
+                            {INVENTORY_FILMS[slug] && !reduceMotion ? (
+                                <video
+                                    poster={INVENTORY_FILMS[slug].poster}
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    aria-label={`${category.title} at Rajkot Airport`}
+                                >
+                                    <source
+                                        src={INVENTORY_FILMS[slug].src}
+                                        type="video/mp4"
+                                    />
+                                </video>
+                            ) : (
+                                <img
+                                    src={hero.src}
+                                    alt={`${category.title} at Rajkot Airport`}
+                                />
+                            )}
                         </figure>
 
                         <div className="inv-facts" data-motion-group>

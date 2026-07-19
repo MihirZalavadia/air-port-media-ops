@@ -131,7 +131,8 @@
     box-shadow: 0 30px 60px -34px rgba(15, 23, 42, 0.45);
 }
 
-.inv-hero-media img {
+.inv-hero-media img,
+.inv-hero-media video {
     display: block;
     width: 100%;
     height: clamp(240px, 42vw, 480px);

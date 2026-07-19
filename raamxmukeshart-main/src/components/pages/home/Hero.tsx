@@ -1,23 +1,76 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 const AIRPORT_STATS = [
     { value: "10-15", label: "Prime Ad Sites" },
     { value: "70-80", label: "Media Surfaces" },
     { value: "24/7", label: "Airport Visibility" },
     { value: "100%", label: "Premium Brand Recall" },
 ];
-const airportVideo = "/videos/hero_media.mp4";
+
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+// day = real Rajkot terminal footage; night = tarmac-at-night film.
+// The theme toggle swaps the hero film with the rest of the theme.
+const HERO_FILMS = {
+    day: {
+        src: `${BASE}/videos/hero_media.mp4`,
+        poster: `${BASE}/videos/hero_media_poster.jpg`,
+    },
+    night: {
+        src: `${BASE}/videos/hero_night.mp4`,
+        poster: `${BASE}/videos/hero_night_poster.jpg`,
+    },
+} as const;
+
+type ThemeId = keyof typeof HERO_FILMS;
+
 export default function Hero() {
+    const [theme, setTheme] = useState<ThemeId>("day");
+    const [reduceMotion, setReduceMotion] = useState(false);
+
+    // follow the site theme via the <html data-theme> attribute so only
+    // the active theme's film is ever downloaded
+    useEffect(() => {
+        const root = document.documentElement;
+        const read = () =>
+            setTheme(root.dataset.theme === "night" ? "night" : "day");
+        read();
+
+        const observer = new MutationObserver(read);
+        observer.observe(root, {
+            attributes: true,
+            attributeFilter: ["data-theme"],
+        });
+
+        setReduceMotion(
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        );
+
+        return () => observer.disconnect();
+    }, []);
+
+    const film = HERO_FILMS[theme];
+
     return (
         <section id="top" className="hero">
-
-            <video
-                className="hero-video"
-                autoPlay
-                muted
-                loop
-                playsInline
-            >
-                <source src={airportVideo} type="video/mp4" />
-            </video>
+            {reduceMotion ? (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img className="hero-video" src={film.poster} alt="" aria-hidden />
+            ) : (
+                <video
+                    key={film.src}
+                    className="hero-video"
+                    poster={film.poster}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                >
+                    <source src={film.src} type="video/mp4" />
+                </video>
+            )}
 
             <div className="hero-overlay" />
             <div className="hero-vignette" />

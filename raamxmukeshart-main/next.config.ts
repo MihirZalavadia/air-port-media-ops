@@ -17,6 +17,11 @@ const nextConfig = {
   output: "export",
   trailingSlash: true,
   basePath: isGitHubPages ? "/air-port-media-ops" : "",
+  env: {
+    // raw <video>/<img> src strings don't get basePath-prefixed the way
+    // next/image does — components prepend this for /videos/* assets
+    NEXT_PUBLIC_BASE_PATH: isGitHubPages ? "/air-port-media-ops" : "",
+  },
   images: {
     unoptimized: true,
     qualities: [75, 100],
