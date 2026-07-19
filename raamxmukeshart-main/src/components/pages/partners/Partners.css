@@ -580,3 +580,16 @@
         opacity: 0.035;
     }
 }
+
+/* chips and roster cards are anchors now — keep their card styling and
+   only show a pointer where a verified client site exists */
+.marquee-chip,
+.roster-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+.marquee-chip:not([href]),
+.roster-card:not([href]) {
+    cursor: default;
+}

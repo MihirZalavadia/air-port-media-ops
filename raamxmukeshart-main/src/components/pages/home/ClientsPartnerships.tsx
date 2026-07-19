@@ -468,33 +468,46 @@ export default function ClientsPartnership() {
                                         }
                                     >
                                         <div className="premium-card-inner" data-motion-item>
-                                            {tick > 0 && (
+                                            <a
+                                                className="arch-logo-link"
+                                                href={current.url}
+                                                target={current.url ? "_blank" : undefined}
+                                                rel={current.url ? "noopener noreferrer" : undefined}
+                                                tabIndex={current.url ? undefined : -1}
+                                                aria-label={
+                                                    current.url
+                                                        ? `Visit the ${current.name} website`
+                                                        : undefined
+                                                }
+                                            >
+                                                {tick > 0 && (
+                                                    <span
+                                                        className="arch-logo-layer"
+                                                        aria-hidden="true"
+                                                        key={`prev-${previous.name}`}
+                                                    >
+                                                        <Image
+                                                            src={previous.img}
+                                                            alt=""
+                                                            width={220}
+                                                            height={280}
+                                                            loading="lazy"
+                                                        />
+                                                    </span>
+                                                )}
                                                 <span
-                                                    className="arch-logo-layer"
-                                                    aria-hidden="true"
-                                                    key={`prev-${previous.name}`}
+                                                    className="arch-logo-layer is-active"
+                                                    key={`cur-${current.name}`}
                                                 >
                                                     <Image
-                                                        src={previous.img}
-                                                        alt=""
+                                                        src={current.img}
+                                                        alt={`${current.name} brand logo`}
                                                         width={220}
                                                         height={280}
                                                         loading="lazy"
                                                     />
                                                 </span>
-                                            )}
-                                            <span
-                                                className="arch-logo-layer is-active"
-                                                key={`cur-${current.name}`}
-                                            >
-                                                <Image
-                                                    src={current.img}
-                                                    alt={`${current.name} brand logo`}
-                                                    width={220}
-                                                    height={280}
-                                                    loading="lazy"
-                                                />
-                                            </span>
+                                            </a>
                                         </div>
                                     </div>
                                 );

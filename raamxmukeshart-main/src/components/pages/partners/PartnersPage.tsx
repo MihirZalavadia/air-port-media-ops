@@ -22,12 +22,26 @@ function MarqueeRow({
     const track = (hidden: boolean) => (
         <div className="marquee-track" aria-hidden={hidden || undefined}>
             {partners.map((partner) => (
-                <span className="marquee-chip" key={partner.name}>
+                // chips with a verified site click through to the client;
+                // the aria-hidden loop copy stays out of the tab order
+                <a
+                    className="marquee-chip"
+                    key={partner.name}
+                    href={partner.url}
+                    target={partner.url ? "_blank" : undefined}
+                    rel={partner.url ? "noopener noreferrer" : undefined}
+                    tabIndex={hidden || !partner.url ? -1 : undefined}
+                    aria-label={
+                        hidden || !partner.url
+                            ? undefined
+                            : `Visit the ${partner.name} website`
+                    }
+                >
                     <span className="chip-logo">
                         <Image src={partner.img} alt={hidden ? "" : `${partner.name} logo`} />
                     </span>
                     <b>{partner.name}</b>
-                </span>
+                </a>
             ))}
         </div>
     );
@@ -147,10 +161,18 @@ export default function PartnersPage() {
 
                                 <div className="roster-grid" data-motion-group>
                                     {group.partners.map((partner) => (
-                                        <article
+                                        <a
                                             className="roster-card"
                                             key={partner.name}
                                             data-motion-item
+                                            href={partner.url}
+                                            target={partner.url ? "_blank" : undefined}
+                                            rel={partner.url ? "noopener noreferrer" : undefined}
+                                            aria-label={
+                                                partner.url
+                                                    ? `Visit the ${partner.name} website`
+                                                    : undefined
+                                            }
                                         >
                                             <div className="roster-logo">
                                                 <Image src={partner.img} alt={`${partner.name} logo`} />
@@ -159,7 +181,7 @@ export default function PartnersPage() {
                                                 <b>{partner.name}</b>
                                                 <span>{partner.sector}</span>
                                             </div>
-                                        </article>
+                                        </a>
                                     ))}
                                 </div>
                             </div>

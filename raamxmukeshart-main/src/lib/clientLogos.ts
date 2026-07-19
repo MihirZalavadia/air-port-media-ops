@@ -56,6 +56,8 @@ export type Partner = {
     name: string;
     sector: string;
     img: StaticImageData;
+    /** official brand website — omit when none exists / not yet verified */
+    url?: string;
 };
 
 export type PartnerGroup = {
@@ -67,74 +69,74 @@ export const partnerGroups: PartnerGroup[] = [
     {
         label: "Ceramics & Vitrified",
         partners: [
-            { name: "Simpolo", sector: "Tiles & Bathware", img: simpolo },
-            { name: "Varmora", sector: "Tiles & Bathware", img: varmora },
-            { name: "Simero", sector: "Ceramics", img: simero },
-            { name: "Icon Granito", sector: "Vitrified Tiles", img: iconGranito },
-            { name: "Itaca", sector: "Granito", img: itaca },
-            { name: "Lavish Granito", sector: "Ceramics", img: lavishGranito },
-            { name: "Motto Granito", sector: "Future Surfaces", img: mottoGranito },
-            { name: "Mozart", sector: "The Tile Composer", img: mozart },
-            { name: "Skytouch", sector: "Ceramic", img: skytouch },
-            { name: "Rock Granito", sector: "Vitrified Tiles", img: rockGranito },
-            { name: "Flais Granito", sector: "Vitrified Tiles", img: flaisGranito },
-            { name: "Itoli", sector: "Granito", img: itoli },
-            { name: "Lorence", sector: "Vitrified Tiles", img: lorence },
+            { name: "Simpolo", sector: "Tiles & Bathware", img: simpolo, url: "https://www.simpolo.net/" },
+            { name: "Varmora", sector: "Tiles & Bathware", img: varmora, url: "https://www.varmora.com/" },
+            { name: "Simero", sector: "Ceramics", img: simero, url: "https://www.simero.in/" },
+            { name: "Icon Granito", sector: "Vitrified Tiles", img: iconGranito, url: "https://www.iconworldoftile.com/" },
+            { name: "Itaca", sector: "Granito", img: itaca, url: "https://www.itacaceramic.com/" },
+            { name: "Lavish Granito", sector: "Ceramics", img: lavishGranito, url: "https://www.lavishceramics.com/" },
+            { name: "Motto Granito", sector: "Future Surfaces", img: mottoGranito, url: "https://mottogroup.in/" },
+            { name: "Mozart", sector: "The Tile Composer", img: mozart, url: "https://www.mozarttiles.com/" },
+            { name: "Skytouch", sector: "Ceramic", img: skytouch, url: "https://skytouchceramic.com/" },
+            { name: "Rock Granito", sector: "Vitrified Tiles", img: rockGranito, url: "https://www.rockgranito.com/" },
+            { name: "Flais Granito", sector: "Vitrified Tiles", img: flaisGranito, url: "https://flaisgranito.com/" },
+            { name: "Itoli", sector: "Granito", img: itoli, url: "https://itoli.co/" },
+            { name: "Lorence", sector: "Vitrified Tiles", img: lorence, url: "https://lorencesurfaces.com/" },
             { name: "Lemel", sector: "Eternal Surfaces", img: lemel },
         ],
     },
     {
         label: "Engineering & Industrial",
         partners: [
-            { name: "Innox Precision", sector: "Investment Casting", img: innoxCasting },
-            { name: "Meera Casting", sector: "Castings", img: meeraCasting },
-            { name: "Rajan Techno Cast", sector: "Investment Casting", img: rajanTechnocast },
-            { name: "Shiv Om", sector: "Castings", img: shivomCasting },
-            { name: "Nova Group", sector: "Castings", img: novaGroup },
-            { name: "Esteem Auto", sector: "Casting & Machining", img: esteemAuto },
-            { name: "Speedwell", sector: "Electric", img: speedwell },
-            { name: "Unity Cement", sector: "Cement", img: unityCement },
-            { name: "Leenova", sector: "Kitchen & Food Machinery", img: leenova },
+            { name: "Innox Precision", sector: "Investment Casting", img: innoxCasting, url: "https://innoxprecision.com/" },
+            { name: "Meera Casting", sector: "Castings", img: meeraCasting, url: "https://meeracasting.com/" },
+            { name: "Rajan Techno Cast", sector: "Investment Casting", img: rajanTechnocast, url: "https://www.rajantechcast.com/" },
+            { name: "Shiv Om", sector: "Castings", img: shivomCasting, url: "https://shivombrass.co.in/" },
+            { name: "Nova Group", sector: "Castings", img: novaGroup, url: "https://www.novatechnocast.com/" },
+            { name: "Esteem Auto", sector: "Casting & Machining", img: esteemAuto, url: "https://esteemauto.com/" },
+            { name: "Speedwell", sector: "Electric", img: speedwell, url: "https://speedwellindia.com/" },
+            { name: "Unity Cement", sector: "Cement", img: unityCement, url: "https://unitycement.in/" },
+            { name: "Leenova", sector: "Kitchen & Food Machinery", img: leenova, url: "https://leenovakitchenequipments.com/" },
         ],
     },
     {
         label: "Jewellery & Lifestyle",
         partners: [
-            { name: "Radhika Jeweltech", sector: "Jewellery", img: radhikaJeweltech },
-            { name: "J. Kamdar", sector: "Sarees", img: jKamdar },
-            { name: "Jade Blue", sector: "Fashion", img: jadeBlue },
+            { name: "Radhika Jeweltech", sector: "Jewellery", img: radhikaJeweltech, url: "https://www.radhikajeweltech.com/" },
+            { name: "J. Kamdar", sector: "Sarees", img: jKamdar, url: "https://jkamdar.com/" },
+            { name: "Jade Blue", sector: "Fashion", img: jadeBlue, url: "https://www.jadeblue.com/" },
         ],
     },
     {
         label: "Automotive",
         partners: [
-            { name: "Škoda Auto", sector: "Shreenathji Auto · Rajkot", img: skoda },
-            { name: "MG Auto", sector: "Jai Ganesh · Rajkot", img: mgAuto },
+            { name: "Škoda Auto", sector: "Shreenathji Auto · Rajkot", img: skoda, url: "https://shreenathjiskoda.com/" },
+            { name: "MG Auto", sector: "Jai Ganesh · Rajkot", img: mgAuto, url: "https://dealers.mgmotor.co.in/mg-motor-jai-ganesh-showroom-car-dealer-kothariya-rajkot-371964/Home" },
         ],
     },
     {
         label: "Healthcare",
         partners: [
-            { name: "Global IVF", sector: "IVF & Fertility · Rajkot", img: globalIvf },
-            { name: "Payal Maternity", sector: "Maternity Care · Rajkot", img: payalMaternity },
+            { name: "Global IVF", sector: "IVF & Fertility · Rajkot", img: globalIvf, url: "https://www.globalivfcenter.com/" },
+            { name: "Payal Maternity", sector: "Maternity Care · Rajkot", img: payalMaternity, url: "https://payalmaternityhome.com/" },
         ],
     },
     {
         label: "Mobile & Telecom",
         partners: [
-            { name: "OPPO", sector: "Smartphones", img: oppo },
-            { name: "Vivo", sector: "Smartphones", img: vivo },
-            { name: "OnePlus", sector: "Smartphones", img: oneplus },
-            { name: "Apple", sector: "Technology", img: apple },
-            { name: "Google", sector: "Technology", img: google },
-            { name: "Poojara Telecom", sector: "Telecom Retail", img: poojara },
+            { name: "OPPO", sector: "Smartphones", img: oppo, url: "https://www.oppo.com/in/" },
+            { name: "Vivo", sector: "Smartphones", img: vivo, url: "https://www.vivo.com/in" },
+            { name: "OnePlus", sector: "Smartphones", img: oneplus, url: "https://www.oneplus.in/" },
+            { name: "Apple", sector: "Technology", img: apple, url: "https://www.apple.com/in/" },
+            { name: "Google", sector: "Technology", img: google, url: "https://www.google.com/" },
+            { name: "Poojara Telecom", sector: "Telecom Retail", img: poojara, url: "https://www.poojaratele.com/" },
         ],
     },
     {
         label: "Services & Technology",
         partners: [
-            { name: "Tirupati Courier", sector: "Courier & Logistics", img: tirupatiCourier },
-            { name: "Infinity Infoway", sector: "Software & IT", img: infinitySoftware },
+            { name: "Tirupati Courier", sector: "Courier & Logistics", img: tirupatiCourier, url: "http://www.shreetirupaticourier.net/" },
+            { name: "Infinity Infoway", sector: "Software & IT", img: infinitySoftware, url: "https://infinityinfoway.com/" },
         ],
     },
 ];
