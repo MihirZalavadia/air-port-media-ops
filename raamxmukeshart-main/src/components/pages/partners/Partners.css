@@ -219,9 +219,7 @@
     animation-name: marquee-right;
 }
 
-.marquee-row:hover .marquee-track {
-    animation-play-state: paused;
-}
+/* the strip rolls continuously — no pause or lift on hover */
 
 @keyframes marquee-left {
     from {
@@ -255,13 +253,6 @@
     background: #ffffff;
     border: 1px solid var(--rule-soft);
     box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.marquee-chip:hover {
-    transform: translateY(-3px);
-    border-color: var(--accent);
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
 }
 
 /* the plate hugs each logo's natural aspect — square marks stay compact,
@@ -581,15 +572,13 @@
     }
 }
 
-/* chips and roster cards are anchors now — keep their card styling and
-   only show a pointer where a verified client site exists */
-.marquee-chip,
+/* roster cards are anchors — keep their card styling and only show a
+   pointer where a verified client site exists */
 .roster-card {
     text-decoration: none;
     color: inherit;
 }
 
-.marquee-chip:not([href]),
 .roster-card:not([href]) {
     cursor: default;
 }

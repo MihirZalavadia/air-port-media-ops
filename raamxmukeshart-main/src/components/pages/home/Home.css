@@ -11345,13 +11345,9 @@ section,
     }
 }
 
-/* clickable arch card — fills the plate; layers stack inside it */
+/* arch card media area — fills the plate; layers stack inside it */
 .arch-logo-link {
     position: absolute;
     inset: 0;
     display: block;
-}
-
-.arch-logo-link[href] {
-    cursor: pointer;
 }

@@ -22,26 +22,14 @@ function MarqueeRow({
     const track = (hidden: boolean) => (
         <div className="marquee-track" aria-hidden={hidden || undefined}>
             {partners.map((partner) => (
-                // chips with a verified site click through to the client;
-                // the aria-hidden loop copy stays out of the tab order
-                <a
-                    className="marquee-chip"
-                    key={partner.name}
-                    href={partner.url}
-                    target={partner.url ? "_blank" : undefined}
-                    rel={partner.url ? "noopener noreferrer" : undefined}
-                    tabIndex={hidden || !partner.url ? -1 : undefined}
-                    aria-label={
-                        hidden || !partner.url
-                            ? undefined
-                            : `Visit the ${partner.name} website`
-                    }
-                >
+                // decorative strip — click-throughs live on the roster
+                // cards below
+                <span className="marquee-chip" key={partner.name}>
                     <span className="chip-logo">
                         <Image src={partner.img} alt={hidden ? "" : `${partner.name} logo`} />
                     </span>
                     <b>{partner.name}</b>
-                </a>
+                </span>
             ))}
         </div>
     );

@@ -471,18 +471,9 @@ export default function ClientsPartnership() {
                                         }
                                     >
                                         <div className="premium-card-inner" data-motion-item>
-                                            <a
-                                                className="arch-logo-link"
-                                                href={current.url}
-                                                target={current.url ? "_blank" : undefined}
-                                                rel={current.url ? "noopener noreferrer" : undefined}
-                                                tabIndex={current.url ? undefined : -1}
-                                                aria-label={
-                                                    current.url
-                                                        ? `Visit the ${current.name} website`
-                                                        : undefined
-                                                }
-                                            >
+                                            {/* decorative showcase — click-throughs live on
+                                                the /partners/ roster only */}
+                                            <span className="arch-logo-link">
                                                 {tick > 0 && (
                                                     <span
                                                         className="arch-logo-layer"
@@ -510,7 +501,7 @@ export default function ClientsPartnership() {
                                                         loading="lazy"
                                                     />
                                                 </span>
-                                            </a>
+                                            </span>
                                         </div>
                                     </div>
                                 );
