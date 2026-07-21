@@ -364,7 +364,10 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { allPartners } from "@/src/lib/clientLogos";
+import siteCopy from "@/content/site_copy.json";
 import "./Home.css";
+
+const clientsCopy = siteCopy.clients;
 
 const ARCH_SLOTS = 10;
 const ROTATE_MS = 3200;
@@ -511,7 +514,7 @@ export default function ClientsPartnership() {
 
                     <div className="premium-content-block">
                         <span className="premium-eyebrow" data-motion="clip">
-                            Clients &amp; Partnerships
+                            {clientsCopy.eyebrow}
                         </span>
 
                         <h2
@@ -520,8 +523,8 @@ export default function ClientsPartnership() {
                             data-motion="up"
                             data-motion-delay="0.08"
                         >
-                            Trusted by <em>50+ brands</em> <br />
-                            across premium campaigns.
+                            {clientsCopy.titlePre} <em>{clientsCopy.titleEm}</em> <br />
+                            {clientsCopy.titlePost}
                         </h2>
 
                         <p
@@ -529,9 +532,7 @@ export default function ClientsPartnership() {
                             data-motion="up"
                             data-motion-delay="0.16"
                         >
-                            Mukesh Art works with brands across Rajkot Airport&rsquo;s passenger
-                            journey through planned media placement, airport coordination,
-                            and reliable campaign execution.
+                            {clientsCopy.sub}
                         </p>
 
                         <Link
@@ -541,7 +542,7 @@ export default function ClientsPartnership() {
                             data-motion="zoom"
                             data-motion-delay="0.22"
                         >
-                            <span>Meet All 50+ Brands</span>
+                            <span>{clientsCopy.cta}</span>
                             <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
                                 <path
                                     d="M3.5 8h8M8.5 4.5L12 8l-3.5 3.5"

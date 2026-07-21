@@ -40,6 +40,11 @@ jobs:
         env:
           GITHUB_PAGES: "true"
 
+      # PHP endpoints (lead capture + admin) only run on Hostinger — on
+      # Pages they'd be served as raw source, so strip them from the sample
+      - name: Strip server-side endpoints
+        run: rm -rf out/api
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

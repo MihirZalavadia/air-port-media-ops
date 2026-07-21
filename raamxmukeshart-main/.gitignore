@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# admin console secrets (server-side only — provisioned by deploy workflow)
+admin_config.php

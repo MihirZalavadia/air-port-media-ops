@@ -47,3 +47,23 @@ jobs:
             -e "ssh -p 65002 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
             out/ u366143613@82.25.125.220:/home/u366143613/domains/mukeshart.in/public_html/
           echo "Deployed to real webroot."
+
+      # Admin console secrets (password hash + GitHub content token) live
+      # OUTSIDE the webroot, regenerated on every deploy from repo secrets.
+      # Without both secrets set, the admin plays dead (404).
+      - name: Provision admin config (outside webroot)
+        env:
+          SSHPASS: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          ADMIN_PASSWORD_HASH: ${{ secrets.ADMIN_PASSWORD_HASH }}
+          GH_CONTENT_TOKEN: ${{ secrets.GH_CONTENT_TOKEN }}
+        run: |
+          if [ -z "$ADMIN_PASSWORD_HASH" ] || [ -z "$GH_CONTENT_TOKEN" ]; then
+            echo "Admin secrets not set — skipping admin config provisioning."
+            exit 0
+          fi
+          printf "<?php\nreturn [\n    'password_hash' => '%s',\n    'github_token' => '%s',\n    'github_repo' => 'MihirZalavadia/air-port-media-ops',\n    'github_branch' => 'main',\n];\n" \
+            "$ADMIN_PASSWORD_HASH" "$GH_CONTENT_TOKEN" | \
+          sshpass -e ssh -p 65002 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+            u366143613@82.25.125.220 \
+            "cat > /home/u366143613/domains/mukeshart.in/admin_config.php && chmod 600 /home/u366143613/domains/mukeshart.in/admin_config.php"
+          echo "Admin config provisioned."

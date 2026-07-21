@@ -1,13 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import siteCopy from "@/content/site_copy.json";
 
-const AIRPORT_STATS = [
-    { value: "10-15", label: "Prime Ad Sites" },
-    { value: "70-80", label: "Media Surfaces" },
-    { value: "24/7", label: "Airport Visibility" },
-    { value: "100%", label: "Premium Brand Recall" },
-];
+const heroCopy = siteCopy.hero;
+const AIRPORT_STATS = heroCopy.stats;
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -80,17 +77,14 @@ export default function Hero() {
             <div className="container hero-content">
                 <div className="hero-badge hero-anim">
                     <span></span>
-                    Rajkot Airport Advertising Media
+                    {heroCopy.badge}
                 </div>
 
                 <h1 className="hero-h1 hero-anim">
-                    Premium Airport Media for <em>High-Impact Brands.</em>
+                    {heroCopy.titlePre} <em>{heroCopy.titleEm}</em>
                 </h1>
 
-                <p className="hero-sub hero-anim">
-                    70+ screens and boards. Every passenger touchpoint, arrival
-                    to takeoff. One media partner at Rajkot International Airport.
-                </p>
+                <p className="hero-sub hero-anim">{heroCopy.sub}</p>
 
                 <div className="hero-trust hero-anim">
                     {[

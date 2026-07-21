@@ -153,11 +153,14 @@
 import { useState, type FormEvent } from "react";
 import { normalizeIndianMobile } from "@/src/lib/validation";
 import { submitLead } from "@/src/lib/leads";
+import siteCopy from "@/content/site_copy.json";
 import "./Home.css";
 
-// WhatsApp: +91 98253 40818 (country code, no + or spaces)
-const WHATSAPP_NUMBER = "919825340818";
-const CONTACT_EMAIL = "info@mukeshart.in";
+const contactCopy = siteCopy.contact;
+
+// WhatsApp: country code + number, no + or spaces
+const WHATSAPP_NUMBER = contactCopy.whatsappNumber;
+const CONTACT_EMAIL = contactCopy.email;
 
 const whatsappMessage = encodeURIComponent(
     "Hello Mukesh Airport Media, I want to know more about Rajkot Airport Advertising Media and request the media kit."
@@ -251,7 +254,7 @@ export default function Contact() {
             <div className="container contact-inner">
                 <div className="contact-content">
                     <span className="section-tag" data-motion="clip">
-                        Contact Us
+                        {contactCopy.eyebrow}
                     </span>
 
                     <h2
@@ -259,13 +262,11 @@ export default function Contact() {
                         data-motion="up"
                         data-motion-delay="0.08"
                     >
-                        Let’s plan your next <em>airport media campaign.</em>
+                        {contactCopy.titlePre} <em>{contactCopy.titleEm}</em>
                     </h2>
 
                     <p data-motion="up" data-motion-delay="0.16">
-                        Share your campaign requirement, preferred media type, and timeline.
-                        Our team will help you choose the right advertising spaces at Rajkot
-                        Airport.
+                        {contactCopy.sub}
                     </p>
 
                     <div
@@ -275,10 +276,7 @@ export default function Contact() {
                     >
                         <div data-motion-item>
                             <span>Location</span>
-                            <p>
-                                PLOT NO. 71, SURVEY NO. 145, JAMBUDIYA, Morbi,
-                                Gujarat - 363642.
-                            </p>
+                            <p>{contactCopy.address}</p>
                         </div>
 
                         <div data-motion-item>
@@ -306,7 +304,7 @@ export default function Contact() {
 
                         <div data-motion-item>
                             <span>Response</span>
-                            <p>Within 1 working day</p>
+                            <p>{contactCopy.response}</p>
                         </div>
                     </div>
                 </div>

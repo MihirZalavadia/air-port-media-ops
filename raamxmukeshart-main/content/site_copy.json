@@ -1,0 +1,32 @@
+{
+    "hero": {
+        "badge": "Rajkot Airport Advertising Media",
+        "titlePre": "Premium Airport Media for",
+        "titleEm": "High-Impact Brands.",
+        "sub": "70+ screens and boards. Every passenger touchpoint, arrival to takeoff. One media partner at Rajkot International Airport.",
+        "stats": [
+            { "value": "10-15", "label": "Prime Ad Sites" },
+            { "value": "70-80", "label": "Media Surfaces" },
+            { "value": "24/7", "label": "Airport Visibility" },
+            { "value": "100%", "label": "Premium Brand Recall" }
+        ]
+    },
+    "clients": {
+        "eyebrow": "Clients & Partnerships",
+        "titlePre": "Trusted by",
+        "titleEm": "50+ brands",
+        "titlePost": "across premium campaigns.",
+        "sub": "Mukesh Art works with brands across Rajkot Airport’s passenger journey through planned media placement, airport coordination, and reliable campaign execution.",
+        "cta": "Meet All 50+ Brands"
+    },
+    "contact": {
+        "eyebrow": "Contact Us",
+        "titlePre": "Let’s plan your next",
+        "titleEm": "airport media campaign.",
+        "sub": "Share your campaign requirement, preferred media type, and timeline. Our team will help you choose the right advertising spaces at Rajkot Airport.",
+        "address": "PLOT NO. 71, SURVEY NO. 145, JAMBUDIYA, Morbi, Gujarat - 363642.",
+        "email": "info@mukeshart.in",
+        "whatsappNumber": "919825340818",
+        "response": "Within 1 working day"
+    }
+}
