@@ -10,9 +10,9 @@ export const metadata: Metadata = {
         canonical: "/partners/",
     },
 
-    // unlisted preview: reachable by direct URL only while the roster is
-    // under internal review — remove this (and re-add nav/sitemap links)
-    // when the page goes public
+    // public on the site (header/footer/home links) but deliberately kept
+    // out of search engines and the sitemap — the client roster shouldn't
+    // be harvestable via Google (owner's call, 2026-07-21)
     robots: {
         index: false,
         follow: false,
