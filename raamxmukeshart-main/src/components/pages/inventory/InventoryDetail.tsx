@@ -28,9 +28,13 @@ import { getCategoryVisuals } from "@/src/lib/inventoryVisuals";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// indoor categories open on a short terminal film; outdoor keeps the
-// real site photos (client rule: our own photos for outdoor inventory)
+// indoor categories open on a short terminal film; outdoor opens on the
+// owner's real dusk footage of the AD-2-row unipole (ITACA campaign live)
 const INVENTORY_FILMS: Record<string, { src: string; poster: string }> = {
+    "landmark-outdoor-boards": {
+        src: `${BASE}/videos/inv_outdoor.mp4`,
+        poster: `${BASE}/videos/inv_outdoor_poster.jpg`,
+    },
     "digital-screen-network": {
         src: `${BASE}/videos/inv_digital.mp4`,
         poster: `${BASE}/videos/inv_digital_poster.jpg`,
