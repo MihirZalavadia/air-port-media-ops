@@ -150,7 +150,7 @@
 
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { normalizeIndianMobile } from "@/src/lib/validation";
 import { submitLead } from "@/src/lib/leads";
 import siteCopy from "@/content/site_copy.json";
@@ -173,6 +173,19 @@ type FieldErrors = { name?: string; phone?: string };
 export default function Contact() {
     const [errors, setErrors] = useState<FieldErrors>({});
     const [sent, setSent] = useState(false);
+
+    // "Enquire this plan" buttons land here with ?plan=… — pre-fill the
+    // message so the lead arrives naming the exact plan
+    useEffect(() => {
+        const plan = new URLSearchParams(window.location.search).get("plan");
+        if (!plan) return;
+        const message = document.querySelector<HTMLTextAreaElement>(
+            ".contact-form textarea[name=message]"
+        );
+        if (message && !message.value) {
+            message.value = `Interested in: ${plan}. Please share the rate card and availability.`;
+        }
+    }, []);
 
     function clearError(field: keyof FieldErrors) {
         setErrors((prev) => {

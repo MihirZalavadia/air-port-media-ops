@@ -28,24 +28,14 @@ import { getCategoryVisuals } from "@/src/lib/inventoryVisuals";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// indoor categories open on a short terminal film; outdoor opens on the
-// owner's real dusk footage of the AD-2-row unipole (ITACA campaign live)
+// only REAL footage plays on inventory pages (owner rule: no stock/AI
+// on inventory) — outdoor has the dusk unipole shoot with the live
+// ITACA campaign; the indoor categories use approved site photos until
+// real indoor footage arrives
 const INVENTORY_FILMS: Record<string, { src: string; poster: string }> = {
     "landmark-outdoor-boards": {
         src: `${BASE}/videos/inv_outdoor.mp4`,
         poster: `${BASE}/videos/inv_outdoor_poster.jpg`,
-    },
-    "digital-screen-network": {
-        src: `${BASE}/videos/inv_digital.mp4`,
-        poster: `${BASE}/videos/inv_digital_poster.jpg`,
-    },
-    "in-terminal-backlit-boards": {
-        src: `${BASE}/videos/inv_backlit.mp4`,
-        poster: `${BASE}/videos/inv_backlit_poster.jpg`,
-    },
-    "hybrid-journey-plans": {
-        src: `${BASE}/videos/inv_hybrid.mp4`,
-        poster: `${BASE}/videos/inv_hybrid_poster.jpg`,
     },
 };
 
@@ -169,6 +159,24 @@ export default function InventoryDetail({ slug }: { slug: string }) {
                                     <h3>{plan.name}</h3>
                                     <p>{plan.detail}</p>
                                     <b>{plan.price}</b>
+                                    <Link
+                                        className="inv-plan-cta"
+                                        href={`/contact/?plan=${encodeURIComponent(
+                                            `${category.title} — ${plan.name}`
+                                        )}`}
+                                    >
+                                        Enquire this plan
+                                        <svg viewBox="0 0 16 16" aria-hidden="true">
+                                            <path
+                                                d="M3.5 8h8M8.5 4.5L12 8l-3.5 3.5"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="1.5"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                            />
+                                        </svg>
+                                    </Link>
                                 </article>
                                 );
                             })}
