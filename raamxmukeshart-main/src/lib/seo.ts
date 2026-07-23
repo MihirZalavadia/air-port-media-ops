@@ -47,6 +47,12 @@ export const siteConfig = {
         "digital advertising screens Rajkot",
         "static board advertising Rajkot",
         "brand promotion at Rajkot Airport",
+        "Rajkot Hirasar airport advertising",
+        "Hirasar airport media",
+        "how to advertise at Rajkot airport",
+        "Rajkot airport advertising cost",
+        "Rajkot airport advertising rates",
+        "Mukesh Airport Media Rajkot",
     ],
 };
 

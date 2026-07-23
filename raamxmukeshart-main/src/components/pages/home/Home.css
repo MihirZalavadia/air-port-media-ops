@@ -11506,3 +11506,69 @@ section,
         transform: none;
     }
 }
+
+/* ===== FAQ (SEO answers for spoken queries) ===== */
+
+.faq-section {
+    background: var(--bg);
+    padding: clamp(56px, 8vw, 100px) 0;
+    border-top: 1px solid var(--rule-soft);
+}
+
+.faq-list {
+    margin-top: clamp(20px, 3vw, 32px);
+    max-width: 840px;
+    display: grid;
+    gap: 12px;
+}
+
+.faq-item {
+    border: 1px solid var(--rule-soft);
+    border-radius: 14px;
+    background: var(--card-bg, var(--surface));
+    padding: 0 20px;
+    transition: border-color 0.3s ease;
+}
+
+.faq-item[open] {
+    border-color: var(--accent);
+}
+
+.faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 17px 0;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--ink);
+    position: relative;
+    padding-right: 34px;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--accent);
+    transition: transform 0.3s ease;
+}
+
+.faq-item[open] summary::after {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.faq-item p {
+    margin: 0;
+    padding: 0 0 18px;
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--ink-2);
+}

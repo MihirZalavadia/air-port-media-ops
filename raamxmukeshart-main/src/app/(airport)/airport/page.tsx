@@ -49,6 +49,7 @@ import Gallery from "@/src/components/pages/home/Gallery";
 import Contact from "@/src/components/pages/home/Contact";
 import CommercialRange from "@/src/components/pages/home/CommercialRange";
 import ClientsPartnership from "@/src/components/pages/home/ClientsPartnerships";
+import Faq from "@/src/components/pages/home/Faq";
 import Team from "@/src/components/pages/home/Team";
 
 import PageLoader from "@/src/components/common/PageLoader";
@@ -114,6 +115,7 @@ export default function Home() {
         <ClientsPartnership />
         <Team />
         <Gallery />
+        <Faq />
         <Contact />
       </main>
     </>
