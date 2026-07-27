@@ -38,6 +38,10 @@ export default function SeoSchema() {
                         name: "Rajkot",
                     },
                     {
+                        "@type": "City",
+                        name: "Morbi",
+                    },
+                    {
                         "@type": "State",
                         name: "Gujarat",
                     },

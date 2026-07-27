@@ -78,8 +78,8 @@ when someone searches the business name. This is what makes
 8. **Description** (750 chars): airport advertising media partner at
    Rajkot International Airport (Hirasar) — 39 LED screens, backlit
    boards, landmark outdoor unipoles, and trolley branding, working with
-   the Airports Authority of India; outdoor hoardings across Rajkot and
-   Saurashtra since 2010 under Mukesh Publicity.
+   the Airports Authority of India; outdoor hoardings and OOH marketing
+   across Rajkot, Morbi and Saurashtra since 2010 under Mukesh Publicity.
 9. **Services** (under the Advertising agency category, add each):
    Airport advertising · Airport branding · Digital screen advertising ·
    Backlit board advertising · Outdoor hoardings / unipoles · Airport

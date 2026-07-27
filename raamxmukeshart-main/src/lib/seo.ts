@@ -79,6 +79,18 @@ export const siteConfig = {
         "Mukeshart Rajkot airport advertisement",
         "Mukeshart Rajkot airport advertising",
         "Mukeshart Rajkot airport branding",
+        // OOH marketing Rajkot–Morbi under Mukeshart / Mukesh Publicity (2026-07-27)
+        "OOH marketing Rajkot",
+        "OOH marketing Morbi",
+        "outdoor advertising Morbi",
+        "OOH advertising Morbi",
+        "hoardings in Rajkot",
+        "hoardings in Morbi",
+        "billboard advertising Morbi",
+        "outdoor media Morbi",
+        "Mukesh Publicity Rajkot",
+        "Mukesh Publicity Morbi",
+        "Mukeshart OOH marketing",
     ],
 };
 

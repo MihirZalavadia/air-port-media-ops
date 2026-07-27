@@ -48,6 +48,7 @@ today (meta keywords + schema; most also in titles/copy).
 | Premium Airport | all 4 | ✅ meta keywords; "Premium Airport Branding" in home title + schema |
 | Mukeshart Hirasar Airport | all 4 | ✅ meta keywords + schema alternateName ("Mukeshart", "Mukeshart Hirasar Airport Media") |
 | Mukeshart Rajkot Airport | all 4 | ✅ meta keywords + schema alternateName ("Mukeshart Rajkot Airport") |
+| OOH / Mukesh Publicity (Rajkot–Morbi) | OOH marketing Rajkot/Morbi, outdoor advertising Morbi, hoardings Rajkot/Morbi, Mukesh Publicity Rajkot/Morbi, Mukeshart OOH marketing | ✅ added 2026-07-27: meta keywords, /publicity/ title+description ("Rajkot & Morbi"), schema areaServed Morbi |
 
 Key detail: the client writes the brand as one word — **"Mukeshart"** —
 which matches the domain. Added as schema `alternateName` so Google
