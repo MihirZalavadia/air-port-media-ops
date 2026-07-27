@@ -1,5 +1,9 @@
 # Domain + Google Business Setup — mukeshart.com
 
+> SUPERSEDED 2026-07-23 for the Google steps: domain ended up as
+> **mukeshart.in on Hostinger** (not .com/Netlify). Use
+> google_setup_guide_2026_07.md for Search Console + Business Profile.
+
 > Written 2026-07-11. Target structure (already how the site is built):
 > `mukeshart.com` → Mukesh Media Group home · `/airport/` → airport site · `/publicity/` → outdoor site
 
