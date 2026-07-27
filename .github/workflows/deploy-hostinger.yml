@@ -43,10 +43,20 @@ jobs:
           SSHPASS: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
         run: |
           sudo apt-get -yq install sshpass >/dev/null 2>&1
-          sshpass -e rsync -az --delete \
-            -e "ssh -p 65002 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
-            out/ u366143613@82.25.125.220:/home/u366143613/domains/mukeshart.in/public_html/
-          echo "Deployed to real webroot."
+          # Hostinger SSH drops connections intermittently; rsync is
+          # idempotent so retry up to 4 times before failing the deploy.
+          for attempt in 1 2 3 4; do
+            if sshpass -e rsync -az --delete --timeout=60 \
+              -e "ssh -p 65002 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=20" \
+              out/ u366143613@82.25.125.220:/home/u366143613/domains/mukeshart.in/public_html/; then
+              echo "Deployed to real webroot (attempt $attempt)."
+              exit 0
+            fi
+            echo "rsync attempt $attempt failed — retrying in 30s..."
+            sleep 30
+          done
+          echo "All rsync attempts failed."
+          exit 1
 
       # Admin console secrets (password hash + GitHub content token) live
       # OUTSIDE the webroot, regenerated on every deploy from repo secrets.
