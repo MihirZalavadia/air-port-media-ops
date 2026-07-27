@@ -22,6 +22,8 @@
 !01_strategy_and_pitch/meeting_notes/.gitkeep
 
 # Credentials, API keys, environment variables
+# (the manual checklist holds the admin password — keep it local-only)
+03_website/manual_setup_checklist_2026_07.md
 .env
 .env.local
 .env.production
@@ -66,7 +68,7 @@ venv/
 .venv/
 
 # Temp & cache
-tmp_pdf_images/
+99_archive/tmp_pdf_images/
 *.tmp
 *.bak
 *.cache
@@ -85,7 +87,11 @@ tmp_pdf_images/
 # - Email/WhatsApp/LinkedIn TEMPLATES (not populated outreach logs)
 
 # raw inventory photography (102MB) — converted webps live in the site
-updated images/
+04_media_kit/assets/photography_2026_07/
+
+# phone-footage intake for the video pipeline (GB-scale .MOV files —
+# GitHub rejects files >100MB; NEVER commit this folder)
+raw_media_drop/
 
 # built site packages
 mukeshart_site_build*.zip

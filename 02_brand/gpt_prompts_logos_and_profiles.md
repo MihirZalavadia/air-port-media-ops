@@ -8,7 +8,7 @@
 
 ## 1. Team profile photos (one prompt, reuse per person)
 
-Attach: the person's photo from `/Profiles/` + Ridham's photo as style reference.
+Attach: the person's photo from `/02_brand/team_photos/` + Ridham's photo as style reference.
 
 ```
 I'm attaching two images. Image 1 is a style reference; Image 2 is the person

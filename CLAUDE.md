@@ -68,58 +68,32 @@ Pending (to be built in this project):
 ## 4. Folder Structure (Maintain This)
 
 ```
-airport-media-ops/
+airport-media-ops/                     # (structure as of 2026-07-27 cleanup)
 ├── CLAUDE.md                          # This file — always read first
-├── README.md                          # Quick project overview for humans
+├── README.md                          # Handover doc: pages, flows, folder map
+├── DEPLOY.md                          # How to build/host the website
+├── SESSION_STARTERS.md
 │
-├── 01_strategy_and_pitch/             # Strategic docs, plans, pitch material
-│   ├── 90_Day_Execution_Plan.docx
-│   ├── 50_Target_Client_List.xlsx
-│   └── meeting_notes/                 # Notes after each Mukesh/Ridham conversation
+├── raamxmukeshart-main/               # LIVE WEBSITE SOURCE (Next.js static export)
+│                                      # ⚠️ never rename: deploy workflow +
+│                                      # admin console hard-code this path
+├── .github/workflows/                 # deploy-hostinger.yml (rsync, 4x retry)
+│                                      # + ssh-diagnose.yml (manual only)
 │
-├── 02_brand/                          # Visual identity, logo, colors, typography
-│   ├── logo/
-│   ├── style_guide/
-│   └── reference_inspiration/         # TIMDAA, Pranaam, MyHoardings screenshots
-│
-├── 03_website/                        # Company website source code
-│   ├── (Next.js or Framer export — TBD based on stack decision)
-│   └── content/                       # Page copy, service descriptions
-│
-├── 04_media_kit/                      # The PDF media kit for B2B sales
-│   ├── source/                        # Source files (Figma, Canva, or InDesign)
-│   ├── assets/                        # Photos of screens, sites, trolleys
-│   └── exports/                       # Final PDF versions
-│
-├── 05_crm_and_outreach/               # CRM config, outreach templates, sequences
-│   ├── crm_setup_docs/                # Zoho config, pipeline definitions
-│   ├── email_sequences/               # 4-touch cold email templates per segment
-│   ├── whatsapp_templates/
-│   ├── linkedin_dm_templates/
-│   └── lead_research/                 # Per-target research dossiers
-│
-├── 06_inventory_dashboard/            # Site/screen inventory tracking
-│   ├── airtable_schema.md
-│   └── data/
-│
-├── 07_content_and_social/             # Content calendar, post drafts, captions
-│   ├── linkedin_posts/                # Ghostwritten for Ridham
-│   ├── instagram_reels/
-│   ├── content_calendar.xlsx
-│   └── case_studies/
-│
-├── 08_tender_intelligence/            # Tender monitoring & bid prep
-│   ├── tracked_tenders.xlsx
-│   ├── go_no_go_template.md
-│   └── reference_rfps/                # Sample AAI RFPs (Surat, etc.)
-│
-├── 09_learning_notes/                 # My own study notes from 2-week prep
-│   ├── ooh_industry_basics.md
-│   ├── india_aviation_context.md
-│   ├── b2b_sales_frameworks.md
-│   └── competitor_teardowns.md
-│
-└── 99_archive/                        # Old versions, scratch files
+├── 01_strategy_and_pitch/             # 90-day plan, client list, meeting notes
+├── 02_brand/                          # + design_system/, figma_export/, team_photos/
+├── 03_website/                        # Website DOCS & guides (code is in raamxmukeshart-main)
+├── 04_media_kit/                      # + assets/photography_2026_07/ (gitignored masters)
+├── 05_crm_and_outreach/
+├── 06_inventory_dashboard/
+├── 07_content_and_social/             # Instagram campaign folders v1–v3
+├── 08_tender_intelligence/
+├── 09_learning_notes/                 # + hirasar_aai_traffic_july_2023.pdf
+├── 99_archive/                        # Superseded: old design uploads, stale
+│                                      # guides, tmp_pdf_images, old zips
+├── tools/                             # Gamma deck configs, helper scripts
+└── raw_media_drop/                    # Phone-footage intake — GITIGNORED,
+                                       # GB-scale files, never commit
 ```
 
 ---
@@ -203,6 +177,8 @@ Every meaningful decision — stack choice, brand direction, pricing model, part
 | 2026-05-17 | Project initialized in Claude Code | Moving from chat-only strategy to executable project workspace |
 | 2026-05-24 | Airport-first website scope reset | Airport media operation is the main commercial project; Mukesh Arts gets a simple credibility website only. |
 | 2026-07-17 | Full public client roster at /partners/ (29 logos) | Mukesh sir/Ridham want every client visible. Logos identified from their zip + official web sources; displayed on fixed light plates so they stay identifiable in the night theme. Inox Casting excluded — company name unverifiable online. |
+| 2026-07-27 | Repo cleanup for handover; GitHub Pages workflow removed | Stray root folders sorted into the numbered structure (design work → 02_brand, photography → 04_media_kit, scratch → 99_archive). Pages deploy deleted: Hostinger is the only host; the Pages copy was a public duplicate of the site. |
+| 2026-07-27 | Repo must go PRIVATE (pending Mihir's click) | Discovered public during cleanup. Contains client list, pricing, meeting context, personal details in CLAUDE.md. Nothing in the toolchain needs public: Hostinger deploys via SSH, admin console uses a PAT. |
 | | | |
 
 ---

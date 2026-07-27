@@ -87,7 +87,7 @@ when someone searches the business name. This is what makes
    (Full client keyword list + where each one lives:
    `seo_target_keywords_2026_07.md`.)
 10. **Hours:** Mon–Sat 10:00–19:00 (or whatever Mukesh sir keeps).
-11. **Photos:** upload 8–12 from `/updated images/` (boards, screens,
+11. **Photos:** upload 8–12 from `/04_media_kit/assets/photography_2026_07/` (boards, screens,
     terminal shots) + the dusk unipole video (under 30s = allowed).
     Set the AD-2 unipole shot as cover.
 12. **First post:** "Rajkot Airport advertising inventory now open for
