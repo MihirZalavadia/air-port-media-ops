@@ -320,6 +320,19 @@ export default function Header() {
         };
     }, [isMenuOpen]);
 
+    // Escape closes the open drawer; focus stays on the same menu button
+    // (it is one node in both the bar and the drawer), so focus return
+    // is inherent.
+    useEffect(() => {
+        if (!isMenuOpen) return;
+        const onKey = (event: KeyboardEvent) => {
+            if (event.key === "Escape") closeMobileMenu();
+        };
+        document.addEventListener("keydown", onKey);
+        return () => document.removeEventListener("keydown", onKey);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isMenuOpen, isMenuClosing]);
+
     // Smart scroll: solidify once past the top; hide on scroll-down, roll back on scroll-up.
     useEffect(() => {
         lastYRef.current = window.scrollY;

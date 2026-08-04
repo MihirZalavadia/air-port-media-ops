@@ -251,6 +251,13 @@ type Slide = {
     title: string;
     /** ms on screen before auto-advance */
     duration: number;
+    /**
+     * subject-aware object-position for the 16:9 films inside the 4/3
+     * phone stage (x steers the side-crop; y stays 50% so the wider
+     * desktop stage keeps its current vertical framing). Poster and
+     * video share the value, so the framing never jumps on playback.
+     */
+    focal?: string;
 };
 
 const SLIDES: Slide[] = [
@@ -261,6 +268,8 @@ const SLIDES: Slide[] = [
         tag: "Rajkot International Airport",
         title: "The airport at dusk",
         duration: 8000,
+        // lit terminal + airport sign sit left of the foreground pole
+        focal: "36% 50%",
     },
     {
         kind: "image",
@@ -304,6 +313,8 @@ const SLIDES: Slide[] = [
         tag: "Landmark Outdoor",
         title: "Live campaign on the approach road",
         duration: 9000,
+        // the dusk unipole face holds centre-left through the dolly
+        focal: "42% 50%",
     },
     {
         kind: "image",
@@ -321,6 +332,10 @@ export default function Gallery() {
     const pausedRef = useRef(false);
     // slide was held while off-screen/paused → owed a full dwell on resume
     const heldRef = useRef(false);
+    // touch swipe start point; also flags a touch device so the emulated
+    // mouseenter fired after a tap can't leave the slideshow stuck paused
+    const touchRef = useRef<{ x: number; y: number } | null>(null);
+    const isTouchRef = useRef(false);
 
     // auto-advance with per-slide dwell; holds while off-screen or hovered
     useEffect(() => {
@@ -371,6 +386,33 @@ export default function Gallery() {
     const go = (i: number) =>
         setActive(((i % SLIDES.length) + SLIDES.length) % SLIDES.length);
 
+    // natural touch use: swipe left/right to change slides. The gesture
+    // pauses auto-advance, and the existing "held" logic grants a full
+    // dwell once the finger lifts.
+    function handleTouchStart(event: React.TouchEvent) {
+        isTouchRef.current = true;
+        touchRef.current = {
+            x: event.touches[0].clientX,
+            y: event.touches[0].clientY,
+        };
+        pausedRef.current = true;
+    }
+
+    function handleTouchEnd(event: React.TouchEvent) {
+        const start = touchRef.current;
+        touchRef.current = null;
+        pausedRef.current = false;
+        if (!start) return;
+
+        const dx = event.changedTouches[0].clientX - start.x;
+        const dy = event.changedTouches[0].clientY - start.y;
+
+        // horizontal intent only — vertical scrolling passes through
+        if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+            go(active + (dx < 0 ? 1 : -1));
+        }
+    }
+
     return (
         <section
             className="showcase-section"
@@ -390,8 +432,18 @@ export default function Gallery() {
                 <div
                     className="showcase-stage"
                     data-motion="card"
-                    onMouseEnter={() => (pausedRef.current = true)}
-                    onMouseLeave={() => (pausedRef.current = false)}
+                    onMouseEnter={() => {
+                        if (!isTouchRef.current) pausedRef.current = true;
+                    }}
+                    onMouseLeave={() => {
+                        if (!isTouchRef.current) pausedRef.current = false;
+                    }}
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                    onTouchCancel={() => {
+                        touchRef.current = null;
+                        pausedRef.current = false;
+                    }}
                 >
                     {SLIDES.map((slide, i) => {
                         const isActive = i === active;
@@ -416,10 +468,24 @@ export default function Gallery() {
                                             playsInline
                                             autoPlay
                                             preload="none"
+                                            style={
+                                                slide.focal
+                                                    ? { objectPosition: slide.focal }
+                                                    : undefined
+                                            }
                                         />
                                     ) : (
                                         /* eslint-disable-next-line @next/next/no-img-element */
-                                        <img src={slide.poster} alt="" loading="lazy" />
+                                        <img
+                                            src={slide.poster}
+                                            alt=""
+                                            loading="lazy"
+                                            style={
+                                                slide.focal
+                                                    ? { objectPosition: slide.focal }
+                                                    : undefined
+                                            }
+                                        />
                                     )
                                 ) : slide.img ? (
                                     <Image

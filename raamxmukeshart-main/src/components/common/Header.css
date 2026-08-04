@@ -238,8 +238,35 @@ html[data-theme="night"] .btn-primary {
         background 0.45s ease;
 }
 
-.theme-toggle:hover {
-    transform: translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+    .theme-toggle:hover {
+        transform: translateY(-1px);
+    }
+}
+
+/* touch: the pill grows to a 44px hit height; the sky scene is centred
+   against the extra 2px so the sun/moon stay visually aligned */
+@media (pointer: coarse) {
+    .theme-toggle {
+        height: 44px;
+    }
+
+    .theme-toggle .sun-core {
+        top: 10px;
+    }
+
+    .theme-toggle .moon-core {
+        top: 9px;
+    }
+
+    .theme-toggle:active {
+        transform: scale(0.97);
+    }
+
+    /* brand lockup: pad the link block up to a 44px+ hit area */
+    .brand {
+        padding-block: 4px;
+    }
 }
 
 .theme-toggle:focus-visible {
@@ -386,7 +413,9 @@ html[data-theme="night"] .star {
 html.menu-open,
 body.menu-open {
     overflow: hidden;
-    height: 100vh;
+    /* dvh matches the drawer panel — 100vh over-locked on Android and
+       let the page jump when the URL bar collapsed */
+    height: 100dvh;
 }
 
 /* Tablet */
@@ -487,7 +516,8 @@ body.menu-open {
         align-content: start;
         gap: 18px;
 
-        padding: 18px 22px 28px;
+        /* safe-area: keep the last menu item tappable above gesture bars */
+        padding: 18px 22px calc(28px + env(safe-area-inset-bottom, 0px));
         background: var(--surface);
         color: var(--ink);
         border-left: 1px solid var(--rule-soft);

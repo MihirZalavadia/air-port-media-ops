@@ -203,10 +203,23 @@ export default function Connectivity() {
                             <circle className="ram-hub-glow" cx={HUB.x} cy={HUB.y} r={60} />
                             <circle className="ram-hub-pulse" cx={HUB.x} cy={HUB.y} r={8} />
                             <circle className="ram-hub-dot" cx={HUB.x} cy={HUB.y} r={8} />
-                            <text className="ram-hub-label" x={HUB.x - 16} y={HUB.y - 16} textAnchor="end">
+                            {/* phones: the v3 crop starts at x=192, so the left-anchored
+                                label lost its first letter — park it under the hub in the
+                                open sea instead. Desktop keeps the original placement. */}
+                            <text
+                                className="ram-hub-label"
+                                x={mobile ? HUB.x : HUB.x - 16}
+                                y={mobile ? HUB.y + 34 : HUB.y - 16}
+                                textAnchor={mobile ? "middle" : "end"}
+                            >
                                 RAJKOT
                             </text>
-                            <text className="ram-hub-code" x={HUB.x - 16} y={HUB.y - 3} textAnchor="end">
+                            <text
+                                className="ram-hub-code"
+                                x={mobile ? HUB.x : HUB.x - 16}
+                                y={mobile ? HUB.y + 48 : HUB.y - 3}
+                                textAnchor={mobile ? "middle" : "end"}
+                            >
                                 RAJ HUB
                             </text>
 
@@ -232,6 +245,16 @@ export default function Connectivity() {
                                         }
                                     }}
                                 >
+                                    {/* invisible tap pad: ~44px+ on-screen at both the
+                                        desktop and the cropped mobile viewBox scales */}
+                                    <circle
+                                        className="ram-city-hit"
+                                        cx={c.x}
+                                        cy={c.y}
+                                        r={38}
+                                        fill="transparent"
+                                        aria-hidden="true"
+                                    />
                                     <circle className="ram-city-ring" cx={c.x} cy={c.y} r={12} />
                                     <circle className="ram-city-dot" cx={c.x} cy={c.y} r={4.6} />
                                     <text

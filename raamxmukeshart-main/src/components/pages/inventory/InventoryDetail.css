@@ -79,9 +79,11 @@
     height: 18px;
 }
 
-.inv-back:hover {
-    color: var(--accent);
-    transform: translateX(-3px);
+@media (hover: hover) and (pointer: fine) {
+    .inv-back:hover {
+        color: var(--accent);
+        transform: translateX(-3px);
+    }
 }
 
 .inv-hero h1 {
@@ -139,6 +141,36 @@
     object-fit: cover;
 }
 
+/* subject-aware focal point per film (data-film = category slug).
+   On phones the box is squarer than 16:9 and crops the sides; the x%
+   steers that crop to each film's subject. On desktop the box is wider
+   than 16:9 and crops vertically instead — y stays 50%, so desktop
+   framing is unchanged. Poster and film share the element/rule, so the
+   composition never jumps when playback begins.
+   digital: ITACA ad standee rides right-of-centre through the pan;
+   backlit: Gate 01 wall + staircase hold the centre;
+   outdoor: dusk unipole face sits centre-left;
+   hybrid: approach-road billboard left, terminal centre-right */
+.inv-hero-media[data-film="digital-screen-network"] img,
+.inv-hero-media[data-film="digital-screen-network"] video {
+    object-position: 55% 50%;
+}
+
+.inv-hero-media[data-film="in-terminal-backlit-boards"] img,
+.inv-hero-media[data-film="in-terminal-backlit-boards"] video {
+    object-position: 50% 50%;
+}
+
+.inv-hero-media[data-film="landmark-outdoor-boards"] img,
+.inv-hero-media[data-film="landmark-outdoor-boards"] video {
+    object-position: 42% 50%;
+}
+
+.inv-hero-media[data-film="hybrid-journey-plans"] img,
+.inv-hero-media[data-film="hybrid-journey-plans"] video {
+    object-position: 45% 50%;
+}
+
 .inv-facts {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -185,10 +217,12 @@
     transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
-.inv-plan-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--accent);
-    box-shadow: 0 24px 48px -28px rgba(15, 23, 42, 0.4);
+@media (hover: hover) and (pointer: fine) {
+    .inv-plan-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--accent);
+        box-shadow: 0 24px 48px -28px rgba(15, 23, 42, 0.4);
+    }
 }
 
 /* full-bleed site photo at the top of a plan card */
@@ -208,8 +242,10 @@
     transition: transform 0.6s ease;
 }
 
-.inv-plan-card:hover .inv-plan-photo img {
-    transform: scale(1.05);
+@media (hover: hover) and (pointer: fine) {
+    .inv-plan-card:hover .inv-plan-photo img {
+        transform: scale(1.05);
+    }
 }
 
 .inv-plan-card h3 {
@@ -323,8 +359,10 @@
     transition: transform 0.6s ease;
 }
 
-.inv-unit-gallery figure:hover img {
-    transform: scale(1.05);
+@media (hover: hover) and (pointer: fine) {
+    .inv-unit-gallery figure:hover img {
+        transform: scale(1.05);
+    }
 }
 
 /* Why points */
@@ -410,9 +448,11 @@
     color: #ffffff;
 }
 
-.inv-cta-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 16px 34px -14px rgba(226, 29, 45, 0.65);
+@media (hover: hover) and (pointer: fine) {
+    .inv-cta-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 16px 34px -14px rgba(226, 29, 45, 0.65);
+    }
 }
 
 .inv-cta-secondary {
@@ -420,9 +460,11 @@
     color: #f4f6ff;
 }
 
-.inv-cta-secondary:hover {
-    transform: translateY(-3px);
-    background: rgba(244, 246, 255, 0.08);
+@media (hover: hover) and (pointer: fine) {
+    .inv-cta-secondary:hover {
+        transform: translateY(-3px);
+        background: rgba(244, 246, 255, 0.08);
+    }
 }
 
 .inv-cta-card small {
@@ -436,6 +478,15 @@
 @media (max-width: 900px) {
     .inv-facts {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* the generic `.inv-detail section` padding (48px on phones) outranks
+   .inv-hero's own padding-top by specificity, leaving the back link
+   under the 73px fixed header — restore clearance on mobile only */
+@media (max-width: 768px) {
+    .inv-detail .inv-hero {
+        padding-top: 108px;
     }
 }
 
@@ -484,12 +535,41 @@
     transition: transform 0.25s ease;
 }
 
-.inv-plan-cta:hover {
-    background: var(--accent);
-    color: #ffffff;
-    transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+    .inv-plan-cta:hover {
+        background: var(--accent);
+        color: #ffffff;
+        transform: translateY(-2px);
+    }
+
+    .inv-plan-cta:hover svg {
+        transform: translateX(3px);
+    }
 }
 
-.inv-plan-cta:hover svg {
-    transform: translateX(3px);
+/* touch: 44px tap targets + pressed states instead of hover motion */
+@media (pointer: coarse) {
+    .inv-back {
+        padding-block: 14px;
+        margin-block: -10px 16px;
+    }
+
+    .inv-plan-cta {
+        padding: 15px 18px;
+    }
+
+    .inv-plan-cta:active {
+        background: var(--accent);
+        color: #ffffff;
+    }
+
+    .inv-cta-primary,
+    .inv-cta-secondary {
+        padding: 14px 26px;
+    }
+
+    .inv-cta-primary:active,
+    .inv-cta-secondary:active {
+        transform: scale(0.98);
+    }
 }

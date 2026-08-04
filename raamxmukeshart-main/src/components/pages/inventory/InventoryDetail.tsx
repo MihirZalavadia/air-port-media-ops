@@ -110,7 +110,12 @@ export default function InventoryDetail({ slug }: { slug: string }) {
                             <span>+ GST · availability on confirmation</span>
                         </div>
 
-                        <figure className="inv-hero-media" data-motion="card" data-motion-delay="0.22">
+                        <figure
+                            className="inv-hero-media"
+                            data-film={slug}
+                            data-motion="card"
+                            data-motion-delay="0.22"
+                        >
                             {INVENTORY_FILMS[slug] && !reduceMotion ? (
                                 <video
                                     poster={INVENTORY_FILMS[slug].poster}

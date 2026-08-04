@@ -85,9 +85,11 @@
     transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.5s ease;
 }
 
-.pub-cross-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 44px 84px -42px rgba(15, 23, 42, 0.5);
+@media (hover: hover) and (pointer: fine) {
+    .pub-cross-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 44px 84px -42px rgba(15, 23, 42, 0.5);
+    }
 }
 
 .pub-cross-card figure {
@@ -104,8 +106,10 @@
     transition: transform 0.7s ease;
 }
 
-.pub-cross-card:hover figure img {
-    transform: scale(1.05);
+@media (hover: hover) and (pointer: fine) {
+    .pub-cross-card:hover figure img {
+        transform: scale(1.05);
+    }
 }
 
 .pub-cross-card h2 {
@@ -136,8 +140,17 @@
     transition: transform 0.3s ease;
 }
 
-.pub-cross-card:hover strong svg {
-    transform: translateX(4px);
+@media (hover: hover) and (pointer: fine) {
+    .pub-cross-card:hover strong svg {
+        transform: translateX(4px);
+    }
+}
+
+/* touch: pressed feedback for the cross-sell card */
+@media (pointer: coarse) {
+    .pub-cross-card:active {
+        transform: scale(0.99);
+    }
 }
 
 @media (max-width: 900px) {

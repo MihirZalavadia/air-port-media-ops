@@ -57,10 +57,8 @@
     height: 18px;
 }
 
-.contact-back:hover {
-    color: var(--accent);
-    transform: translateX(-3px);
-}
+/* hover motion moved into the (hover: hover) block below so taps on
+   touch screens don't leave the link stuck shifted */
 
 .contact-page-eyebrow {
     display: flex;
@@ -110,4 +108,32 @@
    the double gap between hero and form */
 .contact-page .contact-section {
     padding-top: clamp(24px, 4vw, 48px);
+}
+
+/* on the home page the form drops 77px into the footer as an editorial
+   overlap — on the dedicated page that same drop reads as a blank gap
+   above the form and a collision with the footer. Flow naturally here. */
+.contact-page .contact-form {
+    top: 0;
+    margin-bottom: 0;
+}
+
+/* decorative hover motion stays a fine-pointer affordance */
+@media (hover: hover) and (pointer: fine) {
+    .contact-back:hover {
+        color: var(--accent);
+        transform: translateX(-3px);
+    }
+}
+
+/* comfortable tap target for the back link without shifting the layout */
+@media (pointer: coarse) {
+    .contact-back {
+        padding-block: 14px;
+        margin-block: -10px 16px;
+    }
+
+    .contact-back:active {
+        color: var(--accent);
+    }
 }

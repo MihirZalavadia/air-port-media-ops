@@ -462,10 +462,12 @@
   font-family: "JetBrains Mono", monospace;
 }
 
-.hero-trust span:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent);
-  background: rgba(226, 29, 45, 0.14);
+@media (hover: hover) and (pointer: fine) {
+  .hero-trust span:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    background: rgba(226, 29, 45, 0.14);
+  }
 }
 
 @keyframes trustIn {
@@ -539,7 +541,23 @@
 
 @media (max-width: 768px) {
   .hero {
-    min-height: calc(100vh - 78px);
+    /* svh: size against the small viewport so Android browser chrome
+       never pushes the stats bar below the first screen */
+    min-height: calc(100svh - 78px);
+  }
+
+  /* the 16:9 films show only a ~1/3-wide slice inside the tall phone
+     hero — steer the crop window to each film's subject instead of the
+     generic centre. Poster and film share the element, so the framing
+     never jumps when playback starts.
+     day: LED ad screens + baggage belt live left-of-centre;
+     night: lit terminal + airport sign sit left, foreground pole ~centre */
+  .hero-video--day {
+    object-position: 40% 50%;
+  }
+
+  .hero-video--night {
+    object-position: 30% 50%;
   }
 
   .hero-content {
@@ -585,7 +603,7 @@
 
 @media (max-width: 468px) {
   .hero-content {
-    padding: 140px 18px 30px 18px;
+    padding: 124px 18px 26px 18px;
   }
 
   .hero-h1 {
@@ -596,17 +614,20 @@
     font-size: 11px;
   }
 
-  .hero-stats {
-    grid-template-columns: 1fr;
-  }
-
+  /* stats stay 2×2 (inherited from the 768 rules) — a single column
+     stacked the hero to ~1.5 screens and pushed the stats out of the
+     first meaningful scroll. Compact cells keep it premium, not long. */
   .hero-stats article {
-    border-right: 0;
-    border-bottom: 1px solid rgba(255, 250, 240, 0.12);
+    padding: 16px 14px;
   }
 
-  .hero-stats article:last-child {
-    border-bottom: 0;
+  .hero-stats strong {
+    font-size: 1.7rem;
+  }
+
+  .hero-stats span {
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
   }
 }
 
@@ -689,13 +710,15 @@
   transition: opacity 0.3s ease, width 0.3s ease;
 }
 
-.hero-stats article:hover {
-  background: rgba(255, 255, 255, 0.05);
-}
+@media (hover: hover) and (pointer: fine) {
+  .hero-stats article:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
 
-.hero-stats article:hover::before {
-  opacity: 1;
-  width: 40px;
+  .hero-stats article:hover::before {
+    opacity: 1;
+    width: 40px;
+  }
 }
 
 .hero-stats strong {
@@ -893,14 +916,16 @@ body.site-ready .hero-scroll.hero-anim {
   transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.why-editorial-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(226, 29, 45, 0.4);
-  box-shadow: 0 44px 84px -42px rgba(15, 23, 42, 0.55);
-}
+@media (hover: hover) and (pointer: fine) {
+  .why-editorial-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(226, 29, 45, 0.4);
+    box-shadow: 0 44px 84px -42px rgba(15, 23, 42, 0.55);
+  }
 
-.why-editorial-card:hover::before {
-  transform: scaleX(1);
+  .why-editorial-card:hover::before {
+    transform: scaleX(1);
+  }
 }
 
 .why-editorial-card span {
@@ -1822,10 +1847,12 @@ body.site-ready .hero-scroll.hero-anim {
     transform 0.25s ease;
 }
 
-.inventory-chips button:hover {
-  border-color: var(--ink);
-  color: var(--ink);
-  transform: translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+  .inventory-chips button:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+    transform: translateY(-1px);
+  }
 }
 
 .inventory-chips button.active {
@@ -1871,10 +1898,12 @@ body.site-ready .hero-scroll.hero-anim {
     border-color 0.3s ease;
 }
 
-.inventory-work:hover {
-  transform: translateY(-6px);
-  border-color: var(--rule);
-  box-shadow: 0 44px 84px -42px rgba(15, 23, 42, 0.55);
+@media (hover: hover) and (pointer: fine) {
+  .inventory-work:hover {
+    transform: translateY(-6px);
+    border-color: var(--rule);
+    box-shadow: 0 44px 84px -42px rgba(15, 23, 42, 0.55);
+  }
 }
 
 .inventory-work-image {
@@ -1891,8 +1920,10 @@ body.site-ready .hero-scroll.hero-anim {
   transition: transform 0.7s ease;
 }
 
-.inventory-work:hover img {
-  transform: scale(1.06);
+@media (hover: hover) and (pointer: fine) {
+  .inventory-work:hover img {
+    transform: scale(1.06);
+  }
 }
 
 .inventory-work-image::after {
@@ -2246,6 +2277,33 @@ body.site-ready .hero-scroll.hero-anim {
 
 /* compact 2×2 inventory cards on phones */
 @media (max-width: 640px) {
+
+  /* 44px chips wrapped into a tall stack — one swipeable strip instead.
+     The overflow is contained here; it never widens the document. */
+  .inventory-filter-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 26px;
+  }
+
+  .inventory-chips {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .inventory-chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .inventory-chips button {
+    flex-shrink: 0;
+  }
+
   .inventory-masonry {
     gap: 12px;
   }
@@ -2306,7 +2364,8 @@ body.site-ready .hero-scroll.hero-anim {
   place-items: center;
 
   width: 100vw;
-  height: 100vh;
+  /* dvh: track the real visible viewport on Android (URL bar, keyboard) */
+  height: 100dvh;
 
   padding: 24px;
 
@@ -3260,8 +3319,10 @@ body.site-ready .hero-scroll.hero-anim {
   pointer-events: none;
 }
 
-.commercial-fixed-inner:hover::before {
-  animation: commercialShine 1.25s ease forwards;
+@media (hover: hover) and (pointer: fine) {
+  .commercial-fixed-inner:hover::before {
+    animation: commercialShine 1.25s ease forwards;
+  }
 }
 
 @keyframes commercialShine {
@@ -3578,8 +3639,10 @@ body.site-ready .hero-scroll.hero-anim {
   opacity: 0;
 }
 
-.commercial-fixed-inner:hover::before {
-  animation: commercialPremiumShine 1.25s cubic-bezier(0.22, 0.61, 0.24, 1) forwards;
+@media (hover: hover) and (pointer: fine) {
+  .commercial-fixed-inner:hover::before {
+    animation: commercialPremiumShine 1.25s cubic-bezier(0.22, 0.61, 0.24, 1) forwards;
+  }
 }
 
 @keyframes commercialPremiumShine {
@@ -5395,19 +5458,23 @@ body.site-ready .hero-scroll.hero-anim {
   pointer-events: none;
 }
 
-.premium-input:hover,
-.premium-select:hover,
-.phone-premium:hover {
-  background: var(--surface);
-  border-color: rgba(227, 32, 25, 0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 16px 34px -20px rgba(15, 23, 42, 0.3);
-}
+/* hover lift/shine on the field shells is a fine-pointer flourish —
+   on touch it made every field jump when the keyboard focus landed */
+@media (hover: hover) and (pointer: fine) {
+  .premium-input:hover,
+  .premium-select:hover,
+  .phone-premium:hover {
+    background: var(--surface);
+    border-color: rgba(227, 32, 25, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px -20px rgba(15, 23, 42, 0.3);
+  }
 
-.premium-input:hover::before,
-.premium-select:hover::before,
-.phone-premium:hover::before {
-  transform: translateX(100%);
+  .premium-input:hover::before,
+  .premium-select:hover::before,
+  .phone-premium:hover::before {
+    transform: translateX(100%);
+  }
 }
 
 .premium-input:focus-within,
@@ -5526,17 +5593,30 @@ body.site-ready .hero-scroll.hero-anim {
   transition: transform 0.3s ease;
 }
 
-.contact-submit:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 22px 48px rgba(227, 32, 25, 0.22);
+@media (hover: hover) and (pointer: fine) {
+  .contact-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 22px 48px rgba(227, 32, 25, 0.22);
+  }
+
+  .contact-submit:hover::before {
+    transform: scaleX(1);
+  }
+
+  .contact-submit:hover b {
+    transform: translateX(4px);
+  }
 }
 
-.contact-submit:hover::before {
-  transform: scaleX(1);
-}
+/* touch: pressed state carries the same accent language */
+@media (pointer: coarse) {
+  .contact-submit:active {
+    transform: scale(0.985);
+  }
 
-.contact-submit:hover b {
-  transform: translateX(4px);
+  .contact-submit:active::before {
+    transform: scaleX(1);
+  }
 }
 
 /* form validation + success states */
@@ -5584,7 +5664,10 @@ body.site-ready .hero-scroll.hero-anim {
   }
 
   .contact-form {
-    margin-bottom: 70px;
+    /* the 77px editorial drop is a desktop composition — on phones it
+       just tears a blank band between the info column and the form */
+    top: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -6076,9 +6159,11 @@ body.site-ready .hero-scroll.hero-anim {
     filter 0.45s ease;
 }
 
-.inventory-work:hover .inventory-work-image>img {
-  transform: scale(1.08);
-  filter: brightness(0.86);
+@media (hover: hover) and (pointer: fine) {
+  .inventory-work:hover .inventory-work-image>img {
+    transform: scale(1.08);
+    filter: brightness(0.86);
+  }
 }
 
 /* white shiny sweep animation */
@@ -6125,8 +6210,10 @@ body.site-ready .hero-scroll.hero-anim {
   opacity: 0;
 }
 
-.inventory-work:hover .inventory-work-image::after {
-  animation: premiumShine 1.15s cubic-bezier(0.22, 0.61, 0.24, 1) forwards;
+@media (hover: hover) and (pointer: fine) {
+  .inventory-work:hover .inventory-work-image::after {
+    animation: premiumShine 1.15s cubic-bezier(0.22, 0.61, 0.24, 1) forwards;
+  }
 }
 
 @keyframes premiumShine {
@@ -6149,8 +6236,10 @@ body.site-ready .hero-scroll.hero-anim {
   }
 }
 
-.inventory-work:hover .inventory-work-image::after {
-  left: 145%;
+@media (hover: hover) and (pointer: fine) {
+  .inventory-work:hover .inventory-work-image::after {
+    left: 145%;
+  }
 }
 
 /* badge */
@@ -6203,26 +6292,38 @@ body.site-ready .hero-scroll.hero-anim {
     transform 0.55s cubic-bezier(0.22, 0.61, 0.24, 1);
 }
 
-/* show 3 cards only on hover */
-.inventory-work:hover .gallery-card {
-  opacity: 1;
-  transform:
-    translateX(calc(var(--i) * -8px)) translateY(calc(var(--i) * -4px)) scale(1) rotate(calc(-12deg + (var(--i) * 12deg)));
-}
+/* show 3 cards only on hover — a fine-pointer flourish; on touch the
+   fan would cover most of the compact card image after a tap */
+@media (hover: hover) and (pointer: fine) {
+  .inventory-work:hover .gallery-card {
+    opacity: 1;
+    transform:
+      translateX(calc(var(--i) * -8px)) translateY(calc(var(--i) * -4px)) scale(1) rotate(calc(-12deg + (var(--i) * 12deg)));
+  }
 
-.inventory-work:hover .gallery-card:nth-child(1) {
-  transition-delay: 0.04s;
-}
+  .inventory-work:hover .gallery-card:nth-child(1) {
+    transition-delay: 0.04s;
+  }
 
-.inventory-work:hover .gallery-card:nth-child(2) {
-  transition-delay: 0.1s;
-}
+  .inventory-work:hover .gallery-card:nth-child(2) {
+    transition-delay: 0.1s;
+  }
 
-.inventory-work:hover .gallery-card:nth-child(3) {
-  transition-delay: 0.16s;
+  .inventory-work:hover .gallery-card:nth-child(3) {
+    transition-delay: 0.16s;
+  }
 }
 
 @media (max-width: 640px) {
+
+  /* the canonical block above pins height: 430px for the desktop cards —
+     unset it here (this block sits later in the cascade) so the 4/3
+     ratio from the earlier phone block wins and the 2×2 cards stay
+     compact and proportionate */
+  .inventory-work-image {
+    height: auto;
+  }
+
   .inventory-gallery-stack {
     top: 16px;
     right: 16px;
@@ -6785,11 +6886,13 @@ body.site-ready .hero-scroll.hero-anim {
 }
 
 /* Micro-interactions */
-.premium-arch-card:hover .premium-card-inner {
-  transform: translateY(-10px) scale(1.05);
-  box-shadow:
-    0 20px 40px rgba(15, 23, 42, 0.12),
-    0 1px 3px rgba(0, 0, 0, 0.05);
+@media (hover: hover) and (pointer: fine) {
+  .premium-arch-card:hover .premium-card-inner {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow:
+      0 20px 40px rgba(15, 23, 42, 0.12),
+      0 1px 3px rgba(0, 0, 0, 0.05);
+  }
 }
 
 .premium-card-inner img {
@@ -7025,16 +7128,18 @@ body.site-ready .hero-scroll.hero-anim {
   transition: opacity 0.4s ease;
 }
 
-.premium-feature-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(227, 32, 25, 0.45);
-  box-shadow:
-    0 44px 84px -42px rgba(15, 23, 42, 0.55),
-    0 0 0 1px rgba(227, 32, 25, 0.08);
-}
+@media (hover: hover) and (pointer: fine) {
+  .premium-feature-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(227, 32, 25, 0.45);
+    box-shadow:
+      0 44px 84px -42px rgba(15, 23, 42, 0.55),
+      0 0 0 1px rgba(227, 32, 25, 0.08);
+  }
 
-.premium-feature-card:hover::before {
-  opacity: 1;
+  .premium-feature-card:hover::before {
+    opacity: 1;
+  }
 }
 
 .card-watermark-num {
@@ -11232,8 +11337,14 @@ section,
     transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.team-card:hover .team-portrait,
-.team-card:focus .team-portrait {
+@media (hover: hover) and (pointer: fine) {
+    .team-card:hover .team-portrait {
+        transform: rotate(0deg) scale(1.03);
+    }
+}
+
+.team-card:focus .team-portrait,
+.team-card:focus-within .team-portrait {
     transform: rotate(0deg) scale(1.03);
 }
 
@@ -11248,7 +11359,13 @@ section,
     transition: filter 0.5s ease;
 }
 
-.team-card:hover .team-portrait img,
+@media (hover: hover) and (pointer: fine) {
+    .team-card:hover .team-portrait img {
+        filter: grayscale(0) contrast(1);
+    }
+}
+
+/* tap/keyboard focus reveals colour on touch devices too */
 .team-card:focus .team-portrait img,
 .team-card:focus-within .team-portrait img {
     filter: grayscale(0) contrast(1);
@@ -11293,11 +11410,13 @@ section,
     border-left: 1.5px solid #14110d;
 }
 
-.team-card:hover .team-bubble,
-.team-card:focus .team-bubble,
-.team-card:focus-within .team-bubble {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+@media (hover: hover) and (pointer: fine) {
+    .team-card:hover .team-bubble,
+    .team-card:focus .team-bubble,
+    .team-card:focus-within .team-bubble {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 /* desktop gets the hover bubble; touch gets the inline blurb instead —
@@ -11443,6 +11562,8 @@ section,
     box-shadow: 0 34px 70px -38px rgba(15, 23, 42, 0.55);
     aspect-ratio: 16 / 8.2;
     background: #0b0e14;
+    /* horizontal swipes navigate slides; vertical drags keep scrolling */
+    touch-action: pan-y;
 }
 
 .showcase-slide {
@@ -11526,12 +11647,16 @@ section,
     transition: opacity 0.3s ease, background 0.3s ease;
 }
 
-.showcase-stage:hover .showcase-arrow {
-    opacity: 1;
-}
+/* hover-reveal is a fine-pointer affordance; touch gets always-visible
+   arrows in the coarse-pointer block further down */
+@media (hover: hover) and (pointer: fine) {
+    .showcase-stage:hover .showcase-arrow {
+        opacity: 1;
+    }
 
-.showcase-arrow:hover {
-    background: var(--accent);
+    .showcase-arrow:hover {
+        background: var(--accent);
+    }
 }
 
 .showcase-prev { left: 14px; }
@@ -11566,11 +11691,58 @@ section,
     .showcase-stage {
         aspect-ratio: 4 / 3;
     }
+}
 
+/* touch: arrows always visible at full 44px size; dots keep their 8px
+   look inside a 44×44 tap pad; pressed states replace hover feedback */
+@media (pointer: coarse) {
     .showcase-arrow {
         opacity: 1;
-        width: 36px;
-        height: 36px;
+        width: 44px;
+        height: 44px;
+    }
+
+    .showcase-arrow:active {
+        background: var(--accent);
+    }
+
+    .showcase-dots {
+        gap: 0;
+        right: clamp(4px, 1.5vw, 16px);
+        bottom: clamp(2px, 1vw, 10px);
+    }
+
+    .showcase-dots button {
+        position: relative;
+        /* 8 dots must fit a 360px stage next to the caption — 34px wide
+           with zero gap keeps every pad ≥34×44 and edge-to-edge, so a
+           thumb always lands on a dot (44 wide would overflow the stage) */
+        width: 34px;
+        height: 44px;
+        background: transparent;
+    }
+
+    .showcase-dots button::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 8px;
+        height: 8px;
+        margin: -4px 0 0 -4px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.35);
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .showcase-dots button.on {
+        transform: none;
+        background: transparent;
+    }
+
+    .showcase-dots button.on::before {
+        background: var(--accent);
+        transform: scale(1.35);
     }
 }
 
@@ -11645,4 +11817,78 @@ section,
     font-size: 14.5px;
     line-height: 1.75;
     color: var(--ink-2);
+}
+
+/* =====================================================
+   Touch ergonomics — coarse pointers only.
+   Every actionable control gets a ≥44px hit area and a
+   pressed state standing in for the desktop hover language.
+   Desktop rendering is untouched by this block.
+   ===================================================== */
+@media (pointer: coarse) {
+
+    /* inventory filter chips: 34px → 44px tall */
+    .inventory-chips button {
+        height: 44px;
+        padding: 0 18px;
+        font-size: 11px;
+    }
+
+    .inventory-chips button:active {
+        border-color: var(--ink);
+        color: var(--ink);
+    }
+
+    .inventory-chips button.active:active {
+        color: var(--bg);
+    }
+
+    /* card tap feedback instead of the hover lift */
+    .inventory-work:active {
+        transform: scale(0.985);
+        border-color: var(--rule);
+    }
+
+    /* team social/contact chips: 36px → 44px */
+    .team-links a,
+    .team-links span.pending {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+    }
+
+    .team-links a:active {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #ffffff;
+    }
+
+    /* email + WhatsApp text links in the contact info column — grow the
+       hit area without shifting the visual rhythm */
+    .contact-info a {
+        display: inline-block;
+        padding-block: 12px;
+        margin-block: -12px;
+    }
+
+    .contact-info a:active {
+        color: var(--accent);
+    }
+
+    /* secondary partners link under the clients CTA */
+    .premium-secondary-link {
+        padding-block: 12px;
+        margin-top: 6px;
+    }
+}
+
+/* keyboard parity: visible focus for the controls that gained touch states */
+.inventory-chips button:focus-visible,
+.showcase-arrow:focus-visible,
+.showcase-dots button:focus-visible,
+.team-links a:focus-visible,
+.contact-submit:focus-visible,
+.inventory-popup-close:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
 }

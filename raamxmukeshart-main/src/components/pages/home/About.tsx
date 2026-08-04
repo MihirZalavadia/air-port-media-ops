@@ -28,7 +28,7 @@
 //         key: "legacy",
 //         title: "The Mukesh Art Foundation",
 //         meta: "Rooted Experience // Regional Legacy",
-//         body: "Built on decades of outdoor advertising dominance. Rajkot Airport Media inherits a strong eye for high-scale brand presence across Gujarat’s economic and travel corridors.",
+//         body: "Built on decades of outdoor advertising dominance. Rajkot Airport Media inherits a strong eye for high-scale brand presence across Gujaratâ€™s economic and travel corridors.",
 //         metric: "29+ Years Authority",
 //         coords: "420 / 01.A",
 //     },
@@ -810,7 +810,7 @@
 //         key: "legacy",
 //         title: "The Mukesh Art Foundation",
 //         meta: "Rooted Experience // Regional Legacy",
-//         body: "Built on decades of outdoor advertising dominance. Rajkot Airport Media inherits a strong eye for high-scale brand presence across Gujarat’s economic and travel corridors.",
+//         body: "Built on decades of outdoor advertising dominance. Rajkot Airport Media inherits a strong eye for high-scale brand presence across Gujaratâ€™s economic and travel corridors.",
 //         metric: "29+ Years Authority",
 //         coords: "420 / 01.A",
 //     },
@@ -1860,6 +1860,11 @@ export default function About() {
         const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         if (reduceMotion) return;
 
+        // same choreography on phones, ~60% of the travel â€” long translates
+        // read as lag on small screens (matches ScrollAnimations' scaling)
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+        const d = (px: number) => (isMobile ? Math.round(px * 0.6) : px);
+
         const ctx = gsap.context(() => {
             const introTl = gsap.timeline({
                 scrollTrigger: {
@@ -1904,7 +1909,7 @@ export default function About() {
                     ".about-title",
                     {
                         autoAlpha: 0,
-                        y: 56,
+                        y: d(56),
                         duration: 1,
                         clearProps: "transform,opacity,visibility",
                     },
@@ -1914,7 +1919,7 @@ export default function About() {
                     ".about-title span",
                     {
                         autoAlpha: 0,
-                        y: 32,
+                        y: d(32),
                         duration: 0.85,
                         clearProps: "transform,opacity,visibility",
                     },
@@ -1924,7 +1929,7 @@ export default function About() {
                     ".about-description",
                     {
                         autoAlpha: 0,
-                        y: 34,
+                        y: d(34),
                         duration: 0.85,
                         clearProps: "transform,opacity,visibility",
                     },
@@ -1933,7 +1938,7 @@ export default function About() {
 
             gsap.from(".matrix-strip-segment", {
                 autoAlpha: 0,
-                y: 76,
+                y: d(76),
                 rotateX: 6,
                 scale: 0.96,
                 duration: 1,
@@ -2009,7 +2014,7 @@ export default function About() {
 
             gsap.from(".legacy-signal-dock", {
                 autoAlpha: 0,
-                y: 72,
+                y: d(72),
                 scale: 0.96,
                 duration: 1,
                 ease: "power4.out",
@@ -2037,7 +2042,7 @@ export default function About() {
 
             gsap.from(".legacy-signal-card", {
                 autoAlpha: 0,
-                y: 42,
+                y: d(42),
                 scale: 0.96,
                 duration: 0.82,
                 stagger: 0.12,
@@ -2066,17 +2071,20 @@ export default function About() {
             <div className="ambient-blue-glow" />
 
             <div className="cinematic-wrapper">
+                {/* no data-motion here: this section runs its own GSAP
+                    choreography below â€” double-binding the same nodes to
+                    ScrollAnimations made two systems fight over transforms */}
                 <header className="about-header">
-                    <span className="about-eyebrow" data-motion="clip">
+                    <span className="about-eyebrow">
                         About Rajkot Airport Media
                     </span>
 
-                    <h2 className="about-title" data-motion="up" data-motion-delay="0.08">
+                    <h2 className="about-title">
                         A Legacy Built Through
                         <span> Outdoor & Airport Media</span>
                     </h2>
 
-                    <p className="about-description" data-motion="up" data-motion-delay="0.16">
+                    <p className="about-description">
                         Mukesh started with wall painting and advertising, expanded into
                         outdoor hoardings, and now brings trusted media execution to premium
                         airport advertising at Rajkot Airport.
@@ -2087,7 +2095,6 @@ export default function About() {
                     className={`cinematic-strip-matrix is-three-history active-${activeSegment} ${isPending ? "is-transitioning" : ""
                         }`}
                     ref={containerRef}
-                    data-motion-group
                 >
                     {strategicPillars.map((item, index) => {
                         const isCurrent = activeSegment === index;
@@ -2104,7 +2111,6 @@ export default function About() {
                                 className={`matrix-strip-segment ${position}`}
                                 onClick={() => handleSegmentChange(index)}
                                 onMouseEnter={() => handleSegmentChange(index)}
-                                data-motion-item
                             >
                                 <div className="strip-header-zone">
                                     <span className="strip-index">{item.index}</span>
@@ -2146,7 +2152,7 @@ export default function About() {
                     })}
                 </div>
 
-                <div className="legacy-signal-dock" data-motion="zoom" data-motion-delay="0.1">
+                <div className="legacy-signal-dock">
                     <div className="legacy-signal-head">
                         <span>Growth Path</span>
                         <h3>From street-level visibility to airport media presence.</h3>

@@ -54,11 +54,16 @@ export default function Hero() {
         <section id="top" className="hero">
             {reduceMotion ? (
                 /* eslint-disable-next-line @next/next/no-img-element */
-                <img className="hero-video" src={film.poster} alt="" aria-hidden />
+                <img
+                    className={`hero-video hero-video--${theme}`}
+                    src={film.poster}
+                    alt=""
+                    aria-hidden
+                />
             ) : (
                 <video
                     key={film.src}
-                    className="hero-video"
+                    className={`hero-video hero-video--${theme}`}
                     poster={film.poster}
                     autoPlay
                     muted

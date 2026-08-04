@@ -96,9 +96,11 @@
     height: 18px;
 }
 
-.partners-back:hover {
-    color: var(--accent);
-    transform: translateX(-3px);
+@media (hover: hover) and (pointer: fine) {
+    .partners-back:hover {
+        color: var(--accent);
+        transform: translateX(-3px);
+    }
 }
 
 .partners-hero h1 {
@@ -399,14 +401,16 @@
     z-index: 1;
 }
 
-.roster-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent);
-    box-shadow: 0 16px 34px rgba(15, 23, 42, 0.12);
-}
+@media (hover: hover) and (pointer: fine) {
+    .roster-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent);
+        box-shadow: 0 16px 34px rgba(15, 23, 42, 0.12);
+    }
 
-.roster-card:hover::before {
-    transform: scaleX(1);
+    .roster-card:hover::before {
+        transform: scaleX(1);
+    }
 }
 
 /* the logo sits on a fixed light plate in both themes */
@@ -430,9 +434,11 @@
     transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-.roster-card:hover .roster-logo img {
-    filter: saturate(1);
-    transform: scale(1.05);
+@media (hover: hover) and (pointer: fine) {
+    .roster-card:hover .roster-logo img {
+        filter: saturate(1);
+        transform: scale(1.05);
+    }
 }
 
 .roster-card .roster-name {
@@ -510,14 +516,20 @@
     z-index: 0;
 }
 
-.partners-cta-btn:hover {
-    transform: translateY(-2px);
-    border-color: var(--accent);
-    box-shadow: 0 16px 34px rgba(227, 32, 25, 0.26);
-}
+@media (hover: hover) and (pointer: fine) {
+    .partners-cta-btn:hover {
+        transform: translateY(-2px);
+        border-color: var(--accent);
+        box-shadow: 0 16px 34px rgba(227, 32, 25, 0.26);
+    }
 
-.partners-cta-btn:hover::before {
-    transform: translateX(0);
+    .partners-cta-btn:hover::before {
+        transform: translateX(0);
+    }
+
+    .partners-cta-btn:hover svg {
+        transform: translateX(4px);
+    }
 }
 
 .partners-cta-btn span,
@@ -530,11 +542,40 @@
     transition: transform 0.35s ease;
 }
 
-.partners-cta-btn:hover svg {
-    transform: translateX(4px);
+/* touch: ≥44px hit areas + pressed fill (desktop untouched) */
+@media (pointer: coarse) {
+    .partners-back {
+        padding-block: 14px;
+        margin-block: -10px 16px;
+    }
+
+    .partners-cta-btn {
+        padding: 16px 26px;
+    }
+
+    .partners-cta-btn:active {
+        border-color: var(--accent);
+    }
+
+    .partners-cta-btn:active::before {
+        transform: translateX(0);
+    }
+
+    .roster-card:active {
+        border-color: var(--accent);
+    }
 }
 
 /* ============ Responsive ============ */
+
+/* the generic `.partners-page section` padding (48px on phones) outranks
+   .partners-hero's own padding-top, tucking the back link under the
+   fixed header — restore clearance on mobile only */
+@media (max-width: 768px) {
+    .partners-page .partners-hero {
+        padding-top: 108px;
+    }
+}
 
 @media (max-width: 760px) {
     .roster-grid {
