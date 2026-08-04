@@ -319,6 +319,8 @@ export default function Gallery() {
     const sectionRef = useRef<HTMLElement | null>(null);
     const visibleRef = useRef(false);
     const pausedRef = useRef(false);
+    // slide was held while off-screen/paused → owed a full dwell on resume
+    const heldRef = useRef(false);
 
     // auto-advance with per-slide dwell; holds while off-screen or hovered
     useEffect(() => {
@@ -344,8 +346,17 @@ export default function Gallery() {
         let timer: number;
         const tick = () => {
             if (visibleRef.current && !pausedRef.current) {
-                setActive((a) => (a + 1) % SLIDES.length);
+                // if the slide was held (off-screen/hovered), grant it a
+                // full dwell now — otherwise scrolling to the gallery
+                // flips off slide 1 within a second of it appearing
+                if (heldRef.current) {
+                    heldRef.current = false;
+                    timer = window.setTimeout(tick, SLIDES[active].duration);
+                } else {
+                    setActive((a) => (a + 1) % SLIDES.length);
+                }
             } else {
+                heldRef.current = true;
                 timer = window.setTimeout(tick, 800);
             }
         };

@@ -2225,8 +2225,9 @@ body.site-ready .hero-scroll.hero-anim {
     grid-template-columns: 1fr;
   }
 
+  /* stays 2-up like desktop — one card per row reads as endless scroll */
   .inventory-masonry {
-    grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .inventory-work,
@@ -2240,6 +2241,59 @@ body.site-ready .hero-scroll.hero-anim {
 
   .form-two {
     grid-template-columns: 1fr;
+  }
+}
+
+/* compact 2×2 inventory cards on phones */
+@media (max-width: 640px) {
+  .inventory-masonry {
+    gap: 12px;
+  }
+
+  .inventory-work {
+    border-radius: 14px;
+  }
+
+  .inventory-work-image {
+    aspect-ratio: 4 / 3;
+  }
+
+  .inventory-work-image span {
+    top: 8px;
+    left: 8px;
+    padding: 5px 9px;
+    font-size: 8.5px;
+  }
+
+  .inventory-work-body {
+    padding: 12px 13px 15px;
+  }
+
+  .inventory-work-body h3 {
+    margin: 6px 0 8px;
+    font-size: 16.5px;
+    line-height: 1.12;
+  }
+
+  /* taglines + quotes make the tiles tall — the detail page has them */
+  .inventory-work-body p,
+  .inventory-work-body blockquote {
+    display: none;
+  }
+
+  .inventory-work-meta {
+    gap: 5px;
+    margin: 0 0 10px;
+  }
+
+  .inventory-work-meta span {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  .inventory-work-body strong {
+    margin-top: 8px;
+    font-size: 9.5px;
   }
 }
 
@@ -11244,6 +11298,26 @@ section,
 .team-card:focus-within .team-bubble {
     opacity: 1;
     transform: translateY(0) scale(1);
+}
+
+/* desktop gets the hover bubble; touch gets the inline blurb instead —
+   a tap-focused bubble parks itself over the portrait */
+.team-desc-touch {
+    display: none;
+    margin: 14px 0 0;
+    color: var(--ink-2);
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+@media (hover: none) {
+    .team-bubble {
+        display: none;
+    }
+
+    .team-desc-touch {
+        display: block;
+    }
 }
 
 .team-card:focus {

@@ -333,6 +333,10 @@ export default function Team() {
                                     </div>
                                 </div>
 
+                                {/* touch devices: the hover bubble would sit
+                                    on the portrait, so the blurb lives here */}
+                                <p className="team-desc-touch">{person.desc}</p>
+
                                 <div className="team-links">
                                     {person.linkedin ? (
                                         <a
