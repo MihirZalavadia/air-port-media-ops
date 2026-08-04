@@ -46,9 +46,10 @@ export default function Connectivity() {
     const [mobile, setMobile] = useState(false);
     const pinnedRef = useRef<number | null>(null);
 
-    // Phones crop the canvas to the inked region (measured x 189–777):
-    // the full 1000×700 board letterboxes India into a sliver of dead
-    // space on narrow cards. viewBox swap = exact crop, no CSS math.
+    // Phones crop the canvas to the inked region (rendered bbox:
+    // x 204–780, y 29–670, +12u padding): the full 1000×700 board
+    // letterboxes India into a sliver on narrow cards. viewBox swap =
+    // exact crop, no CSS math.
     useEffect(() => {
         const mq = window.matchMedia("(max-width: 720px)");
         const sync = () => setMobile(mq.matches);
@@ -141,8 +142,8 @@ export default function Connectivity() {
                     <div className="ram-map-card" data-motion="zoom" data-motion-delay="0.12">
                         <svg
                             className="ram-route-svg"
-                            viewBox={mobile ? "175 70 615 570" : "0 0 1000 700"}
-                            style={mobile ? { aspectRatio: "615 / 570" } : undefined}
+                            viewBox={mobile ? "192 17 600 665" : "0 0 1000 700"}
+                            style={mobile ? { aspectRatio: "600 / 665" } : undefined}
                             role="img"
                             aria-labelledby="ram-conn-map-title ram-conn-map-desc"
                         >
