@@ -91,4 +91,29 @@ $headers = "From: Mukesh Art Website <info@mukeshart.in>\r\n"
     . "X-Mailer: PHP";
 @mail('info@mukeshart.in', $subject, $body, $headers);
 
+// Forward to the shared Google Sheet via Apps Script webhook.
+// URL + secret live OUTSIDE the webroot in lead_config.php (provisioned
+// by the deploy workflow from GitHub secrets). Missing config or a slow
+// webhook must never break the lead response.
+$leadConfigPath = dirname(__DIR__, 2) . '/lead_config.php';
+if (is_file($leadConfigPath)) {
+    $leadConfig = require $leadConfigPath;
+    if (!empty($leadConfig['sheets_webhook_url'])) {
+        $ch = curl_init($leadConfig['sheets_webhook_url']);
+        curl_setopt_array($ch, [
+            CURLOPT_POST           => true,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true, // Apps Script replies via 302
+            CURLOPT_TIMEOUT        => 8,
+            CURLOPT_HTTPHEADER     => ['Content-Type: application/json'],
+            CURLOPT_POSTFIELDS     => json_encode(
+                ['token' => $leadConfig['sheets_token'] ?? ''] + $lead,
+                JSON_UNESCAPED_UNICODE
+            ),
+        ]);
+        @curl_exec($ch);
+        curl_close($ch);
+    }
+}
+
 echo json_encode(['ok' => true]);

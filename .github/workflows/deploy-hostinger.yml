@@ -77,3 +77,22 @@ jobs:
             u366143613@82.25.125.220 \
             "cat > /home/u366143613/domains/mukeshart.in/admin_config.php && chmod 600 /home/u366143613/domains/mukeshart.in/admin_config.php"
           echo "Admin config provisioned."
+
+      # Lead → Google Sheet forwarding config (outside webroot). Optional:
+      # without the secret, lead.php simply skips the Sheet step.
+      - name: Provision lead config (outside webroot)
+        env:
+          SSHPASS: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          SHEETS_WEBHOOK_URL: ${{ secrets.SHEETS_WEBHOOK_URL }}
+          SHEETS_TOKEN: ${{ secrets.SHEETS_TOKEN }}
+        run: |
+          if [ -z "$SHEETS_WEBHOOK_URL" ]; then
+            echo "SHEETS_WEBHOOK_URL not set — skipping lead config provisioning."
+            exit 0
+          fi
+          printf "<?php\nreturn [\n    'sheets_webhook_url' => '%s',\n    'sheets_token' => '%s',\n];\n" \
+            "$SHEETS_WEBHOOK_URL" "$SHEETS_TOKEN" | \
+          sshpass -e ssh -p 65002 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+            u366143613@82.25.125.220 \
+            "cat > /home/u366143613/domains/mukeshart.in/lead_config.php && chmod 600 /home/u366143613/domains/mukeshart.in/lead_config.php"
+          echo "Lead config provisioned."

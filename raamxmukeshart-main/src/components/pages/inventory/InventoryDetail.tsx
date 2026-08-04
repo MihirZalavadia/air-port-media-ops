@@ -29,13 +29,26 @@ import { getCategoryVisuals } from "@/src/lib/inventoryVisuals";
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 // only REAL footage plays on inventory pages (owner rule: no stock/AI
-// on inventory) — outdoor has the dusk unipole shoot with the live
-// ITACA campaign; the indoor categories use approved site photos until
-// real indoor footage arrives
+// on inventory) — all four films are owner shoots at Hirasar (2026-08):
+// digital = the ad standee playing a live campaign, backlit = Gate 01
+// terminal interior, outdoor = dusk unipole with the ITACA campaign,
+// hybrid = approach road unipole → terminal facade (the journey)
 const INVENTORY_FILMS: Record<string, { src: string; poster: string }> = {
+    "digital-screen-network": {
+        src: `${BASE}/videos/inv_digital.mp4`,
+        poster: `${BASE}/videos/inv_digital_poster.jpg`,
+    },
+    "in-terminal-backlit-boards": {
+        src: `${BASE}/videos/inv_backlit.mp4`,
+        poster: `${BASE}/videos/inv_backlit_poster.jpg`,
+    },
     "landmark-outdoor-boards": {
         src: `${BASE}/videos/inv_outdoor.mp4`,
         poster: `${BASE}/videos/inv_outdoor_poster.jpg`,
+    },
+    "hybrid-journey-plans": {
+        src: `${BASE}/videos/inv_hybrid.mp4`,
+        poster: `${BASE}/videos/inv_hybrid_poster.jpg`,
     },
 };
 
