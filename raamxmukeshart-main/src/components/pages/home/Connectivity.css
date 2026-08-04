@@ -562,19 +562,15 @@
     }
 }
 @media (max-width: 720px) {
-    /* the 1000×700 canvas has wide empty margins around India — on a
-       narrow phone card, oversize the svg and let the card's
-       overflow:hidden crop them (window ≈ x 177–822, RAJ label safe) */
+    /* the component swaps the svg viewBox to the inked region on
+       phones (Connectivity.tsx) — here we just let the box size to it */
     .ram-map-card {
         min-height: 0;
         border-radius: 18px;
     }
     .ram-route-svg {
         min-height: 0;
-        width: 155%;
-        margin-left: -27.5%;
         height: auto;
-        aspect-ratio: 1000 / 700;
     }
     .ram-map-card::before {
         display: none;
