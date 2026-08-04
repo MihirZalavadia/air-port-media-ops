@@ -179,6 +179,11 @@ Every meaningful decision — stack choice, brand direction, pricing model, part
 | 2026-07-17 | Full public client roster at /partners/ (29 logos) | Mukesh sir/Ridham want every client visible. Logos identified from their zip + official web sources; displayed on fixed light plates so they stay identifiable in the night theme. Inox Casting excluded — company name unverifiable online. |
 | 2026-07-27 | Repo cleanup for handover; GitHub Pages workflow removed | Stray root folders sorted into the numbered structure (design work → 02_brand, photography → 04_media_kit, scratch → 99_archive). Pages deploy deleted: Hostinger is the only host; the Pages copy was a public duplicate of the site. |
 | 2026-07-27 | Repo must go PRIVATE (pending Mihir's click) | Discovered public during cleanup. Contains client list, pricing, meeting context, personal details in CLAUDE.md. Nothing in the toolchain needs public: Hostinger deploys via SSH, admin console uses a PAT. |
+| 2026-07-27 | GBP created; ₹20k Google Ads credit skipped | Credit is a spend-match offer (₹20k own spend in 60 days), not free money — wrong for current budget stage. GBP itself is the free local-SEO lever. Video verification pending. |
+| 2026-08-04 | Leads → shared Google Sheet via Apps Script webhook | Zero-cost, no new services: lead.php forwards server-side; URL+token in GitHub secrets → config outside webroot (same pattern as admin console). Sheet failure can never break the form (email + JSONL log remain primary). |
+| 2026-08-04 | All 4 inventory pages use real owner footage only | Owner rule (no stock/AI on inventory) now fully satisfiable — Aug Hirasar phone shoot covers digital standee, Gate 01, dusk unipole, approach-road journey. |
+| 2026-08-04 | Varmora logo = official white-on-magenta lockup from SEBI DRHP cover | User flagged the reconstructed magenta-on-white as unofficial. No public high-res colored-on-white exists (site/Wayback/socials/catalogs/DRHP all checked). DRHP cover art restored to 716×256. General learning: listed-company DRHP/RHP covers are top-tier official logo sources. |
+| 2026-08-04 | Work log + pending list lives in 01_strategy_and_pitch/work_log_and_pending_*.md | Session handoffs read that file first; decision log here stays for *decisions*, not task state. |
 | | | |
 
 ---
