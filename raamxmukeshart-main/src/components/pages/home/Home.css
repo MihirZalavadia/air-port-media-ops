@@ -6340,6 +6340,37 @@ body.site-ready .hero-scroll.hero-anim {
   }
 }
 
+/* touch can't hover: rest the three site stills permanently open — the
+   hover fan's end state becomes a small pinned collage on the card */
+@media (hover: none) {
+  .inventory-work .gallery-card {
+    opacity: 1;
+    transform:
+      translateX(calc(var(--i) * -8px)) translateY(calc(var(--i) * -4px)) scale(1) rotate(calc(-12deg + (var(--i) * 12deg)));
+  }
+}
+
+/* compact phone cards: shrink the collage and drop it to the bottom-right
+   corner, over the image gradient and clear of the top-left badge */
+@media (hover: none) and (max-width: 640px) {
+  .inventory-gallery-stack {
+    top: auto;
+    bottom: 8px;
+    right: 12px;
+    width: 100px;
+    height: 66px;
+  }
+
+  .gallery-card {
+    width: 42px;
+    height: 56px;
+    top: calc(var(--i) * 4px);
+    right: calc(var(--i) * 25px);
+    border-width: 1.5px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+  }
+}
+
 /* black site stills label */
 .inventory-site-count {
   position: absolute;
@@ -7020,7 +7051,11 @@ body.site-ready .hero-scroll.hero-anim {
 
 @media (max-width: 850px) {
 
-  /* Safely switch to an elegant grid layout on tablets/mobile where the arch fails to display well */
+  /* The full arch can't fit below 850px — echo it instead of flattening
+     it: two hand-fanned rows of five plates, each row curving like a
+     fragment of the desktop arch (edges dip and tilt outward, centre
+     rides high and on top). The live brand cross-fade keeps rotating
+     through the roster exactly as on desktop. */
   .premium-showcase-section {
     padding: 70px 0;
   }
@@ -7031,21 +7066,57 @@ body.site-ready .hero-scroll.hero-anim {
     left: auto;
     width: 100%;
     height: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 16px;
-    margin-bottom: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 20px;
+    padding-top: 10px;
+    margin-bottom: 46px;
   }
 
   .premium-arch-card {
     position: relative;
     bottom: auto;
     left: auto;
-    width: 100%;
-    height: 130px;
-    margin-left: 0;
-    transform: none !important;
-    /* Discards the arch rotation rule cleanly */
+    width: calc(20% - 8px);
+    max-width: 96px;
+    height: auto;
+    aspect-ratio: 96 / 122;
+    margin: 0 4px;
+    z-index: var(--fan-z, 1);
+    /* the wider breakpoints pivot rotation around a point deep below the
+       card (the arch radius) — the fan pivots around the plate itself */
+    transform-origin: 50% 50%;
+    transform: translateY(var(--fan-y, 0px)) rotate(var(--fan-r, 0deg));
+  }
+
+  /* the arc, per position in each row of five */
+  .premium-arch-card:nth-child(5n + 1) {
+    --fan-y: 16px;
+    --fan-r: -8deg;
+  }
+
+  .premium-arch-card:nth-child(5n + 2) {
+    --fan-y: 5px;
+    --fan-r: -4deg;
+    --fan-z: 2;
+  }
+
+  .premium-arch-card:nth-child(5n + 3) {
+    --fan-y: 0px;
+    --fan-r: 0deg;
+    --fan-z: 3;
+  }
+
+  .premium-arch-card:nth-child(5n + 4) {
+    --fan-y: 5px;
+    --fan-r: 4deg;
+    --fan-z: 2;
+  }
+
+  .premium-arch-card:nth-child(5n + 5) {
+    --fan-y: 16px;
+    --fan-r: 8deg;
   }
 
   .premium-features-row {
@@ -11411,12 +11482,20 @@ section,
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .team-card:hover .team-bubble,
-    .team-card:focus .team-bubble,
-    .team-card:focus-within .team-bubble {
+    .team-card:hover .team-bubble {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
+}
+
+/* keyboard focus AND touch tap reveal the bubble — the card carries
+   tabIndex, so a tap focuses it and a tap elsewhere dismisses it.
+   This brings the profile text back to Android deliberately (no sticky
+   hover involved), instead of suppressing it entirely. */
+.team-card:focus .team-bubble,
+.team-card:focus-within .team-bubble {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
 /* desktop gets the hover bubble; touch gets the inline blurb instead —
@@ -11429,15 +11508,10 @@ section,
     line-height: 1.65;
 }
 
-@media (hover: none) {
-    .team-bubble {
-        display: none;
-    }
-
-    .team-desc-touch {
-        display: block;
-    }
-}
+/* touch: the bubble reveals on tap via the :focus-within rule above —
+   no display:none suppression anymore, and the duplicate inline blurb
+   stays hidden (its base display is none). A tap on the portrait shows
+   the text; a tap anywhere else dismisses it. */
 
 .team-card:focus {
     outline: none;
