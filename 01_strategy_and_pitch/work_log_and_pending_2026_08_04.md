@@ -1,5 +1,8 @@
 # Work Log & Pending Items — as of 2026-08-04
 
+> **SUPERSEDED** by `work_log_and_pending_2026_08_05.md` — read that
+> one instead. Kept for history.
+
 Canonical project-state note. Next session: read this + CLAUDE.md and
 continue from §Pending. (Older context: README.md has the full site
 flows; 03_website/seo_target_keywords_2026_07.md has the SEO recipe.)

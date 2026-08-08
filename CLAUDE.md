@@ -184,6 +184,7 @@ Every meaningful decision — stack choice, brand direction, pricing model, part
 | 2026-08-04 | All 4 inventory pages use real owner footage only | Owner rule (no stock/AI on inventory) now fully satisfiable — Aug Hirasar phone shoot covers digital standee, Gate 01, dusk unipole, approach-road journey. |
 | 2026-08-04 | Varmora logo = official white-on-magenta lockup from SEBI DRHP cover | User flagged the reconstructed magenta-on-white as unofficial. No public high-res colored-on-white exists (site/Wayback/socials/catalogs/DRHP all checked). DRHP cover art restored to 716×256. General learning: listed-company DRHP/RHP covers are top-tier official logo sources. |
 | 2026-08-04 | Work log + pending list lives in 01_strategy_and_pitch/work_log_and_pending_*.md | Session handoffs read that file first; decision log here stays for *decisions*, not task state. |
+| 2026-08-05 | Touch conventions are now codebase law: decorative hovers live inside `@media (hover:hover) and (pointer:fine)`, touch gets `:active` + ≥44px hit areas via `pointer:coarse` blocks; film crops are subject-aware via per-slug/theme focal hooks | Full Android polish pass shipped (commit 2e33713, deployed). Ridham reviews on Android — future features that skip these patterns regress to sticky hovers and bad crops. Details in work_log_and_pending_2026_08_05.md. |
 | | | |
 
 ---
