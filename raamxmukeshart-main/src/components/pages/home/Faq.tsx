@@ -9,6 +9,10 @@ const FAQS = [
         a: "Contact Mukesh Art (Mukesh Airport Media) — the airport advertising media partner at Rajkot International Airport (Hirasar), working with the Airports Authority of India. Share your brand and timeline through the enquiry form or WhatsApp, and the team maps the right screens, boards, or packages.",
     },
     {
+        q: "Who handles airport marketing at Rajkot International Airport?",
+        a: "Mukesh Art (Mukesh Airport Media) holds the official Airport Marketing concession at Rajkot International Airport (Hirasar), working in partnership with the Airports Authority of India. One team manages the airport marketing inventory end to end — digital screens, backlit boards, outdoor unipoles and trolley branding — from planning and installation to campaign reporting.",
+    },
+    {
         q: "How much does Rajkot Airport advertising cost?",
         a: "Public teaser rates: digital LED screen packages start around ₹2 Lac/month, in-terminal backlit boards from ₹1.5 Lac/month, and landmark outdoor boards from ₹6 Lac/month (all + GST). The exact rate card and availability are shared on request.",
     },
@@ -19,6 +23,10 @@ const FAQS = [
     {
         q: "How many passengers will see my brand at Rajkot Airport?",
         a: "Roughly 1.25–1.30 lakh passenger visits a month (4,200+ a day) with 28 daily flight movements, and 35–50 minutes of average dwell time inside security — plus every dropper and taxi on the approach road for the outdoor boards.",
+    },
+    {
+        q: "Do you run airport marketing campaigns for brands outside Rajkot?",
+        a: "Yes — brands and agencies from across Gujarat and India use Rajkot airport marketing to reach Saurashtra's business travellers and NRI passengers. The team handles media planning, creative adaptation, printing, installation and campaign reporting, so a campaign can run end to end without the advertiser visiting Rajkot.",
     },
 ];
 

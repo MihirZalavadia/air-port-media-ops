@@ -53,6 +53,9 @@ export default function SeoSchema() {
                 knowsAbout: [
                     "Airport Advertising",
                     "Airport Branding",
+                    "Airport Marketing",
+                    "Rajkot Airport Marketing",
+                    "Airport Marketing & Visitor Management",
                     "Rajkot Airport Advertising",
                     "Rajkot Airport Branding",
                     "Hirasar Airport Advertising",
@@ -72,6 +75,7 @@ export default function SeoSchema() {
                 serviceType: [
                     "Airport Advertising",
                     "Airport Branding",
+                    "Airport Marketing",
                     "Digital Screen Advertising",
                     "Static Board Advertising",
                     "Terminal Branding",

@@ -13,9 +13,9 @@ export const siteConfig = {
 
     ogImage: "/images/og/rajkot-airport-media.jpg",
 
-    title: "Rajkot Airport Advertising Media | Mukesh Art",
+    title: "Rajkot Airport Marketing & Advertising Media | Mukesh Art",
     description:
-        "Advertise your brand at Rajkot Airport with premium airport advertising media, digital screens, static boards, terminal branding, outdoor hoardings, and custom airport media packages by Mukesh Art.",
+        "Advertise your brand at Rajkot Airport with premium airport advertising media, digital screens, static boards, terminal branding, outdoor hoardings, and custom airport marketing packages by Mukesh Art.",
 
     keywords: [
         "airport advertising in Rajkot",
@@ -91,14 +91,23 @@ export const siteConfig = {
         "Mukesh Publicity Rajkot",
         "Mukesh Publicity Morbi",
         "Mukeshart OOH marketing",
+        // client-requested "marketing" searches (2026-08-09)
+        "airport marketing",
+        "airport marketing Rajkot",
+        "Rajkot marketing",
+        "Hirasar airport marketing",
+        "Gujarat airport marketing",
+        "airport marketing company Gujarat",
+        "airport marketing and visitor management",
+        "Mukeshart airport marketing",
     ],
 };
 
 export const pageSeo = {
     home: {
-        title: "Rajkot Airport Advertising Media | Premium Airport Branding",
+        title: "Rajkot Airport Marketing & Advertising | Premium Airport Branding",
         description:
-            "Advertise your brand at Rajkot Airport with premium airport media, digital screens, static boards, terminal branding, outdoor hoardings, and custom airport advertising packages by Mukesh Art.",
+            "Advertise your brand at Rajkot Airport with premium airport media, digital screens, static boards, terminal branding, outdoor hoardings, and end-to-end airport marketing campaigns by Mukesh Art.",
         path: "/",
     },
 
