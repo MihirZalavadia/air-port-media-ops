@@ -15,7 +15,7 @@ Companion doc: `seo_target_keywords_2026_07.md` (how keywords work, the
 | Keyword | Winnable? | How | Timeline |
 |---|---|---|---|
 | Rajkot airport marketing / media / advertising | ✅ Yes | Organic + GBP local pack. We're the actual concessionaire; almost no one competes. Ranked briefly in July (new-site boost), lost in the early-Aug Google flux. Will return and stick once off-page signals land. | 2–6 weeks |
-| Rajkot marketing | 🟡 Partly | **Local pack, not organic.** Competing with every digital-marketing agency in Rajkot for the organic slots. But the map pack sits at the top of page 1 for this search from Rajkot — GBP puts us there. | 4–8 weeks (after GBP verification) |
+| Rajkot marketing | 🟡 Partly | **Local pack, not organic.** Competing with every digital-marketing agency in Rajkot for the organic slots. But the map pack sits at the top of page 1 for this search from Rajkot — a complete, reviewed GBP puts us there (verified ✓ 2026-08-09; Morbi address is a handicap for Rajkot-city searches, see Step 1). | 4–8 weeks (after profile completion + reviews) |
 | Airport marketing (generic) | 🟡 Localized only | From Rajkot/Saurashtra, Google localizes → we can appear. Nationally we're against TIMDAA, MyHoardings, Khushi etc. with decade-old domains. The tender's own name — "Airport Marketing & Visitor Management" — belongs in our copy verbatim; it's our most legitimate claim to this phrase. | Localized: weeks. National: 6–12 months |
 | Gujarat marketing | 🔴 Not realistic | Statewide generic query with **intent mismatch** — searchers want general marketing agencies, so Google won't surface an airport-media site regardless of our SEO. Set this expectation with the client directly; chasing it wastes effort better spent on the winnable three. | — |
 
@@ -29,16 +29,31 @@ searching the airport phrases — not 'gujarat marketing' on a desktop.
 
 ## 2. The steps, in priority order
 
-### Step 1 — GBP video verification (Ridham/Mihir, this week) 🔴 BLOCKER
-The single biggest lever and it's been pending since 2026-07-27.
-Until verified, the profile is invisible → no local pack, no Maps, no
-page-1 presence for the broad keywords at all.
-- Guide: `google_setup_guide_2026_07.md` → Guide 2. Account:
-  art.mayurpatel@gmail.com.
-- After verification: load Services (airport advertising · airport
-  branding · airport marketing · trolley branding · digital screens ·
-  hoardings), description with "Rajkot International Airport (Hirasar)",
-  first post.
+### Step 1 — Complete the GBP profile (Ridham/Mihir, this week)
+**UPDATE 2026-08-09: profile is already VERIFIED ✓** — live knowledge
+panel, "You manage this Business Profile", public metrics, no verify
+prompt (confirmed via screenshot). Video verification is no longer
+needed. What remains is **completeness** — Google shows "Complete your
+profile" with a partial strength ring, and complete profiles rank far
+better in the map pack:
+- **Services:** airport marketing · airport advertising · airport
+  branding · trolley branding · digital screen advertising · backlit
+  boards · outdoor hoardings & unipoles · media planning.
+- **Description** mentioning "Rajkot International Airport (Hirasar)"
+  and "airport marketing" naturally.
+- **Photos:** real board/screen shots from the Aug Hirasar shoot
+  (owner-footage rule satisfied).
+- **WhatsApp chat button** (Google is prompting for it), hours, first post.
+- Account: art.mayurpatel@gmail.com. Guide: `google_setup_guide_2026_07.md`.
+
+⚠️ **Address nuance to raise with the client:** the profile is anchored
+at Jambudiya, **Morbi** (shows "Advertising agency in Jambudiya,
+Gujarat"). Proximity is a top-3 local ranking factor, so the Rajkot map
+pack will favor Rajkot-addressed competitors. The service area covering
+Rajkot helps, but if the company has a *real* office in Rajkot or at
+the airport, using that address would materially improve
+"rajkot marketing"-type map results. Never fake an address —
+suspension risk. → Ask Mukesh sir/Ridham.
 
 ### Step 2 — On-page "marketing" pass (Claude, 30 min + deploy)
 The site copy says *advertising / media / branding* everywhere but the
@@ -66,9 +81,10 @@ Being listed inside them = being on page 1 without outranking anyone:
 - Use identical Name/Address/Phone as GBP (NAP consistency), link to
   mukeshart.in (each is also a backlink — our domain currently has ~zero).
 
-### Step 4 — Reviews with keywords (Ridham, ongoing)
-After GBP is live: ask 5–10 friendly partners for Google reviews that
-naturally mention "airport advertising in Rajkot" / "airport marketing".
+### Step 4 — Reviews with keywords (Ridham, can start NOW)
+Profile is live, so this is unblocked: ask 5–10 friendly partners for
+Google reviews that naturally mention "airport advertising in Rajkot" /
+"airport marketing".
 Reviews + keywords in reviews are a top-3 local-pack ranking factor.
 Never scripted/fake — real clients, nudged wording only.
 
@@ -98,7 +114,9 @@ Screenshot monthly → becomes the progress artifact for Mukesh sir.
   makes it unwinnable; reframe instead (see §1).
 
 ## Sequence summary
-Week 1: GBP verification (Ridham) + marketing copy pass (Claude) + re-index.
-Week 2: Sulekha/JustDial/IndiaMART listings + first review asks.
+Week 1: GBP completion — services/description/photos/WhatsApp (Ridham)
++ marketing copy pass (Claude — ✅ shipped 2026-08-09, deployed green)
++ GSC re-index request + first review asks (unblocked, profile verified).
+Week 2: Sulekha/JustDial/IndiaMART listings.
 Week 3–4: Media4Growth pitch + partner backlinks.
 Aug 11 + monthly: GSC query report.

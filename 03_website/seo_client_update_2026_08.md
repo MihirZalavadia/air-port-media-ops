@@ -22,28 +22,39 @@ normal for a new site, and the fix is the 5 steps below.
    in **2–6 weeks**. We are the actual airport concessionaire; almost
    nobody else competes for these searches.
 2. *"Rajkot marketing" / "airport marketing"* — we will appear in the
-   **Google Maps box** at the top of page 1, once our Google Business
-   Profile is verified. For broad searches, the Maps box is how local
-   businesses get on page 1.
+   **Google Maps box** at the top of page 1 as our Google Business
+   Profile gets completed and collects reviews. For broad searches, the
+   Maps box is how local businesses get on page 1.
 3. *"Gujarat marketing"* — honest note: people searching this want
    general marketing agencies, so Google shows those. But every buyer
    who types anything with **"airport"** will find us — and those are
    the buyers who spend on airport media.
 
 **The 5 steps:**
-1. **Google Business Profile video verification** — *Ridham, this week.*
-   The single biggest step. Puts us on Google Maps and in the Maps box.
+1. **Complete our Google Business page** — *Ridham + Mihir, this week.*
+   Good news: the profile is already verified ✓. Now it must be filled
+   100% — services (airport marketing, advertising, branding, trolley
+   branding, screens, hoardings), description, photos of our actual
+   airport boards, and the WhatsApp chat button. Google ranks complete
+   profiles much higher in the Maps box.
 2. **Website wording updated** — *Mihir, done today.* Added "airport
    marketing" language and our official AAI Airport Marketing concession
    statement across the site.
 3. **Free business listings** — *Ridham, next week.* Sulekha, JustDial,
    IndiaMART. These sites already sit on page 1 for these searches —
    being listed there means we appear inside page 1 immediately.
-4. **Google reviews** — *Ridham, after step 1.* 5–10 partners writing a
-   genuine review that mentions "airport advertising Rajkot". Reviews
+4. **Google reviews** — *Ridham, can start today.* 5–10 partners writing
+   a genuine review that mentions "airport advertising Rajkot". Reviews
    are one of Google's top ranking factors for local business.
 5. **Press coverage** — *Mihir, this month.* Story pitch to OOH industry
    media (Media4Growth) about Mukesh Art operating Rajkot airport media.
+
+**One question for Mukesh sir:** the Google listing currently shows our
+address as Jambudiya, Morbi. Google strongly favours businesses located
+in the city being searched — so for Rajkot searches, a Rajkot or airport
+address would rank better in the Maps box. If we have a real office in
+Rajkot or at the airport, we should use it. (It must be genuine —
+Google suspends profiles with fake addresses.)
 
 **How you'll see progress:** a monthly one-page Google report — which
 searches we appeared in, position, and clicks. First report: mid-August.
