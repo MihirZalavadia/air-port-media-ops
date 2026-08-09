@@ -96,7 +96,32 @@ authoritative backlink + brand-name association with "airport" +
 "Rajkot" in Google's entity graph. Also: ask 2–3 of the 29 partners to
 add a "Media partner: Mukesh Art, Rajkot Airport" link on their sites.
 
-### Step 6 — Measure (monthly, 5 min)
+### Steps 6–10 — Brand entity building (added 2026-08-09, client-shareable)
+Instagram business account linked from GBP's Social-profiles field,
+monthly GBP photos, "Add missing information" completion, LinkedIn
+company page. Full client-facing wording in `seo_client_update_2026_08.md`
+§ "Recommended next". Rationale: entity signals + branded search volume
+(which is also the only honest route into Google's autocomplete
+suggestions).
+
+### Website performance (from PSI/Lighthouse audit 2026-08-09)
+Lighthouse on the local build (live blocked by Hostinger bot-wall;
+PSI-equivalent): desktop perf 79, **mobile perf 38** — SEO 100, BP 96,
+a11y 94. Page weight 7.7MB. Ranked fixes:
+1. **Both hero films download regardless of theme** — hero_night.mp4
+   (1.9MB) + hero_media.mp4 (1.8MB) both load; only the active theme's
+   film should (preload=none / mount-on-theme). Biggest single win.
+2. **Below-fold images not lazy** — ~25 × ~0.2MB webps load upfront;
+   add loading="lazy" outside the hero. Mobile LCP 13.2s → target <2.5s.
+3. **No .htaccess cache headers** — /_next/static/* is content-hashed,
+   safe for `immutable, max-age=1yr`; videos/images long-cache too.
+4. Minor: heading-order, label/name mismatch (a11y); maximum-scale=1.3
+   flagged by a11y audit but is a deliberate mobile-polish choice
+   (ZoomLock) — leave unless client complains.
+Status: NOT yet implemented — needs a careful pass respecting the
+theme-swap film conventions in [[site-video-film-layer]].
+
+### Ongoing — Measure (monthly, 5 min)
 GSC → Performance → Queries is the truth, not manual Googling.
 Aug 11 check as planned: impressions per phrase + average position.
 Screenshot monthly → becomes the progress artifact for Mukesh sir.

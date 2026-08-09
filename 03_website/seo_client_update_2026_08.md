@@ -56,6 +56,36 @@ address would rank better in the Maps box. If we have a real office in
 Rajkot or at the airport, we should use it. (It must be genuine —
 Google suspends profiles with fake addresses.)
 
+**Recommended next (after the 5 steps) — building the brand on Google:**
+
+Google connects a business's website, Business Profile and social pages
+into one identity. The stronger and more active that identity, the more
+Google shows us — including in the search suggestions that appear as
+people type. These can run in parallel:
+
+6. **Instagram business account** — *Ridham + Mihir.* Create
+   @mukeshart.in (or closest available) as a Business account, website
+   link in bio, and post our real airport photos and films — screens,
+   boards, night shots. Even 2 posts a week builds presence, and brands
+   searching us will check Instagram before calling.
+7. **Link social pages to the Google Business Profile** — *Mihir, 10
+   min.* GBP has a "Social profiles" field — add Instagram (and later
+   LinkedIn/Facebook) so Google formally connects them to our listing.
+8. **Photos on the Business Profile every month** — *Ridham.* Real
+   photos of boards, screens and campaigns. Businesses with regular
+   photo updates get significantly more views and calls on Google.
+9. **Fill every remaining detail on the profile** — *Ridham + Mihir.*
+   Google is showing "Add missing information" — hours, opening date,
+   phone, services, description. A 100%-complete profile ranks higher.
+10. **LinkedIn company page** — *Mihir, already in the 90-day plan.*
+    Where media planners and corporate buyers actually look us up.
+
+*Note on search suggestions:* the suggestions Google shows while typing
+come from how often people actually search our name. As partners,
+reviews and Instagram grow branded searches, "mukeshart" and "mukesh art
+airport" start appearing there on their own — steps 6–10 are what feed
+it.
+
 **How you'll see progress:** a monthly one-page Google report — which
 searches we appeared in, position, and clicks. First report: mid-August.
 
