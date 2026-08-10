@@ -1,3 +1,14 @@
+# Legacy routes from the pre-July site version are still in Google's
+# index but 404 now — 301 them to the airport page so their equity
+# transfers and Google drops the dead URLs. Anchored patterns so real
+# pages like /inventory/<slug>/ are untouched.
+<IfModule mod_alias.c>
+    RedirectMatch 301 ^/about/?$ https://mukeshart.in/airport/
+    RedirectMatch 301 ^/gallery/?$ https://mukeshart.in/airport/
+    RedirectMatch 301 ^/why-airport-media/?$ https://mukeshart.in/airport/
+    RedirectMatch 301 ^/inventory/?$ https://mukeshart.in/airport/
+</IfModule>
+
 # Browser caching for the mukeshart.in static export (LiteSpeed/Apache).
 # JS/CSS filenames are content-hashed by the Next build — safe to cache
 # forever. Media files keep stable names (videos get re-cut in place),
