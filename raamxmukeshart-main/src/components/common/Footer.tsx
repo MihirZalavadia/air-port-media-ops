@@ -154,9 +154,10 @@ export default function Footer() {
                     </div>
 
                     <p>
-                        Premium airport media spaces for brands looking to build
-                        visibility across Rajkot Airport through digital screens,
-                        static boards, terminal branding, and planned placements.
+                        Rajkot Airport marketing and advertising for brands that
+                        want premium visibility — digital screens, static boards,
+                        terminal branding, and planned placements across Rajkot
+                        International Airport (Hirasar).
                     </p>
 
                     <div className="footer-actions">

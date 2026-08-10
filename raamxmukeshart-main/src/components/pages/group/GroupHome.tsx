@@ -39,7 +39,7 @@ const divisions = [
         est: "Est. 2023",
         name: "Mukesh Airport Media",
         tag: "Airport Advertising · Rajkot International",
-        line: "Premium advertising inventory at Rajkot International Airport — digital screens, boards, and full journey plans.",
+        line: "Rajkot Airport marketing and premium advertising inventory at Rajkot International Airport (Hirasar) — digital screens, boards, and full journey plans.",
         points: [
             "70+ screens & boards",
             "Exclusive advertising rights",
