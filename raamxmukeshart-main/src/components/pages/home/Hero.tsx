@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import siteCopy from "@/content/site_copy.json";
 
 const heroCopy = siteCopy.hero;
@@ -26,6 +26,31 @@ type ThemeId = keyof typeof HERO_FILMS;
 export default function Hero() {
     const [theme, setTheme] = useState<ThemeId>("day");
     const [reduceMotion, setReduceMotion] = useState(false);
+    // poster-first paint: the film (~2MB) must not compete with the
+    // first render — it starts once the page has loaded (or 2.5s in,
+    // whichever comes first) and the poster covers until then
+    const [filmLive, setFilmLive] = useState(false);
+    const videoRef = useRef<HTMLVideoElement | null>(null);
+
+    useEffect(() => {
+        const start = () => setFilmLive(true);
+        if (document.readyState === "complete") {
+            start();
+            return;
+        }
+        window.addEventListener("load", start, { once: true });
+        const fallback = window.setTimeout(start, 2500);
+        return () => {
+            window.removeEventListener("load", start);
+            window.clearTimeout(fallback);
+        };
+    }, []);
+
+    // .play() (not just the attribute) so the swap also works when the
+    // flag flips after the video element is already mounted
+    useEffect(() => {
+        if (filmLive) videoRef.current?.play().catch(() => {});
+    }, [filmLive, theme, reduceMotion]);
 
     // follow the site theme via the <html data-theme> attribute so only
     // the active theme's film is ever downloaded
@@ -63,9 +88,11 @@ export default function Hero() {
             ) : (
                 <video
                     key={film.src}
+                    ref={videoRef}
                     className={`hero-video hero-video--${theme}`}
                     poster={film.poster}
-                    autoPlay
+                    autoPlay={filmLive}
+                    preload={filmLive ? "auto" : "none"}
                     muted
                     loop
                     playsInline

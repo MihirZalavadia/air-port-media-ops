@@ -354,6 +354,7 @@ function isUnlocked() {
 }
 
 import { getCategoryVisuals } from "@/src/lib/inventoryVisuals";
+import { useNearViewport } from "@/src/lib/useNearViewport";
 
 type InventoryImage = StaticImageData | string;
 
@@ -375,6 +376,8 @@ export default function InventoryPackages() {
     const router = useRouter();
     const [activeFilter, setActiveFilter] = useState("All");
     const [activeItem, setActiveItem] = useState<InventoryCategory | null>(null);
+    // hover-gallery backgrounds wait until the section nears the viewport
+    const { ref: sectionRef, near: mediaWake } = useNearViewport<HTMLElement>();
 
     const visibleItems =
         activeFilter === "All"
@@ -396,6 +399,7 @@ export default function InventoryPackages() {
                 id="inventory"
                 data-animate
                 aria-labelledby="inventory-title"
+                ref={sectionRef}
             >
                 <div className="container">
                     <div className="inventory-head">
@@ -458,6 +462,8 @@ export default function InventoryPackages() {
                                     <img
                                         src={getImageUrl(visual.image)}
                                         alt={`${item.title} at Rajkot Airport`}
+                                        loading="lazy"
+                                        decoding="async"
                                     />
 
                                     <span className="inventory-badge">
@@ -471,7 +477,10 @@ export default function InventoryPackages() {
                                                 className="gallery-card"
                                                 style={
                                                     {
-                                                        backgroundImage: `url(${getImageUrl(img)})`,
+                                                        // reveal-only art: don't fetch until the section is near
+                                                        ...(mediaWake && {
+                                                            backgroundImage: `url(${getImageUrl(img)})`,
+                                                        }),
                                                         "--i": index,
                                                     } as CSSProperties
                                                 }

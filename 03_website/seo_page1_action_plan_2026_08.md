@@ -104,22 +104,25 @@ company page. Full client-facing wording in `seo_client_update_2026_08.md`
 (which is also the only honest route into Google's autocomplete
 suggestions).
 
-### Website performance (from PSI/Lighthouse audit 2026-08-09)
-Lighthouse on the local build (live blocked by Hostinger bot-wall;
-PSI-equivalent): desktop perf 79, **mobile perf 38** — SEO 100, BP 96,
-a11y 94. Page weight 7.7MB. Ranked fixes:
-1. **Both hero films download regardless of theme** — hero_night.mp4
-   (1.9MB) + hero_media.mp4 (1.8MB) both load; only the active theme's
-   film should (preload=none / mount-on-theme). Biggest single win.
-2. **Below-fold images not lazy** — ~25 × ~0.2MB webps load upfront;
-   add loading="lazy" outside the hero. Mobile LCP 13.2s → target <2.5s.
-3. **No .htaccess cache headers** — /_next/static/* is content-hashed,
-   safe for `immutable, max-age=1yr`; videos/images long-cache too.
-4. Minor: heading-order, label/name mismatch (a11y); maximum-scale=1.3
-   flagged by a11y audit but is a deliberate mobile-polish choice
-   (ZoomLock) — leave unless client complains.
-Status: NOT yet implemented — needs a careful pass respecting the
-theme-swap film conventions in [[site-video-film-layer]].
+### Website performance — SHIPPED 2026-08-10
+Baseline (local Lighthouse ≈ PSI): desktop 79 / mobile 38, 7.7MB load.
+After the pass: **desktop 87 / mobile ~45 (LCP 13.2s→8.1s)**, 5.7MB,
+a11y 95. What shipped:
+1. Gallery slideshow films (incl. the 1.9MB dusk hero reused as slide 1)
+   now wake-gate on viewport approach via `src/lib/useNearViewport.ts` —
+   nothing below the fold downloads at page open.
+2. Hero film is poster-first: starts at window load / 2.5s fallback, so
+   the ~1.8MB file no longer competes with first paint.
+3. Inventory card faces lazy-load; hover-stack backgrounds wake-gate.
+4. `public/.htaccess`: js/css 1yr immutable (hashed), images 30d,
+   mp4 7d, HTML no-cache — repeat visits get dramatically faster.
+5. a11y: footer h4→h3 ladder, brand-link aria-label removed.
+Remaining ceiling (NOT done — design decisions, raise if client wants
+the mobile number higher): the full-screen boarding curtain pins LCP
+under Lighthouse's 4× CPU simulation (mini-veil-on-mobile was tested,
+no measurable gain, reverted); TBT ~1s comes from the GSAP/scroll
+animation stack; smaller 9:16 mobile hero renditions are already a
+pending media ask. maximum-scale=1.3 stays (deliberate ZoomLock).
 
 ### Ongoing — Measure (monthly, 5 min)
 GSC → Performance → Queries is the truth, not manual Googling.

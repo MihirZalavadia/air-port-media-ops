@@ -231,6 +231,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
+import { useNearViewport } from "@/src/lib/useNearViewport";
 import "./Home.css";
 
 import p1_1 from "@/public/images/inventory/updated/p1_1.webp";
@@ -327,7 +328,9 @@ const SLIDES: Slide[] = [
 
 export default function Gallery() {
     const [active, setActive] = useState(0);
-    const sectionRef = useRef<HTMLElement | null>(null);
+    // films stay as posters until the section nears the viewport — the
+    // dusk hero film alone is ~2MB and must not load on page open
+    const { ref: sectionRef, near: wake } = useNearViewport<HTMLElement>();
     const visibleRef = useRef(false);
     const pausedRef = useRef(false);
     // slide was held while off-screen/paused → owed a full dwell on resume
@@ -459,7 +462,7 @@ export default function Gallery() {
                                 aria-hidden={!isActive}
                             >
                                 {slide.kind === "video" ? (
-                                    isNear ? (
+                                    wake && isNear ? (
                                         <video
                                             src={slide.src}
                                             poster={slide.poster}

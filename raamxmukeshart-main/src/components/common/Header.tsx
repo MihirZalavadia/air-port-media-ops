@@ -400,7 +400,7 @@ export default function Header() {
                 }`}
         >
             <div className="container nav-inner">
-                <Link href="/airport/#top" className="brand" aria-label="Mukesh Airport Media">
+                <Link href="/airport/#top" className="brand">
                     <span className="brand-mark">
                         <AirportLogoMark />
                     </span>

@@ -187,7 +187,7 @@ export default function Footer() {
 
                 <div className="footer-links">
                     <div>
-                        <h4>Explore</h4>
+                        <h3>Explore</h3>
                         <nav aria-label="Footer navigation">
                             <Link href="/airport/#about">About Us</Link>
                             <Link href="/airport/#inventory">Inventory & Packages</Link>
@@ -199,7 +199,7 @@ export default function Footer() {
                     </div>
 
                     <div>
-                        <h4>Media</h4>
+                        <h3>Media</h3>
                         {/* inventory unlocks via the lead form — no direct plan links */}
                         <nav aria-label="Airport media services">
                             <Link href="/airport/#inventory">Digital Screens</Link>
@@ -210,7 +210,7 @@ export default function Footer() {
                     </div>
 
                     <div>
-                        <h4>Reach</h4>
+                        <h3>Reach</h3>
                         <p>Rajkot International Airport</p>
                         <p>
                             Mukesh Art Main Office, PLOT NO. 71, SURVEY NO. 145,

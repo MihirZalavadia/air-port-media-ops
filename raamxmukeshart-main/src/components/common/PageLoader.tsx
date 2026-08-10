@@ -67,18 +67,12 @@ export default function PageLoader() {
 
         const start = Date.now();
         const MIN = 1400; // keep the boarding moment for at least ~1.4s
-        const MAX = 5000; // never trap the user if something is slow
 
-        const markLoaded = () => {
-            loadedRef.current = true;
-        };
-
-        if (document.readyState === "complete") {
-            markLoaded();
-        } else {
-            window.addEventListener("load", markLoaded, { once: true });
-        }
-        const cap = window.setTimeout(markLoaded, MAX);
+        // The curtain is a brand moment, not a progress gate: this effect
+        // running means the shell + hero poster already paint behind the
+        // veil, so don't hold the exit for window.load — the hero films
+        // push that past 10s on mobile networks and pin LCP to the loader.
+        loadedRef.current = true;
 
         let finished = false;
 
@@ -115,8 +109,6 @@ export default function PageLoader() {
         }, 50);
 
         return () => {
-            window.removeEventListener("load", markLoaded);
-            window.clearTimeout(cap);
             window.clearInterval(tick);
         };
     }, []);
