@@ -56,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: `${siteConfig.url}/airport/`,
             lastModified: new Date(),
             changeFrequency: "weekly" as const,
-            priority: 0.95,
+            priority: 1,
         },
         {
             url: `${siteConfig.url}/publicity/`,

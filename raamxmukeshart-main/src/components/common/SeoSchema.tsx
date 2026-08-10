@@ -1,6 +1,6 @@
 // src/components/common/SeoSchema.tsx
 
-import { siteConfig } from "@/src/lib/seo";
+import { pageSeo, siteConfig } from "@/src/lib/seo";
 
 export default function SeoSchema() {
     const schema = {
@@ -98,11 +98,14 @@ export default function SeoSchema() {
                 inLanguage: "en-IN",
             },
             {
+                // this schema renders on /airport/ — the WebPage entity must
+                // describe that page, not the group landing, so Google maps
+                // airport-marketing queries to /airport/
                 "@type": "WebPage",
-                "@id": `${siteConfig.url}/#webpage`,
-                url: siteConfig.url,
-                name: siteConfig.title,
-                description: siteConfig.description,
+                "@id": `${siteConfig.url}/airport/#webpage`,
+                url: `${siteConfig.url}/airport/`,
+                name: pageSeo.home.title,
+                description: pageSeo.home.description,
                 isPartOf: {
                     "@id": `${siteConfig.url}/#website`,
                 },

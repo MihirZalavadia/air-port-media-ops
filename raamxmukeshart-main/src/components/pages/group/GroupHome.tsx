@@ -47,7 +47,7 @@ const divisions = [
         ],
         live: true,
         href: "/airport/",
-        cta: "Enter the airport site",
+        cta: "Explore Rajkot Airport marketing",
         logo: logoMark,
     },
 ];
@@ -317,7 +317,7 @@ export default function GroupHome() {
 
                             <div className="grp-cta-actions">
                                 <Link className="grp-cta-primary" href="/airport/">
-                                    Explore Airport Media
+                                    Explore Rajkot Airport Media
                                 </Link>
 
                                 <a
@@ -336,7 +336,7 @@ export default function GroupHome() {
                 <footer className="grp-footer">
                     <div className="grp-container grp-footer-inner">
                         <p>© {new Date().getFullYear()} Mukesh Art.</p>
-                        <Link href="/airport/">Mukesh Airport Media →</Link>
+                        <Link href="/airport/">Rajkot Airport Marketing →</Link>
                     </div>
                 </footer>
             </main>
