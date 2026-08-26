@@ -23,6 +23,12 @@ const HERO_FILMS: Record<"day" | "night", HeroFilm> = {
     day: {
         src: `${BASE}/videos/hero_media.mp4`,
         poster: `${BASE}/videos/hero_media_poster.jpg`,
+        // baked 9:16 crop of the 720p landscape film (40% focal = LED
+        // screens + belt) — replace with a real daytime portrait shoot
+        // when the client films one; the CSS slice looked broken on
+        // Android and full bitrate on the visible region reads sharper
+        portraitSrc: `${BASE}/videos/hero_media_portrait.mp4`,
+        portraitPoster: `${BASE}/videos/hero_media_portrait_poster.jpg`,
     },
     night: {
         src: `${BASE}/videos/hero_night.mp4`,

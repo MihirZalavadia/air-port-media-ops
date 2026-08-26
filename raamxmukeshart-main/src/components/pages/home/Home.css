@@ -11487,25 +11487,23 @@ section,
     border-left: 1.5px solid #14110d;
 }
 
+/* hover AND keyboard focus reveal the bubble — both gated to
+   hover-capable devices. On touch the card's tabIndex means any tap
+   focuses it and the bubble parks over the portrait until a tap
+   elsewhere (Ridham's Android review 2026-08-26: faces covered), so
+   coarse pointers suppress it in the touch-ergonomics block below
+   and read the same text inline via .team-desc-touch instead. */
 @media (hover: hover) and (pointer: fine) {
-    .team-card:hover .team-bubble {
+    .team-card:hover .team-bubble,
+    .team-card:focus .team-bubble,
+    .team-card:focus-within .team-bubble {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
 }
 
-/* keyboard focus AND touch tap reveal the bubble — the card carries
-   tabIndex, so a tap focuses it and a tap elsewhere dismisses it.
-   This brings the profile text back to Android deliberately (no sticky
-   hover involved), instead of suppressing it entirely. */
-.team-card:focus .team-bubble,
-.team-card:focus-within .team-bubble {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
-/* desktop gets the hover bubble; touch gets the inline blurb instead —
-   a tap-focused bubble parks itself over the portrait */
+/* desktop gets the hover bubble; touch flips this on in the coarse
+   block below and hides the bubble */
 .team-desc-touch {
     display: none;
     margin: 14px 0 0;
@@ -11513,11 +11511,6 @@ section,
     font-size: 13px;
     line-height: 1.65;
 }
-
-/* touch: the bubble reveals on tap via the :focus-within rule above —
-   no display:none suppression anymore, and the duplicate inline blurb
-   stays hidden (its base display is none). A tap on the portrait shows
-   the text; a tap anywhere else dismisses it. */
 
 .team-card:focus {
     outline: none;
@@ -11941,6 +11934,17 @@ section,
         background: var(--accent);
         border-color: var(--accent);
         color: #ffffff;
+    }
+
+    /* the tap-focus bubble parked over the owners' faces (Android
+       review 2026-08-26) — touch reads the blurb inline below the
+       spec rows instead; the overlay bubble is desktop grammar */
+    .team-bubble {
+        display: none;
+    }
+
+    .team-desc-touch {
+        display: block;
     }
 
     /* email + WhatsApp text links in the contact info column — grow the
