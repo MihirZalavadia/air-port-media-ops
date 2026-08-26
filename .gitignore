@@ -89,6 +89,11 @@ venv/
 # raw inventory photography (102MB) — converted webps live in the site
 04_media_kit/assets/photography_2026_07/
 
+# Aug 2026 portrait phone shoot (218MB masters, IMG_3791 >100MB) —
+# encoded cuts live in the site; GBP jpgs are upload copies, not source
+04_media_kit/assets/Android Assets/
+04_media_kit/assets/gbp_storefront_2026_08/
+
 # phone-footage intake for the video pipeline (GB-scale .MOV files —
 # GitHub rejects files >100MB; NEVER commit this folder)
 raw_media_drop/
