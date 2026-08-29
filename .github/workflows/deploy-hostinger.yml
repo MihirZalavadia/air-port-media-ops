@@ -78,6 +78,26 @@ jobs:
             "cat > /home/u366143613/domains/mukeshart.in/admin_config.php && chmod 600 /home/u366143613/domains/mukeshart.in/admin_config.php"
           echo "Admin config provisioned."
 
+      # Lead email SMTP config (outside webroot). Hostinger's PHP mail()
+      # drops messages silently — lead.php sends via authenticated SMTP
+      # through the info@ mailbox instead. Without the secret, lead.php
+      # falls back to the legacy mail() attempt (JSONL log always works).
+      - name: Provision mail config (outside webroot)
+        env:
+          SSHPASS: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+        run: |
+          if [ -z "$MAIL_PASSWORD" ]; then
+            echo "MAIL_PASSWORD not set — skipping mail config provisioning."
+            exit 0
+          fi
+          printf "<?php\nreturn [\n    'smtp_host' => 'smtp.hostinger.com',\n    'smtp_port' => 465,\n    'smtp_user' => 'info@mukeshart.in',\n    'smtp_password' => '%s',\n];\n" \
+            "$MAIL_PASSWORD" | \
+          sshpass -e ssh -p 65002 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+            u366143613@82.25.125.220 \
+            "cat > /home/u366143613/domains/mukeshart.in/mail_config.php && chmod 600 /home/u366143613/domains/mukeshart.in/mail_config.php"
+          echo "Mail config provisioned."
+
       # Lead → Google Sheet forwarding config (outside webroot). Optional:
       # without the secret, lead.php simply skips the Sheet step.
       - name: Provision lead config (outside webroot)

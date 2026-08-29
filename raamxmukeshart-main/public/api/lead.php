@@ -76,7 +76,12 @@ if (!is_dir($logDir)) {
     FILE_APPEND | LOCK_EX
 );
 
-// Email the lead
+// Email the lead. Hostinger's PHP mail() silently drops messages
+// (proven 2026-08-29: QA lead returned ok but never arrived, while the
+// info@ mailbox itself accepts SMTP fine) — so send via authenticated
+// SMTP through the mailbox. Credentials live OUTSIDE the webroot in
+// mail_config.php (provisioned by the deploy workflow from the
+// MAIL_PASSWORD GitHub secret). Missing config → legacy mail() try.
 $subject = 'New website lead - ' . $name;
 $lines = [];
 foreach (['name', 'phone', 'company', 'role', 'interest', 'message', 'source', 'at'] as $k) {
@@ -86,10 +91,40 @@ foreach (['name', 'phone', 'company', 'role', 'interest', 'message', 'source', '
 }
 $body = implode("\n", $lines)
     . "\n\nReply on WhatsApp: https://wa.me/91" . $lead['phone'] . "\n";
-$headers = "From: Mukesh Art Website <info@mukeshart.in>\r\n"
-    . "Reply-To: info@mukeshart.in\r\n"
-    . "X-Mailer: PHP";
-@mail('info@mukeshart.in', $subject, $body, $headers);
+
+$mailConfigPath = dirname(__DIR__, 2) . '/mail_config.php';
+$mailSent = false;
+if (is_file($mailConfigPath)) {
+    $mailConfig = require $mailConfigPath;
+    if (!empty($mailConfig['smtp_password'])) {
+        require_once __DIR__ . '/lib/Exception.php';
+        require_once __DIR__ . '/lib/PHPMailer.php';
+        require_once __DIR__ . '/lib/SMTP.php';
+        try {
+            $mailer = new PHPMailer\PHPMailer\PHPMailer(true);
+            $mailer->isSMTP();
+            $mailer->Host       = $mailConfig['smtp_host'] ?? 'smtp.hostinger.com';
+            $mailer->Port       = (int) ($mailConfig['smtp_port'] ?? 465);
+            $mailer->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
+            $mailer->SMTPAuth   = true;
+            $mailer->Username   = $mailConfig['smtp_user'] ?? 'info@mukeshart.in';
+            $mailer->Password   = $mailConfig['smtp_password'];
+            $mailer->Timeout    = 10;
+            $mailer->CharSet    = 'UTF-8';
+            $mailer->setFrom('info@mukeshart.in', 'Mukesh Art Website');
+            $mailer->addAddress('info@mukeshart.in');
+            $mailer->Subject = $subject;
+            $mailer->Body    = $body;
+            $mailSent = $mailer->send();
+        } catch (Throwable $e) {
+            // fall through — JSONL log + Sheet remain the safety net
+        }
+    }
+}
+if (!$mailSent) {
+    @mail('info@mukeshart.in', $subject, $body,
+        "From: Mukesh Art Website <info@mukeshart.in>\r\nReply-To: info@mukeshart.in\r\nX-Mailer: PHP");
+}
 
 // Forward to the shared Google Sheet via Apps Script webhook.
 // URL + secret live OUTSIDE the webroot in lead_config.php (provisioned
