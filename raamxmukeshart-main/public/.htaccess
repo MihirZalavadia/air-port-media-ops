@@ -1,3 +1,12 @@
+# www serves a duplicate of the site (Hostinger points both hosts at
+# this docroot) — 301 to the canonical bare domain so Google sees one
+# host. Must run before the legacy redirects below.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_HOST} ^www\.mukeshart\.in$ [NC]
+    RewriteRule ^(.*)$ https://mukeshart.in/$1 [R=301,L]
+</IfModule>
+
 # Legacy routes from the pre-July site version are still in Google's
 # index but 404 now — 301 them to the airport page so their equity
 # transfers and Google drops the dead URLs. Anchored patterns so real
@@ -37,4 +46,10 @@
     <FilesMatch "\.html$">
         Header set Cache-Control "no-cache"
     </FilesMatch>
+
+    # Baseline hardening (QA 2026-08-28). No HSTS: http already 301s
+    # to https and a bad HSTS rollout is unrecoverable for visitors.
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>

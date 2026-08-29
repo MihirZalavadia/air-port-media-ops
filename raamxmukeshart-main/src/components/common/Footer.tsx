@@ -132,12 +132,7 @@ import Link from "next/link";
 import logoDay from "@/public/images/home/logo_mark.png"
 import logoLight from "@/public/images/home/logo_mark_light.png"
 import "./Footer.css";
-import {
-    FaInstagram,
-    FaFacebookF,
-    FaLinkedinIn,
-    FaWhatsapp,
-} from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function Footer() {
     return (
@@ -161,19 +156,10 @@ export default function Footer() {
                     </p>
 
                     <div className="footer-actions">
+                        {/* Instagram/Facebook/LinkedIn return here (plus
+                            SeoSchema sameAs) once the real profiles exist —
+                            dead # icons read as an unfinished site */}
                         <div className="footer-socials" aria-label="Social media links">
-                            <a href="#" aria-label="Rajkot Airport Media on Instagram">
-                                <FaInstagram aria-hidden="true" />
-                            </a>
-
-                            <a href="#" aria-label="Rajkot Airport Media on Facebook">
-                                <FaFacebookF aria-hidden="true" />
-                            </a>
-
-                            <a href="#" aria-label="Rajkot Airport Media on LinkedIn">
-                                <FaLinkedinIn aria-hidden="true" />
-                            </a>
-
                             <a
                                 href="https://wa.me/919825340818"
                                 target="_blank"

@@ -24,9 +24,13 @@ export async function generateMetadata({
 
     if (!category) return {};
 
+    // each category page must self-canonicalise — without `alternates`
+    // these inherit the root layout's homepage canonical and tell
+    // Google all four pages are duplicates of / (found in QA 2026-08-28)
     return {
-        title: category.title,
-        description: category.tagline,
+        title: `${category.title} at Rajkot Airport`,
+        description: `Rajkot Airport advertising: ${category.tagline}`,
+        alternates: { canonical: `/inventory/${slug}/` },
     };
 }
 
