@@ -18,6 +18,25 @@
     RedirectMatch 301 ^/inventory/?$ https://mukeshart.in/airport/
 </IfModule>
 
+# Kill the domain's spam past. Before this brand, mukeshart.in hosted a
+# WordPress wedding site (2022-23) then an escort/SEO spam farm (2024-25)
+# — Google still remembers ~dozens of injected root-level .html pages
+# (e.g. Colombo-escourt.html, 69019394.html). They already 404, but 410
+# GONE tells Google to DROP them permanently and fast, instead of
+# re-checking 404s for months. Our real pages are extensionless dirs
+# (/airport/, /inventory/<slug>/) so no live page is a root-level .html;
+# index.html and 404.html are the only legitimate root .html files.
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_URI} ^/[^/]+\.html$
+    RewriteCond %{REQUEST_URI} !^/(index|404)\.html$ [NC]
+    RewriteRule ^ - [G]
+</IfModule>
+
+# Serve OUR branded 404 for genuine misses (the server was still handing
+# out the old Drupal spam-farm error page) and for the 410s above.
+ErrorDocument 404 /404.html
+ErrorDocument 410 /404.html
+
 # Browser caching for the mukeshart.in static export (LiteSpeed/Apache).
 # JS/CSS filenames are content-hashed by the Next build — safe to cache
 # forever. Media files keep stable names (videos get re-cut in place),
