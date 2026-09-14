@@ -76,15 +76,19 @@
     border: none;
     box-shadow: none;
     padding: 4px 0;
-    gap: clamp(14px, 2.4vw, 26px);
+    gap: clamp(20px, 3vw, 38px);
 }
 
 .aai-lockup.is-hero .aai-lockup-art img {
-    height: clamp(44px, 5vw, 58px);
+    height: clamp(58px, 6.4vw, 82px);
 }
 
 .aai-lockup.is-hero .aai-lockup-aai img {
-    height: clamp(42px, 4.8vw, 54px);
+    height: clamp(56px, 6.2vw, 78px);
+}
+
+.aai-lockup.is-hero .aai-lockup-x {
+    font-size: clamp(30px, 4vw, 46px);
 }
 
 /* tighter footer variant */

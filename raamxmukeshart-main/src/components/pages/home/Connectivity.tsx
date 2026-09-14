@@ -133,7 +133,7 @@ export default function Connectivity() {
 
                     <p data-motion="right" data-motion-delay="0.14">
                         {AIRPORT_NAME} links Gujarat&apos;s business corridor to high-value
-                        metro audiences — a clear, premium airport-media touchpoint for
+                        metro audiences, a clear, premium airport-media touchpoint for
                         regional and national campaigns.
                     </p>
                 </div>
@@ -168,7 +168,7 @@ export default function Connectivity() {
                                 </linearGradient>
                             </defs>
 
-                            {/* 2 — India: filled land + outline stroke draw */}
+                            {/* 2, India: filled land + outline stroke draw */}
                             <path className="ram-india-fill" d={INDIA_OUTLINE} aria-hidden="true" />
                             <path
                                 className="ram-india-outline"
@@ -177,7 +177,7 @@ export default function Connectivity() {
                                 aria-hidden="true"
                             />
 
-                            {/* 5-6 — routes draw outward + aircraft travel the curves */}
+                            {/* 5-6, routes draw outward + aircraft travel the curves */}
                             {/* all flight paths share one delay so they draw together */}
                             {CITIES.map((c, i) => {
                                 const d = routePath(c);
@@ -199,12 +199,12 @@ export default function Connectivity() {
                                 );
                             })}
 
-                            {/* 3 — Rajkot hub with pulse */}
+                            {/* 3, Rajkot hub with pulse */}
                             <circle className="ram-hub-glow" cx={HUB.x} cy={HUB.y} r={60} />
                             <circle className="ram-hub-pulse" cx={HUB.x} cy={HUB.y} r={8} />
                             <circle className="ram-hub-dot" cx={HUB.x} cy={HUB.y} r={8} />
                             {/* phones: the v3 crop starts at x=192, so the left-anchored
-                                label lost its first letter — park it under the hub in the
+                                label lost its first letter, park it under the hub in the
                                 open sea instead. Desktop keeps the original placement. */}
                             <text
                                 className="ram-hub-label"
@@ -223,7 +223,7 @@ export default function Connectivity() {
                                 RAJ HUB
                             </text>
 
-                            {/* 4 — metro city points appear one by one (7 — hover/tap highlights) */}
+                            {/* 4, metro city points appear one by one (7, hover/tap highlights) */}
                             {CITIES.map((c, i) => (
                                 <g
                                     key={`node-${c.code}`}
@@ -278,7 +278,7 @@ export default function Connectivity() {
                         </svg>
                     </div>
 
-                    {/* 8 — route list synced with the selected map route */}
+                    {/* 8, route list synced with the selected map route */}
                     <aside className="ram-route-panel" aria-label="Rajkot Airport metro access list">
                         <span className="ram-panel-label">Metro access</span>
                         <h3>One short hop from India&apos;s biggest markets.</h3>
@@ -331,7 +331,7 @@ export default function Connectivity() {
                         </div>
 
                         <p className="ram-panel-foot">
-                            Owner-operated media, one short hop from every metro on this board —
+                            Owner-operated media, one short hop from every metro on this board -
                             a captive, high-intent airport audience with relationship-led
                             execution on the ground.
                         </p>

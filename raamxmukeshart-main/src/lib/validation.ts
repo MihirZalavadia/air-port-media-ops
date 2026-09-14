@@ -1,4 +1,4 @@
-// Shared form validation — used by the contact form and the inventory
+// Shared form validation, used by the contact form and the inventory
 // unlock modal so both enforce identical rules.
 
 /**

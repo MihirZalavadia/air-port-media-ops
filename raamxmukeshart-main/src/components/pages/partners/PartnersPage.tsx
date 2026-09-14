@@ -22,7 +22,7 @@ function MarqueeRow({
     const track = (hidden: boolean) => (
         <div className="marquee-track" aria-hidden={hidden || undefined}>
             {partners.map((partner) => (
-                // decorative strip — click-throughs live on the roster
+                // decorative strip, click-throughs live on the roster
                 // cards below
                 <span className="marquee-chip" key={partner.name}>
                     <span className="chip-logo">
@@ -44,7 +44,7 @@ function MarqueeRow({
 
 export default function PartnersPage() {
     // Lenis on the previous page can leave the window deep-scrolled when the
-    // route changes — always open the partners page at the top
+    // route changes, always open the partners page at the top
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -87,7 +87,7 @@ export default function PartnersPage() {
 
                         <p className="partners-tagline" data-motion="right" data-motion-delay="0.14">
                             From Morbi&rsquo;s leading ceramic houses to Rajkot&rsquo;s jewellers,
-                            casting groups, and national mobile brands — this is the roster that
+                            casting groups, and national mobile brands, this is the roster that
                             trusts Mukesh Art with its presence in front of Rajkot Airport&rsquo;s
                             passengers.
                         </p>
@@ -130,7 +130,7 @@ export default function PartnersPage() {
                         </h2>
 
                         <p className="partners-roster-intro" data-motion="up" data-motion-delay="0.14">
-                            Grouped by the industries that power Saurashtra — and the national
+                            Grouped by the industries that power Saurashtra, and the national
                             names that campaign alongside them.
                         </p>
 
@@ -184,7 +184,7 @@ export default function PartnersPage() {
                         </h2>
 
                         <p data-motion="up" data-motion-delay="0.1">
-                            Join the brands already reaching Rajkot Airport&rsquo;s passengers —
+                            Join the brands already reaching Rajkot Airport&rsquo;s passengers -
                             planned placement, airport coordination, and one accountable partner.
                         </p>
 

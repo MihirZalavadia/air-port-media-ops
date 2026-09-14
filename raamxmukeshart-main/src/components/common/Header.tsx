@@ -257,7 +257,7 @@ export default function Header() {
         const path = window.location.pathname.replace(/\/+$/, "");
         if (!path.endsWith("/airport")) {
             setIsMenuOpen(false);
-            return; // different page — let Link navigate
+            return; // different page, let Link navigate
         }
 
         const target = document.getElementById(sectionId);

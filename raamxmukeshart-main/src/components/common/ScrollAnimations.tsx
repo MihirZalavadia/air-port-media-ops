@@ -306,7 +306,7 @@ export default function ScrollAnimations() {
                             scale: 1,
                             rotateX: 0,
                             filter: "blur(0px)",
-                            // only the "clip" variant animates clip-path — setting
+                            // only the "clip" variant animates clip-path, setting
                             // it on every element left a permanent inset(0) that
                             // shaved serif descenders on tight line-heights
                             ...(type === "clip"
@@ -362,7 +362,7 @@ export default function ScrollAnimations() {
             }
         );
 
-        // late media (films, webp galleries) can shift layout after setup —
+        // late media (films, webp galleries) can shift layout after setup -
         // recompute trigger positions once everything has loaded
         const onLoad = () => ScrollTrigger.refresh();
         if (document.readyState === "complete") {

@@ -43,7 +43,7 @@ export type CategoryVisuals = {
     /** detail page hero */
     hero: StaticImageData;
     /** one photo per plan, same order as inventoryData.plans (null = no
-        dedicated site photo yet — never substitute a wrong location) */
+        dedicated site photo yet, never substitute a wrong location) */
     planPhotos: (StaticImageData | null)[];
     /** one gallery per unit group, same order as inventoryData.unitGroups */
     groupGalleries: StaticImageData[][];
@@ -66,7 +66,7 @@ export const inventoryVisuals: Record<string, CategoryVisuals> = {
         card: ad2,
         cardGallery: [ad3, ad4, ad5],
         hero: ad2,
-        // AD-2, AD-3, AD-4, AD-5, AD-6 — one board, one photo
+        // AD-2, AD-3, AD-4, AD-5, AD-6, one board, one photo
         planPhotos: [ad2, ad3, ad4, ad5, ad6],
         groupGalleries: [[ad2, ad3, ad4, ad5, ad6]],
     },
@@ -82,7 +82,7 @@ export const inventoryVisuals: Record<string, CategoryVisuals> = {
         card: p2_5,
         cardGallery: [ad6, p1_6, ws_4],
         hero: p2_5,
-        // Launch, Dominance, Arrival — composites of real assets
+        // Launch, Dominance, Arrival, composites of real assets
         planPhotos: [p2_3, ad2, p1_4],
         groupGalleries: [[p2_2, ad3, p1_6, ws_2]],
     },

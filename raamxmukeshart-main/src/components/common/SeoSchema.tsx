@@ -98,7 +98,7 @@ export default function SeoSchema() {
                 inLanguage: "en-IN",
             },
             {
-                // this schema renders on /airport/ — the WebPage entity must
+                // this schema renders on /airport/, the WebPage entity must
                 // describe that page, not the group landing, so Google maps
                 // airport-marketing queries to /airport/
                 "@type": "WebPage",

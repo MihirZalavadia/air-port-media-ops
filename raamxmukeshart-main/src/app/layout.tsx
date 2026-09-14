@@ -112,7 +112,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Header/Footer moved to src/app/(airport)/layout.tsx — they belong to the
+  // Header/Footer moved to src/app/(airport)/layout.tsx, they belong to the
   // airport sub-site; the Mukesh Media Group landing at "/" has its own chrome
   return (
     <html lang="en-IN" data-theme="day" suppressHydrationWarning>

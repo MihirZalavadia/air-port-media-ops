@@ -342,7 +342,7 @@ import { normalizeIndianMobile } from "@/src/lib/validation";
 import { submitLead } from "@/src/lib/leads";
 import "./Home.css";
 
-// one lead form per session — once filled, every category opens directly
+// one lead form per session, once filled, every category opens directly
 const UNLOCK_KEY = "ram-inventory-unlocked";
 
 function isUnlocked() {
@@ -568,7 +568,7 @@ function InventoryModal({
         try {
             sessionStorage.setItem(UNLOCK_KEY, "1");
         } catch {
-            // storage blocked (private mode) — still let them through
+            // storage blocked (private mode), still let them through
         }
 
         // capture the lead server-side (email + log); never blocks the unlock
@@ -680,14 +680,14 @@ function InventoryModal({
                     </p>
 
                     <span className="inventory-popup-download pending">
-                        Fill this once — every category, unit map, and plan PDF
+                        Fill this once, every category, unit map, and plan PDF
                         unlocks for the rest of your visit.
                     </span>
 
                     <hr />
 
                     <form className="inventory-popup-form" onSubmit={handleUnlock}>
-                        {/* honeypot — hidden from humans, bots autofill it */}
+                        {/* honeypot, hidden from humans, bots autofill it */}
                         <input
                             type="text"
                             name="website"

@@ -105,7 +105,7 @@ export default function Home() {
 
       <main>
         <Hero />
-        {/* inventory first — buyers shouldn't have to scroll past the
+        {/* inventory first, buyers shouldn't have to scroll past the
             brand story to find what's for sale */}
         <InventoryPackages />
         <BrandMoment />

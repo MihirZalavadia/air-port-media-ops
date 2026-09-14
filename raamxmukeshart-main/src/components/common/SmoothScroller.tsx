@@ -11,7 +11,7 @@ export default function SmoothScroll() {
             wheelMultiplier: 0.9,
         });
 
-        // let nav components scroll through Lenis (Header section links) —
+        // let nav components scroll through Lenis (Header section links) -
         // native scrollIntoView fights Lenis's internal target and loses
         (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
 

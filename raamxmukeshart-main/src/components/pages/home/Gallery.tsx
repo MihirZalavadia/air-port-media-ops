@@ -225,7 +225,7 @@
 
 "use client";
 
-// Home showcase: one cinematic auto-advancing slideshow — the real dusk
+// Home showcase: one cinematic auto-advancing slideshow, the real dusk
 // films first, then approved site photos category by category.
 
 import { useEffect, useRef, useState } from "react";
@@ -328,7 +328,7 @@ const SLIDES: Slide[] = [
 
 export default function Gallery() {
     const [active, setActive] = useState(0);
-    // films stay as posters until the section nears the viewport — the
+    // films stay as posters until the section nears the viewport, the
     // dusk hero film alone is ~2MB and must not load on page open
     const { ref: sectionRef, near: wake } = useNearViewport<HTMLElement>();
     const visibleRef = useRef(false);
@@ -365,7 +365,7 @@ export default function Gallery() {
         const tick = () => {
             if (visibleRef.current && !pausedRef.current) {
                 // if the slide was held (off-screen/hovered), grant it a
-                // full dwell now — otherwise scrolling to the gallery
+                // full dwell now, otherwise scrolling to the gallery
                 // flips off slide 1 within a second of it appearing
                 if (heldRef.current) {
                     heldRef.current = false;
@@ -410,7 +410,7 @@ export default function Gallery() {
         const dx = event.changedTouches[0].clientX - start.x;
         const dy = event.changedTouches[0].clientY - start.y;
 
-        // horizontal intent only — vertical scrolling passes through
+        // horizontal intent only, vertical scrolling passes through
         if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.5) {
             go(active + (dx < 0 ? 1 : -1));
         }
@@ -493,7 +493,7 @@ export default function Gallery() {
                                 ) : slide.img ? (
                                     <Image
                                         src={slide.img}
-                                        alt={`${slide.tag} — ${slide.title}`}
+                                        alt={`${slide.tag}, ${slide.title}`}
                                         fill
                                         sizes="(max-width: 900px) 100vw, 1200px"
                                     />

@@ -23,7 +23,7 @@ const whyPoints = [
     {
         n: "01",
         t: "High-traffic corridors",
-        p: "Hoardings and billboards placed on Rajkot's busiest roads and junctions — visibility that works around the clock, for commuters and businesses alike.",
+        p: "Hoardings and billboards placed on Rajkot's busiest roads and junctions, visibility that works around the clock, for commuters and businesses alike.",
     },
     {
         n: "02",
@@ -33,7 +33,7 @@ const whyPoints = [
     {
         n: "03",
         t: "One accountable partner",
-        p: "As a Mukesh Art division with 20+ years behind it, campaigns get planned placement, honest upkeep, and follow-through — not just a wall.",
+        p: "As a Mukesh Art division with 20+ years behind it, campaigns get planned placement, honest upkeep, and follow-through, not just a wall.",
     },
 ];
 
@@ -98,7 +98,7 @@ export default function PublicityHome() {
 
                         <p className="grp-lede" data-motion="up" data-motion-delay="0.18">
                             Mukesh Publicity is the outdoor media division of Mukesh Media
-                            Group — planning and running hoarding, billboard, and
+                            Group, planning and running hoarding, billboard, and
                             large-format outdoor advertising campaigns across Rajkot and
                             Saurashtra's high-traffic locations since 2010. From single
                             landmark sites to multi-site city campaigns, brands get
@@ -153,7 +153,7 @@ export default function PublicityHome() {
                                 </h2>
                                 <p>
                                     Mukesh Airport Media runs 70+ screens and boards inside
-                                    Rajkot International Airport — pair city outdoor with
+                                    Rajkot International Airport, pair city outdoor with
                                     airport presence in one plan.
                                 </p>
                                 <strong>
@@ -182,7 +182,7 @@ export default function PublicityHome() {
                             </h2>
 
                             <p>
-                                Share your campaign window, preferred areas, and budget —
+                                Share your campaign window, preferred areas, and budget -
                                 the team maps available sites, availability, and a plan
                                 that fits.
                             </p>

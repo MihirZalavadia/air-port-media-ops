@@ -174,7 +174,7 @@ export default function Contact() {
     const [errors, setErrors] = useState<FieldErrors>({});
     const [sent, setSent] = useState(false);
 
-    // "Enquire this plan" buttons land here with ?plan=… — pre-fill the
+    // "Enquire this plan" buttons land here with ?plan=…, pre-fill the
     // message so the lead arrives naming the exact plan
     useEffect(() => {
         const plan = new URLSearchParams(window.location.search).get("plan");
@@ -227,7 +227,7 @@ export default function Contact() {
         const lead = { name, phone: phoneRaw, company, campaignInterest, message };
 
         // capture server-side (email + log) even if the WhatsApp send is
-        // abandoned — fire-and-forget, never blocks the redirect
+        // abandoned, fire-and-forget, never blocks the redirect
         submitLead({
             name,
             phone: phoneDigits ?? "",
@@ -239,7 +239,7 @@ export default function Contact() {
         });
 
         const lines = [
-            "New airport media enquiry — Rajkot Airport Media",
+            "New airport media enquiry, Rajkot Airport Media",
             "",
             `Name: ${lead.name}`,
             `Phone: ${lead.phone}`,
@@ -329,7 +329,7 @@ export default function Contact() {
                     noValidate
                     data-motion-group
                 >
-                    {/* honeypot — hidden from humans, bots autofill it */}
+                    {/* honeypot, hidden from humans, bots autofill it */}
                     <input
                         type="text"
                         name="website"
@@ -421,7 +421,7 @@ export default function Contact() {
 
                     {sent && (
                         <p className="form-success" role="status">
-                            Thanks — opening WhatsApp so you can send your enquiry. We reply
+                            Thanks, opening WhatsApp so you can send your enquiry. We reply
                             within 1 working day.
                         </p>
                     )}

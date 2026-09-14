@@ -11,7 +11,7 @@ type Props = {
 /**
  * Co-brand lockup: Mukesh Art × Airports Authority of India (Rajkot).
  * Sits on a fixed white plate so both marks stay legible in day and night
- * themes — same light-plate rule the partners wall uses.
+ * themes, same light-plate rule the partners wall uses.
  */
 export default function PartnershipLockup({ className = "" }: Props) {
     return (

@@ -395,7 +395,7 @@ const featureSteps = [
 
 export default function ClientsPartnership() {
     // ±58° pushed the outermost cards past the viewport edge on scaled
-    // laptop screens — ±48° keeps the whole arch inside every width the
+    // laptop screens, ±48° keeps the whole arch inside every width the
     // arch layout serves (a grid takes over below 850px)
     const startAngle = -48;
     const endAngle = 48;
@@ -474,7 +474,7 @@ export default function ClientsPartnership() {
                                         }
                                     >
                                         <div className="premium-card-inner" data-motion-item>
-                                            {/* decorative showcase — click-throughs live on
+                                            {/* decorative showcase, click-throughs live on
                                                 the /partners/ roster only */}
                                             <span className="arch-logo-link">
                                                 {tick > 0 && (

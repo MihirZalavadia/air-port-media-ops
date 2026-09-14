@@ -100,13 +100,13 @@
 
 import "./Home.css";
 
-// budget ladder a media buyer can place themselves on — starting teasers
+// budget ladder a media buyer can place themselves on, starting teasers
 // only, no direct plan links: full inventory unlocks through the form
 const commercialTiers = [
     {
         price: "From ₹1.5L/mo",
         name: "In-Terminal Backlit",
-        line: "Always-on board at security — no loop, no sharing",
+        line: "Always-on board at security, no loop, no sharing",
     },
     {
         price: "From ₹2L/mo",
@@ -116,7 +116,7 @@ const commercialTiers = [
     {
         price: "From ₹6L/mo",
         name: "City-Side Landmark",
-        line: "30'×10' unipole every visitor drives past — flyer or not",
+        line: "30'×10' unipole every visitor drives past, flyer or not",
     },
     {
         price: "Custom",
@@ -156,7 +156,7 @@ export default function CommercialRange() {
                     </p>
 
                     <p data-motion="up" data-motion-delay="0.18">
-                        A Mukesh Art company — from a single always-on
+                        A Mukesh Art company, from a single always-on
                         backlit board to owning every screen in the terminal, every
                         budget has a place at Rajkot Airport. Share your campaign
                         window and we shortlist placements and availability.

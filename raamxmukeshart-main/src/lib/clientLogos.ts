@@ -1,6 +1,6 @@
 import type { StaticImageData } from "next/image";
 
-/* ceramics & vitrified — the Morbi cluster */
+/* ceramics & vitrified, the Morbi cluster */
 import simpolo from "@/public/images/clients/simpolo.webp";
 import varmora from "@/public/images/clients/varmora.png";
 import simero from "@/public/images/clients/simero.png";
@@ -56,7 +56,7 @@ export type Partner = {
     name: string;
     sector: string;
     img: StaticImageData;
-    /** official brand website — omit when none exists / not yet verified */
+    /** official brand website, omit when none exists / not yet verified */
     url?: string;
 };
 

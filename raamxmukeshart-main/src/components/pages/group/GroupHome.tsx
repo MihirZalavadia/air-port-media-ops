@@ -40,7 +40,7 @@ const divisions = [
         est: "Est. 2023",
         name: "Mukesh Airport Media",
         tag: "Airport Advertising · Rajkot International",
-        line: "Rajkot Airport marketing and premium advertising inventory at Rajkot International Airport (Hirasar) — digital screens, boards, and full journey plans.",
+        line: "Rajkot Airport marketing and premium advertising inventory at Rajkot International Airport (Hirasar), digital screens, boards, and full journey plans.",
         points: [
             "70+ screens & boards",
             "Exclusive advertising rights",
@@ -67,7 +67,7 @@ const journey = [
     {
         year: "2023",
         title: "The premium leap",
-        body: "Mukesh Airport Media brought that experience into Rajkot International Airport — connecting brands with travellers, business audiences, and decision-makers.",
+        body: "Mukesh Airport Media brought that experience into Rajkot International Airport, connecting brands with travellers, business audiences, and decision-makers.",
     },
 ];
 
@@ -137,7 +137,7 @@ export default function GroupHome() {
 
                             <p className="grp-lede" data-motion="up" data-motion-delay="0.14">
                                 Integrated media and advertising across airports, outdoor,
-                                and premium platforms — connecting brands with millions of
+                                and premium platforms, connecting brands with millions of
                                 travellers and consumers every day.
                             </p>
 
@@ -176,7 +176,8 @@ export default function GroupHome() {
                             <span className="grp-aside-eyebrow">In partnership with</span>
                             <PartnershipLockup className="is-hero" />
                             <p className="grp-aside-claim">
-                                Authorised long-term exclusive advertising — sole right of
+                                Authorised long-term partner with{" "}
+                                <strong>exclusive advertising rights</strong> across
                                 Rajkot International Airport.
                             </p>
                         </aside>
@@ -205,8 +206,8 @@ export default function GroupHome() {
                         </h2>
 
                         <p className="grp-section-sub" data-motion="right" data-motion-delay="0.12">
-                            Mukesh Art runs two specialised media businesses — city-scale
-                            outdoor and premium airport advertising — under one
+                            Mukesh Art runs two specialised media businesses, city-scale
+                            outdoor and premium airport advertising, under one
                             accountable family name.
                         </p>
 
@@ -347,8 +348,8 @@ export default function GroupHome() {
                             </h2>
 
                             <p>
-                                Start with the airport — our flagship inventory at Rajkot
-                                International — or talk to the team about outdoor and
+                                Start with the airport, our flagship inventory at Rajkot
+                                International, or talk to the team about outdoor and
                                 city-scale placements.
                             </p>
 

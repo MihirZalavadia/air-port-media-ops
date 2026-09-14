@@ -243,7 +243,7 @@ function WhyAirport() {
         {
             n: "01",
             t: "Gateway to Saurashtra",
-            p: "The arrival point for one of Gujarat's fastest-growing industrial and business regions — trade, manufacturing, and the NRI corridor.",
+            p: "The arrival point for one of Gujarat's fastest-growing industrial and business regions, trade, manufacturing, and the NRI corridor.",
         },
         {
             n: "02",
@@ -285,7 +285,7 @@ function WhyAirport() {
                     <p data-motion="right" data-motion-delay="0.14">
                         Rajkot International Airport is the gateway to Saurashtra,
                         connecting one of Gujarat&apos;s fastest-growing industrial and
-                        business regions — a powerful destination for premium brand
+                        business regions, a powerful destination for premium brand
                         visibility.
                     </p>
                 </div>

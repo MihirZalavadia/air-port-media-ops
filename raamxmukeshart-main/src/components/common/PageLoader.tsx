@@ -17,7 +17,7 @@ export default function PageLoader() {
     const [progress, setProgress] = useState(0);
     const [takeoff, setTakeoff] = useState(false);
     const [hide, setHide] = useState(false);
-    // synchronous initial value — a skipped loader never renders at all,
+    // synchronous initial value, a skipped loader never renders at all,
     // so there's no one-frame flash on client-side navigation.
     // Full boarding curtain only when this page IS the entry document
     // (direct visit / refresh); arriving from another page of the site
@@ -38,7 +38,7 @@ export default function PageLoader() {
                     return "mini";
                 }
             } catch {
-                /* entry URL unreadable — keep the full curtain */
+                /* entry URL unreadable, keep the full curtain */
             }
         }
         return "full";
@@ -70,7 +70,7 @@ export default function PageLoader() {
 
         // The curtain is a brand moment, not a progress gate: this effect
         // running means the shell + hero poster already paint behind the
-        // veil, so don't hold the exit for window.load — the hero films
+        // veil, so don't hold the exit for window.load, the hero films
         // push that past 10s on mobile networks and pin LCP to the loader.
         loadedRef.current = true;
 

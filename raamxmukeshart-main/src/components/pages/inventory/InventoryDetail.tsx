@@ -29,7 +29,7 @@ import { getCategoryVisuals } from "@/src/lib/inventoryVisuals";
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 // only REAL footage plays on inventory pages (owner rule: no stock/AI
-// on inventory) — all four films are owner shoots at Hirasar (2026-08):
+// on inventory), all four films are owner shoots at Hirasar (2026-08):
 // digital = the ad standee playing a live campaign, backlit = Gate 01
 // terminal interior, outdoor = dusk unipole with the ITACA campaign,
 // hybrid = approach road unipole → terminal facade (the journey)
@@ -57,7 +57,7 @@ export default function InventoryDetail({ slug }: { slug: string }) {
     const [reduceMotion, setReduceMotion] = useState(false);
 
     // Lenis on the homepage can leave the window deep-scrolled when the
-    // route changes — always open a category page at the top
+    // route changes, always open a category page at the top
     useEffect(() => {
         window.scrollTo(0, 0);
         setReduceMotion(
@@ -169,7 +169,7 @@ export default function InventoryDetail({ slug }: { slug: string }) {
                                         <figure className="inv-plan-photo">
                                             <img
                                                 src={photo.src}
-                                                alt={`${plan.name} — site photo`}
+                                                alt={`${plan.name}, site photo`}
                                                 loading="lazy"
                                             />
                                         </figure>
@@ -180,7 +180,7 @@ export default function InventoryDetail({ slug }: { slug: string }) {
                                     <Link
                                         className="inv-plan-cta"
                                         href={`/contact/?plan=${encodeURIComponent(
-                                            `${category.title} — ${plan.name}`
+                                            `${category.title}, ${plan.name}`
                                         )}`}
                                     >
                                         Enquire this plan
@@ -242,7 +242,7 @@ export default function InventoryDetail({ slug }: { slug: string }) {
                                             <figure key={photoIndex}>
                                                 <img
                                                     src={photo.src}
-                                                    alt={`${group.heading} — site photo ${photoIndex + 1}`}
+                                                    alt={`${group.heading}, site photo ${photoIndex + 1}`}
                                                     loading="lazy"
                                                 />
                                             </figure>
@@ -282,7 +282,7 @@ export default function InventoryDetail({ slug }: { slug: string }) {
 
                             <p>
                                 Share your campaign month, preferred plan, and creative
-                                format — we confirm availability, the final rate card,
+                                format, we confirm availability, the final rate card,
                                 and a site-visit slot before you commit.
                             </p>
 

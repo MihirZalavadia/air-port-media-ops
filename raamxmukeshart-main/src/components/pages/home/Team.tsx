@@ -214,7 +214,7 @@ const team = [
         division: "Mukesh Art",
         image: mukeshPhoto,
         linkedin: "https://www.linkedin.com/in/mukesh-patel-082403313/",
-        desc: "The first conversation and the final word — personal owner-side relationships, straightforward commercials, and trust built over two decades in Saurashtra media.",
+        desc: "The first conversation and the final word, personal owner-side relationships, straightforward commercials, and trust built over two decades in Saurashtra media.",
     },
     {
         name: "Mayur Patel",
@@ -224,7 +224,7 @@ const team = [
         division: "Mukesh Airport Media",
         image: mayurPhoto,
         linkedin: "https://www.linkedin.com/in/mayur-gopani-378614385/",
-        desc: "Your day-to-day coordinator from first call to closure — requirement gathering, campaign follow-through, and transparent billing, end to end.",
+        desc: "Your day-to-day coordinator from first call to closure, requirement gathering, campaign follow-through, and transparent billing, end to end.",
     },
     {
         name: "Ridham Patel",
@@ -233,9 +233,9 @@ const team = [
         label: "Airport Protocol",
         division: "Mukesh Airport Media",
         image: ridhamPhoto,
-        // pending — Ridham hasn't shared his profile URL yet
+        // pending, Ridham hasn't shared his profile URL yet
         linkedin: "",
-        desc: "Everything airside — entry checks and verification, inventory installation and upkeep, and campaign reporting from go-live to wrap-up.",
+        desc: "Everything airside, entry checks and verification, inventory installation and upkeep, and campaign reporting from go-live to wrap-up.",
     },
 ];
 

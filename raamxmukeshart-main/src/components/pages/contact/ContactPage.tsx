@@ -9,7 +9,7 @@ import "./ContactPage.css";
 
 export default function ContactPage() {
     // Lenis on the previous page can leave the window deep-scrolled when
-    // the route changes — always open the contact page at the top
+    // the route changes, always open the contact page at the top
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -48,7 +48,7 @@ export default function ContactPage() {
                         </h1>
 
                         <p className="contact-page-tagline" data-motion="right" data-motion-delay="0.14">
-                            Tell us about your brand and timeline — we&rsquo;ll map the right
+                            Tell us about your brand and timeline, we&rsquo;ll map the right
                             screens, boards, and packages at Rajkot Airport and reply within
                             one working day.
                         </p>

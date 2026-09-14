@@ -24,7 +24,7 @@ export async function generateMetadata({
 
     if (!category) return {};
 
-    // each category page must self-canonicalise — without `alternates`
+    // each category page must self-canonicalise, without `alternates`
     // these inherit the root layout's homepage canonical and tell
     // Google all four pages are duplicates of / (found in QA 2026-08-28)
     return {

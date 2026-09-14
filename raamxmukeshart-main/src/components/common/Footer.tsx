@@ -151,14 +151,14 @@ export default function Footer() {
 
                     <p>
                         Rajkot Airport marketing and advertising for brands that
-                        want premium visibility — digital screens, static boards,
+                        want premium visibility, digital screens, static boards,
                         terminal branding, and planned placements across Rajkot
                         International Airport (Hirasar).
                     </p>
 
                     <div className="footer-actions">
                         {/* Instagram/Facebook/LinkedIn return here (plus
-                            SeoSchema sameAs) once the real profiles exist —
+                            SeoSchema sameAs) once the real profiles exist -
                             dead # icons read as an unfinished site */}
                         <div className="footer-socials" aria-label="Social media links">
                             <a
@@ -188,7 +188,7 @@ export default function Footer() {
 
                     <div>
                         <h3>Media</h3>
-                        {/* inventory unlocks via the lead form — no direct plan links */}
+                        {/* inventory unlocks via the lead form, no direct plan links */}
                         <nav aria-label="Airport media services">
                             <Link href="/airport/#inventory">Digital Screens</Link>
                             <Link href="/airport/#inventory">Outdoor Boards</Link>

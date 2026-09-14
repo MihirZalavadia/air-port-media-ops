@@ -5,9 +5,9 @@
             "code": "DIG-NET",
             "filter": "Digital Screens",
             "title": "Digital Screen Network",
-            "tagline": "39 LED screens across the full passenger journey — arrival belts, security hold area, check-in, and exit.",
-            "summary": "Three LED packages covering the full passenger journey — arrival belts, security hold area, check-in, and exit. 10-second creative in a 2-minute loop.",
-            "cardText": "39 LED screens across arrival, security hold, check-in, and exit — one loop, full journey coverage.",
+            "tagline": "39 LED screens across the full passenger journey, arrival belts, security hold area, check-in, and exit.",
+            "summary": "Three LED packages covering the full passenger journey, arrival belts, security hold area, check-in, and exit. 10-second creative in a 2-minute loop.",
+            "cardText": "39 LED screens across arrival, security hold, check-in, and exit, one loop, full journey coverage.",
             "leadLine": "Best for brands that want motion creative, flexible scheduling, and multiple creatives within one booked slot.",
             "units": "39 LED Screens",
             "priceLine": "Starting ₹2 Lac/mo",
@@ -35,7 +35,7 @@
             ],
             "unitGroups": [
                 {
-                    "heading": "Package 1 — 18-unit horizontal loop",
+                    "heading": "Package 1: 18-unit horizontal loop",
                     "note": "8'×3' horizontal LED · 10-sec slot · 2-min cycle",
                     "rows": [
                         {
@@ -66,7 +66,7 @@
                     ]
                 },
                 {
-                    "heading": "Package 2 — 7-unit large format",
+                    "heading": "Package 2: 7-unit large format",
                     "note": "8'×4' horizontal LED (one 8'×3') · first-touch and last-touch zones",
                     "rows": [
                         {
@@ -97,7 +97,7 @@
                     ]
                 },
                 {
-                    "heading": "Package 3 — 14-unit vertical display",
+                    "heading": "Package 3: 14-unit vertical display",
                     "note": "75\" and 65\" portrait screens in high-dwell pause zones",
                     "rows": [
                         {
@@ -142,7 +142,7 @@
                 "10-second creative repeating every 2 minutes inside each package loop",
                 "Multiple creatives possible within one booked slot, subject to scheduling and approval",
                 "Live or scheduled creative updates can be discussed for eligible screens",
-                "Every screen creative is approval-routed through the operator — no rogue inventory"
+                "Every screen creative is approval-routed through the operator, no rogue inventory"
             ],
             "pdfHref": "/downloads/mukesh_airport_media_digital_screen_network_v1.pdf",
             "pdfReady": false
@@ -152,10 +152,10 @@
             "code": "OUT-LMK",
             "filter": "Outdoor Boards",
             "title": "Landmark Outdoor Boards",
-            "tagline": "Large-format frontlit boards on the city side and airport approach — visible before anyone enters the terminal.",
-            "summary": "Large-format frontlit boards on the city side and airport approach — seen by every passenger, dropper, and taxi entering the airport.",
-            "cardText": "Landmark frontlit boards on the city side and approach road — seen before anyone enters the terminal.",
-            "leadLine": "Best for real estate, jewellery, hospitals, and auto — categories that buy landmark visibility.",
+            "tagline": "Large-format frontlit boards on the city side and airport approach, visible before anyone enters the terminal.",
+            "summary": "Large-format frontlit boards on the city side and airport approach, seen by every passenger, dropper, and taxi entering the airport.",
+            "cardText": "Landmark frontlit boards on the city side and approach road, seen before anyone enters the terminal.",
+            "leadLine": "Best for real estate, jewellery, hospitals, and auto, categories that buy landmark visibility.",
             "units": "5 Frontlit Boards",
             "priceLine": "Starting ₹6 Lac/mo",
             "plans": [
@@ -166,22 +166,22 @@
                 },
                 {
                     "name": "AD-3 Frontlit",
-                    "detail": "Frontlit board · Airport approach — full specs in plan PDF",
+                    "detail": "Frontlit board · Airport approach, full specs in plan PDF",
                     "price": "On request"
                 },
                 {
                     "name": "AD-4 Frontlit",
-                    "detail": "Frontlit board · Airport approach — full specs in plan PDF",
+                    "detail": "Frontlit board · Airport approach, full specs in plan PDF",
                     "price": "On request"
                 },
                 {
                     "name": "AD-5 Frontlit",
-                    "detail": "Frontlit board · Airport exterior — full specs in plan PDF",
+                    "detail": "Frontlit board · Airport exterior, full specs in plan PDF",
                     "price": "On request"
                 },
                 {
                     "name": "AD-6 Frontlit",
-                    "detail": "Frontlit board · Airport exterior — full specs in plan PDF",
+                    "detail": "Frontlit board · Airport exterior, full specs in plan PDF",
                     "price": "On request"
                 }
             ],
@@ -219,9 +219,9 @@
                 }
             ],
             "whyPoints": [
-                "Seen by every passenger, dropper, and taxi on the airport approach — not just flyers",
+                "Seen by every passenger, dropper, and taxi on the airport approach, not just flyers",
                 "Landmark scale: the AD-2 unipole is the largest single canvas in the inventory",
-                "Static permanence — your creative holds the site 24/7 with no loop sharing",
+                "Static permanence, your creative holds the site 24/7 with no loop sharing",
                 "Creative replacement coordinated end-to-end, including printing and mounting"
             ],
             "pdfHref": "/downloads/mukesh_airport_media_landmark_outdoor_boards_v1.pdf",
@@ -233,9 +233,9 @@
             "filter": "Backlit Boards",
             "title": "In-Terminal Backlit Boards",
             "tagline": "Always-on static backlits at the highest-dwell chokepoints inside the terminal.",
-            "summary": "Always-on static backlits at the highest-dwell chokepoints — security clearance, the laptop work station, and the security hold area.",
-            "cardText": "Always-on backlit boards at security clearance and work zones — no rotation, no sharing the canvas.",
-            "leadLine": "Best for BFSI, healthcare, and education — trust categories that want 24/7 presence with no loop sharing.",
+            "summary": "Always-on static backlits at the highest-dwell chokepoints, security clearance, the laptop work station, and the security hold area.",
+            "cardText": "Always-on backlit boards at security clearance and work zones, no rotation, no sharing the canvas.",
+            "leadLine": "Best for BFSI, healthcare, and education, trust categories that want 24/7 presence with no loop sharing.",
             "units": "3 Backlit Placements",
             "priceLine": "Starting ₹1.5 Lac/mo",
             "plans": [
@@ -268,18 +268,18 @@
                         {
                             "code": "Security Clearance",
                             "spec": "Static backlit",
-                            "location": "Security hold entry — every departing passenger passes it"
+                            "location": "Security hold entry, every departing passenger passes it"
                         },
                         {
                             "code": "Laptop Workstation",
                             "spec": "Static backlit",
-                            "location": "Work station zone — long-dwell business travellers"
+                            "location": "Work station zone, long-dwell business travellers"
                         }
                     ]
                 }
             ],
             "whyPoints": [
-                "Positioned at chokepoints every departing passenger must pass — not optional walkways",
+                "Positioned at chokepoints every departing passenger must pass, not optional walkways",
                 "Always visible: no 2-minute rotation, no sharing the canvas with other brands",
                 "35–50 minutes of average dwell time inside security works in your favour",
                 "Backlit fabric keeps the creative premium and legible day and night"
@@ -292,8 +292,8 @@
             "code": "HYB-PLN",
             "filter": "Hybrid Plans",
             "title": "Hybrid Journey Plans",
-            "tagline": "Digital motion plus static permanence in one buy — the whole airport working as one canvas.",
-            "summary": "Digital motion plus static permanence in one buy — curated combinations that bookend the passenger journey from approach road to arrival exit.",
+            "tagline": "Digital motion plus static permanence in one buy, the whole airport working as one canvas.",
+            "summary": "Digital motion plus static permanence in one buy, curated combinations that bookend the passenger journey from approach road to arrival exit.",
             "cardText": "Curated digital + static combinations that bookend the passenger journey in a single buy.",
             "leadLine": "Best for launches and market-entry campaigns that need the whole airport working as one canvas.",
             "units": "3 Curated Plans",
@@ -318,7 +318,7 @@
             "unitGroups": [
                 {
                     "heading": "How the plans are built",
-                    "note": "Each plan combines digital loops with static permanence — compositions can be tailored to the campaign",
+                    "note": "Each plan combines digital loops with static permanence, compositions can be tailored to the campaign",
                     "rows": [
                         {
                             "code": "Launch Plan",
@@ -340,9 +340,9 @@
             ],
             "whyPoints": [
                 "One buy covers approach road, check-in, security, gates, belts, and exit",
-                "Motion for storytelling, static for permanence — the formats reinforce each other",
+                "Motion for storytelling, static for permanence, the formats reinforce each other",
                 "Roughly 12–15 surface impressions per passenger on a full-journey plan",
-                "Compositions and commercials are tailored per campaign — talk to us with your brief"
+                "Compositions and commercials are tailored per campaign, talk to us with your brief"
             ],
             "pdfHref": "/downloads/mukesh_airport_media_hybrid_journey_plans_v1.pdf",
             "pdfReady": false
