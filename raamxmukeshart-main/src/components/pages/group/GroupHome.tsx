@@ -121,34 +121,68 @@ export default function GroupHome() {
                 </header>
 
                 <section className="grp-hero" aria-labelledby="grp-title">
+                    <div className="grp-container grp-hero-inner">
+                        <div className="grp-hero-copy">
+                            <span className="grp-eyebrow" data-motion="clip">
+                                Mukesh Art · Since 2004
+                            </span>
+
+                            <h1 id="grp-title" data-motion="up" data-motion-delay="0.06">
+                                Brand Beyond <em>Boundaries.</em>
+                            </h1>
+
+                            <p className="grp-punch" data-motion="right" data-motion-delay="0.1">
+                                We Create Visibility. We Build Influence.
+                            </p>
+
+                            <p className="grp-lede" data-motion="up" data-motion-delay="0.14">
+                                Integrated media and advertising across airports, outdoor,
+                                and premium platforms — connecting brands with millions of
+                                travellers and consumers every day.
+                            </p>
+
+                            <div className="grp-hero-actions" data-motion="up" data-motion-delay="0.18">
+                                <Link className="grp-hero-primary" href="/airport/">
+                                    Explore Airport Media
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path
+                                            d="M5 12h12M12 6l7 6-7 6"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="1.7"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </Link>
+
+                                <a
+                                    className="grp-hero-secondary"
+                                    href="https://wa.me/919825340818"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Chat on WhatsApp
+                                </a>
+                            </div>
+                        </div>
+
+                        <aside
+                            className="grp-hero-aside"
+                            data-motion="zoom"
+                            data-motion-delay="0.14"
+                            aria-label="Airports Authority of India partnership"
+                        >
+                            <span className="grp-aside-eyebrow">In partnership with</span>
+                            <PartnershipLockup className="is-hero" />
+                            <p className="grp-aside-claim">
+                                Authorised long-term exclusive advertising — sole right of
+                                Rajkot International Airport.
+                            </p>
+                        </aside>
+                    </div>
+
                     <div className="grp-container">
-                        <span className="grp-eyebrow" data-motion="clip">
-                            Mukesh Art · Since 2004
-                        </span>
-
-                        <h1 id="grp-title" data-motion="up" data-motion-delay="0.08">
-                            Brand Beyond <em>Boundaries.</em>
-                        </h1>
-
-                        <p className="grp-punch" data-motion="right" data-motion-delay="0.14">
-                            We Create Visibility. We Build Influence.
-                        </p>
-
-                        <p className="grp-lede" data-motion="up" data-motion-delay="0.18">
-                            Mukesh Art is a leading integrated media and
-                            advertising company delivering impactful brand communication
-                            across airports, outdoor media, and innovative advertising
-                            platforms. With a commitment to creativity, strategic
-                            planning, and premium media solutions, we help brands connect
-                            with millions of travelers, commuters, and consumers every
-                            day.
-                        </p>
-
-                        <p className="grp-mission" data-motion="zoom" data-motion-delay="0.22">
-                            Our mission is simple — to take your brand beyond boundaries
-                            and transform visibility into business growth.
-                        </p>
-
                         <div className="grp-stats" data-motion-group>
                             {stats.map((stat) => (
                                 <div className="grp-stat" data-motion-item key={stat.label}>
@@ -156,36 +190,6 @@ export default function GroupHome() {
                                     <span>{stat.label}</span>
                                 </div>
                             ))}
-                        </div>
-                    </div>
-                </section>
-
-                <section className="grp-partner" aria-labelledby="grp-partner-title">
-                    <div className="grp-container grp-partner-inner">
-                        <div className="grp-partner-copy">
-                            <span className="grp-eyebrow" data-motion="clip">
-                                In Partnership With
-                            </span>
-
-                            <h2 id="grp-partner-title" data-motion="up" data-motion-delay="0.06">
-                                Authorised by the <em>Airports Authority of India.</em>
-                            </h2>
-
-                            <p className="grp-partner-claim" data-motion="right" data-motion-delay="0.12">
-                                Authorised long-term exclusive advertising — sole right of
-                                Rajkot International Airport.
-                            </p>
-
-                            <p className="grp-partner-sub" data-motion="up" data-motion-delay="0.16">
-                                Mukesh Airport Media operates the full advertising inventory
-                                at Rajkot International Airport (Hirasar) in partnership with
-                                the Airports Authority of India — the credibility and
-                                compliance backbone behind every campaign we run.
-                            </p>
-                        </div>
-
-                        <div className="grp-partner-mark" data-motion="zoom" data-motion-delay="0.14">
-                            <PartnershipLockup />
                         </div>
                     </div>
                 </section>
@@ -210,16 +214,18 @@ export default function GroupHome() {
                             {divisions.map((division) => {
                                 const body = (
                                     <>
-                                        <figure className="grp-division-logo">
-                                            <img
-                                                src={division.logo.src}
-                                                alt={`${division.name} logo`}
-                                            />
-                                        </figure>
+                                        <div className="grp-division-head">
+                                            <figure className="grp-division-logo">
+                                                <img
+                                                    src={division.logo.src}
+                                                    alt={`${division.name} logo`}
+                                                />
+                                            </figure>
 
-                                        <div className="grp-division-meta">
-                                            <small>{division.code}</small>
-                                            <small>{division.est}</small>
+                                            <div className="grp-division-meta">
+                                                <small>{division.code}</small>
+                                                <small>{division.est}</small>
+                                            </div>
                                         </div>
 
                                         <h3>{division.name}</h3>

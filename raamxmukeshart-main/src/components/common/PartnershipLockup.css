@@ -70,6 +70,23 @@
     opacity: 0.55;
 }
 
+/* hero-aside variant — sits inside the partnership card, no extra plate chrome */
+.aai-lockup.is-hero {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 4px 0;
+    gap: clamp(14px, 2.4vw, 26px);
+}
+
+.aai-lockup.is-hero .aai-lockup-art img {
+    height: clamp(44px, 5vw, 58px);
+}
+
+.aai-lockup.is-hero .aai-lockup-aai img {
+    height: clamp(42px, 4.8vw, 54px);
+}
+
 /* tighter footer variant */
 .aai-lockup.is-footer {
     gap: clamp(14px, 2.4vw, 26px);

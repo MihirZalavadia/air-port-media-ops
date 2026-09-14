@@ -123,120 +123,153 @@
 
 /* hero */
 .grp-hero {
-    padding: clamp(72px, 9vw, 128px) 0 clamp(56px, 7vw, 96px);
+    padding: clamp(36px, 5vw, 68px) 0 clamp(32px, 4vw, 56px);
     border-bottom: 1px solid var(--rule-soft);
 }
 
+.grp-hero-inner {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+    gap: clamp(32px, 5vw, 72px);
+}
+
 .grp-hero h1 {
-    font-size: clamp(48px, 8vw, 104px);
-    line-height: 0.96;
-    max-width: 900px;
+    font-size: clamp(44px, 5.8vw, 82px);
+    line-height: 0.95;
 }
 
 .grp-punch {
-    margin: 26px 0 0;
-    font-size: clamp(17px, 2vw, 22px);
+    margin: 20px 0 0;
+    font-size: clamp(16px, 1.7vw, 21px);
     font-weight: 700;
     letter-spacing: 0.01em;
 }
 
 .grp-lede {
-    margin: 18px 0 0;
-    max-width: 720px;
-    font-size: clamp(15px, 1.5vw, 17.5px);
-    line-height: 1.8;
+    margin: 14px 0 0;
+    max-width: 560px;
+    font-size: clamp(14.5px, 1.4vw, 16.5px);
+    line-height: 1.7;
     color: var(--ink-2);
 }
 
-.grp-mission {
-    margin: 26px 0 0;
-    max-width: 640px;
-    padding: 18px 22px;
-    border-left: 3px solid var(--accent);
-    background: var(--card-bg, var(--surface));
-    border-radius: 0 14px 14px 0;
-    font-size: 15.5px;
-    line-height: 1.7;
-    font-weight: 600;
+.grp-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
 }
 
-/* AAI partnership band */
-.grp-partner {
-    padding: clamp(48px, 6vw, 84px) 0;
+.grp-hero-primary,
+.grp-hero-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 24px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.grp-hero-primary {
+    background: var(--accent);
+    color: #ffffff;
+}
+
+.grp-hero-primary svg {
+    width: 16px;
+    height: 16px;
+}
+
+.grp-hero-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--rule);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .grp-hero-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 32px -16px rgba(226, 29, 45, 0.6);
+    }
+
+    .grp-hero-secondary:hover {
+        transform: translateY(-2px);
+        border-color: var(--ink);
+    }
+}
+
+/* hero aside — AAI partnership, above the fold */
+.grp-hero-aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: clamp(22px, 2.6vw, 32px);
+    border: 1px solid var(--rule-soft);
+    border-radius: 22px;
     background:
         linear-gradient(
             180deg,
-            color-mix(in srgb, var(--accent) 5%, var(--surface)),
+            color-mix(in srgb, var(--accent) 6%, var(--surface)),
             var(--surface)
         );
-    border-bottom: 1px solid var(--rule-soft);
+    box-shadow: 0 30px 70px -46px rgba(15, 23, 42, 0.5);
 }
 
-.grp-partner-inner {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: center;
-    gap: clamp(28px, 5vw, 72px);
-}
-
-.grp-partner h2 {
-    font-size: clamp(28px, 3.6vw, 46px);
-    line-height: 1.04;
-    margin-bottom: 16px;
-}
-
-.grp-partner-claim {
-    margin: 0 0 14px;
-    font-size: clamp(15px, 1.7vw, 19px);
-    font-weight: 800;
-    line-height: 1.35;
-    letter-spacing: 0.01em;
-    color: var(--accent);
+.grp-aside-eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
+    color: var(--accent);
 }
 
-.grp-partner-sub {
+.grp-aside-claim {
     margin: 0;
-    max-width: 560px;
-    font-size: clamp(14.5px, 1.4vw, 16.5px);
-    line-height: 1.75;
+    text-align: center;
+    max-width: 340px;
+    font-size: 12.5px;
+    font-weight: 800;
+    line-height: 1.45;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     color: var(--ink-2);
 }
 
-.grp-partner-mark {
-    display: flex;
-    justify-content: center;
-}
-
-@media (max-width: 860px) {
-    .grp-partner-inner {
+@media (max-width: 900px) {
+    .grp-hero-inner {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 28px;
     }
 
-    .grp-partner-mark {
-        justify-content: flex-start;
+    .grp-hero-aside {
+        align-self: stretch;
     }
 }
 
 /* divisions */
 .grp-divisions {
-    padding: clamp(56px, 7vw, 96px) 0;
+    padding: clamp(44px, 5.5vw, 76px) 0;
     background: var(--inventory-bg, var(--surface));
     border-bottom: 1px solid var(--rule-soft);
 }
 
 .grp-divisions h2,
 .grp-about h2 {
-    font-size: clamp(32px, 4.2vw, 54px);
+    font-size: clamp(30px, 3.8vw, 48px);
     line-height: 1.02;
-    margin-bottom: clamp(28px, 4vw, 44px);
+    margin-bottom: clamp(22px, 3vw, 34px);
 }
 
 .grp-division-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    gap: 20px;
     max-width: 1100px;
 }
 
@@ -244,13 +277,13 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 26px;
+    padding: 24px;
     border: 1px solid var(--rule-soft);
-    border-radius: 20px;
+    border-radius: 18px;
     background: var(--card-bg, var(--surface));
     text-decoration: none;
     color: inherit;
-    box-shadow: 0 22px 50px -34px rgba(15, 23, 42, 0.35);
+    box-shadow: 0 18px 44px -34px rgba(15, 23, 42, 0.35);
     transition:
         transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
         box-shadow 0.5s ease,
@@ -259,37 +292,46 @@
 
 @media (hover: hover) and (pointer: fine) {
     .grp-division:hover {
-        transform: translateY(-6px);
+        transform: translateY(-5px);
         border-color: var(--rule);
-        box-shadow: 0 44px 84px -42px rgba(15, 23, 42, 0.5);
+        box-shadow: 0 38px 76px -44px rgba(15, 23, 42, 0.5);
     }
 }
 
-/* white logo plate at the top of every division card */
+/* compact header row: logo chip (left) + code/est meta (right) */
+.grp-division-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
 .grp-division-logo {
-    margin: -26px -26px 22px;
-    width: calc(100% + 52px);
-    border-radius: 19px 19px 0 0;
-    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 62px;
+    padding: 8px 16px;
     background: #ffffff;
-    border-bottom: 1px solid var(--rule-soft);
-    display: grid;
-    place-items: center;
-    aspect-ratio: 16 / 9;
+    border: 1px solid var(--rule-soft);
+    border-radius: 14px;
+    flex: 0 0 auto;
 }
 
 .grp-division-logo img {
     display: block;
     width: auto;
-    height: 72%;
-    max-width: 80%;
+    height: 100%;
+    max-width: 150px;
     object-fit: contain;
     transition: transform 0.6s ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
     .grp-division:hover .grp-division-logo img {
-        transform: scale(1.05);
+        transform: scale(1.04);
     }
 }
 
@@ -302,17 +344,17 @@
 }
 
 .grp-division h3 {
-    margin: 12px 0 10px;
+    margin: 0 0 8px;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 500;
     letter-spacing: -0.02em;
 }
 
 .grp-division p {
-    margin: 0 0 20px;
+    margin: 0 0 16px;
     font-size: 14px;
-    line-height: 1.7;
+    line-height: 1.65;
     color: var(--ink-2);
 }
 
@@ -350,7 +392,7 @@
 
 /* about */
 .grp-about {
-    padding: clamp(56px, 7vw, 96px) 0;
+    padding: clamp(44px, 5.5vw, 76px) 0;
 }
 
 .grp-about-copy {
@@ -420,17 +462,19 @@
 .grp-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-top: clamp(36px, 5vw, 56px);
+    gap: 14px;
+    margin-top: clamp(28px, 3.5vw, 44px);
+    padding-top: clamp(24px, 3vw, 36px);
+    border-top: 1px solid var(--rule-soft);
 }
 
 .grp-stat {
     background: var(--card-bg, var(--surface));
     border: 1px solid var(--rule-soft);
-    border-radius: 16px;
-    padding: 20px 22px;
+    border-radius: 14px;
+    padding: 16px 18px;
     display: grid;
-    gap: 6px;
+    gap: 4px;
 }
 
 .grp-stat b {
@@ -458,9 +502,10 @@
 
 .grp-division-meta {
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    width: 100%;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    text-align: right;
 }
 
 .grp-division-meta small {
@@ -515,7 +560,7 @@
 
 /* journey */
 .grp-journey {
-    padding: clamp(56px, 7vw, 96px) 0;
+    padding: clamp(44px, 5.5vw, 76px) 0;
     border-bottom: 1px solid var(--rule-soft);
 }
 
@@ -571,7 +616,7 @@
 
 /* CTA band */
 .grp-cta {
-    padding: clamp(56px, 7vw, 96px) 0;
+    padding: clamp(44px, 5.5vw, 76px) 0;
 }
 
 .grp-cta-card {
