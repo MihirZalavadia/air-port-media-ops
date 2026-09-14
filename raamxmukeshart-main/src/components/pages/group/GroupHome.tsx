@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ScrollAnimations from "@/src/components/common/ScrollAnimations";
 import SmoothScroll from "@/src/components/common/SmoothScroller";
+import PartnershipLockup from "@/src/components/common/PartnershipLockup";
 import "./GroupHome.css";
 
 import logoMark from "@/public/images/home/logo_mark.png";
@@ -155,6 +156,36 @@ export default function GroupHome() {
                                     <span>{stat.label}</span>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+                </section>
+
+                <section className="grp-partner" aria-labelledby="grp-partner-title">
+                    <div className="grp-container grp-partner-inner">
+                        <div className="grp-partner-copy">
+                            <span className="grp-eyebrow" data-motion="clip">
+                                In Partnership With
+                            </span>
+
+                            <h2 id="grp-partner-title" data-motion="up" data-motion-delay="0.06">
+                                Authorised by the <em>Airports Authority of India.</em>
+                            </h2>
+
+                            <p className="grp-partner-claim" data-motion="right" data-motion-delay="0.12">
+                                Authorised long-term exclusive advertising — sole right of
+                                Rajkot International Airport.
+                            </p>
+
+                            <p className="grp-partner-sub" data-motion="up" data-motion-delay="0.16">
+                                Mukesh Airport Media operates the full advertising inventory
+                                at Rajkot International Airport (Hirasar) in partnership with
+                                the Airports Authority of India — the credibility and
+                                compliance backbone behind every campaign we run.
+                            </p>
+                        </div>
+
+                        <div className="grp-partner-mark" data-motion="zoom" data-motion-delay="0.14">
+                            <PartnershipLockup />
                         </div>
                     </div>
                 </section>

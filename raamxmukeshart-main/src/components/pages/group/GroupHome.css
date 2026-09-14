@@ -160,6 +160,65 @@
     font-weight: 600;
 }
 
+/* AAI partnership band */
+.grp-partner {
+    padding: clamp(48px, 6vw, 84px) 0;
+    background:
+        linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--accent) 5%, var(--surface)),
+            var(--surface)
+        );
+    border-bottom: 1px solid var(--rule-soft);
+}
+
+.grp-partner-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: clamp(28px, 5vw, 72px);
+}
+
+.grp-partner h2 {
+    font-size: clamp(28px, 3.6vw, 46px);
+    line-height: 1.04;
+    margin-bottom: 16px;
+}
+
+.grp-partner-claim {
+    margin: 0 0 14px;
+    font-size: clamp(15px, 1.7vw, 19px);
+    font-weight: 800;
+    line-height: 1.35;
+    letter-spacing: 0.01em;
+    color: var(--accent);
+    text-transform: uppercase;
+}
+
+.grp-partner-sub {
+    margin: 0;
+    max-width: 560px;
+    font-size: clamp(14.5px, 1.4vw, 16.5px);
+    line-height: 1.75;
+    color: var(--ink-2);
+}
+
+.grp-partner-mark {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 860px) {
+    .grp-partner-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .grp-partner-mark {
+        justify-content: flex-start;
+    }
+}
+
 /* divisions */
 .grp-divisions {
     padding: clamp(56px, 7vw, 96px) 0;

@@ -131,6 +131,7 @@ import Image from "next/image";
 import Link from "next/link";
 import logoDay from "@/public/images/home/logo_mark.png"
 import logoLight from "@/public/images/home/logo_mark_light.png"
+import PartnershipLockup from "@/src/components/common/PartnershipLockup";
 import "./Footer.css";
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -206,6 +207,13 @@ export default function Footer() {
                         <a href="mailto:info@mukeshart.in">info@mukeshart.in</a>
                     </div>
                 </div>
+            </div>
+
+            <div className="container footer-partner">
+                <span className="footer-partner-label">
+                    Authorised advertising partner · Rajkot International Airport
+                </span>
+                <PartnershipLockup className="is-footer" />
             </div>
 
             <div className="container footer-bottom">

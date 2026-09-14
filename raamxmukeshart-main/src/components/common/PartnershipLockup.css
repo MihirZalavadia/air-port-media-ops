@@ -1,0 +1,93 @@
+/* [[ Mukesh Art × Airports Authority of India — co-brand lockup ]] */
+
+.aai-lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(16px, 3vw, 34px);
+    padding: clamp(14px, 2.4vw, 22px) clamp(20px, 3.2vw, 36px);
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.09);
+    border-radius: 18px;
+    box-shadow: 0 26px 60px -38px rgba(15, 23, 42, 0.5);
+    max-width: 100%;
+}
+
+.aai-lockup-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aai-lockup-logo img {
+    display: block;
+    width: auto;
+    object-fit: contain;
+}
+
+/* the two marks are optically balanced by height, not raw pixels */
+.aai-lockup-art img {
+    height: clamp(42px, 8vw, 64px);
+}
+
+.aai-lockup-aai {
+    flex-direction: column;
+    gap: 6px;
+}
+
+.aai-lockup-aai img {
+    height: clamp(40px, 7.4vw, 60px);
+}
+
+/* multiplication mark between the two brands */
+.aai-lockup-x {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 500;
+    line-height: 1;
+    color: rgba(15, 23, 42, 0.35);
+    user-select: none;
+}
+
+/* "Rajkot" tag under the AAI mark — echoes the reference lockup */
+.aai-lockup-place {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #2a3aa0;
+}
+
+.aai-lockup-place::before,
+.aai-lockup-place::after {
+    content: "";
+    width: 16px;
+    height: 1.5px;
+    background: currentColor;
+    opacity: 0.55;
+}
+
+/* tighter footer variant */
+.aai-lockup.is-footer {
+    gap: clamp(14px, 2.4vw, 26px);
+    padding: 14px clamp(16px, 2.6vw, 26px);
+    border-radius: 16px;
+}
+
+.aai-lockup.is-footer .aai-lockup-art img {
+    height: clamp(38px, 7vw, 50px);
+}
+
+.aai-lockup.is-footer .aai-lockup-aai img {
+    height: clamp(36px, 6.6vw, 48px);
+}
+
+@media (max-width: 420px) {
+    .aai-lockup {
+        gap: 14px;
+        padding: 14px 16px;
+    }
+}

@@ -173,8 +173,28 @@
     width: 100%;
 }
 
+.footer-partner {
+    margin-top: 64px;
+    padding-top: 40px;
+    border-top: 1px solid var(--f-rule);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+}
+
+.footer-partner-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--f-ink-faint);
+}
+
 .footer-bottom {
-    margin-top: 72px;
+    margin-top: 40px;
     padding-top: 24px;
     border-top: 1px solid var(--f-rule);
     display: flex;
