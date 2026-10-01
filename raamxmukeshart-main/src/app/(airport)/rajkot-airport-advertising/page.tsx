@@ -6,6 +6,7 @@ import { inventoryCategories, airportFacts } from "@/src/lib/inventoryData";
 import PartnershipLockup from "@/src/components/common/PartnershipLockup";
 import ScrollAnimations from "@/src/components/common/ScrollAnimations";
 import SmoothScroll from "@/src/components/common/SmoothScroller";
+import RaaScrollLink from "./RaaScrollLink";
 
 import "./RajkotAirportAdvertising.css";
 
@@ -172,9 +173,9 @@ export default function RajkotAirportAdvertisingPage() {
                             <a className="raa-btn raa-btn--primary" href={WHATSAPP} target="_blank" rel="noopener noreferrer">
                                 Get rates on WhatsApp
                             </a>
-                            <Link className="raa-btn raa-btn--ghost" href="/airport/#inventory">
+                            <RaaScrollLink targetId="raa-formats" className="raa-btn raa-btn--ghost">
                                 View inventory
-                            </Link>
+                            </RaaScrollLink>
                         </div>
 
                         <ul className="raa-trust" data-motion-group>
@@ -202,9 +203,9 @@ export default function RajkotAirportAdvertisingPage() {
                     </div>
                 </div>
 
-                <a href="#raa-intro" className="raa-hero-cue" aria-label="Scroll to explore">
+                <RaaScrollLink targetId="raa-intro" className="raa-hero-cue" ariaLabel="Scroll to explore">
                     <span />
-                </a>
+                </RaaScrollLink>
             </section>
 
             {/* ================= INTRO ================= */}
@@ -228,7 +229,7 @@ export default function RajkotAirportAdvertisingPage() {
             </section>
 
             {/* ================= FORMATS ================= */}
-            <section className="raa-section raa-formats" aria-labelledby="raa-formats-title">
+            <section className="raa-section raa-formats" id="raa-formats" aria-labelledby="raa-formats-title">
                 <div className="container">
                     <span className="raa-eyebrow" data-motion="clip">Media formats</span>
                     <h2 className="raa-h2" id="raa-formats-title" data-motion="up">

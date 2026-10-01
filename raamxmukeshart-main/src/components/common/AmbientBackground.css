@@ -1,0 +1,116 @@
+/* ============================================================
+   DRAFT — site-wide ambient sky background.
+   All overrides scoped under html.ambient-on → removing the class
+   (and the <AmbientBackground/> mount) restores everything.
+   ============================================================ */
+
+/* ---- make the section bands transparent so the sky shows through.
+   --surface / --card-bg / --footer-bg stay opaque so cards, modals,
+   header and footer keep their fills. ---- */
+html.ambient-on {
+    --bg: transparent;
+    --about-bg: transparent;
+    --inventory-bg: transparent;
+    --gallery-bg: transparent;
+    --team-bg: transparent;
+    --contact-bg: transparent;
+}
+html.ambient-on body { background: transparent; }
+
+/* the new landing's surface-backed sections, kept consistent with the sky */
+html.ambient-on .raa-intro,
+html.ambient-on .raa-why,
+html.ambient-on .raa-faq { background: transparent; }
+
+/* ---- the fixed backdrop ---- */
+.ambient {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    color: rgba(30, 42, 120, 0.45); /* plane ink (day) */
+}
+[data-theme="night"] .ambient { color: rgba(190, 214, 255, 0.55); }
+
+/* sky */
+.ambient-sky {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f4f8ff 55%, #e9f1ff 100%);
+    transition: background 0.5s ease;
+}
+[data-theme="night"] .ambient-sky {
+    background:
+        radial-gradient(120% 90% at 50% -10%, #16255a 0%, #0c1740 42%, #070d26 100%);
+}
+
+/* ---- stars (night only) ---- */
+.ambient-stars { position: absolute; inset: 0; opacity: 0; transition: opacity 0.6s ease; }
+[data-theme="night"] .ambient-stars { opacity: 1; }
+.ambient-stars::before,
+.ambient-stars::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-repeat: repeat;
+}
+/* layer 1 — small white + saturated specks */
+.ambient-stars::before {
+    background-image:
+        radial-gradient(1.6px 1.6px at 12% 18%, #ffffff 50%, transparent 52%),
+        radial-gradient(1.4px 1.4px at 28% 62%, #9fe8ff 50%, transparent 52%),
+        radial-gradient(1.8px 1.8px at 46% 28%, #ffffff 50%, transparent 52%),
+        radial-gradient(1.4px 1.4px at 63% 72%, #ffd79a 50%, transparent 52%),
+        radial-gradient(1.6px 1.6px at 78% 36%, #ffffff 50%, transparent 52%),
+        radial-gradient(1.5px 1.5px at 88% 68%, #b9c8ff 50%, transparent 52%),
+        radial-gradient(1.5px 1.5px at 34% 86%, #ffffff 50%, transparent 52%),
+        radial-gradient(1.4px 1.4px at 7% 78%, #ffffff 50%, transparent 52%);
+    background-size: 100% 100%;
+    animation: ambientTwinkle 4.5s ease-in-out infinite;
+}
+/* layer 2 — denser faint dust, offset twinkle */
+.ambient-stars::after {
+    background-image:
+        radial-gradient(1.1px 1.1px at 18% 42%, rgba(255,255,255,0.8) 50%, transparent 52%),
+        radial-gradient(1.1px 1.1px at 52% 54%, rgba(255,255,255,0.7) 50%, transparent 52%),
+        radial-gradient(1.1px 1.1px at 72% 18%, rgba(159,232,255,0.8) 50%, transparent 52%),
+        radial-gradient(1px 1px at 40% 12%, rgba(255,255,255,0.7) 50%, transparent 52%),
+        radial-gradient(1.1px 1.1px at 84% 84%, rgba(255,255,255,0.7) 50%, transparent 52%),
+        radial-gradient(1px 1px at 60% 90%, rgba(255,215,154,0.7) 50%, transparent 52%);
+    animation: ambientTwinkle 6.5s ease-in-out infinite 1.2s;
+}
+@keyframes ambientTwinkle { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
+
+/* ---- planes ---- */
+.ambient-planes { position: absolute; inset: 0; }
+.ambient-plane {
+    position: absolute;
+    left: -14vw;
+    width: 54px; height: auto;
+    will-change: transform;
+}
+.ambient-plane svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.12)); }
+.ambient-trail {
+    position: absolute; top: 50%; right: 100%;
+    width: 120px; height: 1.5px; transform: translateY(-50%);
+    background: linear-gradient(90deg, transparent, currentColor);
+    opacity: 0.35;
+}
+.ambient-plane-1 { top: 22%; animation: ambientFly 34s linear infinite; }
+.ambient-plane-2 { top: 64%; width: 38px; opacity: 0.8; animation: ambientFly 52s linear infinite 12s; }
+@keyframes ambientFly {
+    from { transform: translateX(0) rotate(-3deg); }
+    to   { transform: translateX(128vw) rotate(-3deg); }
+}
+
+/* day planes read as darker ink; night as soft light already via color */
+[data-theme="night"] .ambient-plane svg { filter: drop-shadow(0 0 6px rgba(120,160,255,0.35)); }
+
+@media (prefers-reduced-motion: reduce) {
+    .ambient-stars::before,
+    .ambient-stars::after,
+    .ambient-plane-1,
+    .ambient-plane-2 { animation: none; }
+    .ambient-plane-2 { display: none; }
+}

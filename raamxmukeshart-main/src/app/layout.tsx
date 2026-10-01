@@ -32,6 +32,7 @@
 
 import type { Metadata, Viewport } from "next";
 import ZoomLock from "@/src/components/common/ZoomLock";
+import AmbientBackground from "@/src/components/common/AmbientBackground"; // DRAFT ambient bg — remove to roll back
 import { siteConfig } from "@/src/lib/seo";
 import "./globals.css";
 
@@ -115,9 +116,12 @@ export default function RootLayout({
   // Header/Footer moved to src/app/(airport)/layout.tsx, they belong to the
   // airport sub-site; the Mukesh Media Group landing at "/" has its own chrome
   return (
-    <html lang="en-IN" data-theme="day" suppressHydrationWarning>
+    // DRAFT ambient bg: the "ambient-on" class gates every override; remove it
+    // and <AmbientBackground/> below (and the import) to fully roll back.
+    <html lang="en-IN" data-theme="day" className="ambient-on" suppressHydrationWarning>
       <body suppressHydrationWarning>
         <ZoomLock />
+        <AmbientBackground />
         {children}
       </body>
     </html>
