@@ -145,4 +145,14 @@ export const pageSeo = {
             "Contact Mukesh Art for Rajkot Airport advertising, outdoor media, digital screen branding, static boards, terminal branding, and custom airport media packages.",
         path: "/contact",
     },
+
+    // dedicated exact-match landing for the "Rajkot Airport Advertising"
+    // commercial query (homepage H1 is a brand slogan, this page owns the
+    // keyword in URL + title + H1). Added 2026-10-01.
+    rajkotAirportAdvertising: {
+        title: "Rajkot Airport Advertising | Media, Rates & Branding",
+        description:
+            "Advertise at Rajkot International Airport (Hirasar) with Mukesh Art — digital screens, static boards, terminal branding, trolley media and outdoor hoardings. Get Rajkot airport advertising rates and packages.",
+        path: "/rajkot-airport-advertising",
+    },
 };

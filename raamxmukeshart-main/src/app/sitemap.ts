@@ -70,6 +70,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "monthly" as const,
             priority: 0.9,
         },
+        {
+            url: `${siteConfig.url}/rajkot-airport-advertising/`,
+            lastModified: new Date(),
+            changeFrequency: "weekly" as const,
+            priority: 0.95,
+        },
         ...inventoryCategories.map((category) => ({
             url: `${siteConfig.url}/inventory/${category.slug}/`,
             lastModified: new Date(),

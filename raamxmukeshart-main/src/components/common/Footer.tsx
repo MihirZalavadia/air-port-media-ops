@@ -178,6 +178,7 @@ export default function Footer() {
                         <h3>Explore</h3>
                         <nav aria-label="Footer navigation">
                             <Link href="/airport/#about">About Us</Link>
+                            <Link href="/rajkot-airport-advertising/">Rajkot Airport Advertising</Link>
                             <Link href="/airport/#inventory">Inventory & Packages</Link>
                             <Link href="/airport/#whyairportmedia">Why Airport Media</Link>
                             <Link href="/airport/#gallery">Gallery</Link>
