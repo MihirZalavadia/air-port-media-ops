@@ -114,7 +114,9 @@
     display: inline-flex; align-items: center; gap: 9px;
     padding: 7px 15px; border: 1px solid var(--h-chip-bd); border-radius: 999px;
     background: var(--h-chip-bg); backdrop-filter: blur(6px);
-    color: var(--h-ink); font-size: 0.78rem; letter-spacing: 0.01em;
+    color: var(--h-ink);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
 }
 .raa-badge b {
     width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
@@ -125,12 +127,13 @@
 
 .raa-h1 {
     color: var(--h-ink);
-    font-size: clamp(2.6rem, 6vw, 5rem);
-    line-height: 1.02; letter-spacing: -0.03em; font-weight: 800;
-    margin: 18px 0 18px;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(3rem, 6.6vw, 6rem);
+    line-height: 1.04; letter-spacing: -0.018em; font-weight: 500;
+    margin: 14px 0 18px;
 }
 .raa-h1 em {
-    font-style: italic; font-weight: 800;
+    font-style: italic; font-weight: 500;
     color: transparent;
     background: linear-gradient(100deg, var(--accent), #ff5a67 60%, var(--accent));
     -webkit-background-clip: text; background-clip: text;
@@ -169,8 +172,8 @@
     border-top: 1px solid var(--h-line); max-width: 680px;
 }
 .raa-trust li { display: flex; flex-direction: column; gap: 4px; }
-.raa-trust strong { color: var(--h-ink); font-size: clamp(1.2rem, 2.2vw, 1.7rem); font-weight: 800; letter-spacing: -0.01em; }
-.raa-trust span { color: var(--h-sub); font-size: 0.76rem; line-height: 1.3; }
+.raa-trust strong { color: var(--h-ink); font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 500; letter-spacing: 0; }
+.raa-trust span { color: var(--h-sub); font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.4; }
 
 /* ---------------- Hero media wall ---------------- */
 .raa-hero-wall { position: relative; }
@@ -233,15 +236,17 @@
 
 /* ---------------- Shared section type (theme-aware) ---------------- */
 .raa-eyebrow {
-    display: inline-block; font-size: 0.8rem; font-weight: 600;
-    letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
-    margin-bottom: 14px;
+    display: inline-block; font-family: "JetBrains Mono", monospace;
+    font-size: 11px; font-weight: 800;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
+    margin-bottom: 16px;
 }
 .raa-h2 {
-    font-size: clamp(1.9rem, 3.6vw, 3rem); font-weight: 800; line-height: 1.08;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(2.2rem, 4.2vw, 3.6rem); font-weight: 500; line-height: 1.1;
     letter-spacing: -0.02em; color: var(--ink); margin: 0 0 8px;
 }
-.raa-h2 em { font-style: italic; color: var(--muted); font-weight: 700; }
+.raa-h2 em { font-style: italic; color: var(--accent); font-weight: 500; }
 
 .raa-section { padding: clamp(68px, 9vw, 120px) 0; position: relative; }
 .raa-intro { background: var(--surface); }
@@ -286,8 +291,9 @@
     border-radius: 18px; background: var(--card-bg, var(--surface)); overflow: hidden;
 }
 .raa-why-no {
-    display: block; font-size: 2.4rem; font-weight: 800; line-height: 1;
-    color: transparent; -webkit-text-stroke: 1.4px var(--rule); margin-bottom: 14px;
+    display: block; font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 3rem; font-weight: 600; line-height: 1;
+    color: transparent; -webkit-text-stroke: 1.2px var(--rule); margin-bottom: 12px;
 }
 .raa-why-grid h3 { font-size: 1.12rem; font-weight: 700; margin-bottom: 10px; color: var(--ink); }
 .raa-why-grid p { font-size: 0.94rem; line-height: 1.6; color: var(--muted); }
@@ -299,7 +305,8 @@
     display: inline-flex; align-items: center; justify-content: center;
     width: 42px; height: 42px; border-radius: 50%;
     background: color-mix(in srgb, var(--accent) 12%, transparent);
-    color: var(--accent); font-size: 1rem; font-weight: 800; margin-bottom: 14px;
+    color: var(--accent); font-family: "JetBrains Mono", monospace;
+    font-size: 0.95rem; font-weight: 700; margin-bottom: 14px;
 }
 .raa-step-list h3 { font-size: 1.04rem; font-weight: 700; margin-bottom: 6px; color: var(--ink); }
 .raa-step-list p { font-size: 0.88rem; line-height: 1.5; color: var(--muted); }
@@ -319,7 +326,7 @@
         radial-gradient(40% 70% at 15% 20%, rgba(226, 29, 45, 0.35), transparent 70%),
         radial-gradient(45% 80% at 90% 90%, rgba(56, 120, 255, 0.3), transparent 70%);
 }
-.raa-cta-band h2 { font-size: clamp(1.7rem, 3.6vw, 2.7rem); font-weight: 800; letter-spacing: -0.015em; max-width: 740px; margin: 0 auto 14px; }
+.raa-cta-band h2 { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 500; letter-spacing: -0.005em; max-width: 740px; margin: 0 auto 14px; }
 .raa-cta-band p { color: rgba(255, 255, 255, 0.84); max-width: 540px; margin: 0 auto; font-size: 1.04rem; line-height: 1.6; }
 .raa-cta-band .raa-cta-row { justify-content: center; margin-top: 30px; }
 
