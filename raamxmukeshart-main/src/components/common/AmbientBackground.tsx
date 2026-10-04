@@ -28,6 +28,11 @@ export default function AmbientBackground() {
         <div className="ambient" aria-hidden="true">
             <div className="ambient-sky" />
             <div className="ambient-stars" />
+            <div className="ambient-clouds">
+                <span className="ambient-cloud ambient-cloud-1" />
+                <span className="ambient-cloud ambient-cloud-2" />
+                <span className="ambient-cloud ambient-cloud-3" />
+            </div>
             <div className="ambient-planes">
                 <Plane className="ambient-plane-1" />
                 <Plane className="ambient-plane-2" />

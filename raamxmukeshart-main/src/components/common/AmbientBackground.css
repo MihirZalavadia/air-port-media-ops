@@ -22,6 +22,20 @@ html.ambient-on .raa-intro,
 html.ambient-on .raa-why,
 html.ambient-on .raa-faq { background: transparent; }
 
+/* hero carries its own gradient "stage" that read greyer than the sky; drop it
+   so the whole landing sits on one continuous sky. Glows/grid/media-wall stay
+   for character. */
+html.ambient-on .raa-hero { background: transparent; }
+
+/* sections that paint their own fill (card-bg / own gradient) rather than a
+   band var — make them see-through so the sky is continuous */
+html.ambient-on .team-section,
+html.ambient-on .contact-section,
+html.ambient-on .contact-page .contact-section,
+html.ambient-on .about-flow-section { background: transparent; }
+/* footer carries its own scoped --f-bg gradient */
+html.ambient-on .footer { --f-bg: transparent; }
+
 /* ---- the fixed backdrop ---- */
 .ambient {
     position: fixed;
@@ -90,7 +104,10 @@ html.ambient-on .raa-faq { background: transparent; }
     width: 54px; height: auto;
     will-change: transform;
 }
-.ambient-plane svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.12)); }
+/* scaleX(-1): the drawn plane nosed left; flip it so it faces its travel
+   direction (left -> right). Transform lives on the svg; the span keeps the
+   translate animation, so they don't fight. */
+.ambient-plane svg { width: 100%; height: auto; display: block; transform: scaleX(-1); filter: drop-shadow(0 1px 1px rgba(0,0,0,0.12)); }
 .ambient-trail {
     position: absolute; top: 50%; right: 100%;
     width: 120px; height: 1.5px; transform: translateY(-50%);
@@ -104,6 +121,34 @@ html.ambient-on .raa-faq { background: transparent; }
     to   { transform: translateX(128vw) rotate(-3deg); }
 }
 
+/* ---- clouds (day + night), drifting slower than planes ---- */
+.ambient-clouds { position: absolute; inset: 0; }
+.ambient-cloud {
+    position: absolute;
+    left: -22vw;
+    width: 150px; height: 44px;
+    border-radius: 44px;
+    background: #d9e4f4;         /* day: soft grey-blue, reads on a white sky */
+    filter: blur(7px);
+    opacity: 0.85;
+    will-change: transform;
+}
+.ambient-cloud::before,
+.ambient-cloud::after {
+    content: ""; position: absolute; background: inherit; border-radius: 50%;
+}
+.ambient-cloud::before { width: 64px; height: 64px; top: -24px; left: 24px; }
+.ambient-cloud::after { width: 46px; height: 46px; top: -15px; left: 82px; }
+[data-theme="night"] .ambient-cloud {
+    background: rgba(173, 197, 240, 0.12); /* night: thin, bluish */
+    opacity: 1;
+    filter: blur(9px);
+}
+.ambient-cloud-1 { top: 13%; animation: ambientDrift 74s linear infinite; }
+.ambient-cloud-2 { top: 30%; width: 108px; opacity: 0.7; animation: ambientDrift 98s linear infinite 22s; }
+.ambient-cloud-3 { top: 7%; width: 192px; opacity: 0.8; animation: ambientDrift 126s linear infinite 55s; }
+@keyframes ambientDrift { from { transform: translateX(0); } to { transform: translateX(150vw); } }
+
 /* day planes read as darker ink; night as soft light already via color */
 [data-theme="night"] .ambient-plane svg { filter: drop-shadow(0 0 6px rgba(120,160,255,0.35)); }
 
@@ -111,6 +156,14 @@ html.ambient-on .raa-faq { background: transparent; }
     .ambient-stars::before,
     .ambient-stars::after,
     .ambient-plane-1,
-    .ambient-plane-2 { animation: none; }
+    .ambient-plane-2,
+    .ambient-cloud-1,
+    .ambient-cloud-2,
+    .ambient-cloud-3 { animation: none; }
+    /* park a plane + clouds on-screen so a motionless sky still has life */
+    .ambient-plane-1 { left: 62vw; }
     .ambient-plane-2 { display: none; }
+    .ambient-cloud-1 { left: 10vw; }
+    .ambient-cloud-2 { left: 56vw; }
+    .ambient-cloud-3 { left: 32vw; }
 }
