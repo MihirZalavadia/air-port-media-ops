@@ -8,14 +8,24 @@
    --surface / --card-bg / --footer-bg stay opaque so cards, modals,
    header and footer keep their fills. ---- */
 html.ambient-on {
-    --bg: transparent;
     --about-bg: transparent;
     --inventory-bg: transparent;
     --gallery-bg: transparent;
     --team-bg: transparent;
     --contact-bg: transparent;
 }
-html.ambient-on body { background: transparent; }
+/* NB: do NOT transparent --bg itself — several elements use it as a TEXT color
+   (active inventory chip, header button => white-on-white otherwise). Instead
+   transparent the page-level wrappers that paint background: var(--bg), so the
+   sky still shows through. The mobile menu also uses var(--bg) and must stay
+   opaque, so it is deliberately not listed here. */
+html.ambient-on body,
+html.ambient-on .grp,
+html.ambient-on .contact-page,
+html.ambient-on .inv-detail,
+html.ambient-on .partners-page,
+html.ambient-on .faq-section,
+html.ambient-on .partners-marquee-section { background: transparent; }
 
 /* the new landing's surface-backed sections, kept consistent with the sky */
 html.ambient-on .raa-intro,
