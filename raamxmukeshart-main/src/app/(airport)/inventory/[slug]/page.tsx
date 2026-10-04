@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import InventoryDetail from "@/src/components/pages/inventory/InventoryDetail";
+import BreadcrumbSchema from "@/src/components/common/BreadcrumbSchema";
 import {
     getInventoryCategory,
     inventoryCategories,
@@ -40,5 +41,16 @@ export default async function InventoryCategoryPage({ params }: PageProps) {
 
     if (!category) notFound();
 
-    return <InventoryDetail slug={slug} />;
+    return (
+        <>
+            <BreadcrumbSchema
+                items={[
+                    { name: "Home", path: "/" },
+                    { name: "Rajkot Airport Media", path: "/airport/" },
+                    { name: category.title, path: `/inventory/${slug}/` },
+                ]}
+            />
+            <InventoryDetail slug={slug} />
+        </>
+    );
 }

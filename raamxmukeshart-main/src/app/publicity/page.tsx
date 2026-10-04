@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PublicityHome from "@/src/components/pages/publicity/PublicityHome";
+import BreadcrumbSchema from "@/src/components/common/BreadcrumbSchema";
 
 export const metadata: Metadata = {
     title: "Outdoor Advertising in Rajkot & Morbi | Hoardings & OOH, Mukesh Publicity",
@@ -22,5 +23,15 @@ export const metadata: Metadata = {
 };
 
 export default function PublicityPage() {
-    return <PublicityHome />;
+    return (
+        <>
+            <BreadcrumbSchema
+                items={[
+                    { name: "Home", path: "/" },
+                    { name: "Mukesh Publicity", path: "/publicity/" },
+                ]}
+            />
+            <PublicityHome />
+        </>
+    );
 }

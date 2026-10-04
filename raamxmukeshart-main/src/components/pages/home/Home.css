@@ -2998,7 +2998,7 @@ body.site-ready .hero-scroll.hero-anim {
 .commercial-parallax {
   min-height: 100vh;
 
-  background-image: url("/images/home/herobg.png");
+  background-image: url("/images/home/herobg.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -3100,7 +3100,7 @@ body.site-ready .hero-scroll.hero-anim {
       rgba(10, 10, 10, 0.9) 0%,
       rgba(10, 10, 10, 0.78) 46%,
       rgba(10, 10, 10, 0.3) 100%),
-    url("/images/home/herobg.png");
+    url("/images/home/herobg.webp");
 
   background-size: cover;
   background-position: center;

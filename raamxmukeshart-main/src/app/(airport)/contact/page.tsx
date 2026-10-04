@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactPage from "@/src/components/pages/contact/ContactPage";
+import BreadcrumbSchema from "@/src/components/common/BreadcrumbSchema";
 
 export const metadata: Metadata = {
     title: "Plan Your Airport Campaign | Contact Mukesh Art",
@@ -22,5 +23,16 @@ export const metadata: Metadata = {
 };
 
 export default function Contact() {
-    return <ContactPage />;
+    return (
+        <>
+            <BreadcrumbSchema
+                items={[
+                    { name: "Home", path: "/" },
+                    { name: "Rajkot Airport Media", path: "/airport/" },
+                    { name: "Contact", path: "/contact/" },
+                ]}
+            />
+            <ContactPage />
+        </>
+    );
 }
