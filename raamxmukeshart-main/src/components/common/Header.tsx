@@ -420,7 +420,7 @@ export default function Header() {
                 </nav> */}
                 <nav className="nav-links" aria-label="Primary">
                     <Link onClick={(e) => handleSectionClick(e, "about")} href="/airport/#about">About Us</Link>
-                    <Link onClick={() => setIsMenuOpen(false)} href="/rajkot-airport-advertising/">Airport Advertising</Link>
+                    <Link onClick={(e) => handleSectionClick(e, "rajkot-airport-advertising")} href="/airport/#rajkot-airport-advertising">Airport Advertising</Link>
                     <Link onClick={(e) => handleSectionClick(e, "inventory")} href="/airport/#inventory">Inventory & Packages</Link>
                     <Link onClick={(e) => handleSectionClick(e, "whyairportmedia")} href="/airport/#whyairportmedia">Why Airport Media</Link>
                     <Link onClick={(e) => handleSectionClick(e, "gallery")} href="/airport/#gallery">Gallery</Link>

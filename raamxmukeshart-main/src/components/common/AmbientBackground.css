@@ -128,9 +128,9 @@ html.ambient-on .footer { --f-bg: transparent; }
     left: -22vw;
     width: 150px; height: 44px;
     border-radius: 44px;
-    background: #d9e4f4;         /* day: soft grey-blue, reads on a white sky */
-    filter: blur(7px);
-    opacity: 0.85;
+    background: #aec6ea;         /* day: deeper steel-blue, visible on a white sky */
+    filter: blur(6px);
+    opacity: 0.92;
     will-change: transform;
 }
 .ambient-cloud::before,
@@ -145,8 +145,8 @@ html.ambient-on .footer { --f-bg: transparent; }
     filter: blur(9px);
 }
 .ambient-cloud-1 { top: 13%; animation: ambientDrift 74s linear infinite; }
-.ambient-cloud-2 { top: 30%; width: 108px; opacity: 0.7; animation: ambientDrift 98s linear infinite 22s; }
-.ambient-cloud-3 { top: 7%; width: 192px; opacity: 0.8; animation: ambientDrift 126s linear infinite 55s; }
+.ambient-cloud-2 { top: 30%; width: 108px; opacity: 0.82; animation: ambientDrift 98s linear infinite 22s; }
+.ambient-cloud-3 { top: 7%; width: 192px; opacity: 0.88; animation: ambientDrift 126s linear infinite 55s; }
 @keyframes ambientDrift { from { transform: translateX(0); } to { transform: translateX(150vw); } }
 
 /* day planes read as darker ink; night as soft light already via color */

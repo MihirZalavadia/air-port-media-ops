@@ -41,6 +41,7 @@
 import type { Metadata } from "next";
 
 import Hero from "@/src/components/pages/home/Hero";
+import AirportAdvertisingSpotlight from "@/src/components/pages/home/AirportAdvertisingSpotlight";
 import BrandMoment from "@/src/components/pages/home/BrandMoment";
 import About from "@/src/components/pages/home/About";
 import InventoryPackages from "@/src/components/pages/home/InventoryPackages";
@@ -105,6 +106,9 @@ export default function Home() {
 
       <main>
         <Hero />
+        {/* in-scroll spotlight for the Rajkot Airport Advertising page, sits
+            right after the hero then hands off to the full page / inventory */}
+        <AirportAdvertisingSpotlight />
         {/* inventory first, buyers shouldn't have to scroll past the
             brand story to find what's for sale */}
         <InventoryPackages />

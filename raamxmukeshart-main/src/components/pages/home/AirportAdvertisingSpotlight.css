@@ -1,0 +1,121 @@
+/* In-scroll "Rajkot Airport Advertising" spotlight on the airport one-pager.
+   Transparent so the ambient sky shows through; reuses the site type system
+   (Cormorant headings, JetBrains Mono labels) and the media-wall visual. */
+
+.aa-spot {
+    position: relative;
+    padding: clamp(72px, 9vw, 128px) 0;
+    overflow-x: clip;
+}
+
+.aa-spot-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+}
+
+/* ---- copy ---- */
+.aa-spot-eyebrow {
+    display: inline-block; font-family: "JetBrains Mono", monospace;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+}
+.aa-spot-h2 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(2.2rem, 4.2vw, 3.6rem); font-weight: 500; line-height: 1.08;
+    letter-spacing: -0.02em; color: var(--ink); margin: 0 0 18px;
+}
+.aa-spot-h2 em { font-style: italic; color: var(--accent); font-weight: 500; }
+
+.aa-spot-lead {
+    font-size: clamp(1rem, 1.4vw, 1.14rem); line-height: 1.7;
+    color: var(--muted); max-width: 560px;
+}
+
+.aa-spot-points {
+    list-style: none; margin: 22px 0 0; padding: 0;
+    display: flex; flex-direction: column; gap: 10px;
+}
+.aa-spot-points li {
+    display: flex; align-items: baseline; gap: 12px;
+    font-size: 0.96rem; color: var(--ink);
+}
+.aa-spot-points b {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.4rem; font-weight: 600; color: var(--accent);
+    min-width: 46px; line-height: 1;
+}
+
+.aa-spot-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+.aa-spot-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 50px; padding: 0 26px; border-radius: 999px;
+    font-weight: 600; font-size: 0.95rem; text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.aa-spot-btn svg { width: 18px; height: 18px; transition: transform 0.25s ease; }
+.aa-spot-btn--primary {
+    background: var(--accent); color: #fff; border: 1px solid var(--accent);
+    box-shadow: 0 12px 30px rgba(226, 29, 45, 0.26);
+}
+.aa-spot-btn--ghost {
+    background: color-mix(in srgb, var(--ink) 5%, transparent);
+    color: var(--ink); border: 1px solid var(--rule);
+}
+@media (hover: hover) and (pointer: fine) {
+    .aa-spot-btn--primary:hover { background: var(--accent-deep); transform: translateY(-2px); box-shadow: 0 16px 38px rgba(226, 29, 45, 0.34); }
+    .aa-spot-btn--primary:hover svg { transform: translateX(4px); }
+    .aa-spot-btn--ghost:hover { transform: translateY(-2px); border-color: var(--accent); }
+}
+.aa-spot-btn:active { transform: translateY(0); }
+
+/* ---- media wall ---- */
+.aa-spot-wall { position: relative; }
+.aa-wall-grid {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;
+    perspective: 1200px; animation: aaFloat 8s ease-in-out infinite;
+}
+@keyframes aaFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+.aa-wall-tile {
+    position: relative; margin: 0; border-radius: 16px; overflow: hidden;
+    background: var(--card-bg, var(--surface)); border: 1px solid var(--rule);
+    box-shadow: 0 22px 54px rgba(20, 28, 70, 0.18); aspect-ratio: 4 / 3;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+[data-theme="night"] .aa-wall-tile { box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5); }
+.aa-wall-tile:nth-child(1) { transform: rotate(-1.4deg); }
+.aa-wall-tile:nth-child(2) { transform: rotate(1.2deg) translateY(14px); }
+.aa-wall-tile:nth-child(3) { transform: rotate(1deg); }
+.aa-wall-tile:nth-child(4) { transform: rotate(-1.2deg) translateY(14px); }
+.aa-wall-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.aa-wall-tile figcaption {
+    position: absolute; left: 10px; bottom: 10px;
+    background: rgba(5, 7, 15, 0.78); color: #fff;
+    font-family: "JetBrains Mono", monospace; font-size: 0.66rem; font-weight: 600;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 5px 10px; border-radius: 999px; backdrop-filter: blur(4px);
+}
+@media (hover: hover) and (pointer: fine) {
+    .aa-wall-tile:hover { transform: rotate(0) translateY(-4px) scale(1.02); box-shadow: 0 30px 70px rgba(20, 28, 70, 0.28); z-index: 2; }
+}
+.aa-wall-sheen {
+    position: absolute; inset: -10%; pointer-events: none; border-radius: 20px;
+    background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.22) 50%, transparent 60%);
+    transform: translateX(-120%); animation: aaSheen 6.5s ease-in-out infinite;
+}
+@keyframes aaSheen { 0% { transform: translateX(-120%); } 55%, 100% { transform: translateX(120%); } }
+
+/* ---- responsive ---- */
+@media (max-width: 880px) {
+    .aa-spot-grid { grid-template-columns: 1fr; gap: 40px; }
+    .aa-spot-wall { order: -1; max-width: 460px; }
+}
+@media (max-width: 560px) {
+    .aa-spot-btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .aa-wall-grid, .aa-wall-sheen { animation: none; }
+    .aa-wall-tile { transform: none !important; }
+}
